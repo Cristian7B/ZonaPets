@@ -6,3 +6,16 @@ def helloworld(request):
 
 def helloworldRed(request):
     return HttpResponse("<p style=""color: red;"">hola mundo</p>")
+
+# myapp/views.py
+from django.shortcuts import render
+from .models import Pagina
+
+def inicio(request):
+    pagina = Pagina.objects.first()
+
+    # Renderiza el template y pasa los datos necesarios
+    return render(request, 'pagina_principal.html', {'pagina': pagina})
+
+nueva_pagina = Pagina(nombre="PetSearch")
+nueva_pagina.save()
