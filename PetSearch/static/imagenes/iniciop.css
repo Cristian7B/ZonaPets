@@ -16,9 +16,12 @@ h1 {
     color: #fff;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: static;
 }
 
+h3 {
+    color: #ffffff;
+    justify-content: center;
+}
 .boton-container {
     display: flex;
     justify-content: center;
@@ -74,3 +77,4 @@ h1 {
   .buttons a:hover {
     transform: scale(1.2);
   }
+

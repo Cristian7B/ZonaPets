@@ -18,5 +18,11 @@ def inicio(request):
     
     return render(request, 'pagina_principal.html', {'pagina': pagina})
 
+def ver_mapa(request):    
+    return render(request, 'ver_mapa.html')
+
+def registrar(request):    
+    return render(request, 'registrar.html')
+
 nueva_pagina = Pagina(nombre="PetSearch")
 nueva_pagina.save()

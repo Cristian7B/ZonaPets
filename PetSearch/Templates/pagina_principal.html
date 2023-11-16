@@ -9,23 +9,28 @@
 {% load static %}
 
 
-<link rel="stylesheet" href="{% static 'imagenes/style.css' %}">
+<link rel="stylesheet" href="{% static 'imagenes/iniciop.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <body style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: scroll; background-size: 100%;">
+     <header>
+        <div>
+            <section class="buttons">
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a>
+            </section>
+        </div>
     
-    <section class="buttons">
-        <a href="https://www.instagram.com/" class="fa fa-facebook"></a>
-        <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
-        <a href="https://www.instagram.com/" class="fa fa-youtube-play"></a>
-    </section>
-
-    <h1>¡Bienvenido a ZonaPets!</h1>
-    <div class="boton-container">
-        <button href="https://www.instagram.com/" class="boton">Ir al Mapa</button>
-        <button class="boton">Registrar</button>
-
+        <h1>¡Bienvenido a ZonaPets!</h1>
+        <div class="boton-container">
+            <a href="http://127.0.0.1:8000/vermapa/" class="boton">Ir al Mapa</a>
+            <a href="http://127.0.0.1:8000/registrar/" class="boton">Registrar</a>
+        </div>
+        
+        <h3>¿Quieres saber mas?</h3>
+     </header>    
 </body>
 </div>
 </html>
