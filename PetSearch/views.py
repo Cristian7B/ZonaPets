@@ -14,7 +14,8 @@ from .models import Pagina
 def inicio(request):
     pagina = Pagina.objects.first()
 
-    # Renderiza el template y pasa los datos necesarios
+    #Render Template
+    
     return render(request, 'pagina_principal.html', {'pagina': pagina})
 
 nueva_pagina = Pagina(nombre="PetSearch")
