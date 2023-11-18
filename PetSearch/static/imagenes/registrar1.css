@@ -1,0 +1,87 @@
+body{
+    margin: 5px;
+    font-family: "Poppins", "sans-serif";
+ }
+section {
+   margin: 0;
+   display: flex;
+   justify-content: space-between;
+   background-color: #1385F0;
+   height: 40px;
+   align-items: center;
+   margin-bottom: 150px;
+}
+header {
+   font-family:'Poppins', sans-serif;
+   text-align: center;
+   justify-content: center;
+   color: #fff;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.logo-nombre {
+   display: flex;
+   align-items: center;
+   color: #fff;
+   padding-left: 10px;
+}
+.nombre{
+   font-size: 70px;
+   margin-bottom: 20px;
+}
+/* Estilos generales para el nav */
+nav { 
+   justify-content: space-evenly;
+   padding: 10px;
+}
+
+ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+li {
+   margin: 0 20px; /* Espaciado entre elementos de la lista */
+}
+
+a {
+   text-decoration: none;
+   color: #ffffff; /* Cambia el color del texto según tus preferencias */
+   font-size: 16px;
+   font-weight: bold;
+   transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+   color: #0F5B9E; /* Cambia el color al pasar el ratón sobre el enlace */
+}
+.buttons {
+   display: flex;
+   flex-direction: row;
+   min-width: 700px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.buttons a {
+   text-decoration: none;
+   font-size: 28px;
+   width: 60px;
+   height: 60px;
+   line-height: 60px;
+   text-align: center;
+   color: #f1f1f1;
+   border-radius: 50%;
+   transition: all .4s ease-in-out;
+}
+
+.buttons a:hover {
+   transform: scale(1.2);
+}
+
+.info {
+   margin-top: 120px;
+}
