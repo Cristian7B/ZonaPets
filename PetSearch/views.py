@@ -22,7 +22,7 @@ def ver_mapa(request):
     return render(request, 'ver_mapa.html')
 
 def registrar(request):    
-    return render(request, 'registrarlugar.html')
+    return render(request, 'registrar.html')
 
 def acercade(request):
     return render(request, "acercade.html")

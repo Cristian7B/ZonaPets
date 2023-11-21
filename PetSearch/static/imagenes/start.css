@@ -8,11 +8,13 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
 .container {
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
+
 section {
     margin: 0;
     display: flex;
@@ -22,6 +24,7 @@ section {
     align-items: center;
     margin-bottom: 150px;
 }
+
 header {
     font-family:'Poppins', sans-serif;
     text-align: center;
@@ -29,6 +32,7 @@ header {
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .logo-nombre {
     display: flex;
     align-items: center;
@@ -41,7 +45,7 @@ header {
     font-size: 70px;
     margin-bottom: 20px;
 }
-/* Estilos generales para el nav */
+
 nav { 
     justify-content: space-evenly;
     padding: 0px;
@@ -57,22 +61,20 @@ ul {
 }
 
 li {
-    margin: 0 20px; /* Espaciado entre elementos de la lista */
+    margin: 0 20px; 
 }
 
 a {
     text-decoration: none;
-    color: #ffffff; /* Cambia el color del texto según tus preferencias */
+    color: #ffffff; 
     font-size: 16px;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
 
 a:hover {
-    color: #0F5B9E; /* Cambia el color al pasar el ratón sobre el enlace */
+    color: #0F5B9E; 
 }
-
-
 
 h1 {
     display: flex;
@@ -142,14 +144,12 @@ h3 {
     
 }
 
-
 .container2 h1 {
     text-align: center;
     color: #1385F0;
     font-size: 44px;
     margin-bottom: 30px;
 }
-
 
 .container2 h3 {
     margin-left: 150px;
@@ -161,26 +161,41 @@ h3 {
     font-family: 'Poppins', sans-serif;
 }
 
-.container2 p {
-    margin-left: 40px;
+.texto p,  .texto3 p{
+    margin-left: 0px;
     margin-right: 470px;
 }
 
-.descripcion {
+.texto h3,  .texto3 h3{
+    margin-left: 0px;
+    margin-right: 470px;
+}
+
+.descripcion, .descripcion2, .descripcion3, .descripcion4 {
     align-items: center;
-    display: flex;
     margin-left: 40px;
+    display: flex;
+    margin-top: 0px;
 }
 
-.boton_apoyo {
-    margin-left: 225px;
+.descripcion img, .descripcion2 img, .descripcion3 img, .descripcion4 img  {
+    height: 250px;
 }
 
-.boton_apoyo:hover {
-    background-color: #2980b9;
-    margin-right: 800px;
+.texto2, .texto4 {
+    text-align: right;
+    margin-left: 420px;
 }
-.descripcion img{
-    height: 200px;
-    float: right;
+
+.container2 a {
+    margin-left: 500px;
+    margin-top: 0%;
+}
+
+.descripcion4 img {
+    margin-right: 43px;
+}
+
+.apoyar {
+    margin-left: 210px;
 }
