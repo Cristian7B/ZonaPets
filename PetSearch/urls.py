@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PetSearch.views import helloworld, helloworldRed, inicio, ver_mapa, registrar
+from PetSearch.views import helloworld, helloworldRed, inicio, ver_mapa, registrar, contacto, acercade
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,6 +28,9 @@ urlpatterns = [
     path("inicio-zonapets/", inicio),
     path("vermapa/", ver_mapa),
     path("registrar/", registrar),
+    path("contacto/", contacto),
+    path("acercade/", acercade),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

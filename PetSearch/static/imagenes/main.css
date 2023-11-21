@@ -2,8 +2,12 @@ body {
     overflow-y: scroll;
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 .container {
     align-items: center;
     justify-content: center;
@@ -30,7 +34,9 @@ header {
     align-items: center;
     color: #fff;
     padding-left: 10px;
+    
 }
+
 .nombre{
     font-size: 70px;
     margin-bottom: 20px;
@@ -38,7 +44,7 @@ header {
 /* Estilos generales para el nav */
 nav { 
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 0px;
     background-color: #1385F0;
 }
 
@@ -131,7 +137,50 @@ h3 {
     transform: scale(1.2);
 }
 
-.info {
+.saber_mas {
     margin-top: 120px;
+    
 }
 
+
+.container2 h1 {
+    text-align: center;
+    color: #1385F0;
+    font-size: 44px;
+    margin-bottom: 30px;
+}
+
+
+.container2 h3 {
+    margin-left: 150px;
+    color: #0F5B9E;
+    font-size: 28px;
+    margin-top: 0%;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container2 p {
+    margin-left: 40px;
+    margin-right: 470px;
+}
+
+.descripcion {
+    align-items: center;
+    display: flex;
+    margin-left: 40px;
+}
+
+.boton_apoyo {
+    margin-left: 225px;
+}
+
+.boton_apoyo:hover {
+    background-color: #2980b9;
+    margin-right: 800px;
+}
+.descripcion img{
+    height: 200px;
+    float: right;
+}

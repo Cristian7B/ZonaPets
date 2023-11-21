@@ -1,7 +1,7 @@
 body{
-    margin: 5px;
-    font-family: "Poppins", "sans-serif";
- }
+    margin: 0px;
+    background-color: rgb(255, 255, 255);
+}
 section {
    margin: 0;
    display: flex;
@@ -10,6 +10,9 @@ section {
    height: 40px;
    align-items: center;
    margin-bottom: 150px;
+   font-family:'Poppins', sans-serif;
+   padding: 0%;
+   margin-top: 0px;
 }
 header {
    font-family:'Poppins', sans-serif;
@@ -56,32 +59,4 @@ a {
 
 a:hover {
    color: #0F5B9E; /* Cambia el color al pasar el ratón sobre el enlace */
-}
-.buttons {
-   display: flex;
-   flex-direction: row;
-   min-width: 700px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-}
-
-.buttons a {
-   text-decoration: none;
-   font-size: 28px;
-   width: 60px;
-   height: 60px;
-   line-height: 60px;
-   text-align: center;
-   color: #f1f1f1;
-   border-radius: 50%;
-   transition: all .4s ease-in-out;
-}
-
-.buttons a:hover {
-   transform: scale(1.2);
-}
-
-.info {
-   margin-top: 120px;
 }

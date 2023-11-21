@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZonaPets - Encuentra lugares pet-friendly</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 </head>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'imagenes/inicio.css' %}">
+<link rel="stylesheet" href="{% static 'imagenes/main.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
-<body style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: scroll; background-size: 100%;">
-    <div class="container">
+
+
+<body>
+    <div class="container" style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: local; background-size: 100%;">
         <section>
                 <h2 class="logo-nombre">ZonaPets</h2>
             <nav>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#acerca">Acerca de nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="http://127.0.0.1:8000/inicio-zonapets/">Inicio</a></li>
+                    <li><a href="http://127.0.0.1:8000/acercade/">Acerca de nosotros</a></li>
+                    <li><a href="http://127.0.0.1:8000/contacto/">Contacto</a></li>
                     <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
                     <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
                     <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
@@ -38,17 +40,38 @@
                 <a href="http://127.0.0.1:8000/registrar/" class="boton">Registrar</a>
             </div>
 
-            <h3 class="info">¿Quieres saber más?</h3>
-            <a class="fa fa-chevron-down"></a>
+            <h3 class="saber_mas">Sobre ZonaPets</h3>
+            <a href="#info" class="fa fa-chevron-down"></a>
+            
         </header>
+        
     </div>
-    <div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. Massa eget egestas purus viverra accumsan in nisl nisi. Metus aliquam eleifend mi in nulla. Aenean euismod elementum nisi quis eleifend. Quisque sagittis purus sit amet volutpat consequat. Nisl purus in mollis nunc sed id semper risus. Bibendum neque egestas congue quisque egestas diam in
-        Dui sapien eget mi proin sed. Laoreet suspendisse interdum consectetur libero. Augue neque gravida in fermentum et sollicitudin ac. Tristique sollicitudin nibh sit amet commodo. Amet justo donec enim diam. Nulla facilisi cras fermentum odio eu feugiat. Vitae aliquet nec ullamcorper sit amet risus nullam. Libero enim sed faucibus turpis in eu mi. Amet dictum sit amet justo. Viverra nibh cras pulvinar mattis nunc sed blandit. Blandit libero volutpat sed cras ornare. Nunc consequat interdum varius sit. Diam quam nulla porttitor massa id. Velit sed ullamcorper morbi tincidunt ornare massa eget. Commodo odio aenean sed adipiscing diam. Egestas dui id ornare arcu odio ut sem. Diam volutpat commodo sed egestas egestas fringilla phasellus. Tincidunt eget nullam non nisi est sit amet.
-        Urna porttitor rhoncus dolor purus non enim praesent. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Nec ullamcorper sit amet risus nullam eget felis eget. Accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum. Etiam tempor orci eu lobortis elementum. Proin sed libero enim sed faucibus turpis in eu mi. Egestas erat imperdiet sed euismod nisi porta lorem. Nullam vehicula ipsum a arcu cursus vitae. Pellentesque id nibh tortor id aliquet lectus proin nibh. Lorem ipsum dolor sit amet consectetur adipiscing elit. Est ultricies integer quis auctor elit sed vulputate mi. Penatibus et magnis dis parturient. Diam volutpat commodo sed egestas egestas fringilla. Tortor posuere ac ut consequat semper. Dolor morbi non arcu risus quis. Metus vulputate eu scelerisque felis imperdiet proin.
-        Faucibus interdum posuere lorem ipsum. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Sed pulvinar proin gravida hendrerit lectus a. Nunc sed id semper risus. Amet tellus cras adipiscing enim eu turpis egestas pretium aenean. Enim lobortis scelerisque fermentum dui. Amet mattis vulputate enim nulla aliquet porttitor lacus. Feugiat nisl pretium fusce id velit ut tortor pretium. Iaculis at erat pellentesque adipiscing commodo elit at. Penatibus et magnis dis parturient. Eget velit aliquet sagittis id consectetur purus ut. Tortor vitae purus faucibus ornare suspendisse. Pretium fusce id velit ut. Sapien eget mi proin sed libero enim sed faucibus. Ac turpis egestas integer eget. Non nisi est sit amet. Ipsum dolor sit amet consectetur adipiscing elit. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. Purus non enim praesent elementum facilisis leo vel fringilla est.
-        </p>
+    <div class="container2" id="info">
+        <h1 class="eslogan">
+            Encuentra lugares para tus mejores amigos
+        </h1>
+        <div class="descripcion">
+            <img src="{% static 'imagenes/descarga_1.png' %}" alt="perro">
+            <div class="texto">
+                <h3>
+                    Nuestro Objetivo
+                </h3>
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+        </div>
+        <div class="descripcion">
+            <img src="{% static 'imagenes/house.png' %}" alt="casa">
+            <div class="texto">
+                <h3>
+                    Nuestro Objetivo
+                </h3>
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 

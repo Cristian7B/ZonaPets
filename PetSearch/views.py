@@ -22,7 +22,14 @@ def ver_mapa(request):
     return render(request, 'ver_mapa.html')
 
 def registrar(request):    
-    return render(request, 'registrar.html')
+    return render(request, 'registrarlugar.html')
+
+def acercade(request):
+    return render(request, "acercade.html")
+
+def contacto(request):
+    return render(request, "contacto.html")
+
 
 nueva_pagina = Pagina(nombre="PetSearch")
 nueva_pagina.save()
