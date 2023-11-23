@@ -1,9 +1,15 @@
+*{
+    margin: 0%;
+    padding: 0% ;
+    box-sizing: border-box;
+}
+
 body {
     overflow-y: scroll;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     scroll-behavior: smooth;
-}
+}   
 
 html {
     scroll-behavior: smooth;
@@ -15,6 +21,14 @@ html {
     height: 100vh;
 }
 
+header {
+    font-family:'Poppins', sans-serif;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 section {
     margin: 0;
     display: flex;
@@ -23,14 +37,6 @@ section {
     height: 40px;
     align-items: center;
     margin-bottom: 150px;
-}
-
-header {
-    font-family:'Poppins', sans-serif;
-    text-align: center;
-    justify-content: center;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .logo-nombre {
@@ -46,25 +52,65 @@ header {
     margin-bottom: 20px;
 }
 
-nav { 
-    justify-content: space-evenly;
+.navegacion { 
     padding: 0px;
     background-color: #1385F0;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
-ul {
-    list-style-type: none;
+.navegacion ul {
+    list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: end;
+    align-items: center ;
+}
+
+.menu-horizontal {
     display: flex;
-    justify-content: space-evenly;
+}
+
+.menu-horizontal > li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu-horizontal > li > a {
+    display: block;
+}
+
+.navegacion ul {
+    list-style: none;
+}
+
+.menu-vertical {
+    background-color: #1385f0;
+    text-align: center;
+    position: absolute;
+    margin-left: 70px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    width: 100%;
+    margin-left: 0%;
+}
+
+.menu-vertical li a {
+    display: block;
+    padding-top: 5px;
+}
+
+.menu-horizontal li:hover > .menu-vertical {
+    visibility: visible;
+    opacity: 1;
 }
 
 li {
     margin: 0 20px; 
 }
 
-a {
+.navegacion a, header a {
     text-decoration: none;
     color: #ffffff; 
     font-size: 16px;
@@ -72,7 +118,7 @@ a {
     transition: color 0.3s ease-in-out;
 }
 
-a:hover {
+.navegacion a:hover, header a:hover {
     color: #0F5B9E; 
 }
 
@@ -199,3 +245,28 @@ h3 {
 .apoyar {
     margin-left: 210px;
 }
+
+.container3 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #24262B;  
+    padding: 80px 0;
+}
+
+.footer-row {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.footer-links {
+    padding: 0 15px;
+    width: 25%;
+}
+
+.footer-links h4 {
+    font-size: 20px;
+    color: #fff;
+}   

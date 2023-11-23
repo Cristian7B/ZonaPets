@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PetSearch.views import helloworld, helloworldRed, inicio, ver_mapa, registrar, contacto, acercade
+from PetSearch.views import helloworld, helloworldRed, inicio, ver_mapa, registrar, contacto, acercade, preguntasfrecuentes, equipo, terminosycondiciones
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +30,9 @@ urlpatterns = [
     path("registrar/", registrar),
     path("contacto/", contacto),
     path("acercade/", acercade),
+    path("terminos-y-condiciones/", terminosycondiciones),
+    path("equipo/", equipo),
+    path("preguntas-frecuentes/", preguntasfrecuentes),
 ]
 
 if settings.DEBUG:

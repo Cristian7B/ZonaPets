@@ -30,6 +30,15 @@ def acercade(request):
 def contacto(request):
     return render(request, "contacto.html")
 
+def preguntasfrecuentes(request):
+    return render(request, "preguntas-frecuentes.html")
+
+def equipo(request):
+    return render(request, "equipo.html")
+
+def terminosycondiciones(request):
+    return render(request, "terminos.html")
+
 
 nueva_pagina = Pagina(nombre="PetSearch")
 nueva_pagina.save()
