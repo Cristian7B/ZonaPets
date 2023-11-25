@@ -8,7 +8,7 @@
 </head>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'imagenes/main.css' %}">
+<link rel="stylesheet" href="{% static 'imagenes/styles.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
@@ -56,7 +56,7 @@
             Encuentra lugares para tus mejores amigos
         </h1>
         <div class="descripcion">
-            <img src="{% static 'imagenes/objetivo.png' %}" alt="perro">
+            <img src="{% static 'imagenes/objetivo.png' %}" alt="img-objetivo">
             <div class="texto">
                 <h3>
                     Nuestro Objetivo
@@ -75,10 +75,10 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
                 </p>
             </div>
-            <img src="{% static 'imagenes/house.png' %}" alt="casa">    
+            <img src="{% static 'imagenes/house.png' %}" alt="img-funcionamiento">    
         </div>
         <div class="descripcion3">
-            <img src="{% static 'imagenes/maps.png' %}" alt="otra">
+            <img src="{% static 'imagenes/maps.png' %}" alt="img-logomaps">
             <div class="texto3">
                 <h3>
                     ¿Cómo puedes aparecer en ZonaPets?
@@ -98,7 +98,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
                 </p>
             </div>
-            <img src="{% static 'imagenes/apoyo.png' %}" alt="casa"> 
+            <img src="{% static 'imagenes/apoyo.png' %}" alt="img-apoyanos"> 
         </div>
         <div class="apoyar">
             <a href="https:www.patreon.com/" class="boton">Apóyanos</a>
@@ -107,28 +107,28 @@
 
     <h2 class="titulo-slider">¡Lugares Pet-Friendly destacados!</h2>
     <p class="des-slider">Bogotá</p>
-    <div class="slider-box">
+    <div class="slider-box" id="slider">
         <ul>
             <li>
-                <img src="{% static 'imagenes/colsubsidio.jpg' %}" alt="casa"> 
+                <img src="{% static 'imagenes/colsubsidio.jpg' %}" alt="img-colsubsidio"> 
                 <div class="texto-slide">
                     <a href="https://clubescolsubsidio.co/bellavista">Colsubsidio - Club Bellavista</a>
                 </div>
             </li>
             <li>
-                <img src="{% static 'imagenes/waulandia-park.webp' %}" alt="casa">
+                <img src="{% static 'imagenes/waulandia-park.webp' %}" alt="img-waulandia">
                 <div class="texto-slide">
                     <a href="https://www.facebook.com/p/Waulandia-Park-100079949992904/">Waulandia Park - Parque Acuático</a>
                 </div> 
             </li>
             <li>
-                <img src="{% static 'imagenes/hotelw.png' %}" alt="casa">
+                <img src="{% static 'imagenes/hotelw.png' %}" alt="img-hotelw">
                 <div class="texto-slide">
                     <a href="https://w.bogotahotelsweb.com/es/">Hotel W - Hotel PetFriendly</a>
                 </div> 
             </li>
             <li>
-                <img src="{% static 'imagenes/parquelacolina.jpg' %}" alt="casa">
+                <img src="{% static 'imagenes/parquelacolina.jpg' %}" alt="img-parquelacolina">
                 <div class="texto-slide">
                     <a href="https://www.parquelacolina.com/">Centro comercial Parque La Colina</a>
                 </div> 
@@ -137,7 +137,7 @@
     </div>
     
 
-    <footer>
+    <footer id="footer">
 
         <div class="container3">
 
@@ -147,10 +147,10 @@
 
                     <h4>ZonaPets</h4>
                     <ul>
-                        <li class="footer-margin"><a href="#">Nosotros</a></li>
-                        <li class="footer-margin"><a href="#">Nuestros servicios</a></li>
-                        <li class="footer-margin"><a href="#">Política de privacidad</a></li>
-                        <li class="footer-margin"><a href="#">Afíliate</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
                     </ul>
 
                 </div>
@@ -158,10 +158,10 @@
 
                     <h4>Ayuda</h4>
                     <ul>
-                        <li class="footer-margin"><a href="#">Preguntas</a></li>
-                        <li class="footer-margin"><a href="#">Asesores</a></li>
-                        <li class="footer-margin"><a href="#">Convenios</a></li>
-                        <li class="footer-margin"><a href="#">Pagos</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
                     </ul>
 
                 </div>

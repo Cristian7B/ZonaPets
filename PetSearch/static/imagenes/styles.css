@@ -44,7 +44,6 @@ section {
     align-items: center;
     color: #fff;
     padding-left: 10px;
-    
 }
 
 .nombre{
@@ -54,7 +53,6 @@ section {
 
 .navegacion { 
     padding: 0px;
-    background-color: #1385F0;
     width: 100%;
     justify-content: space-evenly;
 }
@@ -340,7 +338,7 @@ footer {
     display: flex;
     padding: 0;
     width: 400%;
-    animation: slide 20s infinite alternate ease-in-out;
+    animation: slide 17s infinite alternate ease-in-out;
 }
 
 .slider-box {
@@ -402,8 +400,6 @@ footer {
 }
 
 @media(max-width:991px) {
-    
-    
 
     .slider-box {
         width: 100%;

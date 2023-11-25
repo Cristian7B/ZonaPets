@@ -22,7 +22,7 @@ def ver_mapa(request):
     return render(request, 'ver_mapa.html')
 
 def registrar(request):    
-    return render(request, 'registrar.html')
+    return render(request, 'register.html')
 
 def acercade(request):
     return render(request, "acercade.html")
@@ -38,6 +38,23 @@ def equipo(request):
 
 def terminosycondiciones(request):
     return render(request, "terminos.html")
+
+def asesores(request):
+    return render(request, "asesores.html")
+
+def convenios(request):
+    return render(request, "convenios.html")
+
+def pagos(request):
+    return render(request, "pagos.html")
+
+def nuestrosservicios(request):
+    return render(request, "nuestros-servicios.html")
+
+def afiliate(request):
+    return render(request, "afiliate.html")
+
+
 
 
 nueva_pagina = Pagina(nombre="PetSearch")
