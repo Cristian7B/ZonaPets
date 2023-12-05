@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaPets - Encuentra lugares pet-friendly</title>
+</head>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'imagenes/inicio.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
+
+
+<body>
+    <div class="container" style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: local; background-size: 100%;">
+        <section>
+            <h2 class="logo-nombre">ZonaPets</h2>
+            <nav class="navegacion">
+                <ul class="menu-horizontal">
+                    <li><a href="http://127.0.0.1:8000/inicio-zonapets/">Inicio</a></li>
+                    <li><a href="http://127.0.0.1:8000/acercade/">Acerca de ZonaPets</a>
+                        <ul class="menu-vertical">
+                            <li><a href="http://127.0.0.1:8000/equipo/">Equipo</a></li>
+                            <li><a href="http://127.0.0.1:8000/preguntas-frecuentes/">FAQ</a></li>
+                            <li><a href="http://127.0.0.1:8000/terminos-y-condiciones/">TyC</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://127.0.0.1:8000/contacto/">Contacto</a></li>
+                    <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                    <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                    <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <header>
+
+            <h1 class="nombre">¡Bienvenido a ZonaPets!</h1>
+
+            <div class="boton-container">
+                <a href="http://127.0.0.1:8000/vermapa/" class="boton">Ir al Mapa</a>
+                <a href="http://127.0.0.1:8000/registrar/" class="boton">Registrar</a>
+            </div>
+
+            <h3 class="saber_mas">Sobre ZonaPets</h3>
+            <a href="#info" class="fa fa-chevron-down"></a>
+            
+        </header>
+        
+    </div>
+    <div class="container2" id="info">
+        <h1 class="eslogan">
+            Encuentra lugares para tus mejores amigos
+        </h1>
+        <div class="descripcion">
+            <img src="{% static 'imagenes/objetivo.png' %}" alt="img-objetivo">
+            <div class="texto">
+                <h3>
+                    Nuestro Objetivo
+                </h3>
+                <p class="parrafo1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+        </div>
+        <div class="descripcion2">
+            <div class="texto2">
+                <h3>
+                    ¿Cómo funciona ZonaPets?
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+            <img src="{% static 'imagenes/house.png' %}" alt="img-funcionamiento">    
+        </div>
+        <div class="descripcion3">
+            <img src="{% static 'imagenes/maps.png' %}" alt="img-logomaps">
+            <div class="texto3">
+                <h3>
+                    ¿Cómo puedes aparecer en ZonaPets?
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+        </div>
+        <a href="http://127.0.0.1:8000/registrar/" class="boton">Registrar</a>
+        <div class="descripcion4">
+            <div class="texto4">
+                <h3>
+                    ¡Apóyanos!
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut venenatis tellus in metus vulputate eu scelerisque felis. Neque egestas congue quisque egestas. Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Aenean et tortor at risus viverra adipiscing at. 
+                </p>
+            </div>
+            <img src="{% static 'imagenes/apoyo.png' %}" alt="img-apoyanos"> 
+        </div>
+        <div class="apoyar">
+            <a href="https:www.patreon.com/" class="boton">Apóyanos</a>
+        </div>
+    </div>
+
+    <h2 class="titulo-slider">¡Lugares Pet-Friendly destacados!</h2>
+    <p class="des-slider">Bogotá</p>
+    <div class="slider-box" id="slider">
+        <ul>
+            <li>
+                <img src="{% static 'imagenes/colsubsidio.jpg' %}" alt="img-colsubsidio"> 
+                <div class="texto-slide">
+                    <a href="https://clubescolsubsidio.co/bellavista">Colsubsidio - Club Bellavista</a>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'imagenes/waulandia-park.webp' %}" alt="img-waulandia">
+                <div class="texto-slide">
+                    <a href="https://www.facebook.com/p/Waulandia-Park-100079949992904/">Waulandia Park - Parque Acuático</a>
+                </div> 
+            </li>
+            <li>
+                <img src="{% static 'imagenes/hotelw.png' %}" alt="img-hotelw">
+                <div class="texto-slide">
+                    <a href="https://w.bogotahotelsweb.com/es/">Hotel W - Hotel PetFriendly</a>
+                </div> 
+            </li>
+            <li>
+                <img src="{% static 'imagenes/parquelacolina.jpg' %}" alt="img-parquelacolina">
+                <div class="texto-slide">
+                    <a href="https://www.parquelacolina.com/">Centro comercial Parque La Colina</a>
+                </div> 
+            </li>
+        </ul>
+    </div>
+    
+
+    <footer id="footer">
+
+        <div class="container3">
+
+            <div class="footer-row">
+
+                <div class="footer-links">
+
+                    <h4>ZonaPets</h4>
+                    <ul>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer-links">
+
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer-links">
+
+                    <h4>Síguenos</h4>
+                    <div class="social-link">
+                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                        <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                        <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                        <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                        <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+
