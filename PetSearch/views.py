@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.http import HttpRequest
-from .forms import Formularioregistroform                                                                       
+from .forms import Formularioregistroform     
+from .forms import Formularioregistroformempresarial                                                                  
 
 #1ra Vista
 def helloworld(request):
@@ -73,4 +74,18 @@ class Formularioviewregistroform(HttpRequest):
             empresa.save()
             empresa = Formularioregistroform()
 
-        return render(request, "formindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})
+        return render(request, "formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+
+class Formularioviewregistroformempresarial(HttpRequest):
+
+    def index(request):
+        empresa = Formularioregistroformempresarial()
+        return render(request, "formempresarialindex.html", { "form":empresa})
+    
+    def procesar_formulario(request):
+        empresa = Formularioregistroformempresarial(request.POST)
+        if empresa.is_valid():
+            empresa.save()
+            empresa = Formularioregistroformempresarial()
+
+        return render(request, "formempresarialindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})

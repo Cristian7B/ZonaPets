@@ -152,6 +152,7 @@ h3 {
     color: #fff;
     background-color: #1385F0;
     transition: background-color 0.3s, color 0.3s;
+    font-family: "Poppins", "sans-serif";
 }
 
 .boton:hover {
@@ -418,3 +419,30 @@ footer {
     }
 }
 
+#boton-container {
+    position: relative;
+}
+
+
+.boton-container:hover .menu-boton {
+    visibility: visible;
+    opacity: 1;
+}
+
+.boton-container:hover .boton {
+    background-color: #1385f0; /* Cambia el color de fondo al pasar el mouse por encima */
+}
+
+.menu-boton a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.menu-boton .boton:hover {
+    background-color: #0F5B9E; /* Cambia el color de fondo al pasar el mouse por encima */
+}
