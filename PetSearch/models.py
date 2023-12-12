@@ -7,6 +7,8 @@ class Pagina(models.Model):
     nombre = models.CharField(max_length=255)
     contenido = models.TextField()
 
-    def __str__(self):
-        return self.nombre
-
+class registroform(models.Model):
+    nombre_compañia = models.CharField(max_length=75)
+    nombre_usuario = models.CharField(max_length=100)
+    telefono_usuario = models.IntegerField()
+    direccion = models.CharField(max_length=150)

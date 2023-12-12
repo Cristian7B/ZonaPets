@@ -8,8 +8,9 @@
 {% load static %}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-<link rel="stylesheet" href="{% static 'imagenes/register.css' %}">
+<link rel="stylesheet" href="{% static 'imagenes/registrar.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <body>
     <div class="container1">
     <section>
@@ -34,7 +35,11 @@
     </div>
     <header>
         <h1 class="titulo">!Hora de registrar tu Negocio!</h1>
-        <h2 class="descripcion">Diligencia el siguiente formulario</h2>
     </header>
+    <div class="content container">
+        {% block content %}
+
+        {% endblock %}    
+    </div>
 </body>
 </html>

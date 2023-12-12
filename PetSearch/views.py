@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.http import HttpRequest
+from .forms import Formularioregistroform                                                                       
 
 #1ra Vista
 def helloworld(request):
@@ -22,7 +24,7 @@ def ver_mapa(request):
     return render(request, 'ver_mapa.html')
 
 def registrar(request):    
-    return render(request, 'register.html')
+    return render(request, 'registrar.html')
 
 def acercade(request):
     return render(request, "acercade.html")
@@ -54,8 +56,21 @@ def nuestrosservicios(request):
 def afiliate(request):
     return render(request, "afiliate.html")
 
+    
+def formulario(request):
+    return render(request, "formulario.html")
 
 
+class Formularioviewregistroform(HttpRequest):
 
-nueva_pagina = Pagina(nombre="PetSearch")
-nueva_pagina.save()
+    def index(request):
+        empresa = Formularioregistroform()
+        return render(request, "formindex.html", { "form":empresa})
+
+    def procesar_formulario(request):
+        empresa = Formularioregistroform(request.POST)
+        if empresa.is_valid():
+            empresa.save()
+            empresa = Formularioregistroform()
+
+        return render(request, "formindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})

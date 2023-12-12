@@ -1,0 +1,156 @@
+{% extends "registrar.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    {% if form.errors %}
+        <div class="alert-danger" role="alert">
+            ¡Registro Fallido, Revisa los datos!
+        </div>      
+    {% endif %}
+    
+    <form action="{% url 'guardarEmpresa' %}" method="POST" class="mi-formulario">
+        <h1>Formulario</h1>
+
+        {% csrf_token %}
+        {% if mensaje %}
+            <div class="alert-success" role="alert">
+                ¡Registro Exitoso!
+            </div>
+        {% endif %}
+
+        {{ form.as_p|safe }}
+        <h2 class="direccion">Puedes mirar la direccion aquí</h2>
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39472117324!2d-74.2726248720388!3d4.648620642738657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2zQm9nb3TDoQ!5e0!3m2!1ses!2sco!4v1702339745593!5m2!1ses!2sco" width="955" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+
+        <button type="submit" class="btn btn-custom">Guardar</button>
+
+    </form>
+    
+    <style>
+                /* Estilos generales para el formulario */
+
+        .mi-formulario input[type="text"]:focus,
+        .mi-formulario input[type="tel"]:focus {
+            border: 2px solid #007bff; /* Cambia el color a azul */
+            outline: none;
+            box-shadow: 0 0 10px #0056b3;
+        }
+
+        .mi-formulario {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #0056b3;
+            color:#007bff;
+            font-size: 17;
+        }
+
+        .alert-success {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid rgb(82, 202, 34);
+            border-radius: 4px;
+            font-family: "Poppins", "sans-serif";
+            background-color: rgba(6, 158, 44, 0.39);
+            color: rgb(82, 202, 34);
+            font-weight: bold;
+        }
+
+        .alert-danger {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #D62828;
+            border-radius: 4px;
+            font-family: "Poppins", "sans-serif";
+            background-color: #ba130075
+            color: #D62828
+            font-weight: bold;
+        }
+
+        .mi-formulario h1 {
+            margin-bottom: 15px;
+            color: #0056b3;
+        }
+
+        .mi-formulario .mapa {
+            margin-bottom: 20px;
+        }
+        
+        .mi-formulario h2 {
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .mi-formulario label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px; /* Para que el texto aparezca en una nueva línea y no se superponga con el campo de entrada */ /* Espacio entre la etiqueta y el campo de entrada */
+        }
+
+        /* Estilos para el botón personalizado */
+        .btn-custom {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            transition: background-color 0.3s ease;
+            font-family: "Poppins", "sans-serif";
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para el campo de entrada */
+        .mi-formulario input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: "Poppins", "sans-serif";
+        }
+        
+        /* Estilos para el campo de teléfono */
+        .mi-formulario input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: "Poppins", "sans-serif";
+        }
+
+        /* Estilos para la alerta */
+        .mi-formulario .alert {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+
+
+{% endblock %}    

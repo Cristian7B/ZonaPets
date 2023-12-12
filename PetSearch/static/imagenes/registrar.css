@@ -22,7 +22,6 @@ section {
    background-color: #1385F0;
    height: 40px;
    align-items: center;
-   margin-bottom: 150px;
 }
 
 .logo-nombre {
@@ -108,10 +107,8 @@ li {
    color: #0F5B9E; 
 }
 
-header h1, header h2{
+.titulo {
+   color: #1385F0;
+   font-size: 150px;
    text-align: center;
-   font-family:'Poppins', sans-serif;
-   justify-content: center;
-   color: #fff;
-   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
