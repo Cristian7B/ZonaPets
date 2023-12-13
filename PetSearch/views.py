@@ -19,7 +19,7 @@ def inicio(request):
 
     #Render Template
     
-    return render(request, 'pagina_principal.html', {'pagina': pagina})
+    return render(request, 'index.html', {'pagina': pagina})
 
 def ver_mapa(request):    
     return render(request, 'ver_mapa.html')
@@ -89,3 +89,6 @@ class Formularioviewregistroformempresarial(HttpRequest):
             empresa = Formularioregistroformempresarial()
 
         return render(request, "formempresarialindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})
+
+# views.py
+

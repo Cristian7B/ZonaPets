@@ -51,6 +51,13 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 X_FRAME_OPTIONS = 'DENY'
 
 
+
+GOOGLE_SHEETS_CREDS = {
+    'path': 'path/to/credentials.json',
+    'scope': ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

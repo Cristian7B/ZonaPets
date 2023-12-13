@@ -183,12 +183,65 @@ h3 {
     transition: all .4s ease-in-out;
 }
 
+.contenedor-registro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.boton-registrar {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: #1385F0;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    border-style: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Poppins", "sans-serif";
+}
+
+.boton-registrar:hover {
+    background-color: #0F5B9E;
+    color: #fff;
+}
+
+.desplegable {
+    position: relative;
+    display: inline-block; /* Ajusta el margen según tus necesidades */
+}
+
+.registrar-menu {
+    display: none;
+    position: absolute;
+    background-color: #073a6900;
+    min-width: 100%;
+    z-index: 1;
+    border-radius: 0px;
+}
+
+.desplegable:hover .registrar-menu {
+    display: block;
+}
+
+.registrar-menu a {
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+}
+
+
 .buttons a:hover {
     transform: scale(1.2);
 }
 
 .saber_mas {
-    margin-top: 120px;
+    margin-top: 150px;
     
 }
 

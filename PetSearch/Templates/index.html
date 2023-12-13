@@ -8,7 +8,7 @@
 </head>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'imagenes/styles.css' %}">
+<link rel="stylesheet" href="{% static 'imagenes/inicio.css/' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
@@ -39,13 +39,25 @@
         <header>
 
             <h1 class="nombre">¡Bienvenido a ZonaPets!</h1>
-            <div class="boton-container">
-                <a href="http://127.0.0.1:8000/registroform/" class="boton">Registrar</a>
-                <a href="http://127.0.0.1:8000/vermapa/" class="boton">Ir al Mapa</a>
-            </div>
 
-            <h3 class="saber_mas">Sobre ZonaPets</h3>
-            <a href="#info" class="fa fa-chevron-down"></a>
+            <div class="contenedor-registro">
+                <a href="http://127.0.0.1:8000/vermapa/" class="boton">Ir al Mapa</a>
+            
+                <div class="botones-inicio">
+                    <div class="desplegable">
+                        <button class="boton-registrar">Registrar</button>
+                        <div class="registrar-menu">
+                            <a href="http://127.0.0.1:8000/registroform/">Usuario</a>
+                            <a href="http://127.0.0.1:8000/registroformempresarial/">Empresa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="informacion-zonapets">
+                <h3 class="saber_mas">Sobre ZonaPets</h3>
+                <a href="#info" class="fa fa-chevron-down"></a>
+            </div>
             
         </header>
         
