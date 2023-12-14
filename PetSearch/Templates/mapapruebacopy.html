@@ -1,0 +1,33 @@
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+    {% load static %}
+  <head>
+    <title>Simple Markers</title>
+    <script src="{% static 'imagenes/index.js/' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'imagenes/mapaprueba.css/' %}">
+    <!-- jsFiddle will insert css and js -->
+  </head>
+  <body>
+    <div id="map">
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
+        defer
+      ></script>
+    </div>
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+
+  </body>
+</html>
+

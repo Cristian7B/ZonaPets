@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.http import HttpRequest
+from django.http import JsonResponse
 from .forms import Formularioregistroform     
 from .forms import Formularioregistroformempresarial                                                                  
 
@@ -61,7 +62,11 @@ def afiliate(request):
 def formulario(request):
     return render(request, "formulario.html")
 
+def mapa_prueba(request):
+    return render(request, "mapapruebacopy.html")
 
+
+from .models import registroform
 class Formularioviewregistroform(HttpRequest):
 
     def index(request):
@@ -75,6 +80,10 @@ class Formularioviewregistroform(HttpRequest):
             empresa = Formularioregistroform()
 
         return render(request, "formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+    
+    def mostrar_mapa(request):
+        markers = registroform.objects.all()
+        return render(request, "mapa.html", {"markers": markers})
 
 class Formularioviewregistroformempresarial(HttpRequest):
 

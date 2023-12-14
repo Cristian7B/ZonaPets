@@ -1,6 +1,5 @@
 # myapp/models.py
 from django.db import models
-
 # PetSearch/models.py
 
 class Pagina(models.Model):
@@ -12,7 +11,7 @@ class registroform(models.Model):
     telefono_usuario = models.IntegerField(blank=True, null=True,)
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=100)
-
+    
 class registroformularioempresarial(models.Model):
     nombre_de_quien_registra = models.CharField(max_length=100, blank=True, null=True,)
     telefono_usuario = models.IntegerField(blank=True, null=True,)
