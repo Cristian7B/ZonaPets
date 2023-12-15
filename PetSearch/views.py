@@ -22,9 +22,6 @@ def inicio(request):
     
     return render(request, 'index.html', {'pagina': pagina})
 
-def ver_mapa(request):    
-    return render(request, 'ver_mapa.html')
-
 def registrar(request):    
     return render(request, 'registrar.html')
 
@@ -62,8 +59,9 @@ def afiliate(request):
 def formulario(request):
     return render(request, "formulario.html")
 
-def mapa_prueba(request):
-    return render(request, "mapapruebacopy.html")
+def mapa_petfriendly(request):
+    ubicaciones = registroform.objects.all()
+    return render(request, "mapa_petfriendly.html", {"ubicaciones": ubicaciones})
 
 
 from .models import registroform
@@ -82,8 +80,8 @@ class Formularioviewregistroform(HttpRequest):
         return render(request, "formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
     
     def mostrar_mapa(request):
-        markers = registroform.objects.all()
-        return render(request, "mapa.html", {"markers": markers})
+        ubicaciones = registroform.objects.all()
+        return render(request, "mapa.html", {"ubicaciones": ubicaciones})
 
 class Formularioviewregistroformempresarial(HttpRequest):
 

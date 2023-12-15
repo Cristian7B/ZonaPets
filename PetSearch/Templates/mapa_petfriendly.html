@@ -1,0 +1,223 @@
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+    {% load static %}
+  <head>
+    <title>Simple Markers</title>
+    <script src="{% static 'imagenes/main.js/' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'imagenes/indexmapa.css/' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- jsFiddle will insert css and js -->
+  </head>
+  <body>
+    <div class="container1">
+      <section>
+          <h2 class="logo-nombre">ZonaPets</h2>
+          <nav class="navegacion">
+              <ul class="menu-horizontal">
+                  <li><a href="http://127.0.0.1:8000/inicio-zonapets/">Inicio</a></li>
+                  <li><a href="http://127.0.0.1:8000/acercade/">Acerca de ZonaPets</a>
+                      <ul class="menu-vertical">
+                          <li><a href="http://127.0.0.1:8000/equipo/">Equipo</a></li>
+                          <li><a href="http://127.0.0.1:8000/preguntas-frecuentes/">FAQ</a></li>
+                          <li><a href="http://127.0.0.1:8000/terminos-y-condiciones/">TyC</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="http://127.0.0.1:8000/contacto/">Contacto</a></li>
+                  <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                  <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                  <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+              </ul>
+          </nav>
+      </section>
+    </div>
+
+    <header>
+      <h1 class="titulo">¡Hora de ver lugares Pet-Friendly!</h1>
+    </header>
+
+    <div class="places-list" id="placesList"></div>
+    
+    <div id="map">
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
+        defer
+      ></script>
+      <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: { lat: 4.710989, lng: -74.072090 }, // Ajusta el centro según tus necesidades
+            });
+
+            // Obtén las ubicaciones desde los atributos de datos
+            const markers = [];
+            const ubicaciones = document.querySelectorAll('.ubicacion');
+            const placeNames = [];
+
+            ubicaciones.forEach(function(ubicacion) {
+                const latitud = ubicacion.getAttribute('data-latitud');
+                const longitud = ubicacion.getAttribute('data-longitud');
+                const nombre = ubicacion.getAttribute('data-nombre');
+
+                const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
+                const marker = new google.maps.Marker({
+                    position: markerLatLng,
+                    map: map,
+                    title: nombre,
+                });
+
+                markers.push(marker); 
+
+                marker.addListener('click', function () {
+                  const infoWindow = new google.maps.InfoWindow({
+                  content: nombre,
+                });
+                infoWindow.open(map, marker);
+              });
+            });
+
+            const placesList = document.getElementById("placesList");
+            const listTitle = document.createElement("h2");
+            listTitle.textContent = "Lista de Lugares Pet-Friendly";
+            placesList.appendChild(listTitle);
+            
+            function addPlaceToList(nombre) {
+              const placeItem = document.createElement("div");
+              placeItem.className = "place-item";
+              placeItem.textContent = nombre;
+              placeNames.push(nombre);
+
+            placeItem.addEventListener("click", function () {
+                const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
+                if (matchingMarker) {
+                    map.panTo(matchingMarker.getPosition());
+                    matchingMarker.setAnimation(google.maps.Animation.DROP);
+                    setTimeout(() => {
+                        matchingMarker.setAnimation(null);
+                    }, 3500);
+                }
+            });
+
+            placesList.appendChild(placeItem);
+        }
+
+        // Agrega un lugar a la lista por cada ubicación
+        ubicaciones.forEach(function(ubicacion) {
+            const nombre = ubicacion.getAttribute('data-nombre');
+            addPlaceToList(nombre);
+        });
+
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                  (position) => {
+                      const userLatLng = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude,
+                      };
+
+                      // Crear el marcador con la ubicación del usuario
+                      new google.maps.Marker({
+                          position: userLatLng,
+                          map: map,
+                          title: "Tu Ubicación",
+                          icon: {
+                            url: "{% static 'imagenes/marker.png/' %}",
+                            scaledSize: new google.maps.Size(40, 40),
+                          }// Opcional: Cambiar el icono
+                      });
+
+                      userMarker.addListener("click", function () {
+                        const nombreUsuario = userMarker.getTitle();
+                        const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
+                        if (matchingPlaceItem) {
+                          matchingPlaceItem.style.backgroundColor = "#f0f0f0";
+                          setTimeout(() => {
+                            matchingPlaceItem.style.backgroundColor = "";
+                          }, 1000);
+                        }
+                    });
+
+                  },
+                  (error) => {
+                      console.error("Error obteniendo la ubicación: ", error);
+                  }
+              );
+          } else {
+              console.error("La geolocalización no es compatible en este navegador.");
+          }
+      }
+      window.initMap = initMap;
+
+      </script>
+    </div>
+    {% for ubicacion in ubicaciones %}
+      <div class="ubicacion"
+          data-latitud="{{ ubicacion.latitud }}"
+          data-longitud="{{ ubicacion.longitud }}"
+          data-nombre="{{ ubicacion.nombre_compañia }}">
+      </div>
+    {% endfor %}  
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+      <footer id="footer">
+
+        <div class="container3">
+
+            <div class="footer-row">
+
+                <div class="footer-links">
+
+                    <h4>ZonaPets</h4>
+                    <ul>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer-links">
+
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
+                        <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
+                    </ul>
+
+                </div>
+                <div class="footer-links">
+
+                    <h4>Síguenos</h4>
+                    <div class="social-link">
+                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                        <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                        <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                        <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                        <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+      </footer>
+  </body>
+
+</html>
+
