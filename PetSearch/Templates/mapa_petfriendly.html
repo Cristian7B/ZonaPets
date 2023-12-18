@@ -7,12 +7,32 @@
 <html>
     {% load static %}
   <head>
-    <title>Simple Markers</title>
+    <title>Mapa Lugares Pet-Friendly</title>
     <script src="{% static 'imagenes/main.js/' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'imagenes/indexmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'imagenes/stylesmapa.css/' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .info-window {
+        background-color: white;
+        padding: 10px;
+        border: 2px solid #c0c0c0;
+        border-radius: 5px;
+        max-width: 250px;
+      }
 
+      .info-window-content {
+        font-weight: bold;
+        color: #1385F0;
+      }
+      .info-window-link {
+        text-decoration: none;
+        color: #1385F0;
+        font-family: "Poppins", "sans-serif";
+        text-align: center;
+        display: inline-block;
+      }
+    </style>
 
     <!-- jsFiddle will insert css and js -->
   </head>
@@ -52,9 +72,10 @@
       ></script>
       <script>
         function initMap() {
+            const bogota = { lat: 4.710989, lng: -74.072090 }
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 11,
-                center: { lat: 4.710989, lng: -74.072090 }, // Ajusta el centro según tus necesidades
+                center: bogota,
             });
 
             // Obtén las ubicaciones desde los atributos de datos
@@ -76,13 +97,24 @@
 
                 markers.push(marker); 
 
-                marker.addListener('click', function () {
-                  const infoWindow = new google.maps.InfoWindow({
-                  content: nombre,
+                const contentString = `
+                    <div class="info-window">
+                        <h1 class="info-window-content">${nombre}</h1>
+                        <p><a class="info-window-link"href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>
+                    </div>
+                `;
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                    disableAutoPan: true, 
                 });
-                infoWindow.open(map, marker);
-              });
+
+                // Añadir evento click para abrir el infowindow
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
             });
+
 
             const placesList = document.getElementById("placesList");
             const listTitle = document.createElement("h2");
@@ -153,7 +185,7 @@
           } else {
               console.error("La geolocalización no es compatible en este navegador.");
           }
-      }
+        }
       window.initMap = initMap;
 
       </script>

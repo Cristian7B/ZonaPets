@@ -1,6 +1,6 @@
 {% extends "registrar.html" %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 {% block content %}
     <header>
         <h1 class="titulo">!Hora de registrar tu negocio!</h1>
@@ -34,6 +34,7 @@
             (function(){
                 if (navigator.geolocation) {
                     var map;
+                    var marker;
                     var mapOptions = {
                         zoom: 15,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -44,13 +45,14 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     
-                        var infoWindow = new google.maps.InfoWindow({
+                        marker = new google.maps.Marker({
                             map: map,
                             position: geolocate,
-                            content:
-                                "<h1>¡Esta es tu ubicación!</h1>" +
-                                "<h2>Latitud: " + position.coords.latitude + " </h2>" +
-                                "<h2>Longitud: " + position.coords.longitude + "</h2>"
+                            draggable: true, // Esto permite que el marcador sea arrastrable
+                            icon: {
+                                url:"{% static 'imagenes/marker.png/' %}",
+                                scaledSize: new google.maps.Size(40, 40),
+                            }
                         });
 
                         document.getElementById("id_latitud").value = position.coords.latitude;
@@ -58,7 +60,14 @@
 
 
                         map.setCenter(geolocate);
+                    
+                        google.maps.event.addListener(marker, 'dragend', function() {
+                            var newPosition = marker.getPosition();
+                            document.getElementById("id_latitud").value = newPosition.lat();
+                            document.getElementById("id_longitud").value = newPosition.lng();
+                        });
                     });
+
                 }else {
                     document.getElementById("google_canvas").innerHTML = "No se soporta geolocalización";
                 }

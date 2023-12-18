@@ -1,6 +1,6 @@
 {% extends "registrar.html" %}
 {% load crispy_forms_tags %}
-
+{% load static %}
 {% block content %}
 
     <header>
@@ -26,6 +26,7 @@
         {{ form.as_p|safe }}
 
         <h2 class="direccion">Puedes mirar tu ubicación aquí</h2>
+        <p>Arrastra el ícono si es necesario</p>
 
         <div id="google_canvas" style="height: 400px;"></div>
 
@@ -36,35 +37,46 @@
             (function(){
                 if (navigator.geolocation) {
                     var map;
+                    var marker; // Agregamos una variable para el marcador
+
                     var mapOptions = {
                         zoom: 15,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
-    
+
                     map = new google.maps.Map(document.getElementById("google_canvas"), mapOptions);
-    
+
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
-                        var infoWindow = new google.maps.InfoWindow({
+
+                        // Configuramos el marcador con la propiedad draggable: true
+                        marker = new google.maps.Marker({
                             map: map,
                             position: geolocate,
-                            content:
-                                "<h1>¡Esta es tu ubicación!</h1>" +
-                                "<h2>Latitud: " + position.coords.latitude + " </h2>" +
-                                "<h2>Longitud: " + position.coords.longitude + "</h2>"
+                            draggable: true, // Esto permite que el marcador sea arrastrable
+                            icon: {
+                                url:"{% static 'imagenes/marker.png/' %}",
+                                scaledSize: new google.maps.Size(40, 40),
+                            }
                         });
 
                         document.getElementById("id_latitud").value = position.coords.latitude;
                         document.getElementById("id_longitud").value = position.coords.longitude;
 
-
                         map.setCenter(geolocate);
+
+                        // Agregamos un evento para escuchar cuando el marcador se arrastra
+                        google.maps.event.addListener(marker, 'dragend', function() {
+                            var newPosition = marker.getPosition();
+                            document.getElementById("id_latitud").value = newPosition.lat();
+                            document.getElementById("id_longitud").value = newPosition.lng();
+                        });
                     });
-                }else {
+                } else {
                     document.getElementById("google_canvas").innerHTML = "No se soporta geolocalización";
                 }
             })();
+
         </script>
         <button type="submit" class="btn btn-custom">Guardar</button>
 
@@ -73,12 +85,15 @@
     
     <style>
                 /* Estilos generales para el formulario */
-
         .mi-formulario input[type="text"]:focus,
         .mi-formulario input[type="number"]:focus {
             border: 2px solid #007bff; /* Cambia el color a azul */
             outline: none;
             box-shadow: 0 0 10px #0056b3;
+        }
+
+        p {
+            font-size: 13px;
         }
 
         .mapa_geolocation {
@@ -141,7 +156,7 @@
         }
         
         .mi-formulario h2 {
-            margin-bottom: 10px;
+            margin-bottom: 0px;
             margin-top: 20px;
             font-weight: bold;
         }
