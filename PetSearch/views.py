@@ -63,6 +63,9 @@ def mapa_petfriendly(request):
     ubicaciones = registroform.objects.all()
     return render(request, "mapa_petfriendly.html", {"ubicaciones": ubicaciones})
 
+def busqueda_mapa(request):
+    return render(request, "busqueda_mapa.html" )
+
 
 from .models import registroform
 class Formularioviewregistroform(HttpRequest):
