@@ -6,6 +6,7 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
     <link rel="stylesheet" type="text/css" href="{% static 'imagenes/indexmapa.css/' %}">
+    <script type="module" src="{% static 'javascript/index.js/' %}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <body>
@@ -60,188 +61,17 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
             defer
         ></script>
-        <script>
-            async function initMap() {
-                const [{ Map }, { AdvancedMarkerElement }] = await Promise.all([
-                    google.maps.importLibrary("marker"),
-                    google.maps.importLibrary("places"),
-                ]);
-                const bogota = { lat: 4.710989, lng: -74.072090 }
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 11,
-                    center: bogota,
-                });
-
-                // Obtén las ubicaciones desde los atributos de datos
-                const markers = [];
-                const ubicaciones = document.querySelectorAll('.ubicacion');
-                const placeNames = [];
-
-                ubicaciones.forEach(function(ubicacion) {
-                    const latitud = ubicacion.getAttribute('data-latitud');
-                    const longitud = ubicacion.getAttribute('data-longitud');
-                    const nombre = ubicacion.getAttribute('data-nombre');
-
-                    const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
-                    const marker = new google.maps.Marker({
-                        position: markerLatLng,
-                        map: map,
-                        title: nombre,
-                        icon: {
-                            url: "{% static 'imagenes/casaperro.png/' %}",
-                            scaledSize: new google.maps.Size(37, 37)
-                        }
-                    });
-
-                    markers.push(marker); 
-
-                    const contentString = `
-                        <div class="info-window">
-                            <h1 class="info-window-content">${nombre}</h1>
-                            <p><a class="info-window-link"href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>
-                        </div>
-                    `;
-
-                    const infowindow = new google.maps.InfoWindow({
-                        content: contentString,
-                        disableAutoPan: true, 
-                    });
-
-                    // Añadir evento click para abrir el infowindow
-                    marker.addListener('click', function () {
-                        infowindow.open(map, marker);
-                    });
-                });
-
-
-                const placesList = document.getElementById("placesList");
-                const listTitle = document.createElement("h2");
-                listTitle.textContent = "Lista de Lugares Pet-Friendly";
-                placesList.appendChild(listTitle);
-                
-                function addPlaceToList(nombre) {
-                const placeItem = document.createElement("div");
-                placeItem.className = "place-item";
-                placeItem.textContent = nombre;
-                placeNames.push(nombre);
-
-                placeItem.addEventListener("click", function () {
-                    const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
-                    if (matchingMarker) {
-                        map.panTo(matchingMarker.getPosition());
-                        matchingMarker.setAnimation(google.maps.Animation.DROP);
-                        setTimeout(() => {
-                            matchingMarker.setAnimation(null);
-                        }, 3500);
-                    }
-                });
-
-                placesList.appendChild(placeItem);
-                }
-
-                // Agrega un lugar a la lista por cada ubicación
-                ubicaciones.forEach(function(ubicacion) {
-                    const nombre = ubicacion.getAttribute('data-nombre');
-                    addPlaceToList(nombre);
-                });
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            const userLatLng = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
-
-                            // Crear el marcador con la ubicación del usuario
-                            new google.maps.Marker({
-                                position: userLatLng,
-                                map: map,
-                                title: "Tu Ubicación",
-                                icon: {
-                                    url: "{% static 'imagenes/marker.png/' %}",
-                                    scaledSize: new google.maps.Size(60, 60),
-                                }// Opcional: Cambiar el icono
-                            });
-
-                            userMarker.addListener("click", function () {
-                                const nombreUsuario = userMarker.getTitle();
-                                const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
-                                if (matchingPlaceItem) {
-                                matchingPlaceItem.style.backgroundColor = "#f0f0f0";
-                                setTimeout(() => {
-                                    matchingPlaceItem.style.backgroundColor = "";
-                                }, 1000);
-                                }
-                            });
-
-                        },
-                        (error) => {
-                            console.error("Error obteniendo la ubicación: ", error);
-                        }
-                    );
-                } else {
-                    console.error("La geolocalización no es compatible en este navegador.");
-                }
-                const input = document.getElementById("pac-input");
-                // Specify just the place data fields that you need.
-                const autocomplete = new google.maps.places.Autocomplete(input, {
-                    fields: ["place_id", "geometry", "name", "formatted_address"],
-                });
-
-                autocomplete.bindTo("bounds", map);
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-                const infowindow = new google.maps.InfoWindow();
-                const infowindowContent = document.getElementById("infowindow-content");
-
-                infowindow.setContent(infowindowContent);
-
-                const geocoder = new google.maps.Geocoder();
-                const marker = new google.maps.Marker({ 
-                    map: map,
-                    icon: {
-                        url: "{% static 'imagenes/petsito.png/' %}",
-                        scaledSize: new google.maps.Size(65, 65),
-                    }
-                });
-
-
-                marker.addListener("click", () => {
-                    infowindow.open(map, marker);
-                });
-                autocomplete.addListener("place_changed", () => {
-                    infowindow.close();
-
-                    const place = autocomplete.getPlace();
-
-                    if (!place.place_id) {
-                    return;
-                    }
-
-                    geocoder
-                        .geocode({ placeId: place.place_id })
-                        .then(({ results }) => {
-                            map.setZoom(11);
-                            map.setCenter(results[0].geometry.location);
-                            // Set the position of the marker using the place ID and location.
-                            // @ts-ignore TODO This should be in @typings/googlemaps.
-                            marker.setPlace({
-                            placeId: place.place_id,
-                            location: results[0].geometry.location,
-                            });
-                            marker.setVisible(true);
-                            infowindowContent.children["place-name"].textContent = place.name;
-                            infowindowContent.children["place-id"].textContent = place.place_id;
-                            infowindowContent.children["place-address"].textContent =
-                            results[0].formatted_address;
-                            infowindow.open(map, marker);
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));
-                });
-            }
-            window.initMap = initMap;
+        <script async 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=geometry">
         </script>
+        <script>
+            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+              key: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
+              v: "weekly",
+              // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+              // Add other bootstrap parameters as needed, using camel case.
+            });
+        </script>          
         {% for ubicacion in ubicaciones %}
             <div class="ubicacion"
                 data-latitud="{{ ubicacion.latitud }}"
