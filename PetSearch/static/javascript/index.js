@@ -3,7 +3,6 @@ async function initMap() {
         google.maps.importLibrary("marker"),
         google.maps.importLibrary("places"),
     ]);
-    const { GeometryLibrary  } = await google.maps.importLibrary("geometry"); 
     const bogota = { lat: 4.710989, lng: -74.072090 }
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
