@@ -123,6 +123,27 @@ li {
     color: #0F5B9E; 
 }
 
+
+#icon-menu {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 5px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: color 0.3s ease-in-out;
+}
+
+#icon-menu:hover {
+    color: #0F5B9E;
+}
+
+
 h1 {
     display: flex;
     flex-direction: column;
@@ -389,6 +410,7 @@ footer {
     color: #1385F0;
 }
 
+
 .slider-box ul{
     list-style: none;
     display: flex;
@@ -474,3 +496,98 @@ footer {
     }
 }
 
+@media(max-width: 844px) {
+    body{
+        overflow-x: hidden;
+    }
+
+    section {
+        margin-bottom: 110px;
+    }
+
+    .container-all {
+        transition: all 300ms cubic-bezier(1,0,0,1);
+    }
+
+    .move-container-all{
+        transform: translateX(300px);
+    }
+
+    .navegacion {
+        width: 0px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 40px;
+        background: #1385F0;
+        box-shadow: 10px 0 20px -25px #000000;
+        overflow: hidden;
+        transform: translateX(-350px);
+        transition: all 300ms cubic-bezier(1,0,0,1);
+    }
+
+
+    .show-lateral {
+        width: 260px;
+        transform: translateX(0px);
+    }
+
+    .navegacion .menu-horizontal {
+        flex-direction: column;
+    }
+
+    .navegacion ul li{
+        max-width: 200px;
+        height: 50px;
+    }
+
+    .navegacion ul li a{
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    .navegacion ul li a i {
+        width: 20px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    #icon-menu {
+        display: flex;
+    }
+
+    .contenedor-registro {
+        margin-bottom: 100px;
+    }
+
+}
+
+@media(max-width:470px) {
+
+    section {
+        margin-bottom:180px;
+    }
+    /* Ajustes para el texto del nombre en el header */
+    .nombre {
+        font-size: 40px; /* Ajusta el tamaño del texto según tus necesidades */
+        margin-bottom: 10px;
+    }
+
+    /* Ajustes para los botones del header */
+    .boton, .boton-registrar {
+        font-size: 14px; /* Ajusta el tamaño del texto según tus necesidades */
+        padding: 10px 20px; /* Ajusta el padding según tus necesidades */
+    }
+
+    /* Ajustes para el icono de "Sobre ZonaPets" en el header */
+    .informacion-zonapets h3 {
+        font-size: 18px; /* Ajusta el tamaño del texto según tus necesidades */
+        margin-top: 10px;
+    }
+
+    .contenedor-registro {
+        margin-bottom: 200px;
+    }
+
+
+}
