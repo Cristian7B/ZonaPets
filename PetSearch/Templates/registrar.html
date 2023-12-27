@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Registrar-ZonaPets</title>
 </head>
 {% load static %}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-<link rel="stylesheet" href="{% static 'css/registrar.css' %}">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
     <div class="container1">
     <section>
         <h2 class="logo-nombre">ZonaPets</h2>
-        <nav class="navegacion">
+        <nav class="navegacion" id="move-menu">
             <ul class="menu-horizontal">
                 <li><a href="http://127.0.0.1:8000/inicio-zonapets/">Inicio</a></li>
                 <li><a href="http://127.0.0.1:8000/acercade/">Acerca de ZonaPets</a>
@@ -31,12 +31,17 @@
                 <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
             </ul>
         </nav>
+
+        <div id="icon-menu">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
     </section>
     </div>
-    <div class="content container">
+    <div class="container-all" id="move-content">
         {% block content %}
 
         {% endblock %}    
     </div>
+    <script src="{% static 'javascript/inicioresponsive.js' %}"></script>
 </body>
 </html>

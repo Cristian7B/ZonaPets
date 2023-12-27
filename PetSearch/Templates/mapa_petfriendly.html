@@ -2,378 +2,365 @@
 <html lang="es">
 {% load static %}
     <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>Mapa Lugares Pet-Friendly</title>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stilosmapa.css/' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <body>
         <div class="container1">
             <section>
                 <h2 class="logo-nombre">ZonaPets</h2>
-                <nav class="navegacion">
+                <nav class="navegacion" id="move-menu">
                     <ul class="menu-horizontal">
-                        <li><a href="http://127.0.0.1:8000/inicio-zonapets/">Inicio</a></li>
-                        <li><a href="http://127.0.0.1:8000/acercade/">Acerca de ZonaPets</a>
-                            <ul class="menu-vertical">
-                                <li><a href="http://127.0.0.1:8000/equipo/">Equipo</a></li>
-                                <li><a href="http://127.0.0.1:8000/preguntas-frecuentes/">FAQ</a></li>
-                                <li><a href="http://127.0.0.1:8000/terminos-y-condiciones/">TyC</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="http://127.0.0.1:8000/contacto/">Contacto</a></li>
+                        <li><a href="http://127.0.0.1:8000/inicio-zonapets/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                        <li><a href="http://127.0.0.1:8000/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a>
+                        <li><a href="http://127.0.0.1:8000/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
                         <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
                         <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
                         <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
                     </ul>
                 </nav>
+                <div id="icon-menu">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
             </section>
         </div>
+        <div class="container-all" id="move-content">
+            <header>
+                <h1 class="titulo">¡Hora de ver lugares Pet-Friendly!</h1>
+            </header>
+            
+            <div style="display: none">
+                <input
+                    id="pac-input"
+                    class="controls"
+                    type="text"
+                    placeholder="Consulta una ciudad"
+                />
+            </div>  
+            <div class="places-list" id="placesList"></div>
+            <div id="map"></div>
+            <div id="infowindow-content">
+                <span id="place-name" class="title"></span><br />
+                <strong></strong><span id="place-id"></span><br />
+                <span id="place-address"></span>
+            </div>
+            <script>
+                document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+                function mostrar_menu(){
+                    document.getElementById("move-content").classList.toggle("move-container-all")
+                    document.getElementById("move-menu").classList.toggle("show-lateral")
+                }        
 
-        <header>
-            <h1 class="titulo">¡Hora de ver lugares Pet-Friendly!</h1>
-        </header>
-        
-        <div style="display: none">
-            <input
-                id="pac-input"
-                class="controls"
-                type="text"
-                placeholder="Consulta una ciudad"
-            />
-        </div>  
-        <div class="places-list" id="placesList"></div>
-        <div id="map"></div>
-        <div id="infowindow-content">
-            <span id="place-name" class="title"></span><br />
-            <strong>Place ID</strong>: <span id="place-id"></span><br />
-            <span id="place-address"></span>
-        </div>
-        <script>
-            async function initMap() {
-                const [{ Map }, { AdvancedMarkerElement }, {geometry}] = await Promise.all([
-                    google.maps.importLibrary("marker"),
-                    google.maps.importLibrary("places"),
-                    google.maps.importLibrary("geometry"),
-                ]);
-                const bogota = { lat: 4.710989, lng: -74.072090 }
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 11,
-                    center: bogota,
-                });
+                async function initMap() {
+                    const [{ Map }, { AdvancedMarkerElement }, {geometry}] = await Promise.all([
+                        google.maps.importLibrary("marker"),
+                        google.maps.importLibrary("places"),
+                        google.maps.importLibrary("geometry"),
+                    ]);
+                    const bogota = { lat: 4.710989, lng: -74.072090 }
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 11,
+                        center: bogota,
+                    });
 
-                const markers = [];
-                const ubicaciones = document.querySelectorAll('.ubicacion');
-                const placeNames = [];
+                    const markers = [];
+                    const ubicaciones = document.querySelectorAll('.ubicacion');
+                    const placeNames = [];
 
-                ubicaciones.forEach(function(ubicacion) {
-                    const latitud = ubicacion.getAttribute('data-latitud');
-                    const longitud = ubicacion.getAttribute('data-longitud');
-                    const nombre = ubicacion.getAttribute('data-nombre');
+                    ubicaciones.forEach(function(ubicacion) {
+                        const latitud = ubicacion.getAttribute('data-latitud');
+                        const longitud = ubicacion.getAttribute('data-longitud');
+                        const nombre = ubicacion.getAttribute('data-nombre');
 
-                    const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
-                    const marker = new google.maps.Marker({
-                        position: markerLatLng,
+                        const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
+                        const marker = new google.maps.Marker({
+                            position: markerLatLng,
+                            map: map,
+                            title: nombre,
+                            icon: {
+                                url: "{% static 'imagenes/theplacemarker.png/' %}",
+                                scaledSize: new google.maps.Size(37, 37)
+                            }
+                        });
+
+                        markers.push(marker); 
+
+                        const contentString = `
+                            <div class="info-window">
+                                <h1 class="info-window-content">${nombre}</h1>
+                                <p><a class="info-window-link"href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>
+                            </div>
+                        `;
+
+                        const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                            disableAutoPan: true, 
+                        });
+
+                        // Añadir evento click para abrir el infowindow
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    });
+
+                    const placesList = document.getElementById("placesList");
+                    function addPlaceToList(nombre) {    
+
+                        const placeItem = document.createElement("div");
+                        placeItem.className = "place-item";
+                        placeItem.textContent = nombre;
+                        placeNames.push(nombre);
+
+                        placeItem.addEventListener("click", function () {
+                            const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
+                            if (matchingMarker) {
+                                map.panTo(matchingMarker.getPosition());
+                                matchingMarker.setAnimation(google.maps.Animation.DROP);
+                                setTimeout(() => {
+                                    matchingMarker.setAnimation(null);
+                                }, 3500);
+                            }
+                        });
+
+                        placesList.appendChild(placeItem);
+                    }
+
+                    function filterPlacesByDistance(userLatLng) {
+                    
+                        // Limpiar la lista actual
+                        placesList.innerHTML = '';
+                        
+                        listTitle = document.createElement("h2");
+                        listTitle.textContent = "Lista de Lugares cerca de ti";
+                        placesList.appendChild(listTitle);
+                        // Filtrar lugares por distancia
+                        for (const ubicacion of ubicaciones) {
+                            const nombre = ubicacion.getAttribute('data-nombre');
+                            const latitud = parseFloat(ubicacion.getAttribute('data-latitud'));
+                            const longitud = parseFloat(ubicacion.getAttribute('data-longitud'));
+                    
+                            const placeLatLng = new google.maps.LatLng(latitud, longitud);
+                            const distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatLng);
+                    
+                            // Mostrar solo lugares dentro de 2 km
+                            if (distance <= 2000) {
+                                addPlaceToList(nombre);
+                                
+                            }
+                        }
+                    }    
+
+                    // Agrega un lugar a la lista por cada ubicación
+                    ubicaciones.forEach(function(ubicacion) {
+                        const nombre = ubicacion.getAttribute('data-nombre');
+                        addPlaceToList(nombre);
+                    });
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                const userLatLng = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude,
+                                };
+
+                                // Crear el marcador con la ubicación del usuario
+                                const userMarker = new google.maps.Marker({
+                                    position: userLatLng,
+                                    map: map,
+                                    title: "Tu Ubicación",
+                                    icon: {
+                                        url: "{% static 'imagenes/marker.png/' %}",
+                                        scaledSize: new google.maps.Size(60, 60),
+                                    }// Opcional: Cambiar el icono
+                                });
+
+                                userMarker.addListener("click", function () {
+                                    const nombreUsuario = userMarker.getTitle();
+                                    const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
+                                    if (matchingPlaceItem) {
+                                    matchingPlaceItem.style.backgroundColor = "#f0f0f0";
+                                    setTimeout(() => {
+                                        matchingPlaceItem.style.backgroundColor = "";
+                                    }, 1000);
+                                    }
+                                });
+                                            
+                                filterPlacesByDistance(userLatLng);
+
+                            },
+                            (error) => {
+                                console.error("Error obteniendo la ubicación: ", error);
+                            }
+                        );
+                    } else {
+                        console.error("La geolocalización no es compatible en este navegador.");
+                    }
+                    const input = document.getElementById("pac-input");
+                    // Specify just the place data fields that you need.
+                    const autocomplete = new google.maps.places.Autocomplete(input, {
+                        fields: ["place_id", "geometry", "name", "formatted_address"],
+                    });
+
+                    autocomplete.bindTo("bounds", map);
+                    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                    const infowindow = new google.maps.InfoWindow();
+                    const infowindowContent = document.getElementById("infowindow-content");
+
+                    infowindow.setContent(infowindowContent);
+
+                    const geocoder = new google.maps.Geocoder();
+                    const marker = new google.maps.Marker({ 
                         map: map,
-                        title: nombre,
                         icon: {
-                            url: "{% static 'imagenes/theplacemarker.png/' %}",
-                            scaledSize: new google.maps.Size(37, 37)
+                            url: "{% static 'imagenes/petsito.png/' %}",
+                            scaledSize: new google.maps.Size(65, 65),
                         }
                     });
 
-                    markers.push(marker); 
 
-                    const contentString = `
-                        <div class="info-window">
-                            <h1 class="info-window-content">${nombre}</h1>
-                            <p><a class="info-window-link"href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>
-                        </div>
-                    `;
-
-                    const infowindow = new google.maps.InfoWindow({
-                        content: contentString,
-                        disableAutoPan: true, 
-                    });
-
-                    // Añadir evento click para abrir el infowindow
-                    marker.addListener('click', function () {
+                    marker.addListener("click", () => {
                         infowindow.open(map, marker);
                     });
-                });
+                    autocomplete.addListener("place_changed", () => {
+                        infowindow.close();
 
-                const placesList = document.getElementById("placesList");
-                function addPlaceToList(nombre) {    
+                        const place = autocomplete.getPlace();
 
-                    const placeItem = document.createElement("div");
-                    placeItem.className = "place-item";
-                    placeItem.textContent = nombre;
-                    placeNames.push(nombre);
-
-                    placeItem.addEventListener("click", function () {
-                        const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
-                        if (matchingMarker) {
-                            map.panTo(matchingMarker.getPosition());
-                            matchingMarker.setAnimation(google.maps.Animation.DROP);
-                            setTimeout(() => {
-                                matchingMarker.setAnimation(null);
-                            }, 3500);
+                        if (!place.place_id) {
+                        return;
                         }
+
+                        geocoder
+                            .geocode({ placeId: place.place_id })
+                            .then(({ results }) => {
+                                map.setZoom(11);
+                                map.setCenter(results[0].geometry.location);
+                                // Set the position of the marker using the place ID and location.
+                                // @ts-ignore TODO This should be in @typings/googlemaps.
+                                marker.setPlace({
+                                placeId: place.place_id,
+                                location: results[0].geometry.location,
+                                });
+                                marker.setVisible(true);
+                                infowindowContent.children["place-name"].textContent = place.name;
+                                infowindowContent.children["place-id"].textContent = place.place_id;
+                                infowindowContent.children["place-address"].textContent =
+                                results[0].formatted_address;
+                                infowindow.open(map, marker);
+                            })
+                            .catch((e) => window.alert("Geocoder failed due to: " + e));
                     });
-
-                    placesList.appendChild(placeItem);
                 }
-
-                function filterPlacesByDistance(userLatLng) {
-                
-                    // Limpiar la lista actual
-                    placesList.innerHTML = '';
-                    
-                    listTitle = document.createElement("h2");
-                    listTitle.textContent = "Lista de Lugares cerca de ti";
-                    placesList.appendChild(listTitle);
-                    // Filtrar lugares por distancia
-                    for (const ubicacion of ubicaciones) {
-                        const nombre = ubicacion.getAttribute('data-nombre');
-                        const latitud = parseFloat(ubicacion.getAttribute('data-latitud'));
-                        const longitud = parseFloat(ubicacion.getAttribute('data-longitud'));
-                
-                        const placeLatLng = new google.maps.LatLng(latitud, longitud);
-                        const distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatLng);
-                
-                        // Mostrar solo lugares dentro de 2 km
-                        if (distance <= 2000) {
-                            addPlaceToList(nombre);
-                            
-                        }
-                    }
-                }    
-
-                // Agrega un lugar a la lista por cada ubicación
-                ubicaciones.forEach(function(ubicacion) {
-                    const nombre = ubicacion.getAttribute('data-nombre');
-                    addPlaceToList(nombre);
+                window.initMap = initMap;
+            </script>    
+            <script 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
+                defer
+            ></script>
+            <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+                ({key: "AIzaSyBckJPpzbNaYaVM_iiWrI8zkpEsV-l7gnQ", v: "alpha"});</script>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
+                defer
+            ></script>
+            <script async 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=geometry">
+            </script>
+            <script>
+                (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                key: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
+                v: "weekly",
+                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                // Add other bootstrap parameters as needed, using camel case.
                 });
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            const userLatLng = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
-
-                            // Crear el marcador con la ubicación del usuario
-                            const userMarker = new google.maps.Marker({
-                                position: userLatLng,
-                                map: map,
-                                title: "Tu Ubicación",
-                                icon: {
-                                    url: "{% static 'imagenes/marker.png/' %}",
-                                    scaledSize: new google.maps.Size(60, 60),
-                                }// Opcional: Cambiar el icono
-                            });
-
-                            userMarker.addListener("click", function () {
-                                const nombreUsuario = userMarker.getTitle();
-                                const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
-                                if (matchingPlaceItem) {
-                                matchingPlaceItem.style.backgroundColor = "#f0f0f0";
-                                setTimeout(() => {
-                                    matchingPlaceItem.style.backgroundColor = "";
-                                }, 1000);
-                                }
-                            });
-                                        
-                            filterPlacesByDistance(userLatLng);
-
-                        },
-                        (error) => {
-                            console.error("Error obteniendo la ubicación: ", error);
-                        }
-                    );
-                } else {
-                    console.error("La geolocalización no es compatible en este navegador.");
-                }
-                const input = document.getElementById("pac-input");
-                // Specify just the place data fields that you need.
-                const autocomplete = new google.maps.places.Autocomplete(input, {
-                    fields: ["place_id", "geometry", "name", "formatted_address"],
-                });
-
-                autocomplete.bindTo("bounds", map);
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-                const infowindow = new google.maps.InfoWindow();
-                const infowindowContent = document.getElementById("infowindow-content");
-
-                infowindow.setContent(infowindowContent);
-
-                const geocoder = new google.maps.Geocoder();
-                const marker = new google.maps.Marker({ 
-                    map: map,
-                    icon: {
-                        url: "{% static 'imagenes/petsito.png/' %}",
-                        scaledSize: new google.maps.Size(65, 65),
-                    }
-                });
-
-
-                marker.addListener("click", () => {
-                    infowindow.open(map, marker);
-                });
-                autocomplete.addListener("place_changed", () => {
-                    infowindow.close();
-
-                    const place = autocomplete.getPlace();
-
-                    if (!place.place_id) {
-                    return;
-                    }
-
-                    geocoder
-                        .geocode({ placeId: place.place_id })
-                        .then(({ results }) => {
-                            map.setZoom(11);
-                            map.setCenter(results[0].geometry.location);
-                            // Set the position of the marker using the place ID and location.
-                            // @ts-ignore TODO This should be in @typings/googlemaps.
-                            marker.setPlace({
-                            placeId: place.place_id,
-                            location: results[0].geometry.location,
-                            });
-                            marker.setVisible(true);
-                            infowindowContent.children["place-name"].textContent = place.name;
-                            infowindowContent.children["place-id"].textContent = place.place_id;
-                            infowindowContent.children["place-address"].textContent =
-                            results[0].formatted_address;
-                            infowindow.open(map, marker);
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));
-                });
-            }
-            window.initMap = initMap;
-        </script>
-        <script 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
-            defer
-        ></script>
-        <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-            ({key: "AIzaSyBckJPpzbNaYaVM_iiWrI8zkpEsV-l7gnQ", v: "alpha"});</script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
-            defer
-        ></script>
-        <script async 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=geometry">
-        </script>
-        <script>
-            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-              key: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
-              v: "weekly",
-              // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-              // Add other bootstrap parameters as needed, using camel case.
-            });
-        </script>          
-        {% for ubicacion in ubicaciones %}
-            <div class="ubicacion"
-                data-latitud="{{ ubicacion.latitud }}"
-                data-longitud="{{ ubicacion.longitud }}"
-                data-nombre="{{ ubicacion.nombre_compañia }}">
-            </div>
-        {% endfor %}  
-
-        <footer id="footer">
-
-        <div class="container3">
-
-            <div class="footer-row">
-
-                <div class="footer-links">
-
-                    <h4>ZonaPets</h4>
-                    <ul>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
-                    </ul>
-
+            </script>          
+            {% for ubicacion in ubicaciones %}
+                <div class="ubicacion"
+                    data-latitud="{{ ubicacion.latitud }}"
+                    data-longitud="{{ ubicacion.longitud }}"
+                    data-nombre="{{ ubicacion.nombre_compañia }}">
                 </div>
-                <div class="footer-links">
+            {% endfor %}  
 
-                    <h4>Ayuda</h4>
-                    <ul>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
-                        <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
-                    </ul>
+            <footer id="footer">
 
-                </div>
-                <div class="footer-links">
+            <div class="container3">
 
-                    <h4>Síguenos</h4>
-                    <div class="social-link">
-                        <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                        <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                        <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-                        <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                        <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                <div class="footer-row">
+
+                    <div class="footer-links">
+
+                        <h4>ZonaPets</h4>
+                        <ul>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="footer-links">
+
+                        <h4>Ayuda</h4>
+                        <ul>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
+                            <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="footer-links">
+
+                        <h4>Síguenos</h4>
+                        <div class="social-link">
+                            <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                            <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                            <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                            <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                            <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
-
+            </footer>
         </div>
-        </footer>
         <style>
-            .controls {
-                font-family: "Poppins", "sans-serif";
-                background-color: #fff;
-                border-radius: 5px;
-                border: 2px solid #1385F0;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-                box-sizing: border-box;
-                font-family: Roboto;
-                font-size: 15px;
-                height: 29px;
-                margin-left: 280px;
-                margin-top: 10px;
-                outline: none;
-                padding: 0 11px 0 13px;
-                text-overflow: ellipsis;
-                width: 400px;
-                color: #1385F0;
+            @media(max-width: 1267px) {
+                header .titulo  {
+                    font-size: 50px;
                 }
-
-            .controls:focus {
-                font-family: "Poppins", "sans-serif";
-                font-weight: bold;
-                font-size: 12px ;
-                border-color: #4d90fe;
-                box-shadow: 0 2px 6px #1385F0;
+                .container-all .place-list {
+                    top: 53px;
+                }
             }
 
-            .title {
-            font-weight: bold;
+            @media(max-width: 845px) {
+                header .titulo  {
+                    font-size: 40px;
+                }
             }
-
-            #infowindow-content {
-                text-decoration: none;
-                color: #1385F0;
-                font-family: "Poppins", "sans-serif";
-                text-align: center;
-                font-family: "Poppins", "sans-serif";
-                border-radius: 5px;
-                max-width: 250px;
+            @media(max-width: 676px) {
+                header .titulo  {
+                    font-size: 30px;
+                }
             }
-
-            #map #infowindow-content {
-            display: inline;
+            @media(max-width: 507px) {
+                header .titulo  {
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
             }
+            
         </style>
     </body>
 
