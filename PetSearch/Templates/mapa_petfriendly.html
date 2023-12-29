@@ -6,9 +6,10 @@
         <title>Mapa Lugares Pet-Friendly</title>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stilosmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mapastyles.css/' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iS6Zu6z3L5I+xXn2uZl+wnMKPIb70a72QIqg5ESB/JCk9oP5mmi56I5k0" crossorigin="anonymous">
     <body>
         <div class="container1">
             <section>
@@ -40,6 +41,10 @@
                     type="text"
                     placeholder="Consulta una ciudad"
                 />
+            </div>
+            <div class="mobile-toggle" id="toggleButton">
+                <i class="fa fa-bars toggle-icon" aria-hidden="true"></i>
+                <span id = "toggleText">Lugares cerca de ti</span>
             </div>  
             <div class="places-list" id="placesList"></div>
             <div id="map"></div>
@@ -48,7 +53,32 @@
                 <strong></strong><span id="place-id"></span><br />
                 <span id="place-address"></span>
             </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script>
+                $(document).ready(function () {
+                    $("#placesList").hide();
+
+                    $("#toggleButton").click(function () {
+                    $("#placesList").toggle();
+
+                    // Cambia el ícono al hacer clic
+                    var $toggleIcon = $("#toggleButton .toggle-icon");
+                    $toggleIcon.toggleClass("fa-bars fa-times");
+
+                    // Oculta o muestra el span
+                    var $toggleText = $("#toggleText");
+                    $toggleText.toggle();
+
+                    // Agrega o quita la clase clicked al mobile-toggle
+                    $("#toggleButton").toggleClass("clicked");
+                    });
+
+                    // Al hacer clic en el ícono, reacomoda la posición
+                    $(".toggle-icon").click(function () {
+                    var $toggleIcon = $(this);
+                    $toggleIcon.toggleClass("relocated"); // Agrega o quita la clase que reubica el ícono
+                    });
+                });
                 document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
                 function mostrar_menu(){
                     document.getElementById("move-content").classList.toggle("move-container-all")
@@ -135,7 +165,7 @@
                         placesList.innerHTML = '';
                         
                         listTitle = document.createElement("h2");
-                        listTitle.textContent = "Lista de Lugares cerca de ti";
+                        listTitle.textContent = "Lugares cerca de ti";
                         placesList.appendChild(listTitle);
                         // Filtrar lugares por distancia
                         for (const ubicacion of ubicaciones) {
@@ -289,49 +319,50 @@
             {% endfor %}  
 
             <footer id="footer">
-
-            <div class="container3">
-
-                <div class="footer-row">
-
-                    <div class="footer-links">
-
-                        <h4>ZonaPets</h4>
-                        <ul>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
-                        </ul>
-
-                    </div>
-                    <div class="footer-links">
-
-                        <h4>Ayuda</h4>
-                        <ul>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
-                            <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
-                        </ul>
-
-                    </div>
-                    <div class="footer-links">
-
-                        <h4>Síguenos</h4>
-                        <div class="social-link">
-                            <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                            <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                            <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-                            <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                            <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+        
+                <div class="container3">
+        
+                    <div class="footer-row">
+        
+                        <div class="footer-links">
+        
+                            <h4>ZonaPets</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/equipo/">Nosotros</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/nuestros-servicios/">Nuestros servicios</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/terminos-y-condiciones/">Política de privacidad</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/afiliate/">Afíliate</a></li>
+                            </ul>
+        
                         </div>
-
+                        <div class="footer-links">
+        
+                            <h4>Ayuda</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/preguntas-frecuentes/">Preguntas</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/asesores/">Asesores</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/convenios/">Convenios</a></li>
+                                <li class="footer-margin"><a href="http://127.0.0.1:8000/pagos/">Pagos</a></li>
+                            </ul>
+        
+                        </div>
+                        <div class="footer-links">
+        
+                            <h4>Síguenos</h4>
+                            <div class="social-link">
+                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                                <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                                <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                                <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                            </div>
+        
+                        </div>
+        
                     </div>
-
+        
                 </div>
-
-            </div>
+        
             </footer>
         </div>
         <style>
@@ -339,8 +370,14 @@
                 header .titulo  {
                     font-size: 50px;
                 }
-                .container-all .place-list {
-                    top: 53px;
+                .mobile-toggle {
+                    top: 125px;
+                }
+                .places-list {
+                    top: 130px;
+                }
+                .relocated {
+                    bottom: 40px;
                 }
             }
 
@@ -348,16 +385,53 @@
                 header .titulo  {
                     font-size: 40px;
                 }
+                .mobile-toggle {
+                    top: 120px;
+                }
+                .places-list {
+                    top: 112px;
+                }
+                .relocated {
+                    bottom: 50px;
+                }
             }
             @media(max-width: 676px) {
                 header .titulo  {
                     font-size: 30px;
+                }
+                .mobile-toggle {
+                    top: 100px;
+                }
+                .places-list {
+                    top: 100px;
+                }
+                .relocated {
+                    bottom: 45px;
                 }
             }
             @media(max-width: 507px) {
                 header .titulo  {
                     font-size: 20px;
                     margin-top: 10px;
+                }
+                .mobile-toggle {
+                    font-size: 15px;
+                    left: 0px;
+                    width: 190px;
+                    height: 40px;
+                    
+                }
+                .places-list {
+                    top: 90px;
+                    font-size: 10px;
+                    width: 180px;
+                    max-width: 180px;
+                    max-height: 400px;
+                    left: 5px;
+                }
+                .relocated {
+                    bottom: 18px;
+                    left: 170px;
                 }
             }
             

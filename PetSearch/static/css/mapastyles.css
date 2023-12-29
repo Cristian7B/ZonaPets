@@ -140,10 +140,8 @@ header .titulo {
   font-weight: bold;
 }
 
-@media(max-width: 1267px) {
-  .place-list {
-      top: 53px;
-  }
+@media (max-width: 1267px) {
+
 }
 
 .places-list h2 {
@@ -157,7 +155,7 @@ header .titulo {
   padding: 5px;
   border: 2px solid #ccc;
   border-radius: 10px;
-  transition: color 0.8s ;
+  transition: color 0.8s;
 }
 
 .place-item:hover {
@@ -165,11 +163,57 @@ header .titulo {
   color: #fff;
 }
 
+.mobile-toggle {
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  left: 5px;
+  color: #1385F0;
+  cursor: pointer;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease-in-out;
+  font-size: 20px;
+  top: 170px;
+  z-index: 2;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 2px #1385F0;
+}
+/* Agrega estilos adicionales al icono en el estado hover si es necesario */
+
+.relocated {
+  position: absolute;
+  left: 240px;
+  bottom: 45px;
+}
+
+.clicked {
+  background-color: transparent; /* Cambia el color de fondo a tu preferencia */
+}
+
+
+.info-window {
+  background-color: white;
+  padding: 10px;
+  border: 2px solid #c0c0c0;
+  border-radius: 5px;
+  max-width: 250px;
+}
+
+.info-window-link {
+  text-decoration: none;
+  color: #1385F0;
+  font-family: "Poppins", "sans-serif";
+  text-align: center;
+  display: inline-block;
+}
+
 footer {
   margin-top: 100px;
   background-color: #0F5B9E;  
   padding: 40px 0;
-  margin-top: 300px;
 }
 
 .footer-row {
@@ -212,25 +256,34 @@ footer {
   padding-left: 6px;
 }
 
-.footer-links .social-link {
+.social-link a {
   text-decoration: none;
+  display: inline-block;
+  min-height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-link a:hover {
+  background-color: #24262B;
   color: #fff;
 }
 
-.info-window {
-  background-color: white;
-  padding: 10px;
-  border: 2px solid #c0c0c0;
-  border-radius: 5px;
-  max-width: 250px;
-}
+@media(max-width:991px) {
+  .footer-row {
+      text-align: center;
+  }
 
-.info-window-link {
-  text-decoration: none;
-  color: #1385F0;
-  font-family: "Poppins", "sans-serif";
-  text-align: center;
-  display: inline-block;
+  .footer-links {
+      width: 100%;
+      margin-bottom: 30px;
+  }
 }
 
 .controls {
@@ -287,6 +340,8 @@ footer {
   font-family: "Poppins", "sans-serif";
   border-radius: 5px;
   max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .info-window-content {

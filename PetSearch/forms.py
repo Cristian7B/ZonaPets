@@ -9,7 +9,7 @@ class Formularioregistroform(forms.ModelForm):
     )
     class Meta:
         model = registroform
-        fields = "__all__"
+        fields = ['nombre_compañia', 'telefono_usuario', 'latitud', 'longitud']
         widgets = {
             'telefono_usuario': forms.TextInput(attrs={'type': 'number'}),
         }

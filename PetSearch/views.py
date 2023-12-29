@@ -59,12 +59,21 @@ def afiliate(request):
 def formulario(request):
     return render(request, "formulario.html")
 
+
+from django.db import connections
+
 def mapa_petfriendly(request):
-    ubicaciones = registroform.objects.all()
+    with connections['default'].cursor() as cursor:
+        # Ejecuta una consulta SQL directamente en la tabla 'registrofinal'
+        cursor.execute("SELECT * FROM registrofinal")
+        # Recupera los resultados de la consulta
+        rows = cursor.fetchall()
+
+    # Procesa los resultados según sea necesario y pásalos al template
+    ubicaciones = [{'nombre_compañia': row[1], 'telefono_usuario': row[5], 'latitud': row[2], 'longitud': row[3]} for row in rows]
+
     return render(request, "mapa_petfriendly.html", {"ubicaciones": ubicaciones})
 
-def busqueda_mapa(request):
-    return render(request, "busqueda_mapa.html" )
 
 
 from .models import registroform
@@ -100,5 +109,5 @@ class Formularioviewregistroformempresarial(HttpRequest):
 
         return render(request, "formempresarialindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})
 
-# views.py
+
 
