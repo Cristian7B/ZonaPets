@@ -489,9 +489,6 @@ footer {
         margin-left: 10px;
     }
 
-    .container {
-        height: 100vh; /* 100% del alto de la ventana */
-    }
 
     body{
         overflow-x: hidden;

@@ -1,7 +1,4 @@
-/* 
- * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- */
+
 *{
   margin: 0%;
   padding: 0%;
@@ -18,7 +15,7 @@ body {
 
 #map {
   width: 99%;
-  height: 500px;
+  height: 100vh;
   margin: auto;
 }
 
@@ -27,7 +24,7 @@ section {
   display: flex;
   justify-content: space-between;
   background-color: #1385F0;
-  height: 40px;
+  height: 40px;  
   align-items: center;
 }
 
@@ -139,6 +136,8 @@ header .titulo {
   border: 2px solid #1385F0;
   font-weight: bold;
 }
+
+
 
 @media (max-width: 1267px) {
 
@@ -302,7 +301,7 @@ footer {
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 400px;
-  margin-left: 280px;
+  margin-left: 450px;
   color: #1385F0;
 }
 
@@ -349,12 +348,9 @@ footer {
   font-weight: bold;
 }
 
+
 #place-name{
   font-weight: bold;
-}
-
-#map #infowindow-content {
-display: inline;
 }
 @media(max-width: 844px) {
   .container {
