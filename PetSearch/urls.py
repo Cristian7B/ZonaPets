@@ -19,6 +19,7 @@ from django.urls import path
 from PetSearch.views import helloworld, helloworldRed, inicio, mapa_petfriendly, registrar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate, formulario
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 
 urlpatterns = [

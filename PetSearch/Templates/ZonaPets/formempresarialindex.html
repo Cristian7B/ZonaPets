@@ -1,9 +1,8 @@
-{% extends "registrar.html" %}
+{% extends "ZonaPets/registrar.html" %}
 {% load static %}
 {% block content %}
-
     <header>
-        <h1 class="titulo">!Hora de registrar un Lugar!</h1>
+        <h1 class="titulo">!Hora de registrar tu negocio!</h1>
     </header>
 
     {% if form.errors %}
@@ -12,7 +11,7 @@
         </div>      
     {% endif %}
     
-    <form action="{% url 'guardarform' %}" method="POST" class="mi-formulario">
+    <form action="{% url 'guardarformEmpresa' %}" method="POST" class="mi-formulario">
         <h1>Llena este formulario para que más gente sepa donde reciben a tu peludito</h1>
 
         {% csrf_token %}
@@ -25,10 +24,8 @@
         {{ form.as_p|safe }}
 
         <h2 class="direccion">Puedes mirar tu ubicación aquí</h2>
-        <p>Arrastra el ícono si es necesario</p>
 
         <div id="google_canvas" style="height: 400px;"></div>
-
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ"></script>
     
@@ -36,19 +33,17 @@
             (function(){
                 if (navigator.geolocation) {
                     var map;
-                    var marker; // Agregamos una variable para el marcador
-
+                    var marker;
                     var mapOptions = {
                         zoom: 15,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
-
+    
                     map = new google.maps.Map(document.getElementById("google_canvas"), mapOptions);
-
+    
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-                        // Configuramos el marcador con la propiedad draggable: true
+    
                         marker = new google.maps.Marker({
                             map: map,
                             position: geolocate,
@@ -62,37 +57,33 @@
                         document.getElementById("id_latitud").value = position.coords.latitude;
                         document.getElementById("id_longitud").value = position.coords.longitude;
 
-                        map.setCenter(geolocate);
 
-                        // Agregamos un evento para escuchar cuando el marcador se arrastra
+                        map.setCenter(geolocate);
+                    
                         google.maps.event.addListener(marker, 'dragend', function() {
                             var newPosition = marker.getPosition();
                             document.getElementById("id_latitud").value = newPosition.lat();
                             document.getElementById("id_longitud").value = newPosition.lng();
                         });
                     });
-                } else {
+
+                }else {
                     document.getElementById("google_canvas").innerHTML = "No se soporta geolocalización";
                 }
             })();
-
         </script>
         <button type="submit" class="btn btn-custom">Guardar</button>
-
 
     </form>
     
     <style>
                 /* Estilos generales para el formulario */
+
         .mi-formulario input[type="text"]:focus,
         .mi-formulario input[type="number"]:focus {
             border: 2px solid #007bff; /* Cambia el color a azul */
             outline: none;
             box-shadow: 0 0 10px #0056b3;
-        }
-
-        p {
-            font-size: 13px;
         }
 
         .mapa_geolocation {
@@ -120,6 +111,7 @@
                 margin: 20px auto;
             }
         }
+
         .alert-success {
             width: 100%;
             padding: 12px;
@@ -159,7 +151,7 @@
         }
         
         .mi-formulario h2 {
-            margin-bottom: 0px;
+            margin-bottom: 10px;
             margin-top: 20px;
             font-weight: bold;
         }

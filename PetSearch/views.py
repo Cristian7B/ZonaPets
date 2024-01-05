@@ -14,50 +14,49 @@ def helloworldRed(request):
 # myapp/views.py
 from django.shortcuts import render
 from .models import Pagina
-
+from django.template import loader
 def inicio(request):
     pagina = Pagina.objects.first()
-
-    #Render Template
-    
-    return render(request, 'index.html', {'pagina': pagina})
+    template = loader.get_template("ZonaPets/index.html")
+    documento = template.render({'pagina': pagina})
+    return HttpResponse(documento)
 
 def registrar(request):    
-    return render(request, 'registrar.html')
+    return render(request, 'ZonaPets/registrar.html')
 
 def acercade(request):
-    return render(request, "acercade.html")
+    return render(request, "ZonaPets/acercade.html")
 
 def contacto(request):
-    return render(request, "contacto.html")
+    return render(request, "ZonaPets/contacto.html")
 
 def preguntasfrecuentes(request):
-    return render(request, "preguntas-frecuentes.html")
+    return render(request, "ZonaPets/preguntas-frecuentes.html")
 
 def equipo(request):
-    return render(request, "equipo.html")
+    return render(request, "ZonaPets/equipo.html")
 
 def terminosycondiciones(request):
-    return render(request, "terminos.html")
+    return render(request, "ZonaPets/terminos.html")
 
 def asesores(request):
-    return render(request, "asesores.html")
+    return render(request, "ZonaPets/asesores.html")
 
 def convenios(request):
-    return render(request, "convenios.html")
+    return render(request, "ZonaPets/convenios.html")
 
 def pagos(request):
-    return render(request, "pagos.html")
+    return render(request, "ZonaPets/pagos.html")
 
 def nuestrosservicios(request):
-    return render(request, "nuestros-servicios.html")
+    return render(request, "ZonaPets/nuestros-servicios.html")
 
 def afiliate(request):
-    return render(request, "afiliate.html")
+    return render(request, "ZonaPets/afiliate.html")
 
     
 def formulario(request):
-    return render(request, "formulario.html")
+    return render(request, "ZonaPets/formulario.html")
 
 
 from django.db import connections
@@ -72,7 +71,7 @@ def mapa_petfriendly(request):
     # Procesa los resultados según sea necesario y pásalos al template
     ubicaciones = [{'nombre_compañia': row[1], 'telefono_usuario': row[5], 'latitud': row[2], 'longitud': row[3]} for row in rows]
 
-    return render(request, "mapa_petfriendly.html", {"ubicaciones": ubicaciones})
+    return render(request, "ZonaPets/mapa_petfriendly.html", {"ubicaciones": ubicaciones})
 
 
 
@@ -81,7 +80,7 @@ class Formularioviewregistroform(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroform()
-        return render(request, "formindex.html", { "form":empresa})
+        return render(request, "ZonaPets/formindex.html", { "form":empresa})
 
     def procesar_formulario(request):
         empresa = Formularioregistroform(request.POST)
@@ -89,17 +88,17 @@ class Formularioviewregistroform(HttpRequest):
             empresa.save()
             empresa = Formularioregistroform()
 
-        return render(request, "formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+        return render(request, "ZonaPets/formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
     
     def mostrar_mapa(request):
         ubicaciones = registroform.objects.all()
-        return render(request, "mapa.html", {"ubicaciones": ubicaciones})
+        return render(request, "ZonaPets/mapa.html", {"ubicaciones": ubicaciones})
 
 class Formularioviewregistroformempresarial(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroformempresarial()
-        return render(request, "formempresarialindex.html", { "form":empresa})
+        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa})
     
     def procesar_formulario(request):
         empresa = Formularioregistroformempresarial(request.POST)
@@ -107,7 +106,7 @@ class Formularioviewregistroformempresarial(HttpRequest):
             empresa.save()
             empresa = Formularioregistroformempresarial()
 
-        return render(request, "formempresarialindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})
+        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa, "mensaje":"¡Tu empresa ha sido registrada!"})
 
 
 

@@ -1,15 +1,19 @@
-FROM python:3.10.4-alpine3.16
+FROM python:3.12-alpine
 
-WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /ZonaPets
 
 RUN  apk update \
 	&& apk add --no-cache gcc musl-dev postgresql-dev python3-dev libffi-dev \
 	&& pip install --upgrade pip
 
-COPY ./requirements.txt /app/ 
+COPY ./requirements.txt ./ 
 
 RUN pip install -r requirements.txt
 
-COPY ./ /app/
+COPY ./ ./
+
+RUN ls -R
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
