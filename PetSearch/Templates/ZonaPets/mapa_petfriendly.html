@@ -61,39 +61,31 @@
             <script>
                 $(document).ready(function () {
                     $("#placesList").hide();
-
                     $("#toggleButton").click(function () {
-                    $("#placesList").toggle();
-
-                    // Cambia el ícono al hacer clic
-                    var $toggleIcon = $("#toggleButton .toggle-icon");
-                    $toggleIcon.toggleClass("fa-bars fa-times");
-
-                    // Oculta o muestra el span
-                    var $toggleText = $("#toggleText");
-                    $toggleText.toggle();
-
-                    // Agrega o quita la clase clicked al mobile-toggle
-                    $("#toggleButton").toggleClass("clicked");
+                        $("#placesList").toggle();
+                        var $toggleIcon = $("#toggleButton .toggle-icon");
+                        $toggleIcon.toggleClass("fa-bars fa-times");
+                        var $toggleText = $("#toggleText");
+                        $toggleText.toggle();
+                        $("#toggleButton").toggleClass("clicked");
                     });
-
-                    // Al hacer clic en el ícono, reacomoda la posición
                     $(".toggle-icon").click(function () {
-                    var $toggleIcon = $(this);
-                    $toggleIcon.toggleClass("relocated"); // Agrega o quita la clase que reubica el ícono
+                        var $toggleIcon = $(this);
+                        $toggleIcon.toggleClass("relocated");
                     });
                     $(".mobile-search-button").click(function () {
-                        $(".controls").toggle(); // Muestra u oculta el input de búsqueda
+                        $(".controls").toggle();
                     });
                 });
+
                 document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
-                function mostrar_menu(){
+                function mostrar_menu() {
                     document.getElementById("move-content").classList.toggle("move-container-all")
                     document.getElementById("move-menu").classList.toggle("show-lateral")
-                }        
+                }
 
                 async function initMap() {
-                    const [{ Map }, { AdvancedMarkerElement }, {geometry}] = await Promise.all([
+                    const [{ Map }, { AdvancedMarkerElement }, { geometry }] = await Promise.all([
                         google.maps.importLibrary("marker"),
                         google.maps.importLibrary("places"),
                         google.maps.importLibrary("geometry"),
@@ -300,24 +292,7 @@
             <script 
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
                 defer
-            ></script>
-            <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-                ({key: "AIzaSyBckJPpzbNaYaVM_iiWrI8zkpEsV-l7gnQ", v: "alpha"});</script>
-            <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&callback=initMap&v=weekly"
-                defer
-            ></script>
-            <script async 
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=geometry">
-            </script>
-            <script>
-                (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-                key: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
-                v: "weekly",
-                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-                // Add other bootstrap parameters as needed, using camel case.
-                });
-            </script>          
+            ></script>      
             {% for ubicacion in ubicaciones %}
                 <div class="ubicacion"
                     data-latitud="{{ ubicacion.latitud }}"
