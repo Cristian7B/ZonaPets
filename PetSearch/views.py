@@ -74,14 +74,14 @@ def mapa_petfriendly(request):
     return render(request, "ZonaPets/mapa_petfriendly.html", {"ubicaciones": ubicaciones})
 
 
-
+from django.views.decorators.csrf import csrf_protect
 from .models import registroform
 class Formularioviewregistroform(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroform()
         return render(request, "ZonaPets/formindex.html", { "form":empresa})
-
+    @csrf_protect
     def procesar_formulario(request):
         empresa = Formularioregistroform(request.POST)
         if empresa.is_valid():
