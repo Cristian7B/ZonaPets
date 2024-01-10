@@ -88,7 +88,7 @@ class Formularioviewregistroform(HttpRequest):
             empresa.save()
             empresa = Formularioregistroform()
 
-        return render(request, "ZonaPets/formindex.html", { "form":empresa})
+        return render(request, "ZonaPets/formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
     
     def mostrar_mapa(request):
         ubicaciones = registroform.objects.all()
@@ -106,7 +106,7 @@ class Formularioviewregistroformempresarial(HttpRequest):
             empresa.save()
             empresa = Formularioregistroformempresarial()
 
-        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa})
+        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
 
 
 
