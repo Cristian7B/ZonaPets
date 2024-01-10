@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PetSearch',
-    'corsheaders',
 ]
 
 X_FRAME_OPTIONS = 'DENY'
