@@ -30,8 +30,8 @@ SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["zonapets.onrender.com", "127.0.0.1"]
-
+ALLOWED_HOSTS = ["https://zonapets.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','https://*.127.0.0.1']
 
 # Application definition
 
