@@ -24,16 +24,30 @@ section {
   display: flex;
   justify-content: space-between;
   background-color: #1385F0;
-  height: 40px;  
+  height: 40px;
   align-items: center;
+}
+
+.imgnavbar {
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .logo-nombre {
   display: flex;
   align-items: center;
   color: #fff;
-  padding-left: 10px;
-  
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+.logo-nombre:hover {
+  color: #0F5B9E;
 }
 
 .nombre{
@@ -353,6 +367,10 @@ footer {
   font-weight: bold;
 }
 @media(max-width: 844px) {
+  section {
+      justify-content: flex-start;
+  }
+
   .container {
       height: 100vh; /* 100% del alto de la ventana */
   }
@@ -427,4 +445,17 @@ footer {
     .titulo {
         font-size: 20px; 
     }
+}
+
+.responsive-banner {
+  display: block; /* Inicialmente oculto */
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }

@@ -39,16 +39,26 @@ section {
     margin-bottom: 150px;
 }
 
-
+.imgnavbar {
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
 
 .logo-nombre {
     display: flex;
     align-items: center;
     color: #fff;
-    padding-left: 10px;
     text-decoration: none;
     font-weight: bold;
     font-size: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+.logo-nombre:hover {
+    color: #0F5B9E;
 }
 
 .nombre{
@@ -487,11 +497,6 @@ footer {
 }
 
 @media(max-width: 844px) {
-    
-    .logo-nombre{
-        margin-left: 10px;
-    }
-
 
     body{
         overflow-x: hidden;
@@ -499,6 +504,7 @@ footer {
 
     section {
         margin-bottom: 110px;
+        justify-content: flex-start;
     }
 
     .container-all {

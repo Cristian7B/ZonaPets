@@ -1,28 +1,17 @@
+{% extends "ZonaPets/template.html" %}
+{% block content %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Servicios - ZonaPets</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/nuestros-servicios.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Nuestros Servicios</title>
 </head>
-<body>
-    <section>
-        <h2 class="logo-nombre">ZonaPets</h2>
-        <nav class="navegacion">
-            <ul class="menu-horizontal">
-                <li><a href="http://zonapets.onrender.com/inicio-zonapets/">Inicio</a></li>
-                <li><a href="http://zonapets.onrender.com/acercade/">Acerca de nosotros</a></li>
-                <li><a href="http://zonapets.onrender.com/contacto/">Contacto</a></li>
-                <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-            </ul>
-        </nav>
-    </section>
 
-</body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/nuestros-servicios.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
 </html>
+{% endblock %}

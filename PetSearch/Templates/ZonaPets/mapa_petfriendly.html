@@ -6,14 +6,15 @@
         <title>Mapa Lugares Pet-Friendly</title>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mapa.css/' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapaa.css/' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iS6Zu6z3L5I+xXn2uZl+wnMKPIb70a72QIqg5ESB/JCk9oP5mmi56I5k0" crossorigin="anonymous">
     <body>
         <div class="container1">
             <section>
-                <h2 class="logo-nombre">ZonaPets</h2>
+                <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
+                <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
                 <nav class="navegacion" id="move-menu">
                     <ul class="menu-horizontal">
                         <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
@@ -79,9 +80,14 @@
                 });
 
                 document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+
                 function mostrar_menu() {
-                    document.getElementById("move-content").classList.toggle("move-container-all")
-                    document.getElementById("move-menu").classList.toggle("show-lateral")
+                    document.getElementById("move-content").classList.toggle("move-container-all");
+                    document.getElementById("move-menu").classList.toggle("show-lateral");
+
+                    // Agregar código para ajustar la posición de logo-nombre durante el modo responsive
+                    var logoNombre = document.querySelector(".logo-nombre");
+                    logoNombre.classList.toggle("move-logo-responsive");
                 }
 
                 async function initMap() {
@@ -541,4 +547,3 @@
     </body>
 
 </html>
-

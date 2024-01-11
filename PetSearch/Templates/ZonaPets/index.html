@@ -8,7 +8,7 @@
 </head>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/main.css/' %}">
+<link rel="stylesheet" href="{% static 'css/index.css/' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
@@ -17,8 +17,12 @@
 <body>
     <div class="container" style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: local; background-size: 100%;">
         <section>
+                <!--<a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
+                <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">-->
+
+                <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
                 <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
-                <nav class="navegacion" id="move-menu">
+                <nav class="navegacion" id="move-menu"> 
                     <ul class="menu-horizontal">
                         <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
                         <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a>
@@ -58,7 +62,7 @@
                 </div>
                 
             </header>
-        
+        <!--
             <h2 class="titulo-slider">¡Lugares Pet-Friendly destacados!</h2>
             <p class="des-slider">Bogotá</p>
             <div class="slider-box" id="slider">
@@ -89,7 +93,7 @@
                     </li>
                 </ul>
             </div>
-            
+            -->
             <footer id="footer">
         
                 <div class="container3">
@@ -137,7 +141,7 @@
         
             </footer>
         </div>
-    <script src="{% static 'javascript/inicioresponsive.js' %}"></script>
+    <script src="{% static 'javascript/indexresponsive.js' %}"></script>
 </body>
 
 </html>
