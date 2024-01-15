@@ -20,4 +20,11 @@ class registroformularioempresarial(models.Model):
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=100)
 
+class registrofinal2(models.Model):
+    nombre_compañia = models.CharField(max_length=150)
+    latitud = models.CharField(max_length=150)
+    longitud = models.CharField(max_length=150)
+    correo_electronico = models.CharField(max_length=150)
+    telefono_usuario = models.IntegerField(blank=True, null=True,)
+
 

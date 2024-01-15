@@ -249,6 +249,7 @@ h3 {
     padding: 5px;
     text-decoration: none;
     display: block;
+    font-size: 15px;
 }
 
 
@@ -591,30 +592,45 @@ footer {
     .boton, .boton-registrar {
         margin: 10px 0; 
     }
+
+    .boton {
+        width: 300px;
+    }
+
+    .boton-registrar {
+        width: 300px;
+    }
+
+    .registrar-menu a {
+        font-size: 13px;
+    }
+
+    .informacion-zonapets {
+        display: none;
+    }
 }
 
 @media(max-width:470px) {
-
 
     section {
         margin-bottom:180px;
     }
     /* Ajustes para el texto del nombre en el header */
     .nombre {
-        font-size: 40px; /* Ajusta el tamaño del texto según tus necesidades */
+        font-size: 50px; /* Ajusta el tamaño del texto según tus necesidades */
         margin-bottom: 10px;
     }
 
     /* Ajustes para los botones del header */
     .boton, .boton-registrar {
-        font-size: 14px; /* Ajusta el tamaño del texto según tus necesidades */
+        font-size: 20px; /* Ajusta el tamaño del texto según tus necesidades */
         padding: 10px 20px; /* Ajusta el padding según tus necesidades */
     }
 
     /* Ajustes para el icono de "Sobre ZonaPets" en el header */
     .informacion-zonapets h3 {
+        bottom: 20px;
         font-size: 18px; /* Ajusta el tamaño del texto según tus necesidades */
-        margin-top: 10px;
     }
 
     .contenedor-registro {

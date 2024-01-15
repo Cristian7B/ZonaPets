@@ -7,4 +7,7 @@ function mostrar_menu() {
     // Agregar código para ajustar la posición de logo-nombre durante el modo responsive
     var logoNombre = document.querySelector(".logo-nombre");
     logoNombre.classList.toggle("move-logo-responsive");
+    var icono = document.querySelector("#icon-menu i");
+    icono.classList.toggle("fa-bars");
+    icono.classList.toggle("fa-times");
 }

@@ -95,13 +95,16 @@ WSGI_APPLICATION = 'PetSearch.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zonapets_posgres_db',
+        'USER': 'zonapets_posgres_db_user',
+        'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
+        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+        'PORT': '5432',       # El puerto predeterminado para PostgreSQL
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db")
-
+# postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

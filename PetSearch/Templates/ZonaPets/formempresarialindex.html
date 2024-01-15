@@ -13,7 +13,7 @@
     {% endif %}
     
     <form action="{% url 'guardarformEmpresa' %}" method="POST" class="mi-formulario">
-        <h1>Llena este formulario para que más gente sepa donde reciben a tu peludito</h1>
+        <h1 class="subtitulo">Llena este formulario para que más gente sepa donde reciben a tu peludito</h1>
 
         {% csrf_token %}
         {% if mensaje %}
@@ -139,7 +139,7 @@
             font-weight: bold;
         }
 
-        .mi-formulario h1 {
+        .subtitulo {
             margin-bottom: 15px;
             color: #0056b3;
             font-weight: bold;

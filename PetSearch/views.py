@@ -60,19 +60,16 @@ def formulario(request):
 
 
 from django.db import connections
+from .models import registrofinal2
 
 def mapa_petfriendly(request):
-    with connections['default'].cursor() as cursor:
-        # Ejecuta una consulta SQL directamente en la tabla 'registrofinal'
-        cursor.execute("SELECT * FROM registrofinal")
-        # Recupera los resultados de la consulta
-        rows = cursor.fetchall()
+    # Obtén todos los registros de la base de datos usando el modelo
+    ubicaciones = registrofinal2.objects.all()
 
     # Procesa los resultados según sea necesario y pásalos al template
-    ubicaciones = [{'nombre_compañia': row[1], 'telefono_usuario': row[5], 'latitud': row[2], 'longitud': row[3]} for row in rows]
+    ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 'telefono_usuario': ubicacion.telefono_usuario, 'latitud': ubicacion.latitud, 'longitud': ubicacion.longitud} for ubicacion in ubicaciones]
 
-    return render(request, "ZonaPets/mapa_petfriendly.html", {"ubicaciones": ubicaciones})
-
+    return render(request, "ZonaPets/mapa_petfriendly.html", {"ubicaciones": ubicaciones_dict})
 
 from django.views.decorators.csrf import csrf_protect
 from .models import registroform

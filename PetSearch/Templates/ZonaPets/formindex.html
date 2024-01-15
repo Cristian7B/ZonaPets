@@ -13,7 +13,7 @@
     {% endif %}
     
     <form action="{% url 'guardarform' %}" method="POST" class="mi-formulario">
-        <h1>Llena este formulario para que más gente sepa donde reciben a tu peludito</h1>
+        <h1 class="subtitulo">Llena este formulario para que más gente sepa donde reciben a tu peludito</h1>
         {% if mensaje %}
             <div class="alert-success" role="alert">
                 ¡Registro Exitoso!
@@ -219,6 +219,16 @@
             border-radius: 5px;
         }
 
+        @media(max-width: 415px) {
+            .titulo {
+                font-size: 20px;
+            }
+
+            .subtitulo {
+                font-size: 15px;
+            }
+
+        }
 
     </style>
 
