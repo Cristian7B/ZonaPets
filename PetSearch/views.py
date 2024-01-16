@@ -58,6 +58,9 @@ def afiliate(request):
 def formulario(request):
     return render(request, "ZonaPets/formulario.html")
 
+def vista_bar(request):
+    return render(request, "ZonaPets/barsiteapp.html")
+
 
 from django.db import connections
 from .models import registrofinal2

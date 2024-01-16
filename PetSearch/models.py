@@ -24,7 +24,7 @@ class registrofinal2(models.Model):
     nombre_compañia = models.CharField(max_length=150)
     latitud = models.CharField(max_length=150)
     longitud = models.CharField(max_length=150)
-    correo_electronico = models.CharField(max_length=150)
+    correo_electronico = models.CharField(max_length=150, null=True)
     telefono_usuario = models.IntegerField(blank=True, null=True,)
 
 
