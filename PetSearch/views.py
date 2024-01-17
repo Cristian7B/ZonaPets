@@ -61,6 +61,12 @@ def formulario(request):
 def vista_bar(request):
     return render(request, "ZonaPets/barsiteapp.html")
 
+def vista_barmapa(request):
+    return render(request, "ZonaPets/barmapa.html")
+
+def vista_barregistrar(request):
+    return render(request, "ZonaPets/barregistrar.html")
+
 
 from django.db import connections
 from .models import registrofinal2
@@ -80,7 +86,7 @@ class Formularioviewregistroform(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroform()
-        return render(request, "ZonaPets/formindex.html", { "form":empresa})
+        return render(request, "ZonaPets/barregistrar.html", { "form":empresa})
     @csrf_protect
     def procesar_formulario(request):
         empresa = Formularioregistroform(request.POST)
@@ -88,7 +94,7 @@ class Formularioviewregistroform(HttpRequest):
             empresa.save()
             empresa = Formularioregistroform()
 
-        return render(request, "ZonaPets/formindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+        return render(request, "ZonaPets/barregistrar.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
     
     def mostrar_mapa(request):
         ubicaciones = registroform.objects.all()
@@ -98,7 +104,7 @@ class Formularioviewregistroformempresarial(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroformempresarial()
-        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa})
+        return render(request, "ZonaPets/barregistrarempresarial.html", { "form":empresa})
     
     def procesar_formulario(request):
         empresa = Formularioregistroformempresarial(request.POST)
@@ -106,7 +112,7 @@ class Formularioviewregistroformempresarial(HttpRequest):
             empresa.save()
             empresa = Formularioregistroformempresarial()
 
-        return render(request, "ZonaPets/formempresarialindex.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+        return render(request, "ZonaPets/barregistrarempresarial.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
 
 
 

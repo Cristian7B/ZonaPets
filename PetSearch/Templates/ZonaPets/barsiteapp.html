@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav-Bar-Site</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesnavbar.css' %}">
 </head>
 <body>
   <section>
@@ -17,7 +16,7 @@
     <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
     <img src="{% static 'imagenes/Logo.png' %}" alt="logozonapets" class="imgnavbar">
     <nav class="navegacion" id="move-menu">
-      <ul>
+      <ul class="menu-horizontal">
         <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
         <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a>
         <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
@@ -27,10 +26,14 @@
       </ul>
     </nav>
   </section>
+  <div class="container-all" id="move-content">
+    {% block content %}
+
+    {% endblock %}    
     <div class="navigation">
       <ul>
         <li class="list active">
-          <a href="#">
+          <a href="http://127.0.0.1:8000/vistabarmapa/">
             <span class="icon">
               <ion-icon name="map-outline"></ion-icon>
             </span>
@@ -38,7 +41,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="http://127.0.0.1:8000/equipo/">
             <span class="icon">
               <ion-icon name="person-outline"></ion-icon>
             </span>
@@ -46,7 +49,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="http://127.0.0.1:8000/registroform/">
             <span class="icon">
               <ion-icon name="add-outline"></ion-icon>
             </span>
@@ -54,7 +57,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="http://127.0.0.1:8000/afiliate/">
             <span class="icon">
               <ion-icon name="card-outline"></ion-icon>
             </span>
@@ -62,7 +65,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="http://127.0.0.1:8000/ajustes/">
             <span class="icon">
               <ion-icon name="settings-outline"></ion-icon>
             </span>
@@ -72,36 +75,61 @@
         <div class="indicator"></div>
       </ul>
     </div>
-  <div class="container-all" id="move-content">
-
-
-
   </div>
+  
       
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        const list = document.querySelectorAll(".list");
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const list = document.querySelectorAll(".navigation .list");
+          const currentUrl = window.location.href;
 
-        function activeLink() {
-        list.forEach((item) => item.classList.remove("active"));
-        this.classList.add("active");
-        }
-        list.forEach((item) => item.addEventListener("click", activeLink));
+          // Función para activar el enlace
+          function activeLink() {
+              list.forEach((item) => item.classList.remove("active"));
+              this.classList.add("active");
+              updateIndicatorPosition();
+          }
 
-        document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+          // Asigna el evento de clic a cada elemento de la lista
+          list.forEach((item) => item.addEventListener("click", activeLink));
 
-        function mostrar_menu() {
-            document.getElementById("move-content").classList.toggle("move-container-all");
-            document.getElementById("move-menu").classList.toggle("show-lateral");
+          // Verifica la URL actual y activa el enlace correspondiente
+          function updateIndicatorPosition() {
+              list.forEach((item, index) => {
+                  const link = item.querySelector('a');
+                  if (link.href === currentUrl && link.href !== currentUrl + "#") {
+                      item.classList.add("active");
+                      moveIndicator(index);
+                  }
+              });
+          }
 
-            // Agregar código para ajustar la posición de logo-nombre durante el modo responsive
-            var logoNombre = document.querySelector(".logo-nombre");
-            logoNombre.classList.toggle("move-logo-responsive");
-            var icono = document.querySelector("#icon-menu i");
-            icono.classList.toggle("fa-bars");
-            icono.classList.toggle("fa-times");
-        }
-    </script>
+          // Mueve el indicador a la posición correspondiente
+          function moveIndicator(index) {
+              const indicator = document.querySelector('.indicator');
+              indicator.style.transform = `translateX(calc(70px * ${index}))`;
+          }
+
+          // Actualiza la posición del indicador al cargar la página
+          updateIndicatorPosition();
+      });
+
+
+      document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+
+      function mostrar_menu() {
+          document.getElementById("move-content").classList.toggle("move-container-all");
+          document.getElementById("move-menu").classList.toggle("show-lateral");
+
+          // Agregar código para ajustar la posición de logo-nombre durante el modo responsive
+          var logoNombre = document.querySelector(".logo-nombre");
+          logoNombre.classList.toggle("move-logo-responsive");
+          var icono = document.querySelector("#icon-menu i");
+          icono.classList.toggle("fa-bars");
+          icono.classList.toggle("fa-times");
+      }
+  </script>
 </body>
 </html>

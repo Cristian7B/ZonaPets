@@ -1,0 +1,530 @@
+{% extends "ZonaPets/barsiteapp.html" %}
+{% load static %}
+{% block content %}
+
+<!doctype html>
+<html lang="es">
+{% load static %}
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Mapa Lugares Pet-Friendly</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapa.css/' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iS6Zu6z3L5I+xXn2uZl+wnMKPIb70a72QIqg5ESB/JCk9oP5mmi56I5k0" crossorigin="anonymous">
+    <body>
+        <div class="container-all" id="move-content">
+            <header>
+                <h1 class="titulo">¡Hora de ver lugares Pet-Friendly!</h1>
+            </header>
+            
+            <div style="display: none">
+                <input
+                    id="pac-input"
+                    class="controls"
+                    type="text"
+                    placeholder="Consulta una ciudad"
+                />
+            </div>
+            <div class="mobile-toggle" id="toggleButton">
+                <i class="fa fa-bars toggle-icon" aria-hidden="true"></i>
+                <span id = "toggleText">Lugares cerca de ti</span>
+            </div>
+            <!-- Agrega este botón donde desees en tu HTML -->
+            <div class="places-list" id="placesList"></div>
+            <div id="map"></div>
+            <div class="mobile-search-button">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>  
+            <div id="infowindow-content">
+                <span id="place-name" class="title"></span><br />
+                <strong></strong><span id="place-id"></span><br />
+                <span id="place-address"></span>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#placesList").hide();
+                    $("#toggleButton").click(function () {
+                        $("#placesList").toggle();
+                        var $toggleIcon = $("#toggleButton .toggle-icon");
+                        $toggleIcon.toggleClass("fa-bars fa-times");
+                        var $toggleText = $("#toggleText");
+                        $toggleText.toggle();
+                        $("#toggleButton").toggleClass("clicked");
+                    });
+                    $(".toggle-icon").click(function () {
+                        var $toggleIcon = $(this);
+                        $toggleIcon.toggleClass("relocated");
+                    });
+                    $(".mobile-search-button").click(function () {
+                        $(".controls").toggle();
+                    });
+                });
+
+                async function initMap() {
+                    const [{ Map }, { AdvancedMarkerElement }, { geometry }] = await Promise.all([
+                        google.maps.importLibrary("marker"),
+                        google.maps.importLibrary("places"),
+                        google.maps.importLibrary("geometry"),
+                    ]);
+                    const bogota = { lat: 4.710989, lng: -74.072090 }
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 11,
+                        center: bogota,
+                        mapTypeControl: false
+                    });
+
+                    const markers = [];
+                    const ubicaciones = document.querySelectorAll('.ubicacion');
+                    const placeNames = [];
+
+                    ubicaciones.forEach(function(ubicacion) {
+                        const latitud = ubicacion.getAttribute('data-latitud');
+                        const longitud = ubicacion.getAttribute('data-longitud');
+                        const nombre = ubicacion.getAttribute('data-nombre');
+
+                        const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
+                        const marker = new google.maps.Marker({
+                            position: markerLatLng,
+                            map: map,
+                            title: nombre,
+                            icon: {
+                                url: "{% static 'imagenes/markerzonapets.png/' %}",
+                                scaledSize: new google.maps.Size(45, 45)
+                            }
+                        });
+
+                        markers.push(marker); 
+
+                        const contentString = `
+                            <div class="info-window">
+                                <h1 class="info-window-content">${nombre}</h1>
+                                <p><a class="info-window-link"href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>
+                            </div>
+                        `;
+
+                        const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                            disableAutoPan: true, 
+                        });
+
+                        // Añadir evento click para abrir el infowindow
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    });
+
+                    const placesList = document.getElementById("placesList");
+                    function addPlaceToList(nombre) {    
+
+                        const placeItem = document.createElement("div");
+                        placeItem.className = "place-item";
+                        placeItem.textContent = nombre;
+                        placeNames.push(nombre);
+
+                        placeItem.addEventListener("click", function () {
+                            const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
+                            if (matchingMarker) {
+                                map.panTo(matchingMarker.getPosition());
+                                matchingMarker.setAnimation(google.maps.Animation.DROP);
+                                setTimeout(() => {
+                                    matchingMarker.setAnimation(null);
+                                }, 3500);
+                            }
+                        });
+
+                        placesList.appendChild(placeItem);
+                    }
+
+                    function filterPlacesByDistance(userLatLng) {
+                    
+                        // Limpiar la lista actual
+                        placesList.innerHTML = '';
+                        
+                        listTitle = document.createElement("h2");
+                        listTitle.textContent = "Lugares cerca de ti";
+                        placesList.appendChild(listTitle);
+                        // Filtrar lugares por distancia
+                        for (const ubicacion of ubicaciones) {
+                            const nombre = ubicacion.getAttribute('data-nombre');
+                            const latitud = parseFloat(ubicacion.getAttribute('data-latitud'));
+                            const longitud = parseFloat(ubicacion.getAttribute('data-longitud'));
+                    
+                            const placeLatLng = new google.maps.LatLng(latitud, longitud);
+                            const distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatLng);
+                    
+                            // Mostrar solo lugares dentro de 2 km
+                            if (distance <= 2000) {
+                                addPlaceToList(nombre);
+                                
+                            }
+                        }
+                    }    
+
+                    // Agrega un lugar a la lista por cada ubicación
+                    ubicaciones.forEach(function(ubicacion) {
+                        const nombre = ubicacion.getAttribute('data-nombre');
+                        addPlaceToList(nombre);
+                    });
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                const userLatLng = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude,
+                                };
+
+                                // Crear el marcador con la ubicación del usuario
+                                const userMarker = new google.maps.Marker({
+                                    position: userLatLng,
+                                    map: map,
+                                    title: "Tu Ubicación",
+                                    icon: {
+                                        url: "{% static 'imagenes/marker.png/' %}",
+                                        scaledSize: new google.maps.Size(60, 60),
+                                    }// Opcional: Cambiar el icono
+                                });
+
+                                userMarker.addListener("click", function () {
+                                    const nombreUsuario = userMarker.getTitle();
+                                    const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
+                                    if (matchingPlaceItem) {
+                                    matchingPlaceItem.style.backgroundColor = "#f0f0f0";
+                                    setTimeout(() => {
+                                        matchingPlaceItem.style.backgroundColor = "";
+                                    }, 1000);
+                                    }
+                                });
+                                            
+                                filterPlacesByDistance(userLatLng);
+
+                            },
+                            (error) => {
+                                console.error("Error obteniendo la ubicación: ", error);
+                            }
+                        );
+                    } else {
+                        console.error("La geolocalización no es compatible en este navegador.");
+                    }
+                    const input = document.getElementById("pac-input");
+                    // Specify just the place data fields that you need.
+                    const autocomplete = new google.maps.places.Autocomplete(input, {
+                        fields: ["place_id", "geometry", "name", "formatted_address"],
+                    });
+
+                    autocomplete.bindTo("bounds", map);
+                    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                    const infowindow = new google.maps.InfoWindow();
+                    const infowindowContent = document.getElementById("infowindow-content");
+
+                    infowindow.setContent(infowindowContent);
+
+                    const geocoder = new google.maps.Geocoder();
+                    const marker = new google.maps.Marker({ 
+                        map: map,
+                        icon: {
+                            url: "{% static 'imagenes/petsito.png/' %}",
+                            scaledSize: new google.maps.Size(65, 65),
+                        }
+                    });
+
+
+                    marker.addListener("click", () => {
+                        infowindow.open(map, marker);
+                    });
+                    autocomplete.addListener("place_changed", () => {
+                        infowindow.close();
+
+                        const place = autocomplete.getPlace();
+
+                        if (!place.place_id) {
+                        return;
+                        }
+
+                        geocoder
+                            .geocode({ placeId: place.place_id })
+                            .then(({ results }) => {
+                                map.setZoom(11);
+                                map.setCenter(results[0].geometry.location);
+                                // Set the position of the marker using the place ID and location.
+                                // @ts-ignore TODO This should be in @typings/googlemaps.
+                                marker.setPlace({
+                                placeId: place.place_id,
+                                location: results[0].geometry.location,
+                                });
+                                marker.setVisible(true);
+                                infowindowContent.children["place-name"].textContent = place.name;
+                                infowindowContent.children["place-id"].textContent = place.place_id;
+                                infowindowContent.children["place-address"].textContent =
+                                results[0].formatted_address;
+                                infowindow.open(map, marker);
+                            })
+                            .catch((e) => window.alert("Geocoder failed due to: " + e));
+                    });
+                }
+                window.initMap = initMap;
+            </script>    
+            <script 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
+                defer
+            ></script>      
+            {% for ubicacion in ubicaciones %}
+                <div class="ubicacion"
+                    data-latitud="{{ ubicacion.latitud }}"
+                    data-longitud="{{ ubicacion.longitud }}"
+                    data-nombre="{{ ubicacion.nombre_compañia }}">
+                </div>
+            {% endfor %}  
+
+            <footer id="footer">
+        
+                <div class="container3">
+        
+                    <div class="footer-row">
+        
+                        <div class="footer-links">
+        
+                            <h4>ZonaPets</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/equipo/">Nosotros</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/nuestros-servicios/">Nuestros servicios</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.comterminos-y-condiciones/">Política de privacidad</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/afiliate/">Afíliate</a></li>
+                            </ul>
+        
+                        </div>
+                        <div class="footer-links">
+        
+                            <h4>Ayuda</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/preguntas-frecuentes/">Preguntas</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/asesores/">Asesores</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/convenios/">Convenios</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/pagos/">Pagos</a></li>
+                            </ul>
+        
+                        </div>
+                        <div class="footer-links">
+        
+                            <h4>Síguenos</h4>
+                            <div class="social-link">
+                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                                <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                                <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                                <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+        
+                </div>
+        
+            </footer>
+        </div>
+        <style>
+            .search-button {
+                display: none;
+                background-color: #fff;
+                border-radius: 2px;
+                border: 2px solid #1385F0;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                box-sizing: border-box;
+                font-family: Roboto;
+                font-size: 15px;
+                font-weight: 300;
+                height: 29px;
+                margin-top: 10px;
+                outline: none;
+                padding: 0 11px 0 13px;
+                text-overflow: ellipsis;
+                width: 400px;
+                margin-left: 280px;
+                color: #1385F0;
+            }
+            .search-button:focus {
+                font-family: "Poppins", "sans-serif";
+                font-weight: bold;
+                font-size: 12px;
+                border-color: #4d90fe;
+                box-shadow: 0 2px 6px #1385F0;
+            }
+            @media(max-width: 1267px) {
+                header .titulo  {
+                    font-size: 50px;
+                }
+                .mobile-toggle {
+                    top: 125px;
+                }
+                .places-list {
+                    top: 130px;
+                }
+                .relocated {
+                    bottom: 40px;
+                }
+            }
+
+            @media(max-width:1200px) {
+                .controls {
+                    margin-left: 400px;
+                }
+            }
+
+            @media(max-width:1100px) {
+                .controls {
+                    margin-left: 350px;
+                }
+            }
+
+            @media(max-width:980px) {
+                .controls {
+                    margin-left: 270px;
+                }
+            }
+
+            @media(max-width: 845px) {
+                .mobile-toggle {
+                    top: 130px;
+                    font-size: 15px;
+                    left: 10px;
+                    width: 190px;
+                    height: 40px;
+                    
+                }
+                header .titulo  {
+                    font-size: 40px;
+                }
+
+                .places-list {
+                    top: 112px;
+                }
+                .relocated {
+                    bottom: 15px;
+                }
+                .controls {
+                    width: 250px;
+                    margin-left: 280px
+                }
+
+                .logo-nombre {
+                    padding: 0px;
+                    margin: 0px;
+                }
+            }
+
+            @media(max-width: 676px) {
+                header .titulo  {
+                    font-size: 30px;
+                }
+                .mobile-toggle {
+                    top: 110px;
+                    left: 10px;
+                }
+                .places-list {
+                    top: 100px;
+                }
+                .places-list {
+                    top: 100px;
+                    font-size: 10px;
+                    width: 200px;
+                    max-width: 200px;
+                    max-height: 400px;
+                    left: 5px;
+                }
+                .relocated {
+                    bottom: 20px;
+                    left: 180px;
+                }
+                .controls {
+                    margin-left: 220px;
+                }
+            }
+            @media(max-width: 507px) {
+                #toggleText {
+                    color: transparent;
+                }
+
+                #toggleButton {
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+
+                .controls {
+                    display: none;
+                    top: 15px;
+                    width: 270px;
+                    margin-left: 100px;
+                    position: absolute;
+
+                }
+                .mobile-search-button {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    background-color: #fff;
+                    border: 2px solid #1385F0;
+                    border-radius: 50%;
+                    color: #1385F0;
+                    font-size: 20px;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 105px;
+                    right: 10px;
+                    text-align: center;
+                    line-height: 46px; /* Ajusta el valor según sea necesario */
+                    }
+
+                    .mobile-search-button:hover {
+                    background-color: #1385F0;
+                    color: #fff;
+                }   
+
+                header .titulo  {
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
+                .mobile-toggle {
+                    font-size: 15px;
+                    left: 10px;
+                    width: 190px;
+                    height: 40px;
+                    top: 100px;
+                    background-color: transparent;
+                }
+                .places-list {
+                    top: 90px;
+                    font-size: 10px;
+                    width: 200px;
+                    max-width: 200px;
+                    max-height: 400px;
+                    left: 5px;
+                }
+                .relocated {
+                    bottom: 15px;
+                    left: 175px;
+                }
+            }
+            @media(max-width: 479px) {
+                .controls {
+                    margin-left: 70px;
+                }
+            }
+            @media(max-width: 427px) {
+                .controls {
+                    margin-left: 70px;
+                    width: 230px;
+                }
+            }
+        </style>
+    </body>
+
+</html>
+
+
+{% endblock  %}
