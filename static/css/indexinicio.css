@@ -577,7 +577,9 @@ footer {
     }
 
 }
-
+@media screen {
+    
+}
 @media(max-width:570px) {
     .container {
         height: 100vh; /* 100% del alto de la ventana */
