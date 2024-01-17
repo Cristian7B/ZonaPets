@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PetSearch.views import helloworld, helloworldRed, inicio, vista_barregistrar,vista_barmapa ,mapa_petfriendly, vista_bar, registrar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate, formulario
+from PetSearch.views import helloworld, helloworldRed, inicio, vista_barregistrar ,mapa_petfriendly, vista_bar, registrar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate, formulario
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -41,7 +41,6 @@ urlpatterns = [
     path("formulario/", formulario),
     path("vermapa/", mapa_petfriendly),
     path("vistabar/", vista_bar),
-    path("vistabarmapa/", vista_barmapa),
     path("vistabarregistrar/", vista_barregistrar),
     path("registroform/", Formularioviewregistroform.index, name = "registrarFormulario"),
     path("guardarform/", Formularioviewregistroform.procesar_formulario, name = "guardarform"),

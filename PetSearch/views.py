@@ -61,9 +61,6 @@ def formulario(request):
 def vista_bar(request):
     return render(request, "ZonaPets/barsiteapp.html")
 
-def vista_barmapa(request):
-    return render(request, "ZonaPets/barmapa.html")
-
 def vista_barregistrar(request):
     return render(request, "ZonaPets/barregistrar.html")
 
@@ -78,7 +75,7 @@ def mapa_petfriendly(request):
     # Procesa los resultados según sea necesario y pásalos al template
     ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 'telefono_usuario': ubicacion.telefono_usuario, 'latitud': ubicacion.latitud, 'longitud': ubicacion.longitud} for ubicacion in ubicaciones]
 
-    return render(request, "ZonaPets/mapa_petfriendly.html", {"ubicaciones": ubicaciones_dict})
+    return render(request, "ZonaPets/barmapa.html", {"ubicaciones": ubicaciones_dict})
 
 from django.views.decorators.csrf import csrf_protect
 from .models import registroform
