@@ -4,25 +4,16 @@ from django.http import JsonResponse
 from .forms import Formularioregistroform     
 from .forms import Formularioregistroformempresarial                                                                  
 
-#1ra Vista
-def helloworld(request):
-    return HttpResponse("hello_world")
-
-def helloworldRed(request):
-    return HttpResponse("<p style=""color: red;"">hola mundo</p>")
-
 # myapp/views.py
 from django.shortcuts import render
 from .models import Pagina
 from django.template import loader
+
 def inicio(request):
     pagina = Pagina.objects.first()
     template = loader.get_template("ZonaPets/index.html")
     documento = template.render({'pagina': pagina})
     return HttpResponse(documento)
-
-def registrar(request):    
-    return render(request, 'ZonaPets/registrar.html')
 
 def acercade(request):
     return render(request, "ZonaPets/acercade.html")
@@ -35,6 +26,9 @@ def preguntasfrecuentes(request):
 
 def equipo(request):
     return render(request, "ZonaPets/equipo.html")
+
+def micuenta(request):
+    return render(request, "ZonaPets/micuenta.html")
 
 def terminosycondiciones(request):
     return render(request, "ZonaPets/terminos.html")
@@ -54,7 +48,6 @@ def nuestrosservicios(request):
 def afiliate(request):
     return render(request, "ZonaPets/afiliate.html")
 
-    
 def formulario(request):
     return render(request, "ZonaPets/formulario.html")
 

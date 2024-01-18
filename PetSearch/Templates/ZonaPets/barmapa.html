@@ -29,7 +29,7 @@
                 />
             </div>
             <div class="mobile-toggle" id="toggleButton">
-                <i class="fa fa-bars toggle-icon" aria-hidden="true"></i>
+                <i class="fa fa-chevron-circle-down toggle-icon" aria-hidden="true"></i>
                 <span id = "toggleText">Lugares cerca de ti</span>
             </div>
             <!-- Agrega este botón donde desees en tu HTML -->
@@ -50,7 +50,7 @@
                     $("#toggleButton").click(function () {
                         $("#placesList").toggle();
                         var $toggleIcon = $("#toggleButton .toggle-icon");
-                        $toggleIcon.toggleClass("fa-bars fa-times");
+                        $toggleIcon.toggleClass("fa-chevron-circle-down fa-times");
                         var $toggleText = $("#toggleText");
                         $toggleText.toggle();
                         $("#toggleButton").toggleClass("clicked");
@@ -419,12 +419,13 @@
             }
 
             @media(max-width: 676px) {
+
                 header .titulo  {
                     font-size: 30px;
                 }
                 .mobile-toggle {
                     top: 110px;
-                    left: 10px;
+                    left: 7px;
                 }
                 .places-list {
                     top: 100px;
@@ -450,8 +451,8 @@
                     color: transparent;
                 }
 
-                #toggleButton {
-                    font-size: 22px;
+                .mobile-toggle i{
+                    font-size: 23px;
                     font-weight: bold;
                 }
 
@@ -491,10 +492,10 @@
                 }
                 .mobile-toggle {
                     font-size: 15px;
-                    left: 10px;
+                    left: 5px;
                     width: 190px;
                     height: 40px;
-                    top: 100px;
+                    top: 102px;
                     background-color: transparent;
                 }
                 .places-list {

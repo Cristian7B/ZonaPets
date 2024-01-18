@@ -6,6 +6,17 @@
     <header>
         <h1 class="titulo">!Hora de registrar tu negocio!</h1>
     </header>
+    <div class="div-link-empresarial">
+        <p class="registroempresa">¿Conoces un lugar? ¡Regístralo aquí como usuario!
+            <span class="linkformempresa">
+                <a href="http://zonapets.onrender.com/registroform/">
+                    <span>
+                        <ion-icon name="flag-outline"></ion-icon>
+                    </span>
+                </a>
+            </span>
+        </p>
+    </div>
 
     {% if form.errors %}
         <div class="alert-danger" role="alert">
@@ -115,6 +126,30 @@
             color:#007bff;
             font-size: 17;
         }
+
+        .registroempresa {
+            text-align: center;
+            font-size: 18px;
+            color: #0056b3;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+
+        .registroempresa a {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 25px;
+            margin-left: 5px;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .registroempresa a:hover {
+            color: #222327;
+        }
+
+
         @media(max-width: 553px) {
             .mi-formulario {
                 margin: 20px auto;
@@ -220,6 +255,43 @@
             margin-bottom: 20px;
             padding: 10px;
             border-radius: 5px;
+        }
+
+        @media(max-width: 884px) {
+        .titulo {
+            font-size: 60px;
+        }
+        }
+
+        @media(max-width: 829px) {
+        .titulo {
+            font-size: 50px;
+        }
+        }
+
+        @media(max-width: 691px) {
+        .titulo {
+            font-size: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        }
+
+        @media(max-width: 592px) {
+        .titulo {
+            font-size: 30px;
+        }
+        }
+
+        @media(max-width: 444px) {
+            .titulo {
+                font-size: 25px;
+            }
+
+            .subtitulo {
+                font-size: 15px;
+            }
+
         }
 
 

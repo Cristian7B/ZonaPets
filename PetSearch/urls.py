@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PetSearch.views import helloworld, helloworldRed, inicio, vista_barregistrar ,mapa_petfriendly, vista_bar, registrar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate, formulario
+from PetSearch.views import inicio, micuenta, mapa_petfriendly, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -24,10 +24,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("helloworld/", helloworld),
-    path("hellow/", helloworldRed),
     path("inicio-zonapets/", inicio),
-    path("registrar/", registrar),
     path("contacto/", contacto),
     path("acercade/", acercade),
     path("terminos-y-condiciones/", terminosycondiciones),
@@ -35,18 +32,16 @@ urlpatterns = [
     path("asesores/", asesores),
     path("convenios/", convenios),
     path("pagos/", pagos),
+    path("micuenta/", micuenta),
     path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
-    path("formulario/", formulario),
     path("vermapa/", mapa_petfriendly),
     path("vistabar/", vista_bar),
-    path("vistabarregistrar/", vista_barregistrar),
     path("registroform/", Formularioviewregistroform.index, name = "registrarFormulario"),
     path("guardarform/", Formularioviewregistroform.procesar_formulario, name = "guardarform"),
     path("registroformempresarial/", Formularioviewregistroformempresarial.index, name = "registrarFormularioEmpresa"),
     path("guardarformempresarial/", Formularioviewregistroformempresarial.procesar_formulario, name = "guardarformEmpresa"),
-    path("mapamarkers/", Formularioviewregistroform.mostrar_mapa, name=("mostrar_mapa"))
 ]
 
 if settings.DEBUG:
