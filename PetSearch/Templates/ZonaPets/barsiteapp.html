@@ -18,7 +18,7 @@
     <nav class="navegacion" id="move-menu">
       <ul class="menu-horizontal">
         <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
-        <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a>
+        <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
         <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
         <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
         <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
@@ -33,7 +33,7 @@
     <div class="navigation">
       <ul>
         <li class="list active">
-          <a href="http://zonapets.onrender.com/vermapa/">
+          <a href="https://zonapets.onrender.com/vermapa/">
             <span class="icon">
               <ion-icon name="map-outline"></ion-icon>
             </span>
@@ -41,7 +41,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="http://zonapets.onrender.com/micuenta/">
+          <a href="https://zonapets.onrender.com/micuenta/">
             <span class="icon">
               <ion-icon name="person-outline"></ion-icon>
             </span>
@@ -49,7 +49,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="http://zonapets.onrender.com/registroform/">
+          <a href="https://zonapets.onrender.com/registroform/">
             <span class="icon">
               <ion-icon name="add-outline"></ion-icon>
             </span>
@@ -57,7 +57,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="http://zonapets.onrender.com/afiliate/">
+          <a href="https://zonapets.onrender.com/afiliate/">
             <span class="icon">
               <ion-icon name="card-outline"></ion-icon>
             </span>
@@ -65,7 +65,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="http://zonapets.onrender.com/convenios/">
+          <a href="https://zonapets.onrender.com/convenios/">
             <span class="icon">
               <ion-icon name="storefront-outline"></ion-icon>
             </span>
@@ -77,7 +77,6 @@
     </div>
   </div>
   
-      
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
@@ -94,9 +93,9 @@
 
                   // Verifica si la URL actual corresponde al enlace o es uno de los enlaces especiales de registro
                   const isMatchingLink = currentUrl.includes(link.getAttribute('href')) || link.getAttribute('href') === currentUrl;
-                  const isSpecialRegistro = (currentUrl.includes("http://zonapets.onrender.com/registroform/") || 
-                                              currentUrl.includes("http://zonapets.onrender.com/registroformempresarial/")) && 
-                                              link.getAttribute('href').includes("http://zonapets.onrender.com/registroform/");
+                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.onrender.com/registroform/") || 
+                                              currentUrl.includes("https://zonapets.onrender.com/registroformempresarial/")) && 
+                                              link.getAttribute('href').includes("https://zonapets.onrender.com/registroform/");
 
                   if ((isMatchingLink || isSpecialRegistro) && !activeFound) {
                       item.classList.add("active");
