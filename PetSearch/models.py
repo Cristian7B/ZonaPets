@@ -8,13 +8,13 @@ class Pagina(models.Model):
 
 class registroform(models.Model):
     nombre_compañia = models.CharField(max_length=75)
-    telefono_usuario = models.IntegerField(blank=True, null=True,)
+    telefono_usuario = models.CharField(max_length=12, blank=True, null=True,)
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=75)
     
 class registroformularioempresarial(models.Model):
     nombre_de_quien_registra = models.CharField(max_length=100, blank=True, null=True,)
-    telefono_usuario = models.IntegerField(blank=True, null=True,)
+    telefono_usuario = models.CharField(max_length=12, blank=True, null=True,)
     correo_electronico = models.CharField(max_length=100)
     nombre_compañia = models.CharField(max_length=75)
     latitud = models.CharField(max_length=100)
@@ -25,6 +25,6 @@ class registrofinal2(models.Model):
     latitud = models.CharField(max_length=150)
     longitud = models.CharField(max_length=150)
     correo_electronico = models.CharField(max_length=150, null=True)
-    telefono_usuario = models.IntegerField(blank=True, null=True,)
+    telefono_usuario = models.CharField(max_length=12, blank=True, null=True,)
 
 
