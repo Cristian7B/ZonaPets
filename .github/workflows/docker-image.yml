@@ -1,4 +1,4 @@
-name: Docker Image CI/CD
+name: Docker Image CI
 
 on:
   push:
@@ -13,9 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Prepare tag
+      id: prep
+      run: echo "::set-output name=tag::$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD)"
+
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag cristian7b/zonapets:latest
+        docker build . --file Dockerfile --tag cristian7b/zonapets:${{ steps.prep.outputs.tag }}
 
     - name: Login to Docker Hub
       run: |
@@ -23,4 +27,4 @@ jobs:
 
     - name: Push the Docker image
       run: |
-        docker push cristian7b/zonapets:latest
+        docker push cristian7b/zonapets:${{ steps.prep.outputs.tag }}
