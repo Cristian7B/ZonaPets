@@ -24,7 +24,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("inicio-zonapets/", inicio),
+    # path("inicio-zonapets/", inicio),
     path("contacto/", contacto),
     path("acercade/", acercade),
     path("terminos-y-condiciones/", terminosycondiciones),

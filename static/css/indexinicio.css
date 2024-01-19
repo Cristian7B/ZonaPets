@@ -9,6 +9,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     scroll-behavior: smooth;
+    height: 100%;
 }   
 
 html {
@@ -22,21 +23,24 @@ html {
 }
 
 header {
-    font-family:'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     text-align: center;
-    justify-content: center;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    height: 100%;
 }
 
 section {
     margin: 0;
     display: flex;
-    justify-content: space-between;
-    background-color: #1385F0;
+    justify-content: center;
+    background-color: #ffffff;
     height: 40px;
     align-items: center;
-    margin-bottom: 150px;
+    width: 100%;
 }
 
 .imgnavbar {
@@ -50,7 +54,7 @@ section {
 .logo-nombre {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #1385F0;
     text-decoration: none;
     font-weight: bold;
     font-size: 25px;
@@ -63,13 +67,14 @@ section {
 
 .nombre{
     font-size: 70px;
-    margin-bottom: 20px;
 }
 
 .navegacion { 
     padding: 0px;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 }
 
 .navegacion ul {
@@ -80,8 +85,34 @@ section {
     align-items: center ;
 }
 
+.navegacion ul {
+    list-style: none;
+}
+
+.navegacion li {
+    margin: 0 20px; 
+}
+
+.navegacion ul li a {
+    color: #1385F0;
+}
+
+.navegacion a, header a {
+    text-decoration: none;
+    color: #fff; 
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navegacion a:hover, header a:hover {
+    color: #0F5B9E; 
+}
+
 .menu-horizontal {
     display: flex;
+    position: relative;
+    align-items: center;
 }
 
 .menu-horizontal > li {
@@ -93,39 +124,13 @@ section {
     display: block;
 }
 
-.navegacion ul {
-    list-style: none;
-}
-
-.menu-horizontal li:hover > .menu-vertical {
-    visibility: visible;
-    opacity: 1;
-}
-
-li {
-    margin: 0 20px; 
-}
-
-.navegacion a, header a {
-    text-decoration: none;
-    color: #ffffff; 
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.navegacion a:hover, header a:hover {
-    color: #0F5B9E; 
-}
-
-
 #icon-menu {
     width: 50px;
     height: 50px;
     position: absolute;
-    right: 5px;
+    left: 5px;
     font-size: 20px;
-    color: #fff;
+    color: #1385F0;
     cursor: pointer;
     padding: 10px;
     justify-content: center;
@@ -133,9 +138,9 @@ li {
     display: none;
     transition: color 0.3s ease-in-out;
 }
-
+  
 #icon-menu:hover {
-    color: #0F5B9E;
+color: #0F5B9E;
 }
 
 
@@ -167,8 +172,8 @@ h3 {
     cursor: pointer;
     border: none;
     border-radius: 50px;
-    color: #fff;
-    background-color: #1385F0;
+    color: #1385F0;
+    background-color: #fff;
     transition: background-color 0.3s, color 0.3s;
     font-family: "Poppins", "sans-serif";
 }
@@ -209,15 +214,15 @@ h3 {
 .boton-registrar {
     text-decoration: none;
     padding: 15px 30px;
-    background-color: #1385F0;
-    color: #fff;
+    background-color: #fff;
+    font-weight: bold;
+    color: #1385F0;
     border-radius: 50px;
     cursor: pointer;
     border-style: none;
     font-size: 18px;
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-family: "Poppins", "sans-serif";
 }
 
@@ -259,24 +264,6 @@ h3 {
 
 .saber_mas {
     margin-top: 150px;
-    
-}
-
-.container2 h1 {
-    text-align: center;
-    color: #1385F0;
-    font-size: 44px;
-    margin-bottom: 30px;
-}
-
-.container2 h3 {
-    margin-left: 150px;
-    color: #0F5B9E;
-    font-size: 28px;
-    margin-top: 0%;
-    margin-left: 40px;
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .texto p,  .texto3 p{
@@ -318,13 +305,7 @@ h3 {
     margin-left: 210px;
 }
 
-.container3 {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 footer {
-    margin-top: 100px;
     background-color: #0F5B9E;  
     padding: 40px 0;
 }
@@ -399,7 +380,6 @@ footer {
     }
 }
 .titulo-slider {
-    margin-top: 30px;
     text-align: center;
     font-size: 40px ;
     padding-top: 50px;
@@ -457,7 +437,9 @@ footer {
     padding: 30px 0px 30px 0px;
 }
 
-
+.container-all {
+    height: 100%;
+}
 
 @keyframes slide {
     0% { margin-left: 0; }
@@ -501,11 +483,16 @@ footer {
 
     body{
         overflow-x: hidden;
+        position: relative;
     }
 
     section {
-        margin-bottom: 110px;
-        justify-content: flex-start;
+        background-color: #fff;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        top: 0px;
+        display: flex;
     }
 
     .container-all {
@@ -513,7 +500,7 @@ footer {
     }
 
     .move-container-all{
-        transform: translateX(300px);
+        transform: translateX(1000px);
     }
 
     .menu-horizontal li a{
@@ -526,17 +513,21 @@ footer {
         height: 100vh;
         position: fixed;
         left: 0;
-        top: 40px;
         background: #1385F0;
         box-shadow: 10px 0 20px -25px #000000;
         overflow: hidden;
         transform: translateX(-350px);
         transition: all 300ms cubic-bezier(1,0,0,1);
         text-align: left;
+        top: 40px;
+        color: #1385F0;
+        background-color: #fff;
+        display: inline-block;
+        flex-direction: column;
     }
  
     .show-lateral {
-        width: 260px;
+        width: 100%;
         transform: translateX(0px);
     }
 
@@ -550,17 +541,27 @@ footer {
     }
 
     .navegacion ul {
-        align-items: flex-start;
+        flex-direction: column;
+        padding: 0px;
         display: flex;
-        margin-bottom: 0px;
+        margin-top: 10px;
     }
 
     .navegacion ul li{
-        height: 30px;
+        display: block;
+        height: auto;
+        margin-bottom: 10px;
     }
+  
+    .navegacion a {
+      font-size: 18px;
+    }  
 
     .navegacion ul li a{
-        justify-content: flex-start;
+        display: block;
+        color: #0F5B9E;
+        text-align: center;
+        margin-bottom: 15px;
     }
 
     .navegacion ul li a i {
@@ -613,10 +614,6 @@ footer {
 }
 
 @media(max-width:470px) {
-
-    section {
-        margin-bottom:180px;
-    }
     /* Ajustes para el texto del nombre en el header */
     .nombre {
         font-size: 50px; /* Ajusta el tamaño del texto según tus necesidades */
