@@ -119,13 +119,13 @@
 
                     const placesList = document.getElementById("placesList");
                     function addPlaceToList(nombre) {    
-
                         const placeItem = document.createElement("div");
                         placeItem.className = "place-item";
                         placeItem.textContent = nombre;
                         placeNames.push(nombre);
 
                         placeItem.addEventListener("click", function () {
+                            // Encuentra el marcador correspondiente
                             const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
                             if (matchingMarker) {
                                 map.panTo(matchingMarker.getPosition());
@@ -134,6 +134,16 @@
                                     matchingMarker.setAnimation(null);
                                 }, 3500);
                             }
+
+                            $("#placesList").toggle(); 
+
+                            var $toggleIcon = $("#toggleButton .toggle-icon");
+                            $toggleIcon.toggleClass("fa-chevron-circle-down fa-times");
+                            var $toggleText = $("#toggleText");
+                            $toggleText.toggle();
+                            $("#toggleButton").toggleClass("clicked");
+                            var $toggleIcon = $(this);
+                            $toggleIcon.toggleClass("relocated");
                         });
 
                         placesList.appendChild(placeItem);
