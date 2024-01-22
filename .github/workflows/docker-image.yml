@@ -28,3 +28,7 @@ jobs:
     - name: Push the Docker image
       run: |
         docker push cristian7b/zonapets:${{ steps.prep.outputs.tag }}
+
+    - name: Deploy to Render
+      run: |
+        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
