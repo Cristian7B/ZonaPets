@@ -27,6 +27,9 @@ def preguntasfrecuentes(request):
 def equipo(request):
     return render(request, "ZonaPets/equipo.html")
 
+def prueba(request):
+    return render(request, "ZonaPets/pruebaicon.html")
+
 def micuenta(request):
     return render(request, "ZonaPets/micuenta.html")
 

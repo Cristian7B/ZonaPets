@@ -158,12 +158,13 @@ section {
   font-weight: bold;
   font-size: 25px;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   margin-left: 20px;
 }
 
 .logo-nombre:hover {
   color: #0F5B9E;
+  transform: scale(1.1);
 }
 
 .navegacion { 
@@ -199,11 +200,19 @@ section {
   color: #ffffff; 
   font-size: 16px;
   font-weight: bold;
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .navegacion a:hover, header a:hover {
   color: #0F5B9E; 
+}
+
+.iconos {
+  transition: all 0.2s ease-in-out;
+}
+
+.iconos:hover {
+  transform: scale(1.4);
 }
 
 .menu-horizontal {
@@ -233,7 +242,7 @@ section {
   justify-content: center;
   align-items: center;
   display: none;
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #icon-menu:hover {

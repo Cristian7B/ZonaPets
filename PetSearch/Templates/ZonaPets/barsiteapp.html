@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-    <link rel="stylesheet" href="{% static 'css/stylesnavbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexnavbar.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'imagenes/finalogo.png' %}">
 </head>
 <body>
   <section>
@@ -20,9 +21,9 @@
         <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
         <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
         <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
-        <li><a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a></li>
-        <li><a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a></li>
-        <li><a href="https://www.youtube.com/" class="fa fa-youtube-play" target="_blank"></a></li>
+        <li class="iconos"><a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a></li>
+        <li class="iconos"><a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a></li>
+        <li class="iconos"><a href="https://www.youtube.com/" class="fa fa-youtube-play" target="_blank"></a></li>
       </ul>
     </nav>
   </section>
@@ -90,9 +91,9 @@
               list.forEach((item, index) => {
                   const link = item.querySelector('a');
                   const isMatchingLink = currentUrl.includes(link.getAttribute('href')) || link.getAttribute('href') === currentUrl;
-                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.onrender.com/registroform/") ||
+                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.onrender.com/registrar/") ||
                                               currentUrl.includes("https://zonapets.onrender.com/guardarform/") || 
-                                              currentUrl.includes("https://zonapets.onrender.com/registroformempresarial/") ||  
+                                              currentUrl.includes("https://zonapets.onrender.com/registrarempresa/") ||  
                                               currentUrl.includes("https://zonapets.onrender.com/guardarformempresarial/")) && 
                                               link.getAttribute('href').includes("https://zonapets.onrender.com/registroform/");
 

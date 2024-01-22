@@ -20,10 +20,18 @@ body {
 }
 
 header .titulo {
-  color: #1385F0;
+  color: #0F5B9E;
   font-size: 75px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.iconoresponsive {
+  text-align: center;
+  color: #1385F0;
+  font-weight: bold;
+  font-size: 10px;
+  display: none;
 }
 
 .places-list {
@@ -80,7 +88,6 @@ header .titulo {
   padding: 10px;
   justify-content: center;
   align-items: center;
-  transition: color 0.3s ease-in-out;
   font-size: 20px;
   top: 170px;
   z-index: 2;
@@ -88,7 +95,6 @@ header .titulo {
   background-color: #fff;
   border-radius: 2px #1385F0;
 }
-/* Agrega estilos adicionales al icono en el estado hover si es necesario */
 
 .relocated {
   position: absolute;
@@ -97,7 +103,7 @@ header .titulo {
 }
 
 .clicked {
-  background-color: transparent; /* Cambia el color de fondo a tu preferencia */
+  background-color: transparent; 
 }
 
 
@@ -261,3 +267,4 @@ footer {
   width: 100%;
   z-index: 1000;
 }
+
