@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from supabase import create_client
+
+#Autenticación por medio de Supabase
+
+AUTHENTICATION_BACKENDS = ['PetSearch.supabase_backend.SupabaseBackend', 'django.contrib.auth.backends.ModelBackend']
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,10 +34,10 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp"]
 SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["zonapets.onrender.com", "127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','http://127.0.0.1:8000/']
 
 # Application definition
 
@@ -44,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PetSearch',
+    "rest_framework",
+    "rest_framework.authtoken"
 ]
 
 X_FRAME_OPTIONS = 'DENY'
@@ -99,8 +106,8 @@ DATABASES = {
         'NAME': 'zonapets_posgres_db',
         'USER': 'zonapets_posgres_db_user',
         'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
-        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
-        'PORT': '5432',       # El puerto predeterminado para PostgreSQL
+        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',
+        'PORT': '5432',      
     }
 }
 

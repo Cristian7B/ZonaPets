@@ -3,11 +3,30 @@ from django.http import HttpRequest
 from django.http import JsonResponse
 from .forms import Formularioregistroform     
 from .forms import Formularioregistroformempresarial                                                                  
-
-# myapp/views.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Pagina
 from django.template import loader
+from django.views.decorators.csrf import csrf_protect
+from .models import registroform
+from django.db import connections
+from .models import registrofinal2
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from .configuracion_supabase import supabase
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(["POST"])
+def login(request):
+    return Response({})
+
+@api_view(["POST"])
+def singup(request):
+    return Response({})
+
+@api_view(["GET"])
+def test_token(request):
+    return Response({})
 
 def inicio(request):
     pagina = Pagina.objects.first()
@@ -60,10 +79,6 @@ def vista_bar(request):
 def vista_barregistrar(request):
     return render(request, "ZonaPets/barregistrar.html")
 
-
-from django.db import connections
-from .models import registrofinal2
-
 def mapa_petfriendly(request):
     # Obtén todos los registros de la base de datos usando el modelo
     ubicaciones = registrofinal2.objects.all()
@@ -73,8 +88,6 @@ def mapa_petfriendly(request):
 
     return render(request, "ZonaPets/barmapa.html", {"ubicaciones": ubicaciones_dict})
 
-from django.views.decorators.csrf import csrf_protect
-from .models import registroform
 class Formularioviewregistroform(HttpRequest):
 
     def index(request):
