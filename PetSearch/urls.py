@@ -15,9 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.urls import re_path
-from PetSearch.views import micuenta, singup, login, test_token,mapa_petfriendly, prueba,vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from django.urls import path, include
+from PetSearch.views import micuenta, mapa_petfriendly, prueba,vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -25,11 +24,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("inicio-zonapets/", inicio),
+    path('api/', include('user_api.urls')),
+    # re_path("login/", login),
+    # re_path("singup/", singup),
+    # re_path("test_token/", test_token),
     path("contacto/", contacto),
-    re_path("login/", login),
-    re_path("singup/", singup),
-    re_path("test_token/", test_token),
     path("acercade/", acercade),
     path("terminos-y-condiciones/", terminosycondiciones),
     path("equipo/", equipo),

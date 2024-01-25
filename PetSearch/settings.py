@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-from supabase import create_client
-
-#Autenticación por medio de Supabase
-
-AUTHENTICATION_BACKENDS = ['PetSearch.supabase_backend.SupabaseBackend', 'django.contrib.auth.backends.ModelBackend']
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,10 +29,17 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp"]
 SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["zonapets.onrender.com", "127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','http://127.0.0.1:8000/']
+CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','https://*.127.0.0.1']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -50,7 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'PetSearch',
     "rest_framework",
-    "rest_framework.authtoken"
+    "rest_framework.authtoken",
+    "corsheaders",
+    'user_api.apps.UserApiConfig',
 ]
 
 X_FRAME_OPTIONS = 'DENY'
@@ -64,6 +68,7 @@ GOOGLE_SHEETS_CREDS = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,10 +111,22 @@ DATABASES = {
         'NAME': 'zonapets_posgres_db',
         'USER': 'zonapets_posgres_db_user',
         'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
-        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',
-        'PORT': '5432',      
+        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+        'PORT': '5432',       # El puerto predeterminado para PostgreSQL
     }
 }
+
+AUTH_USER_MODEL = "user_api.AppUser"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
 
 # postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
 # Password validation
@@ -155,4 +172,3 @@ STATICFILES_DIRS = [STATIC_DIR]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

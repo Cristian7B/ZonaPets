@@ -1,19 +1,26 @@
 POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
-{"username": "cristian", "password":"andres1234"}
+{"username": "andresito", "password":"andres1010"}
 
 ###
 
 POST http://127.0.0.1:8000/singup/
 Content-Type: application/json
 
-{"username": "cristian", "password":"andres1234", "email": "criscamcr7@gmail.com"}
+{"username": "andresito", "password":"andres1010", "email": "adnresbasdhfklasjdh@gmail.com"}
+
+###
+GET http://127.0.0.1:8000/test_token/
+Content-Type: application/json
+Authorization: Token 66a21ffc706964190a9973dcf1d3890030029ccd
+
+{}
 
 ###
 
-GET http://127.0.0.1:8000/test_token/
+POST http://127.0.0.1:8000/logout/
 Content-Type: application/json
+Authorization: Token 8c50fd97f29f06d5d028fa3ee76f81c63aeac417
 
-{"username": "cristian", "password":"andres1234", "email": "criscamcr7@gmail.com"}
 

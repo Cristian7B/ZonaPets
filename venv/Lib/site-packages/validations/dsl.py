@@ -1,0 +1,100 @@
+from collections import Iterable
+
+
+def is_even(number):
+    """
+    Check if a number is even.
+    """
+    assert isinstance(number, int), 'Input is not instance of int'
+    return number % 2 == 0
+
+
+def is_odd(number):
+    """
+    Check if a number is odd.
+    """
+    return not is_even(number)
+
+
+def is_positive(number):
+    """
+    Checks if a number is positive or zero.
+    """
+    assert isinstance(number, float) or isinstance(number, int), 'Input is not instance of int nor float'
+    return number >= 0
+
+
+def non_positive(number):
+    """
+    Checks if a number is strictly negative
+    """
+    return not is_positive(number)
+
+
+def is_alphabetic(string):
+    """
+    Checks if an string contains only letters.
+    """
+    assert isinstance(string, str), 'Input is not string'
+    return string.isalpha()
+
+
+def is_alphanumeric(string):
+    """
+    Checks if a string contains only letters and numbers.
+    """
+    assert isinstance(string, str), 'Input is not string'
+    return string.isalnum()
+
+
+def is_numeric(string):
+    """
+    Checks if a string contains only numbers.
+    """
+    assert isinstance(string, str), 'Input is not string'
+    return string.isdecimal()
+
+
+def is_valid_percentage(number):
+    """
+    Checks that a number that represents a percentage is within the proper bounds.
+    """
+    assert isinstance(number, float) or isinstance(number, int), 'Input is not instance of int nor float'
+    return 0 <= number <= 1
+
+
+def is_valid_timestamp(date, unit='millis'):
+    """
+    Checks that a number that represents a date as milliseconds is correct.
+    """
+    assert isinstance(date, int), "Input is not instance of int"
+
+    if unit is 'millis':
+        return is_positive(date) and len(str(date)) == 13
+    elif unit is 'seconds':
+        return is_positive(date) and len(str(date)) == 10
+    else:
+        raise ValueError('Unknown unit "%s"' % unit)
+
+
+def present(field_name, dictionary):
+    """
+    Checks if a field is present in a dictionary.
+    """
+    assert isinstance(dictionary, dict), "Input is not instance of dict"
+    return field_name in dictionary
+
+
+def is_empty(iterable):
+    """
+    Checks if an iterable is empty
+    """
+    assert isinstance(iterable, Iterable), "Input is not iterable"
+    return any(True for _ in iterable)
+
+
+def non_empty(iterable):
+    """
+    Checks if an iterable has at least one element.
+    """
+    return not is_empty(iterable)
