@@ -37,6 +37,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost',
     'http://127.0.0.1',
     'http://0.0.0.0',
+    'https://zonapets.onrender.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -105,16 +106,32 @@ WSGI_APPLICATION = 'PetSearch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'zonapets_posgres_db',
+#         'USER': 'zonapets_posgres_db_user',
+#         'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
+#         'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+#         'PORT': '5432',       # El puerto predeterminado para PostgreSQL
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'zonapets_posgres_db',
-        'USER': 'zonapets_posgres_db_user',
-        'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
-        'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+        'NAME': 'zonapetsbackup',
+        'USER': 'devcristian',
+        'PASSWORD': '0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d',
+        'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
         'PORT': '5432',       # El puerto predeterminado para PostgreSQL
     }
 }
+# postgres://devcristian:0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d@dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com/zonapetsbackup
+# postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
+# Password validation
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = "user_api.AppUser"
 
