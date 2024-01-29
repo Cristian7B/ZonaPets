@@ -52,10 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PetSearch',
-    "rest_framework",
-    "rest_framework.authtoken",
     "corsheaders",
     'user_api.apps.UserApiConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 X_FRAME_OPTIONS = 'DENY'
@@ -128,6 +128,18 @@ DATABASES = {
         'PORT': '5432',       # El puerto predeterminado para PostgreSQL
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.julwhkcaxymmgizmaiic',
+#         'PASSWORD': 'RfO0itPqNLXWhQFN',
+#         'HOST': 'aws-0-us-west-1.pooler.supabase.com',  # O la dirección del servidor donde está alojada tu base de datos
+#         'PORT': '6543',       # El puerto predeterminado para PostgreSQL
+#     }
+# }
 # postgres://devcristian:0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d@dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com/zonapetsbackup
 # postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
 # Password validation
