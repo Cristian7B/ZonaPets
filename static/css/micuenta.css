@@ -1,3 +1,7 @@
+body {
+    background-color: hsl(214, 35%, 54%);
+}
+
 .containerform {
     width: fit-content;
     border: #1385F0 2px solid;
@@ -8,7 +12,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px #0056b3;
-
+    justify-content: center;
 }
 
 .containerform h1 {
@@ -81,6 +85,8 @@ input {
     border-radius: 10px;
     font-family: "Poppins";
     padding: 5px 8px;
+    justify-content: center;
+    align-items: center;
 }
 
 .logout-button:hover {
@@ -131,9 +137,17 @@ button:hover {
     }
 }
 
-@media(max-width: 416px) {
+@media(max-width: 440px) {
     .containerform h1 {
         font-size: 20px;
+    }
+
+    .containerform h2 {
+        font-size: 30px;
+    }
+
+    .logout-button {
+        justify-content: center;
     }
 
     .containerform {
@@ -142,8 +156,14 @@ button:hover {
     }
 }
 
-@media(max-width: 416px) {
+@media(max-width: 392px) {
+    .containerform h2 {
+        font-size: 25px;
+    }
+}
+
+@media(max-width: 450px) {
     .containerform {
-        margin: 0px auto 3000px auto;
+        margin: 0px auto 200px auto;
     }
 }
