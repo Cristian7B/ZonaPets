@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let registrationToggle = false;
 
     function checkUserStatus() {
-        axios.get("http://127.0.0.1:8000/api/user/", { withCredentials: true })
+        axios.get("https://zonapets.onrender.com/api/user/", { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
                 renderApp();
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        axios.post("http://127.0.0.1:8000/api/register/", { email, username, password })
+        axios.post("https://zonapets.onrender.com/api/register/", { email, username, password })
             .then(function (response) {
-                return axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true });
+                return axios.post("https://zonapets.onrender.com/api/login/", { email, password }, { withCredentials: true });
             })
             .then(function (response) {
                 currentUser = true;
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true })
+        axios.post("https://zonapets.onrender.com/api/login/", { email, password }, { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
                 window.location.href = "https://zonapets.onrender.com/vermapa/";
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function submitLogout(e) {
         e.preventDefault();
-        axios.post("http://127.0.0.1:8000/api/logout/", {}, { withCredentials: true })
+        axios.post("http://zonapets.onrender.com/api/logout/", {}, { withCredentials: true })
             .then(function (response) {
                 currentUser = false;
                 renderApp();
