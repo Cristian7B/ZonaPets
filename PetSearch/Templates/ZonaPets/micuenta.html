@@ -1,17 +1,24 @@
-{% extends "ZonaPets/barsiteapp.html" %}
-{% block content %}
+<!-- {% extends "ZonaPets/barsiteapp.html" %}
+{% block content %} -->
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta | ZonaPets</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'javascript/cuenta.js' %}" defer></script>
 </head>
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/equipo.css' %}">
+<link rel="stylesheet" href="{% static 'css/micuenta.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
+  <body>
+    <div id="app"></div>
+
+  </body> 
+
 </html>
-{% endblock %}
+<!-- {% endblock %} -->
