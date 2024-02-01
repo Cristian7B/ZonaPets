@@ -2,42 +2,33 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ["Cristian"]
+    branches: [ "Cristian" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    outputs:
-      # Define la salida "tag" para almacenar el tag de la imagen
-      id: tag
-      settable: true
-
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Prepare tag
-        id: prep
-        run: echo "::set-output name=tag::$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD)"
+    - name: Prepare tag
+      id: prep
+      run: echo "::set-output name=tag::$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD)"
 
-      - name: Build the Docker image
-        run: |
-          docker build . --file Dockerfile --tag cristian7b/zonapets:${{ steps.prep.outputs.tag }}
+    - name: Build the Docker image
+      run: |
+        docker build . --file Dockerfile --tag cristian7b/zonapets:${{ steps.prep.outputs.tag }}
 
-      - name: Save tag as an output
-        run: echo "TAG=${{ steps.prep.outputs.tag }}" >> $GITHUB_ENV
+    - name: Login to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-  deploy:
-    runs-on: ubuntu-latest
+    - name: Push the Docker image
+      run: |
+        docker push cristian7b/zonapets:${{ steps.prep.outputs.tag }}
 
-    needs: build
-
-    steps:
-      - name: Deploy to Render
-        run: |
-          # Usa la variable de entorno TAG guardada anteriormente en el despliegue
-          docker push cristian7b/zonapets:${{ needs.build.outputs['tag'] }}
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
-
+    - name: Deploy to Render
+      run: |
+        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
