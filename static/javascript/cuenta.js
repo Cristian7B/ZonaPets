@@ -61,32 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const app = document.getElementById('app');
         app.innerHTML = '';
 
-        let navbar = `<section>
-                        <img src="/static/imagenes/Logo.png" alt="img-waulandia" class="imgnavbar">
-                        <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
-                        <nav class="navegacion" id="move-menu">
-                            <ul class="menu-horizontal">
-                                <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
-                                <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
-                                <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
-                                <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                                <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                                <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>`;
+        let navbar = ""
 
         if (currentUser) {
-            navbar += `<li><button class="logout-button" onclick="submitLogout(event)">Log out</button></li>`;
-        } else {
-            let buttonText = registrationToggle ? "Log in" : "Register";
-            navbar += `<li><button class="auth-button" id="form_btn" onclick="updateFormBtn()">${buttonText}</button></li>`;
-        }
+            navbar += `<li><button class="logout-button" onclick="submitLogout(event)">Cerrar sesión</button></li>`;
+        }              
 
-        navbar += `       </ul>
-                        </nav>
-                        <div id="icon-menu">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
-                        </div>
-                      </section>`;
-        app.innerHTML += navbar;
+        navbar += "";
 
         let formContent = '';
 
@@ -109,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                        </div>
                                        <button class="auth-button" type="submit">Submit</button>
                                    </form>
-                                   <p class="change-screen">¿Ya tienes una cuenta?, <span><a href="#" onclick="updateFormBtn(event)">inicia sesión</a></span></p>
+                                   <p class="change-screen" style="color:#1385F0; text-align: center; font-weight: bold; margin-top:20px; font-size:12px; ">¿Ya tienes una cuenta?, <span><a style="text-decoration:none; color: #0F5B9E; transition: all 0.3s ease" href="#" onclick="updateFormBtn(event)">inicia sesión</a></span></p>
                                </div>`;
             } else {
                 formContent = `<div class="containerform">
@@ -125,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                        </div>
                                        <button type="submit">Submit</button>
                                    </form>
-                                   <p class="change-screen">¿No tienes una cuenta?, <span><a href="#" onclick="updateFormBtn(event)">crea una</a></span></p>
+                                   <p class="change-screen" style="color:#1385F0; text-align: center; font-weight: bold; margin-top:20px; font-size:12px; ">¿No tienes una cuenta?, <span><a style="text-decoration:none; color: #0F5B9E; transition: all 0.3s ease" href="#" onclick="updateFormBtn(event)">crea una</a></span></p>
                                </div>`;
             }
         } else {
@@ -149,4 +130,19 @@ document.addEventListener("DOMContentLoaded", function () {
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;
+
+document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+
+function mostrar_menu() {
+    document.getElementById("move-content").classList.toggle("move-containerform");
+    document.getElementById("move-menu").classList.toggle("show-lateral");
+
+    // Agregar código para ajustar la posición de logo-nombre durante el modo responsive
+    var logoNombre = document.querySelector(".logo-nombre");
+    logoNombre.classList.toggle("move-logo-responsive");
+    var icono = document.querySelector("#icon-menu i");
+    icono.classList.toggle("fa-bars");
+    icono.classList.toggle("fa-times");
+}
+
 
