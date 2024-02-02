@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>ZonaPets - Encuentra lugares pet-friendly</title>
+</head>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css/' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
+
+
+<body>
+    <div class="container" style="background-image:url('{% static 'imagenes/wallpaper.avif' %}'); background-attachment: local; background-size: 100%;">
+        <section>
+                <!--<a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
+                <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">-->
+
+                <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
+                <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
+                <nav class="navegacion" id="move-menu"> 
+                    <ul class="menu-horizontal">
+                        <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
+                        <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a>
+                        <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
+                        <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                        <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                        <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                    </ul>
+                </nav>
+    
+                <div id="icon-menu">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+        </section>
+        <div class="container-all" id="move-content">
+            <header>
+
+                <h1 class="nombre">¡Bienvenido a ZonaPets!</h1>
+    
+                <div class="contenedor-registro">
+                    <a href="http://zonapets.onrender.com/vermapa/" class="boton">Explorar Sitios PetFriendly</a>
+                
+                    <div class="botones-inicio">
+                        <div class="desplegable">
+                            <button class="boton-registrar">Registrar Nuevo Lugar</button>
+                            <div class="registrar-menu">
+                                <a href="http://zonapets.onrender.com/registroform/">Como peludito visitante</a>
+                                <a href="http://zonapets.onrender.com/registroformempresarial/">Como propietario PetFriendly</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="informacion-zonapets">
+                    <h3 class="saber_mas">Sobre ZonaPets</h3>
+                    <a href="#info" class="fa fa-chevron-down"></a>
+                </div> -->
+                
+            </header>
+        
+            <!-- <h2 class="titulo-slider" id="info">¡Lugares Pet-Friendly destacados!</h2>
+            <p class="des-slider">Bogotá</p>
+            <div class="slider-box" id="slider">
+                <ul>
+                    <li>
+                        <img src="{% static 'imagenes/colsubsidio.jpg' %}" alt="img-colsubsidio"> 
+                        <div class="texto-slide">
+                            <a href="https://clubescolsubsidio.co/bellavista">Colsubsidio - Club Bellavista</a>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{% static 'imagenes/waulandia-park.webp' %}" alt="img-waulandia">
+                        <div class="texto-slide">
+                            <a href="https://www.facebook.com/p/Waulandia-Park-100079949992904/">Waulandia Park - Parque Acuático</a>
+                        </div> 
+                    </li>
+                    <li>
+                        <img src="{% static 'imagenes/hotelw.png' %}" alt="img-hotelw">
+                        <div class="texto-slide">
+                            <a href="https://w.bogotahotelsweb.com/es/">Hotel W - Hotel PetFriendly</a>
+                        </div> 
+                    </li>
+                    <li>
+                        <img src="{% static 'imagenes/parquelacolina.jpg' %}" alt="img-parquelacolina">
+                        <div class="texto-slide">
+                            <a href="https://www.parquelacolina.com/">Centro comercial Parque La Colina</a>
+                        </div> 
+                    </li>
+                </ul>
+            </div> -->
+           
+            <!-- <footer id="footer">
+        
+                <div class="container3">
+        
+                    <div class="footer-row">
+        
+                        <div class="footer-links">
+        
+                            <h4>ZonaPets</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/equipo/">Nosotros</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/nuestros-servicios/">Nuestros servicios</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/terminos-y-condiciones/">Política de privacidad</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/afiliate/">Afíliate</a></li>
+                            </ul>
+        
+                        </div>
+                        <div class="footer-links">
+        
+                            <h4>Ayuda</h4>
+                            <ul>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/preguntas-frecuentes/">Preguntas</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/asesores/">Asesores</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/convenios/">Convenios</a></li>
+                                <li class="footer-margin"><a href="http://zonapets.onrender.com/pagos/">Pagos</a></li>
+                            </ul>
+        
+                        </div>
+                        <div class="footer-links">
+        
+                            <h4>Síguenos</h4>
+                            <div class="social-link">
+                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                                <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                                <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+                                <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+        
+                </div>
+        
+            </footer> -->
+
+        </div>
+    </div>
+    <script src="{% static 'javascript/indexresponsive.js' %}"></script>
+</body>
+
+</html>
+

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+
 from pathlib import Path
 
 
@@ -17,7 +18,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-TEMPLATE_DIR = os.path.join(BASE_DIR, "static")
+TEMPLATE_DIR = os.path.join(BASE_DIR, "PetSearch/Templates")
 print(TEMPLATE_DIR)
 
 ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp"]
@@ -30,8 +31,13 @@ SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["zonapets.onrender.com", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ['https://zonapets.onrender.com','https://*.127.0.0.1']
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -42,13 +48,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "PetSearch",
+    'PetSearch',
+    "corsheaders",
+    'user_api.apps.UserApiConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 X_FRAME_OPTIONS = 'DENY'
 
 
+
+GOOGLE_SHEETS_CREDS = {
+    'path': 'path/to/credentials.json',
+    'scope': ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+}
+
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,12 +76,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'Lax' 
+
 ROOT_URLCONF = 'PetSearch.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,7 +94,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION = 'PetSearch.wsgi.application'
@@ -82,14 +103,58 @@ WSGI_APPLICATION = 'PetSearch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'zonapets_posgres_db',
+#         'USER': 'zonapets_posgres_db_user',
+#         'PASSWORD': 'bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq',
+#         'HOST': 'dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+#         'PORT': '5432',       # El puerto predeterminado para PostgreSQL
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zonapetsbackup',
+        'USER': 'devcristian',
+        'PASSWORD': '0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d',
+        'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
+        'PORT': '5432',       # El puerto predeterminado para PostgreSQL
     }
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.julwhkcaxymmgizmaiic',
+#         'PASSWORD': 'RfO0itPqNLXWhQFN',
+#         'HOST': 'aws-0-us-west-1.pooler.supabase.com',  # O la dirección del servidor donde está alojada tu base de datos
+#         'PORT': '6543',       # El puerto predeterminado para PostgreSQL
+#     }
+# }
+# postgres://devcristian:0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d@dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com/zonapetsbackup
+# postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
+# Password validation
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = "user_api.AppUser"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
+
+# postgres://zonapets_posgres_db_user:bYLyD3KPFM1wBmSmKdTRiQo1MYpiYCDq@dpg-cmgp3een7f5s73f1kqg0-a.oregon-postgres.render.com/zonapets_posgres_db
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -133,4 +198,3 @@ STATICFILES_DIRS = [STATIC_DIR]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

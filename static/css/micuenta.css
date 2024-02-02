@@ -1,0 +1,169 @@
+body {
+    background-color: hsl(214, 35%, 54%);
+}
+
+.containerform {
+    width: fit-content;
+    border: #1385F0 2px solid;
+    margin: 0px auto 160px auto;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #0056b3;
+    justify-content: center;
+}
+
+.containerform h1 {
+    color: #0F5B9E;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Poppins", "sans-serif";
+}
+
+input:focus {
+    border: 2px solid #007bff;
+    /* Cambia el color a azul */
+    outline: none;
+    box-shadow: 0 0 10px #0056b3;
+}
+
+.post-login {
+    text-align: center;
+    color: #1385F0;
+    font-weight: bold;
+    font-size: 38px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.auth-button {
+    background-color: #1385F0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Poppins";
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+}
+
+.logout-button {
+    background-color: #1385F0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Poppins";
+    padding: 5px 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+label {
+    font-weight: bold;
+    color: #1385F0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #1385F0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Poppins";
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media(max-width: 452px) {
+    .containerform h1 {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 440px) {
+    .containerform h1 {
+        font-size: 20px;
+    }
+
+    .containerform h2 {
+        font-size: 30px;
+    }
+
+    .logout-button {
+        justify-content: center;
+    }
+
+    .containerform {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media(max-width: 392px) {
+    .containerform h2 {
+        font-size: 25px;
+    }
+}
+
+@media(max-width: 450px) {
+    .containerform {
+        margin: 0px auto 200px auto;
+    }
+}

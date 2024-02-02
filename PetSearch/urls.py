@@ -15,19 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from PetSearch.views import helloworld, helloworldRed, inicio, ver_mapa, registrar, contacto, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from django.views.generic import TemplateView
+from django.urls import path, include, re_path
+from PetSearch.views import micuenta, mapa_petfriendly, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("helloworld/", helloworld),
-    path("hellow/", helloworldRed),
-    path("inicio-zonapets/", inicio),
-    path("vermapa/", ver_mapa),
-    path("registrar/", registrar),
+    path('api/', include('user_api.urls')),
     path("contacto/", contacto),
     path("acercade/", acercade),
     path("terminos-y-condiciones/", terminosycondiciones),
@@ -35,9 +33,17 @@ urlpatterns = [
     path("asesores/", asesores),
     path("convenios/", convenios),
     path("pagos/", pagos),
+    path("micuenta/", micuenta),
     path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
+    path("vermapa/", mapa_petfriendly),
+    path("vistabar/", vista_bar),
+    path("prueba/", prueba),
+    path("registrar/", Formularioviewregistroform.index, name = "registrarFormulario"),
+    path("guardarform/", Formularioviewregistroform.procesar_formulario, name = "guardarform"),
+    path("registrarempresa/", Formularioviewregistroformempresarial.index, name = "registrarFormularioEmpresa"),
+    path("guardarformempresarial/", Formularioviewregistroformempresarial.procesar_formulario, name = "guardarformEmpresa"),
 ]
 
 if settings.DEBUG:
