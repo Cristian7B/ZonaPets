@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let username = "";
 
     function checkUserStatus() {
-        axios.get("http://127.0.0.1:8000/api/user/", { withCredentials: true })
+        axios.get("https://zonapets.vercel.app/api/user/", { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
                 renderApp()
@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        axios.post("http://127.0.0.1:8000/api/register/", { email, username, password })
+        axios.post("https://zonapets.vercel.app/api/register/", { email, username, password })
             .then(function (response) {
-                return axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true });
+                return axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true });
             })
             .then(function (response) {
                 currentUser = true;
@@ -43,18 +43,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true })
+        axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
 
-                window.location.href = "http://127.0.0.1:8000/vermapa/";
+                window.location.href = "https://zonapets.vercel.app/vermapa/";
                 renderApp();
             });
     }
 
     function submitLogout(e) {
         e.preventDefault();
-        axios.post("http://127.0.0.1:8000/api/logout/", {}, { withCredentials: true })
+        axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
             .then(function (response) {
                 currentUser = false;
                 renderApp();
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formContent = `<div style="margin: 0px auto 270px auto;" class="containerform" id="move-content">
             <h2 class="post-login">¡Has iniciado sesion!</h2>
             <button class="logout-button">
-            <a style="text-decoration:none; font-weight:bold; color: #fff; padding:10px; margin-top:10px"href="http://127.0.0.1:8000/vermapa/">
+            <a style="text-decoration:none; font-weight:bold; color: #fff; padding:10px; margin-top:10px"href="https://zonapets.vercel.app/vermapa/">
             Ir al mapa
             </a>
             </button>

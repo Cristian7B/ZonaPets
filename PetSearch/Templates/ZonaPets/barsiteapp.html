@@ -14,13 +14,13 @@
     <div id="icon-menu">
       <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <a href="http://zonapets.onrender.com/vermapa/" class="logo-nombre">ZonaPets</a>
+    <a href="https://zonapets.vercel.app/vermapa/" class="logo-nombre">ZonaPets</a>
     <img src="{% static 'imagenes/Logo.png' %}" alt="logozonapets" class="imgnavbar">
     <nav class="navegacion" id="move-menu">
       <ul class="menu-horizontal">
-        <li><a href="http://zonapets.onrender.com/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
-        <li><a href="http://zonapets.onrender.com/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
-        <li><a href="http://zonapets.onrender.com/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
+        <li><a href="https://zonapets.vercel.app/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
+        <li><a href="https://zonapets.vercel.app/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
+        <li><a href="https://zonapets.vercel.app/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
         <li class="iconos"><a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a></li>
         <li class="iconos"><a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a></li>
         <li class="iconos"><a href="https://www.youtube.com/" class="fa fa-youtube-play" target="_blank"></a></li>
@@ -34,7 +34,7 @@
     <div class="navigation">
       <ul>
         <li class="list active">
-          <a href="https://zonapets.onrender.com/vermapa/">
+          <a href="https://zonapets.vercel.app/vermapa/">
             <span class="icon">
               <ion-icon name="map-outline"></ion-icon>
             </span>
@@ -42,7 +42,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.onrender.com/micuenta/">
+          <a href="https://zonapets.vercel.app/micuenta/">
             <span class="icon">
               <ion-icon name="person-outline"></ion-icon>
             </span>
@@ -50,7 +50,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.onrender.com/registrar/">
+          <a href="https://zonapets.vercel.app/registrar/">
             <span class="icon">
               <ion-icon name="add-circle-outline"></ion-icon>
             </span>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.onrender.com/afiliate/">
+          <a href="https://zonapets.vercel.app/afiliate/">
             <span class="icon">
               <ion-icon name="card-outline"></ion-icon>
             </span>
@@ -66,7 +66,7 @@
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.onrender.com/convenios/">
+          <a href="https://zonapets.vercel.app/convenios/">
             <span class="icon">
               <ion-icon name="storefront-outline"></ion-icon>
             </span>
@@ -91,11 +91,11 @@
               list.forEach((item, index) => {
                   const link = item.querySelector('a');
                   const isMatchingLink = currentUrl.includes(link.getAttribute('href')) || link.getAttribute('href') === currentUrl;
-                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.onrender.com/registrar/") ||
-                                              currentUrl.includes("https://zonapets.onrender.com/guardarform/") || 
-                                              currentUrl.includes("https://zonapets.onrender.com/registrarempresa/") ||  
-                                              currentUrl.includes("https://zonapets.onrender.com/guardarformempresarial/")) && 
-                                              link.getAttribute('href').includes("https://zonapets.onrender.com/registrar/");
+                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.vercel.app/registrar/") ||
+                                              currentUrl.includes("https://zonapets.vercel.app/guardarform/") || 
+                                              currentUrl.includes("https://zonapets.vercel.app/registrarempresa/") ||  
+                                              currentUrl.includes("https://zonapets.vercel.app/guardarformempresarial/")) && 
+                                              link.getAttribute('href').includes("https://zonapets.vercel.app/registrar/");
 
                   if ((isMatchingLink || isSpecialRegistro) && !activeFound) {
                       item.classList.add("active");
