@@ -47,5 +47,9 @@ class UserView(APIView):
 	authentication_classes = (SessionAuthentication,)
 	##
 	def get(self, request):
+		user_data = {
+			"email": request.user.email,
+			'username': request.user.username,
+			}
 		serializer = UserSerializer(request.user)
 		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
