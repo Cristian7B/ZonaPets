@@ -1,21 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
 
+#app {
+    height: 100vh;
+}
+
 .containerform {
     width: 100%;
     padding: 0px;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    margin: auto 239px auto 0px;
+    margin: auto;
     align-content: center;
     display: flex;
     flex-direction: column;
+    height: 90vh;
 }
 
 .containerform h1 {
     color: #1385F0;
     text-align: center;
     font-size: 80px;
+    text-wrap: balance;
 }
 
 .containerform p {
