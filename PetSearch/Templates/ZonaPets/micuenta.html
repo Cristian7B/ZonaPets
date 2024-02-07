@@ -1,5 +1,3 @@
-{% extends "ZonaPets/barsiteapp.html" %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
@@ -9,20 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Cuenta | ZonaPets</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="{% static 'javascript/micuenta.js' %}" defer></script>
+  <script src="{% static 'javascript/cuenta.js' %}" defer></script>
   <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
 </head>
 
-<link rel="stylesheet" href="{% static 'css/cuenta.css' %}">
+<link rel="stylesheet" href="{% static 'css/micuenta.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
 <body>
-  <div id="app"></div>
-  <div id="icon-menu">
-    <i class="fa fa-bars" aria-hidden="true"></i>
+  <section>
+    <!--<a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
+    <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">-->
+
+    <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
+    <a href="http://zonapets.vercel.app/vermapa/" class="logo-nombre">ZonaPets</a>
+
+  </section>
+  <div id="app">
   </div>
+
 </body>
 
 </html>
-{% endblock %}
