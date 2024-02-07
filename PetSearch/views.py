@@ -77,6 +77,9 @@ def acercade(request):
 def contacto(request):
     return render(request, "ZonaPets/contacto.html")
 
+def iniciar_sesion(request):
+    return render(request, "ZonaPets/iniciar-sesion.html")
+
 def preguntasfrecuentes(request):
     return render(request, "ZonaPets/preguntas-frecuentes.html")
 

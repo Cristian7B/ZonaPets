@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://zonapets.vercel.app/vermapa/"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 

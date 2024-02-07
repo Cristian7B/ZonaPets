@@ -1,0 +1,24 @@
+{% extends "ZonaPets/barsiteapp.html" %}
+{% load static %}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>¡Inicia sesion! | ZonaPets</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/session.css/' %}">
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="{% static 'javascript/session.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}
