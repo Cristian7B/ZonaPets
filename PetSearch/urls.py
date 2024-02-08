@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include, re_path
-from PetSearch.views import micuenta, mapa_petfriendly, iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from PetSearch.views import micuenta, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
+from PetSearch.views import *
 from django.conf.urls.static import static
 from . import views
 
@@ -28,8 +29,11 @@ urlpatterns = [
     path('api/', include('user_api.urls')),
     path("contacto/", contacto),
     path("acercade/", acercade),
+    path("firebase-messaging-sw.js", showFirebaseJS, name="show_firebase_js"),
+    path("send/", send),
     path("terminos-y-condiciones/", terminosycondiciones),
     path("iniciarsesion/", iniciar_sesion),
+    path("notifications/", notifications),
     path("equipo/", equipo),
     path("asesores/", asesores),
     path("convenios/", convenios),
@@ -38,7 +42,7 @@ urlpatterns = [
     path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
-    path("vermapa/", mapa_petfriendly),
+    path("", mapa_petfriendly),
     path("vistabar/", vista_bar),
     path("prueba/", prueba),
     path("registrar/", Formularioviewregistroform.index, name = "registrarFormulario"),

@@ -13,6 +13,7 @@ import os
 
 from pathlib import Path
 
+import firebase_admin
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,12 +33,14 @@ SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://zonapets.vercel.app/vermapa/"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://zonapets.vercel.app/"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 
 CORS_ALLOW_CREDENTIALS = True
+
+
 
 # Application definition
 
