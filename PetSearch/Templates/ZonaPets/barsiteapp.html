@@ -1,14 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-    <link rel="stylesheet" href="{% static 'css/indexnavbar.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+  <link rel="stylesheet" href="{% static 'css/indexnavbar.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N6MHZ5KW4K');
+</script>
+
 <body>
   <section>
     <div id="icon-menu">
@@ -18,19 +28,22 @@
     <img src="{% static 'imagenes/Logo.png' %}" alt="logozonapets" class="imgnavbar">
     <nav class="navegacion" id="move-menu">
       <ul class="menu-horizontal">
-        <li><a href="https://zonapets.vercel.app/inicio-zonapets/"><i class="fa fa-home" id="navbar" aria-hidden="true"></i> Inicio</a></li>
-        <li><a href="https://zonapets.vercel.app/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de ZonaPets</a></li>
-        <li><a href="https://zonapets.vercel.app/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i> Contacto</a></li>
+        <li><a href="https://zonapets.vercel.app/inicio-zonapets/"><i class="fa fa-home" id="navbar"
+              aria-hidden="true"></i> Inicio</a></li>
+        <li><a href="https://zonapets.vercel.app/acercade/"><i class="fa fa-users" aria-hidden="true"></i> Acerca de
+            ZonaPets</a></li>
+        <li><a href="https://zonapets.vercel.app/contacto/"><i class="fa fa-phone-square" aria-hidden="true"></i>
+            Contacto</a></li>
         <li class="iconos"><a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a></li>
         <li class="iconos"><a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a></li>
         <li class="iconos"><a href="https://www.youtube.com/" class="fa fa-youtube-play" target="_blank"></a></li>
       </ul>
     </nav>
   </section>
-  <div class="container-all" id="move-content">
+  <div class="container-all" id="move-content" style="height: 100vh;">
     {% block content %}
 
-    {% endblock %}    
+    {% endblock %}
     <div class="navigation">
       <ul>
         <li class="list active">
@@ -44,7 +57,7 @@
         <li class="list">
           <a href="https://zonapets.vercel.app/iniciarsesion/">
             <span class="icon">
-              <ion-icon name="person-outline"></ion-icon>
+              <ion-icon name="person-circle-outline"></ion-icon>
             </span>
             <span class="text">Cuenta</span>
           </a>
@@ -58,19 +71,19 @@
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.vercel.app/equipo/">
+          <a href="https://zonapets.vercel.app/afiliate/">
             <span class="icon">
-              <ion-icon name="accessibility-outline"></ion-icon>
+              <ion-icon name="wallet-outline"></ion-icon>
             </span>
-            <span class="text">Equipo</span>
+            <span class="text">Afiliate</span>
           </a>
         </li>
         <li class="list">
-          <a href="https://zonapets.vercel.app/contacto/">
+          <a href="https://zonapets.vercel.app/Convenios/">
             <span class="icon">
-              <ion-icon name="call-outline"></ion-icon>
+              <ion-icon name="bag-handle-outline"></ion-icon>
             </span>
-            <span class="text">Contacto</span>
+            <span class="text">Convenios</span>
           </a>
         </li>
         <!-- <li class="list">
@@ -93,57 +106,58 @@
       </ul>
     </div>
   </div>
-  
+
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          const list = document.querySelectorAll(".navigation .list");
-          const currentUrl = window.location.href;
+    document.addEventListener("DOMContentLoaded", function () {
+      const list = document.querySelectorAll(".navigation .list");
+      const currentUrl = window.location.href;
 
-          function updateIndicatorPosition() {
-              let activeFound = false;
+      function updateIndicatorPosition() {
+        let activeFound = false;
 
-              list.forEach((item, index) => {
-                  const link = item.querySelector('a');
-                  const isMatchingLink = currentUrl.includes(link.getAttribute('href')) || link.getAttribute('href') === currentUrl;
-                  const isSpecialRegistro = (currentUrl.includes("https://zonapets.vercel.app/registrar/") ||
-                                              currentUrl.includes("https://zonapets.vercel.app/guardarform/") || 
-                                              currentUrl.includes("https://zonapets.vercel.app/registrarempresa/") ||  
-                                              currentUrl.includes("https://zonapets.vercel.app/guardarformempresarial/")) && 
-                                              link.getAttribute('href').includes("https://zonapets.vercel.app/registrar/");
+        list.forEach((item, index) => {
+          const link = item.querySelector('a');
+          const isMatchingLink = currentUrl.includes(link.getAttribute('href')) || link.getAttribute('href') === currentUrl;
+          const isSpecialRegistro = (currentUrl.includes("https://zonapets.vercel.app/registrar/") ||
+            currentUrl.includes("https://zonapets.vercel.app/guardarform/") ||
+            currentUrl.includes("https://zonapets.vercel.app/registrarempresa/") ||
+            currentUrl.includes("https://zonapets.vercel.app/guardarformempresarial/")) &&
+            link.getAttribute('href').includes("https://zonapets.vercel.app/registrar/");
 
-                  if ((isMatchingLink || isSpecialRegistro) && !activeFound) {
-                      item.classList.add("active");
-                      moveIndicator(index);
-                      activeFound = true;
-                  } else {
-                      item.classList.remove("active");
-                  }
-              });
+          if ((isMatchingLink || isSpecialRegistro) && !activeFound) {
+            item.classList.add("active");
+            moveIndicator(index);
+            activeFound = true;
+          } else {
+            item.classList.remove("active");
           }
-
-          function moveIndicator(index) {
-              const indicator = document.querySelector('.indicator');
-              indicator.style.transform = `translateX(calc(70px * ${index}))`;
-          }
-
-          updateIndicatorPosition();
-      });
-
-
-      document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
-
-      function mostrar_menu() {
-          document.getElementById("move-content").classList.toggle("move-container-all");
-          document.getElementById("move-menu").classList.toggle("show-lateral");
-
-          var logoNombre = document.querySelector(".logo-nombre");
-          logoNombre.classList.toggle("move-logo-responsive");
-          var icono = document.querySelector("#icon-menu i");
-          icono.classList.toggle("fa-bars");
-          icono.classList.toggle("fa-times");
+        });
       }
+
+      function moveIndicator(index) {
+        const indicator = document.querySelector('.indicator');
+        indicator.style.transform = `translateX(calc(70px * ${index}))`;
+      }
+
+      updateIndicatorPosition();
+    });
+
+
+    document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+
+    function mostrar_menu() {
+      document.getElementById("move-content").classList.toggle("move-container-all");
+      document.getElementById("move-menu").classList.toggle("show-lateral");
+
+      var logoNombre = document.querySelector(".logo-nombre");
+      logoNombre.classList.toggle("move-logo-responsive");
+      var icono = document.querySelector("#icon-menu i");
+      icono.classList.toggle("fa-bars");
+      icono.classList.toggle("fa-times");
+    }
   </script>
 </body>
+
 </html>
