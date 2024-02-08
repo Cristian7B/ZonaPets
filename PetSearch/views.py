@@ -22,6 +22,10 @@ from rest_framework.authtoken.models import Token
 
 from .serializers import UserSerializer
 
+import requests
+import json
+
+
 
 @api_view(['POST'])
 def signup(request):
@@ -119,6 +123,9 @@ def vista_bar(request):
 def vista_barregistrar(request):
     return render(request, "ZonaPets/barregistrar.html")
 
+def notifications(request):
+    return render(request, "ZonaPets/notifications.html")
+
 def mapa_petfriendly(request):
     # Obtén todos los registros de la base de datos usando el modelo
     ubicaciones = registrofinal2.objects.all()
@@ -161,4 +168,62 @@ class Formularioviewregistroformempresarial(HttpRequest):
         return render(request, "ZonaPets/barregistrarempresarial.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
 
 
+
+def send_notification(registration_ids , message_title , message_desc):
+    fcm_api = "AAAAvL6cQ2Y:APA91bH-shnwBLyAlmFpa_cdkH8py4SuSUcAmIqF9t1Idrx2Yo87hHSZYabB7t2yNsqUS5MA_bwb9AQgoQQlYxuB79GsQEH7BW96xF4xfJxf-43vTxfx2iixlfSy6fLkCioxjA7O43LVo"
+    url = "https://fcm.googleapis.com/fcm/send"
+    
+    headers = {
+        "Content-Type":"application/json",
+        "Authorization": 'key=' + fcm_api
+    }
+
+    payload = {
+        "registration_ids" :registration_ids,
+        "priority" : "high",
+        "notification" : {
+            "body" : message_desc,
+            "title" : message_title,
+            "image" : "https://zonapets.vercel.app/static/imagenes/waulandia-park.webp",
+            "icon": "https://zonapets.vercel.app/static/imagenes/iconfav.png",
+            
+        }
+    }
+
+    result = requests.post(url,  data=json.dumps(payload), headers=headers )
+    print(result.json)
+
+
+def send(request):
+    registration  = ["dGkXUAMEcqVBTCRpUsXcYb:APA91bGdpiiZZ9frp2NTiplfn8w9XiDQUQzGbTy7-d4TIp8kQY57TN8PpqJfIvYDdp79lAdjk5CCryCmteZfggN2OUx8RfwT_TSrgjMzX35XZ9USTqnrcQ4bBNgEWtV1f4W8de_oGg5O"]
+    send_notification(registration , 'ZonaPets' , '¡Nuevos sitios cerca de tu zona, lleva a tu peludito!')
+    return HttpResponse("sent")
+
+
+
+def showFirebaseJS(request):
+    data='importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");' \
+         'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js"); ' \
+         'var firebaseConfig = {' \
+         '        apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",' \
+         '        authDomain: "zonapets-407921.firebaseapp.com",' \
+         '        projectId: "zonapets-407921",' \
+         '        storageBucket: "zonapets-407921.appspot.com",' \
+         '        messagingSenderId: "810651763558",' \
+         '        appId: "1:810651763558:web:914cca9d4c78b9833dfea7",' \
+         '        measurementId: "G-5WPJXXGLH1"' \
+         ' };' \
+         'firebase.initializeApp(firebaseConfig);' \
+         'const messaging=firebase.messaging();' \
+         'messaging.setBackgroundMessageHandler(function (payload) {' \
+         '    console.log(payload);' \
+         '    const notification=JSON.parse(payload);' \
+         '    const notificationOption={' \
+         '        body:notification.body,' \
+         '        icon:notification.icon' \
+         '    };' \
+         '    return self.registration.showNotification(payload.notification.title,notificationOption);' \
+         '});'
+
+    return HttpResponse(data, content_type="text/javascript")
 

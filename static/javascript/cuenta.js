@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(function (response) {
                 currentUser = true;
 
-                window.location.href = "https://zonapets.vercel.app/vermapa/";
+                window.location.href = "https://zonapets.vercel.app/";
                 renderApp();
             });
     }
