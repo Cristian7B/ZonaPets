@@ -10,15 +10,15 @@
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-N6MHZ5KW4K');
+    gtag('config', 'G-N6MHZ5KW4K');
 </script>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/convenios.css' %}">
+<link rel="stylesheet" href="{% static 'css/convenio.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
@@ -29,6 +29,7 @@
             Sitio en construcción
             <span><ion-icon name="build-outline" class="build-logo"></ion-icon></span>
         </h1>
+        <img src="{% static 'imagenes/construction.png' %}" alt="sitio-en-construccion">
         <h2>
             ¡Pronto estará disponible este apartado!
         </h2>
