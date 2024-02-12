@@ -26,7 +26,10 @@ class AppUserManager(BaseUserManager):
 class AppUser(AbstractBaseUser, PermissionsMixin):
 	user_id = models.AutoField(primary_key=True)
 	email = models.EmailField(max_length=50, unique=True)
+	nombre = models.CharField(max_length=50, blank=True, null=True)
 	username = models.CharField(max_length=50)
+	telefono = models.CharField(max_length=20, blank=True, null=True)
+	ciudad = models.CharField(max_length=50, blank=True, null=True)
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username']
 	objects = AppUserManager()

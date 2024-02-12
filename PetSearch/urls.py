@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include, re_path
-from PetSearch.views import micuenta, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from PetSearch.views import micuenta, informacion, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
 from PetSearch.views import *
 from django.conf.urls.static import static
@@ -34,6 +34,7 @@ urlpatterns = [
     path("terminos-y-condiciones/", terminosycondiciones),
     path("iniciarsesion/", iniciar_sesion),
     path("notifications/", notifications),
+    path("informacion/", informacion),
     path("equipo/", equipo),
     path("asesores/", asesores),
     path("convenios/", convenios),

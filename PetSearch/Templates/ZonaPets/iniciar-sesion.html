@@ -12,15 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/iniciarsesion.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sesion.css/' %}">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-N6MHZ5KW4K');
+    gtag('config', 'G-N6MHZ5KW4K');
 </script>
 
 <body>
@@ -66,7 +66,9 @@
             function renderLoggedInInterface() {
                 const loggedInInterface = `
                     <div class="containerform" id="move-content">
+                        <img src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" style="heigth:70px; width:70px; border-radius:50px" >
                         <h1 class="post-login">¡Has iniciado sesión!</h1>
+                        <button class="auth-button" onclick="window.location.href='https://zonapets.vercel.app/informacion/'">¡Actualiza tus datos!</button>
                     </div>`;
                 app.innerHTML = loggedInInterface;
             }

@@ -97,7 +97,10 @@ def micuenta(request):
     return render(request, "ZonaPets/micuenta.html")
 
 def terminosycondiciones(request):
-    return render(request, "ZonaPets/terminos.html")
+    return render(request, "ZonaPets/tyc.html")
+
+def informacion(request):
+    return render(request, "ZonaPets/informacion-personal.html")
 
 def asesores(request):
     return render(request, "ZonaPets/asesores.html")

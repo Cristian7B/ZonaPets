@@ -153,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             formContent = `<div class="containerform" id="move-content">
             <h2 class="post-login">¡Has iniciado sesion!</h2>
+            <button onclick="submitLogout(event)">Cerrar sesión</button>
             </div>`;
         }
 
