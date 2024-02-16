@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
             .then(function (response) {
                 currentUser = false;
-                window.location.href = "https://zonapets.vercel.app/"
+                window.location.href = "https://zonapets.vercel.app/mapa/"
             });
     }
 
@@ -91,7 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         app.innerHTML = '';
         let infocontent = '';
         if (!currentUser) {
-            // Código para renderizar la página de inicio de sesión...
+            `<div class="containerform" id="move-content" style="">
+                        <img src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" style="heigth:70px; width:70px; border-radius:50px" >
+                        <h1>Es hora de iniciar sesión</h1>
+                        <p>¿Aún no tienes una cuenta? </p>
+                        <button class="auth-button" onclick="window.location.href='https://zonapets.vercel.app/micuenta/'">Inicia Sesión</button>
+            </div>`
         }
         if (currentUser) {
             // Renderizar la información del usuario

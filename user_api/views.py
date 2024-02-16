@@ -22,6 +22,21 @@ def get_user_info(request):
     return Response(serializer.data)
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import AppUser
+from .serializers import UserUpdateSerializer
+
+@api_view(['POST'])
+def update_user_info(request):
+    user = request.user
+    serializer = UserUpdateSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class UserRegister(APIView):
     permission_classes = (permissions.AllowAny,)
 
