@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentUser = false;
 
     function checkUserStatus() {
-        axios.get("https://zonapets.vercel.app/api/user/", { withCredentials: true })
+        axios.get("127.0.0.1:8000/api/user/", { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
                 renderApp();
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img srv="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" style="heigth:100px; width:100px" >
                 <h1>Es hora de iniciar sesión</h1>
                 <p>¿Aún no tienes una cuenta? </p>
-                <button class="auth-button" onclick="window.location.href='https://zonapets.vercel.app/micuenta/'">Inicia Sesión</button>
+                <button class="auth-button" onclick="window.location.href='127.0.0.1:8000/micuenta/'">Inicia Sesión</button>
             </div>`;
         app.innerHTML = signupInterface;
     }
@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicialización
     checkUserStatus();
+    
 
     // Hacer funciones globales para acceso desde HTML
     window.submitLogin = submitLogin;

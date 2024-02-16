@@ -43,7 +43,7 @@ urlpatterns = [
     path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
-    path("", mapa_petfriendly),
+    path("mapa/", mapa_petfriendly),
     path("vistabar/", vista_bar),
     path("prueba/", prueba),
     path("registrar/", Formularioviewregistroform.index, name = "registrarFormulario"),

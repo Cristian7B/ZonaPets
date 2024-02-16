@@ -15,15 +15,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="{% static 'javascript/informacion.js' %}" defer></script>
+<script src="{% static 'javascript/userinfo.js' %}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <body>
     <div id="app"></div>
     <!-- <div id="app">
     <div class="title-info">
-        <a href="http://127.0.0.1:8000/iniciarsesion/">Cuenta </a><span>> </span><a
-            href="http://127.0.0.1:8000/informacionpersonal/">Informacion personal</a>
+        <a href="https://zonapets.vercel.app/iniciarsesion/">Cuenta </a><span>> </span><a
+            href="https://zonapets.vercel.app/informacionpersonal/">Informacion personal</a>
         <h1 class="title">Información personal</h1>
         <button onclick="submitLogout(event)">Cerrar sesión</button>
     </div>
@@ -82,7 +82,7 @@
             let username = "";
 
             function checkUserStatus() {
-                axios.get("http://127.0.0.1:8000/api/user/", { withCredentials: true })
+                axios.get("https://zonapets.vercel.app/api/user/", { withCredentials: true })
                     .then(function (response) {
                         currentUser = true;
                         renderApp()
@@ -100,7 +100,7 @@
 
             function submitLogout(e) {
                 e.preventDefault();
-                axios.post("http://127.0.0.1:8000/api/logout/", {}, { withCredentials: true })
+                axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
                     .then(function (response) {
                         currentUser = false;
                         renderApp();
