@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <img src="{% static 'imagenes/iconfav.png' %}" alt="">
+            <!-- <h2>ZonaPets</h2> -->
+        </div>
+    </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #1385F0;
+        }
+
+        h2 {
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+            color: #fff;
+        }
+
+
+        div {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
+            display: flex;
+        }
+    </style>
+</body>
+
+</html>

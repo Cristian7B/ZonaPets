@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include, re_path
-from PetSearch.views import micuenta, informacion, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from PetSearch.views import micuenta, informacion, splashscreen, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
 from django.conf import settings
 from PetSearch.views import *
 from django.conf.urls.static import static
@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/', include('user_api.urls')),
     path("contacto/", contacto),
     path("acercade/", acercade),
+    path("splash/", splashscreen),
     path("firebase-messaging-sw.js", showFirebaseJS, name="show_firebase_js"),
     path("send/", send),
     path("terminos-y-condiciones/", terminosycondiciones),
