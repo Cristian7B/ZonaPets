@@ -129,6 +129,9 @@ def vista_barregistrar(request):
 def notifications(request):
     return render(request, "ZonaPets/notifications.html")
 
+def splashscreen(request):
+    return render(request, "ZonaPets/splashscreen.html")
+
 def mapa_petfriendly(request):
     # Obtén todos los registros de la base de datos usando el modelo
     ubicaciones = registrofinal2.objects.all()

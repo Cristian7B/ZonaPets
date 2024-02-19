@@ -45,3 +45,36 @@ html {
     color: #0F5B9E;
     text-align: center;
 }
+
+@media(max-width: 1183px) {
+    .containerconstruction h1 {
+        font-size: 60px;
+
+    }
+}
+
+@media(max-width: 742px) {
+    .containerconstruction h1 {
+        font-size: 40px;
+
+    }
+    .containerconstruction {
+        justify-content: center;
+        height: 80vh;
+    }
+    .containerconstruction h1 .build-logo {
+        font-size: 20px;
+
+    }
+}
+
+@media(max-width: 481px) {
+    .containerconstruction h1 {
+        font-size: 30px;
+
+    }
+    .containerconstruction h1 .build-logo {
+        font-size: 18px;
+
+    }
+}
