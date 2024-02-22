@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -140,6 +141,8 @@ section {
   margin-bottom: auto;
   width: 100%;
   top: 0px;
+  position: fixed;
+  z-index: 40;
 }
 
 .imgnavbar {

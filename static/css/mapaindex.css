@@ -17,13 +17,16 @@ body {
   width: 99%;
   height: 100vh;
   margin: auto;
+  z-index: 1;
 }
 
 header .titulo {
+  margin-top: 40px;
   color: #1385F0;
   font-size: 75px;
   text-align: center;
   margin-bottom: 20px;
+
 }
 
 .iconoresponsive {
