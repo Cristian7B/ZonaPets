@@ -60,10 +60,6 @@
         padding: 40px;
     }
 
-    section {
-        position: fixed;
-    }
-
     .title-info a {
         text-decoration: none;
         color: #1385F0;
@@ -81,6 +77,7 @@
         height: 1000px;
         grid-auto-rows: 40px;
         top: 170px;
+        position: static;
     }
 
     .item {
@@ -275,7 +272,8 @@
         }
 
         .url-line {
-            margin: auto;
+            margin-bottom: 10px;
+            margin-top: 10px;
         }
 
         .user-info {
@@ -301,6 +299,7 @@
 
         .title {
             font-size: 25px;
+            margin-bottom: 7px;
         }
         #editForm {
             width: 90%;
@@ -322,10 +321,16 @@
             font-size: 50px;
         }
     }
+    .additional-div {
+        height: 70px;
+    }
 }
 
 @media (prefers-color-scheme: light) {
 
+    .additional-div {
+        height: 70px;
+    }
 
     #app {
         height: 100vh;
@@ -383,10 +388,6 @@
     .title-info {
         color: #1385F0;
         padding: 40px;
-    }
-
-    section {
-        position: fixed;
     }
 
     .title-info a {
