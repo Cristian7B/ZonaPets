@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/session.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css/' %}">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -102,7 +102,7 @@
                 axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
                     .then(function (response) {
                         currentUser = false;
-                        window.location.href = "https://zonapets.vercel.app/"
+                        window.location.href = "https://zonapets.vercel.app/mapa/"
                     });
             }
 
@@ -174,8 +174,8 @@
                     <div class="item">
                         <a id="showModalBtn4"> Editar</a>
                     </div>
-                    <hr>
                 </section>
+                <div class="additional-div"></div>
                 <dialog class="dialogstyle" id="editFormModal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
@@ -207,8 +207,8 @@
 
                 document.getElementById('showModalBtn').addEventListener('click', function () {
                     const editFormModal = document.getElementById('editFormModal');
-                        editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
-                        editFormModal.classList.add('mostrar');
+                    editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
+                    editFormModal.classList.add('mostrar');
                     editFormModal.showModal();
                 });
 
@@ -219,22 +219,22 @@
 
                 document.getElementById('showModalBtn2').addEventListener('click', function () {
                     const editFormModal = document.getElementById('editFormModal');
-                            editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
-        editFormModal.classList.add('mostrar');
+                    editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
+                    editFormModal.classList.add('mostrar');
                     editFormModal.showModal();
                 });
 
                 document.getElementById('showModalBtn3').addEventListener('click', function () {
                     const editFormModal = document.getElementById('editFormModal');
-                            editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
-        editFormModal.classList.add('mostrar');
+                    editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
+                    editFormModal.classList.add('mostrar');
                     editFormModal.showModal();
                 });
 
                 document.getElementById('showModalBtn4').addEventListener('click', function () {
                     const editFormModal = document.getElementById('editFormModal');
-                            editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
-        editFormModal.classList.add('mostrar');
+                    editFormModal.classList.remove('dialogstyle'); // Quita la clase de estilo para mostrar el modal
+                    editFormModal.classList.add('mostrar');
                     editFormModal.showModal();
                 });
 
