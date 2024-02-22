@@ -11,7 +11,7 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mapaindex.css/' %}">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -25,7 +25,7 @@
 <body>
     <div class="container-all" id="move-content">
         <header>
-            <h1 class="titulo">¡Hora de ver lugares Pet-Friendly!</h1>
+            <h1 class="titulo" style="margin-left: 40px;">¡Hora de ver lugares Pet-Friendly!</h1>
             <p class="iconoresponsive">Pulsa <span><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
                 para ver lugares cerca de tí</p>
         </header>
@@ -399,9 +399,14 @@
             box-shadow: 0 2px 6px #1385F0;
         }
 
+        header .titulo {
+            margin-top: 40px;
+        }
+
         @media(max-width: 1267px) {
             header .titulo {
                 font-size: 50px;
+                margin-top: 40px;
             }
 
             .mobile-toggle {

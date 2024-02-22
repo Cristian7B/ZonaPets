@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
 @media (prefers-color-scheme: dark) {
 
-    @import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
 
     #app {
         height: 100vh;
@@ -58,6 +58,10 @@
     .title-info {
         color: #1385F0;
         padding: 40px;
+    }
+
+    section {
+        position: fixed;
     }
 
     .title-info a {
