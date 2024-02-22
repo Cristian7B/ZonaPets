@@ -54,6 +54,7 @@ header .titulo {
   margin-top: 13px;
   border: 2px solid #1385F0;
   font-weight: bold;
+  z-index: 10;
 }
 
 
@@ -97,6 +98,7 @@ header .titulo {
   font-weight: bold;
   background-color: #fff;
   border-radius: 2px #1385F0;
+  z-index: 70;
 }
 
 .relocated {
