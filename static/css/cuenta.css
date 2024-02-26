@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
 body {
     background-color: hsl(214, 35%, 54%);
     font-family: "Poppins", "sans-serif";
@@ -148,7 +149,14 @@ input:focus {
 }
 
 .form-group {
+    margin-bottom: 5px;
+}
+
+.error-message {
     margin-bottom: 15px;
+    font-size: 15px;
+    color: #d42929d8;
+    font-family: 'Onest', sans-serif;
 }
 
 form {

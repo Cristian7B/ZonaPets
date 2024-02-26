@@ -49,7 +49,7 @@ class UserRegister(APIView):
             user = serializer.create(clean_data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as e:
-            return Response({'error_message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error_message': str(e)}, status=status.HTTP_504_GATEWAY_TIMEOUT)
 
 
 class UserLogin(APIView):
