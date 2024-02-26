@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let username = "";
 
     function checkUserStatus() {
-        axios.get("https://zonapets.vercel.app/api/user/", { withCredentials: true })
+        axios.get("http://127.0.0.1:8000/api/user/", { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
                 renderApp()
@@ -30,33 +30,45 @@ document.addEventListener("DOMContentLoaded", function () {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
+        const MIN_PASSWORD_LENGTH = 8; 
+
+        if (password.length < MIN_PASSWORD_LENGTH) {
+            const errorMessage = document.getElementById('registration-error');
+            errorMessage.textContent = `La contraseña debe tener al menos ${MIN_PASSWORD_LENGTH} caracteres.`;
+            errorMessage.style.display = 'block';
+            return; // Detener la ejecución de la función si la contraseña es demasiado corta
+        }
+
         const data = {
             email: email,
             username: username,
             password: password,
         };
 
-        axios.post("https://zonapets.vercel.app/api/register/", data, {
+        axios.post("http://127.0.0.1:8000/api/register/", data, {
             headers: {
                 'Content-Type': 'application/json',
             },
         })
             .then(function (response) {
-                return axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true });
+                return axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true });
             })
             .then(function (response) {
                 currentUser = true;
-                window.location.href = "https://zonapets.vercel.app/mapa/";
+                window.location.href = "http://127.0.0.1:8000/mapa/";
                 renderApp();
             })
             .catch(function (error) {
-                if (error.response && error.response.data && error.response.data.error_message) {
-                    // Manejar el mensaje de error específico
-                    const errorMessage = error.response.data.error_message;
-                    alert(errorMessage);
+                if (error.response && error.response.status === 500) {
+                    // El email ya está registrado
+                    const errorMessage = document.getElementById('registration-error');
+                    errorMessage.textContent = "Este correo electrónico ya está registrado.";
+                    errorMessage.style.display = 'block';
                 } else {
-                    // Handle other errors
-                    console.error(error);
+                    // Otro tipo de error
+                    const errorMessage = document.getElementById('registration-error');
+                    errorMessage.textContent = "Ha ocurrido un error durante el registro.";
+                    errorMessage.style.display = 'block';
                 }
             });
     }
@@ -67,18 +79,27 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true })
+        axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
-
-                window.location.href = "https://zonapets.vercel.app/mapa/";
+                window.location.href = "http://127.0.0.1:8000/mapa/";
                 renderApp();
+            })
+            .catch(function (error) {
+                const errorMessage = document.getElementById('login-error');
+                errorMessage.textContent = "Credenciales inválidas.";
+                errorMessage.style.display = 'block';
             });
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     function submitLogout(e) {
         e.preventDefault();
-        axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
+        axios.post("http://127.0.0.1:8000/api/logout/", {}, { withCredentials: true })
             .then(function (response) {
                 currentUser = false;
                 renderApp();
@@ -105,8 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                        </div>
                                        <div class="form-group">
                                            <label>Contraseña</label>
-                                           <input type="Contraseña" id="password" placeholder="Ingresa una contraseña" />
+                                           <input type="password" id="password" placeholder="Ingresa una contraseña" />
                                        </div>
+                                       <div id="registration-error" class="error-message" style="display: none;"></div>
                                        <div class="buttonslogin">
                                        <button class="auth-button" type="submit">Registrar</button>
                                        <button class="google-login-button">
@@ -132,8 +154,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                        </div>
                                        <div class="form-group">
                                            <label>Contraseña</label>
-                                           <input type="Contraseña" id="password" placeholder="Contraseña" />
+                                           <input type="password" id="password" placeholder="Contraseña" />
                                        </div>
+                                       <div id="login-error" class="error-message" style="display: none;"></div>
                                        <div class="buttonslogin">
                                        <button class="loginbutton" type="submit">Iniciar sesión</button>
                                        <button class="google-login-button">
