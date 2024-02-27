@@ -36,7 +36,7 @@
             let username = "";
 
             function checkUserStatus() {
-                axios.get("http://127.0.0.1:8000/api/get_user_info/", { withCredentials: true })
+                axios.get("https://zonapets.vercel.app/api/get_user_info/", { withCredentials: true })
                     .then(function (response) {
                         currentUser = true;
                         renderApp(response.data);  // Pasar los datos del usuario a renderApp
@@ -59,13 +59,13 @@
                     password: password,
                 };
 
-                axios.post("http://127.0.0.1:8000/api/register/", data, {
+                axios.post("https://zonapets.vercel.app/api/register/", data, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 })
                     .then(function (response) {
-                        return axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true });
+                        return axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true });
                     })
                     .then(function (response) {
                         currentUser = true;
@@ -88,21 +88,21 @@
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
 
-                axios.post("http://127.0.0.1:8000/api/login/", { email, password }, { withCredentials: true })
+                axios.post("https://zonapets.vercel.app/api/login/", { email, password }, { withCredentials: true })
                     .then(function (response) {
                         currentUser = true;
 
-                        window.location.href = "http://127.0.0.1:8000/";
+                        window.location.href = "https://zonapets.vercel.app/";
                         renderApp();
                     });
             }
 
             function submitLogout(e) {
                 e.preventDefault();
-                axios.post("http://127.0.0.1:8000/api/logout/", {}, { withCredentials: true })
+                axios.post("https://zonapets.vercel.app/api/logout/", {}, { withCredentials: true })
                     .then(function (response) {
                         currentUser = false;
-                        window.location.href = "http://127.0.0.1:8000/mapa/"
+                        window.location.href = "https://zonapets.vercel.app/mapa/"
                     });
             }
 
@@ -117,7 +117,7 @@
                         <img src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" style="heigth:70px; width:70px; border-radius:50px" >
                         <h1>¿Deseas iniciar sesión?</h1>
                         <p>¿Aún no tienes una cuenta? </p>
-                        <button class="auth-button" onclick="window.location.href='http://127.0.0.1:8000/micuenta/'">Inicia Sesión</button>
+                        <button class="auth-button" onclick="window.location.href='https://zonapets.vercel.app/micuenta/'">Inicia Sesión</button>
                     </div>`
                 }
                 if (currentUser) {
@@ -127,7 +127,7 @@
                     <div id="app">
                     <div class="title-info">
                     <div class="url-line">
-                    <a href="http://127.0.0.1:8000/iniciarsesion/">Cuenta </a><span>> </span><a
+                    <a href="https://zonapets.vercel.app/iniciarsesion/">Cuenta </a><span>> </span><a
                         href="">Informacion personal</a></div>
                     <div class="personal-info">
                         <h1 class="title">Información personal</h1>
@@ -257,7 +257,7 @@
                 document.getElementById('editForm').addEventListener('submit', function (event) {
                     event.preventDefault();
                     const formData = new FormData(this);
-                    axios.post("http://127.0.0.1:8000/api/update_user_info/", formData, { withCredentials: true })
+                    axios.post("https://zonapets.vercel.app/api/update_user_info/", formData, { withCredentials: true })
                         .then(function (response) {
                             location.reload();
                         })
