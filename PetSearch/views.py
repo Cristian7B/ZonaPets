@@ -208,8 +208,8 @@ def send(request):
 
 
 def showFirebaseJS(request):
-    data='importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");' \
-         'importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js"); ' \
+    data='importScripts("https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js");' \
+         'importScripts("https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"); ' \
          'var firebaseConfig = {' \
          '        apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",' \
          '        authDomain: "zonapets-407921.firebaseapp.com",' \
