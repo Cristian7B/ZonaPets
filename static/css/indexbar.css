@@ -209,6 +209,12 @@ section {
   list-style: none;
 }
 
+.navegacion ul li a span {
+  color: #1385F0;
+  display: none;
+  font-weight: bold;
+}
+
 .navegacion ul li a {
   color: #1385F0;
 }
@@ -382,6 +388,18 @@ header a:hover {
   .imgnavbar {
     justify-content: flex-start;
   }
+
+  .navegacion ul li a {
+    display: flex;
+    align-items: center;
+  }
+
+  .navegacion ul li a span {
+    display: flex;
+    margin-left: 10px;
+    color: #1385F0;
+  }
+
 }
 
 @media(max-width: 510px) {
