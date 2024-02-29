@@ -12,6 +12,9 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapa.css/' %}">
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -20,6 +23,41 @@
     gtag('js', new Date());
 
     gtag('config', 'G-N6MHZ5KW4K');
+</script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
+        authDomain: "zonapets-407921.firebaseapp.com",
+        projectId: "zonapets-407921",
+        storageBucket: "zonapets-407921.appspot.com",
+        messagingSenderId: "810651763558",
+        appId: "1:810651763558:web:914cca9d4c78b9833dfea7",
+        measurementId: "G-5WPJXXGLH1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+    
+    messaging.requestPermission()
+        .then(function () {
+            console.log("Notification permission granted.");
+            return messaging.getToken({ vapidKey: 'BJwHv8Qw9Bogo5rrQg_ooF8sVuEw3GoHI0Qu5grABtKEa2lJplQHBSuv4AV1uwbNmsxvThnZdvQ5ZKKdsoevvVo' });
+        })
+        .then(function (currentToken) {
+            if (currentToken) {
+                console.log(currentToken);
+            } else {
+                console.log('No registration token available. Request permission to generate one.');
+            }
+        })
+        .catch(function (err) {
+            console.log("Unable to get permission to notify.", err);
+        });
+
+    messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+    });
 </script>
 
 <body>

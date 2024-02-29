@@ -219,6 +219,19 @@ section {
   color: #1385F0;
 }
 
+.navegacion ul li h1 {
+  font-size: 25px;
+  color: #0F5B9E;
+  display: none;
+
+}
+
+.ig-logo {
+  width: 18px;
+  height: 18px;
+  display: flex;
+}
+
 .navegacion li {
   margin: 0 20px;
 }
@@ -398,6 +411,10 @@ header a:hover {
     display: flex;
     margin-left: 10px;
     color: #1385F0;
+  }
+
+  .navegacion ul li h1 {
+    display: flex;
   }
 
 }
