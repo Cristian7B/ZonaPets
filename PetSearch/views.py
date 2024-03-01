@@ -90,6 +90,9 @@ def preguntasfrecuentes(request):
 def equipo(request):
     return render(request, "ZonaPets/equipo.html")
 
+def zonapets(request):
+    return render(request, "ZonaPets/zonapets.html")
+
 def prueba(request):
     return render(request, "ZonaPets/pruebaicon.html")
 

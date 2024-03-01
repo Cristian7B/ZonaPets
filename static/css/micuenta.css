@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
+
 body {
     background-color: hsl(214, 35%, 54%);
     font-family: "Poppins", "sans-serif";
@@ -180,7 +181,8 @@ input {
     cursor: pointer;
     border-radius: 10px;
     font-family: "Poppins";
-    margin-right: auto;
+    margin: auto;
+    width: 50%;
 }
 
 .auth-button:hover {
@@ -269,7 +271,8 @@ button:hover {
 }
 
 .loginbutton {
-    margin-right: auto;
+    margin: auto;
+    width: 50%;
 }
 
 .google-login-button a {
@@ -325,7 +328,8 @@ button:hover {
         justify-self: center;
     }
 
-    .loginbutton, .auth-button {
+    .loginbutton,
+    .auth-button {
         margin-right: 0px;
         width: 70%;
     }

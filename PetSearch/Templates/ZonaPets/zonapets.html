@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaPets</title>
+    <link rel="stylesheet" href="{% static 'css/zonapets.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <section class="barsection">
+            <div id="icon-menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <a href="https://zonapets.vercel.app/mapa/" class="logo-nombre">ZonaPets</a>
+            <img src="{% static 'imagenes/Logo.png' %}" alt="logozonapets" class="imgnavbar">
+            <nav class="navegacion" id="move-menu">
+                <ul class="menu-horizontal">
+                    <li><a href="https://zonapets.vercel.app/mapa/"><i class="fa fa-home" id="navbar"
+                                aria-hidden="true"></i>
+                            Inicio</a></li>
+                    <li><a href="https://zonapets.vercel.app/acercade/"><i class="fa fa-users" aria-hidden="true"></i>
+                            Acerca de
+                            ZonaPets</a></li>
+                    <li><a href="https://zonapets.vercel.app/contacto/"><i class="fa fa-phone-square"
+                                aria-hidden="true"></i>
+                            Contacto</a></li>
+                    <li>
+                        <h1>¡Síguenos en redes!</h1>
+                    </li>
+                    <li class="iconos"><a style="color: #3b5998;" href="https://www.facebook.com/"
+                            class="fa fa-facebook" target="_blank"><span>
+                                Facebook</span></a></li>
+                    <li class="iconos"><a href="https://www.instagram.com/" target="_blank"><img class="ig-logo"
+                                src="{% static 'imagenes/instagram_icon.png' %}" alt=""><span>
+                                Instagram</span></a>
+                    </li>
+                    <li class="iconos"><a style="color: red;" href="https://www.youtube.com/" class="fa fa-youtube-play"
+                            target="_blank"><span>
+                                Youtube</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <header>
+            <div class="title">
+                <h1>ZonaPets</h1>
+                <p>Lleva a tu peludito a lugares Pet-Friendly</p>
+            </div>
+            <div>
+                <img src="{% static 'imagenes/iconfav.png' %}" alt="">
+            </div>
+        </header>
+        <div class="wave"></div>
+    </div>
+    <div class="container-all">
+        <article class="card-content1">
+            <img class="mockup1" src="{% static 'imagenes/mockup1.png' %}" alt="">
+            <section class="description">
+                <h2>Nuestra web</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibusdam deserunt
+                    minima veritatis sit exercitationem ea eos perspiciatis libero, eligendi ipsa illum consequatur.
+                    Delectus incidunt laborum perspiciatis quas.</p>
+            </section>
+        </article>
+        <article class="card-content2">
+            <h1>Busca sitios</h1>
+        </article>
+    </div>
+</body>
+
+</html>
