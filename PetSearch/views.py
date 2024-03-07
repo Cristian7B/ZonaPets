@@ -91,7 +91,7 @@ def equipo(request):
     return render(request, "ZonaPets/equipo.html")
 
 def zonapets(request):
-    return render(request, "ZonaPets/zonapets.html")
+    return render(request, "ZonaPets/zonapetsl.html")
 
 def prueba(request):
     return render(request, "ZonaPets/pruebaicon.html")
