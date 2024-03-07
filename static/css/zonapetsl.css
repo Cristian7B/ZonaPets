@@ -9,10 +9,10 @@
 .container {
     position: relative;
     background: #1385F0;
-    height: 90vh;
-    margin-bottom: 100px;
-    align-items: center;
+    height: 80vh;
+    margin-bottom: 300px;
     display: flex;
+    justify-content: center;
 }
 
 .barsection {
@@ -47,6 +47,10 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     margin-left: 20px;
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 600;
+    line-height: 38px;
 }
 
 .logo-nombre:hover {
@@ -54,88 +58,7 @@
     transform: scale(1.1);
 }
 
-.navegacion {
-    padding: 0px;
-    width: 100%;
-    justify-content: flex-end;
-    display: flex;
-    align-items: center;
-    font-family: 'Onest', sans-serif;
-}
 
-.navegacion ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    justify-content: end;
-    align-items: center;
-}
-
-.navegacion ul {
-    list-style: none;
-}
-
-.navegacion ul li a span {
-    color: #fff;
-    display: none;
-    font-weight: bold;
-}
-
-.navegacion ul li a {
-    color: #fff;
-}
-
-.navegacion ul li h1 {
-    font-size: 25px;
-    color: #0F5B9E;
-    display: none;
-
-}
-
-.ig-logo {
-    width: 18px;
-    height: 18px;
-    display: flex;
-}
-
-.navegacion li {
-    margin: 0 20px;
-}
-
-.navegacion a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
-
-.navegacion a:hover {
-    color: #0F5B9E;
-}
-
-.iconos {
-    transition: all 0.2s ease-in-out;
-}
-
-.iconos:hover {
-    transform: scale(1.4);
-}
-
-.menu-horizontal {
-    display: flex;
-    position: relative;
-    align-items: center;
-}
-
-.menu-horizontal>li {
-    display: inline-block;
-    position: relative;
-}
-
-.menu-horizontal>li>a {
-    display: block;
-}
 
 #icon-menu {
     width: 50px;
@@ -229,6 +152,14 @@
     color: #fff;
 }
 
+.mockup {
+    z-index: 100;
+    width: 943px;
+    height: 562px;
+    position: absolute;
+    top: 260px;
+}
+
 .mockup1 {
     width: 400px;
     height: 300px;
@@ -267,25 +198,139 @@
     font-family: "Onest", sans-serif;
 }
 
-header {
-    padding: 0px 200px 0px 200px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
 
 .title {
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
 }
 
-header h1 {
-    font-size: 100px;
+.title h1 {
+    font-size: 50px;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
     color: #fff;
+    font-style: normal;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #fff;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+}
+
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 4px;
+    gap: 30px;
+}
+
+.mapa {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    width: 205px;
+    height: 46px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px rgba(136, 144, 194, 0.25), 0px 7px 21px rgba(37, 44, 97, 0.2);
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #1385F0;
+}
+
+/* Classic Button/true */
+
+/* Auto layout */
+/* Button */
+
+/* Auto layout */
+.registrar {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    width: 205px;
+    height: 46px;
+    background: #0F5B9E;
+    box-shadow: 0px 3px 8px rgba(136, 144, 194, 0.25), 0px 7px 21px rgba(37, 44, 97, 0.2);
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+
+.articles-info {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 100px;
+}
+
+.information {
+    display: flex;
+    gap: 50px;
+    width: 80%;
+    justify-content: center;
+}
+
+.information1 {
+    width: 300px;
+}
+
+.information1 h3 {
+    color: #0F5B9E;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-header p {
-    color: #fff;
-    font-family: "Onest", sans-serif;
+.information p {
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+    color: #1385F0;
+}
+
+.patrocinadores {
+    background-color: #1385F0;
+    height: 83px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 100px;
 }
