@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZonaPets</title>
-    <link rel="stylesheet" href="{% static 'css/zonapetsl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/zonapets.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +35,9 @@
                     amet consectetur <br>
                     adipisicing elit. Voluptas odio pariatur quibu</p>
                 <div class="buttons">
-                    <button class="mapa">Descubre el mapa</button>
-                    <button class="registrar">Registra un lugar</button>
+                    <a href="https://zonapets.vercel.app/mapa/"><button class="mapa">Descubre el mapa</button></a>
+                    <a href="https://zonapets.vercel.app/registrar/"><button class="registrar">Registrar un
+                            lugar</button></a>
                 </div>
                 <img class="mockup" src="{% static 'imagenes/mockupcel-lap.png' %}"" alt=" zonapets-mockup">
             </section>
@@ -75,7 +76,7 @@
         <img src="{% static 'imagenes/paypal.svg' %}" alt="">
         <img src="{% static 'imagenes/vercel.svg' %}" alt="">
     </div>
-    <div class="container-all">
+    <div class="grid-container">
         <article class="card-content1">
             <img class="mockup1" src="{% static 'imagenes/mockup1.png' %}" alt="">
             <section class="description">
@@ -86,9 +87,32 @@
             </section>
         </article>
         <article class="card-content2">
-            <h1>Busca sitios</h1>
+            <ion-icon name="add-circle-outline" class="plus-icon"></ion-icon>
+            <h3>¡Registra!</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibusdam deserunt
+                minima </p>
+        </article>
+        <article class="card-content3">
+            <section>
+                <h1>Encuentra</h1>
+                <h2>+500 <span>lugares en el mapa</span></h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio .</p>
+            </section>
+            <img src="{% static 'imagenes/mapa-mockup.png' %}" alt="">
         </article>
     </div>
+    <div class="grid-cards">
+        <section>
+            1
+        </section>
+        <section>
+            1
+        </section>
+        <section>
+            1
+        </section>
+    </div>
+    <div style="height: 1000px;"></div>
 </body>
 
 </html>
