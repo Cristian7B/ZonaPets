@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
@@ -25,10 +26,10 @@
         gtag('config', 'G-N6MHZ5KW4K');
     </script>
 </head>
+<!--         style="background-image:url('{% static 'imagenes/wave.svg' %}'); background-attachment: local; background-size: 100%;" -->
 
 <body>
-    <div class="container"
-        style="background-image:url('{% static 'imagenes/wave.svg' %}'); background-attachment: local; background-size: 100%;">
+    <div class="container">
         <section class="barsection">
             <div id="icon-menu">
                 <i class="fa fa-bars" aria-hidden="true"></i>
@@ -39,9 +40,12 @@
         <header>
             <section class="title">
                 <h1>Lugares Pet-Friendly para tu peludito</h1>
-                <p>Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad. Lorem ipsum, dolor sit
-                    amet consectetur <br>
-                    adipisicing elit. Voluptas odio pariatur quibu</p>
+                <div style="width: 70%;">
+                    <p id="texto-dinamico">Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad.
+                        Lorem ipsum, dolor sit
+                        amet consectetur
+                        adipisicing elit. Voluptas odio pariatur quibu</p>
+                </div>
                 <div class="buttons">
                     <a href="https://zonapets.vercel.app/mapa/"><button class="mapa">Descubre el mapa</button></a>
                     <a href="https://zonapets.vercel.app/registrar/"><button class="registrar">Registrar un
@@ -100,6 +104,8 @@
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibusdam deserunt
                 minima </p>
         </article>
+        <article class="card-content4">
+        </article>
         <article class="card-content3">
             <section>
                 <h1>Encuentra</h1>
@@ -107,6 +113,8 @@
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio .</p>
             </section>
             <img src="{% static 'imagenes/mapa-mockup.png' %}" alt="">
+        </article>
+        <article class="card-content6">
         </article>
     </div>
     <div class="grid-cards">
@@ -121,6 +129,24 @@
         </section>
     </div>
     <div style="height: 1000px;"></div>
+    <script>
+        window.onload = function () {
+            var parrafo = document.getElementById("texto-dinamico");
+
+            function cambiarTexto() {
+                if (window.innerWidth <= 470) {
+                    parrafo.textContent = "Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad.";
+                } else {
+                    parrafo.textContent = "Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibu";
+                }
+            }
+
+            cambiarTexto(); // Llamar a la función para establecer el texto inicialmente
+
+            // Llamar a la función cuando se redimensione la ventana
+            window.addEventListener("resize", cambiarTexto);
+        };
+    </script>
 </body>
 
 </html>
