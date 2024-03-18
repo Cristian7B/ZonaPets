@@ -121,6 +121,7 @@
     margin: auto;
     row-gap: 20px;
     column-gap: 20px;
+    grid-auto-flow: dense;
 }
 
 .card-content1 {
@@ -558,12 +559,43 @@
 .grid-cards {
     height: 60vh;
     align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     width: 80%;
     margin: auto;
     row-gap: 20px;
-    column-gap: 20px;
+    column-gap: 26px;
+    justify-content: space-around;
+}
+
+#patrocinadores-text {
+    text-align: center;
+    color: #1385F0;
+    margin-bottom: 20px;
+    font-size: 40px;
+    display: none;
+}
+
+.title-places {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 120px;
+    text-align: center;
+
+    color: #1385F0;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.card-place {
+    box-sizing: border-box;
+    background: url(/static/imagenes/wallCard.png);
+    border: 1px solid rgba(255, 255, 255, 0.941176);
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 @media(max-width: 420px) {
@@ -584,8 +616,12 @@
         width: 500px;
         height: 293px;
         position: absolute;
-        top: 500px;
+        top: 550px;
         margin-left: 20px;
+    }
+
+    .container {
+        height: 80vh;
     }
 }
 
@@ -619,8 +655,48 @@
     }
 
     .mockup1 {
-        /* width: 350px;
-        height: 337px; */
-        aspect-ratio: auto 3/4;
+        width: 100%;
+        height: 56%;
+    }
+
+    .card-content3 {
+        flex-direction: column-reverse;
+    }
+
+    .card-content3 img {
+        width: 100%;
+    }
+
+    .grid-cards {
+        height: 100vh;
+    }
+
+    .patrocinadores {
+        height: 600px;
+        width: 80%;
+        margin: 0px auto 100px;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        flex-direction: column;
+    }
+
+    .articles-info {
+        margin-bottom: 50px;
+    }
+
+    #patrocinadores-text {
+        display: block;
+    }
+
+    .card-content3 section {
+        padding: 30px;
+    }
+
+    .grid-cards {
+        display: none;
+    }
+
+    .title-places {
+        display: none;
     }
 }
