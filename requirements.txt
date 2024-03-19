@@ -30,3 +30,4 @@ typing_extensions==4.9.0
 tzdata==2023.4
 websockets==11.0.3
 requests==2.1.0
+fontawesomefree==6.5.1

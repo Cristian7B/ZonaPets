@@ -26,6 +26,10 @@ body {
   width: 100%
 }
 
+.fa .logo-red {
+  font-size: 18px;
+}
+
 .navigation {
   position: fixed;
   bottom: 0;
@@ -209,9 +213,9 @@ section {
   list-style: none;
 }
 
-.navegacion ul li a span {
+.iconos span {
   color: #1385F0;
-  display: none;
+  display: flex;
   font-weight: bold;
 }
 
@@ -290,6 +294,12 @@ header a:hover {
 
 #icon-menu:hover {
   color: #0F5B9E;
+}
+
+.icon-a {
+  color: #1385F0;
+  align-items: center;
+  display: flex;
 }
 
 @media(max-width: 844px) {
@@ -407,7 +417,7 @@ header a:hover {
     align-items: center;
   }
 
-  .navegacion ul li a span {
+  .fa {
     display: flex;
     margin-left: 10px;
     color: #1385F0;
