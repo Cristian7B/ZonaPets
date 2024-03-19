@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 </head>
 {% load static %}
@@ -13,30 +15,30 @@
 
 <body>
     <div class="container1">
-    <section>
-        <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
-        <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
-        <nav class="navegacion" id="move-menu">
-            <ul class="menu-horizontal">
-                <li><a href="http://zonapets.onrender.com/inicio-zonapets/">Inicio</a></li>
-                <li><a href="http://zonapets.onrender.com/acercade/">Acerca de nosotros</a></li>
-                <li><a href="http://zonapets.onrender.com/contacto/">Contacto</a></li>
-                <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-            </ul>
-        </nav>
+        <section>
+            <img src="{% static 'imagenes/Logo.png' %}" alt="img-waulandia" class="imgnavbar">
+            <a href="http://zonapets.onrender.com/inicio-zonapets/" class="logo-nombre">ZonaPets</a>
+            <nav class="navegacion" id="move-menu">
+                <ul class="menu-horizontal">
+                    <li><a href="http://zonapets.onrender.com/inicio-zonapets/">Inicio</a></li>
+                    <li><a href="http://zonapets.onrender.com/acercade/">Acerca de nosotros</a></li>
+                    <li><a href="http://zonapets.onrender.com/contacto/">Contacto</a></li>
+                    <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                    <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+                    <li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+                </ul>
+            </nav>
 
-        <div id="icon-menu">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </div>
-    </section>
+            <div id="icon-menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </section>
     </div>
     <div class="container-all" id="move-content">
         {% block content %}
-
-        {% endblock %}    
+        {% endblock %}
     </div>
     <script src="{% static 'javascript/template.js' %}"></script>
 </body>
+
 </html>
