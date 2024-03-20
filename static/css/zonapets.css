@@ -19,7 +19,7 @@
 }
 
 .img-wave {
-    width: 120%;
+    width: 100%;
 }
 
 .barsection {
@@ -640,7 +640,7 @@
     }
 
     .container {
-        height: 80vh;
+        height: 70vh;
     }
 
     .img-wave {
