@@ -7,12 +7,19 @@
 }
 
 .container {
+    /* background-image: url(/static/imagenes/wave.svg); */
+    background-color: #1385F0;
+    background-attachment: local;
+    background-size: 70%;
     position: relative;
-    background: #1385F0;
-    height: 100vh;
+    height: 50vh;
     margin-bottom: 300px;
     display: flex;
     justify-content: center;
+}
+
+.img-wave {
+    width: 120%;
 }
 
 .barsection {
@@ -513,6 +520,7 @@
     justify-content: center;
     display: flex;
     margin-bottom: 100px;
+    margin-top: 600px;
 }
 
 .information {
@@ -598,6 +606,17 @@
     height: 100%;
 }
 
+/* @media(max-width: 1075px) {
+    .container {
+        position: relative;
+        background: #1385F0;
+        height: 100vh;
+        margin-bottom: 300px;
+        display: flex;
+        justify-content: center;
+    }
+} */
+
 @media(max-width: 420px) {
     .title h1 {
         font-size: 50px;
@@ -622,6 +641,13 @@
 
     .container {
         height: 80vh;
+    }
+
+    .img-wave {
+        width: 100%;
+    }
+    .articles-info {
+        margin-top: 100px;
     }
 }
 
