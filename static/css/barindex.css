@@ -27,7 +27,9 @@ body {
 }
 
 .fa .logo-red {
-  font-size: 18px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .navigation {
@@ -214,9 +216,11 @@ section {
 }
 
 .iconos span {
-  color: #1385F0;
-  display: flex;
+  color: #0F5B9E;
+  display: none;
   font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 .navegacion ul li a {
@@ -302,6 +306,7 @@ header a:hover {
   display: flex;
 }
 
+
 @media(max-width: 844px) {
 
   body {
@@ -351,6 +356,10 @@ header a:hover {
     background-color: #fff;
     display: inline-block;
     flex-direction: column;
+  }
+
+  .iconos span {
+    display: flex;
   }
 
   .show-lateral {
@@ -417,11 +426,11 @@ header a:hover {
     align-items: center;
   }
 
-  .fa {
+  /* .fa {
     display: flex;
     margin-left: 10px;
     color: #1385F0;
-  }
+  } */
 
   .navegacion ul li h1 {
     display: flex;
