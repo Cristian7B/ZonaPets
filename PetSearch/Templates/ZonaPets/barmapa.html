@@ -38,7 +38,7 @@
     firebase.initializeApp(firebaseConfig);
 
     const messaging = firebase.messaging();
-    
+
     messaging.requestPermission()
         .then(function () {
             console.log("Notification permission granted.");
@@ -251,7 +251,6 @@
                                 lng: position.coords.longitude,
                             };
 
-                            // Crear el marcador con la ubicación del usuario
                             const userMarker = new google.maps.Marker({
                                 position: userLatLng,
                                 map: map,
@@ -259,7 +258,7 @@
                                 icon: {
                                     url: "{% static 'imagenes/marker.png/' %}",
                                     scaledSize: new google.maps.Size(60, 60),
-                                }// Opcional: Cambiar el icono
+                                }
                             });
 
                             userMarker.addListener("click", function () {
@@ -310,35 +309,33 @@
                 marker.addListener("click", () => {
                     infowindow.open(map, marker);
                 });
-                autocomplete.addListener("place_changed", () => {
-                    infowindow.close();
+                // autocomplete.addListener("place_changed", () => {
+                //     infowindow.close();
 
-                    const place = autocomplete.getPlace();
+                //     const place = autocomplete.getPlace();
 
-                    if (!place.place_id) {
-                        return;
-                    }
+                //     if (!place.place_id) {
+                //         return;
+                //     }
 
-                    geocoder
-                        .geocode({ placeId: place.place_id })
-                        .then(({ results }) => {
-                            map.setZoom(11);
-                            map.setCenter(results[0].geometry.location);
-                            // Set the position of the marker using the place ID and location.
-                            // @ts-ignore TODO This should be in @typings/googlemaps.
-                            marker.setPlace({
-                                placeId: place.place_id,
-                                location: results[0].geometry.location,
-                            });
-                            marker.setVisible(true);
-                            infowindowContent.children["place-name"].textContent = place.name;
-                            infowindowContent.children["place-id"].textContent = place.place_id;
-                            infowindowContent.children["place-address"].textContent =
-                                results[0].formatted_address;
-                            infowindow.open(map, marker);
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));
-                });
+                //     geocoder
+                //         .geocode({ placeId: place.place_id })
+                //         .then(({ results }) => {
+                //             map.setZoom(11);
+                //             map.setCenter(results[0].geometry.location);
+                //             marker.setPlace({
+                //                 placeId: place.place_id,
+                //                 location: results[0].geometry.location,
+                //             });
+                //             marker.setVisible(true);
+                //             infowindowContent.children["place-name"].textContent = place.name;
+                //             infowindowContent.children["place-id"].textContent = place.place_id;
+                //             infowindowContent.children["place-address"].textContent =
+                //                 results[0].formatted_address;
+                //             infowindow.open(map, marker);
+                //         })
+                //         .catch((e) => window.alert("Geocoder failed due to: " + e));
+                // });
             }
             window.initMap = initMap;
         </script>

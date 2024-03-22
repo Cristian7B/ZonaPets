@@ -156,7 +156,26 @@
     height: 100%;
     width: auto;
     padding: 30px;
+}
 
+.card-content2 p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #1385F0;
+}
+
+.card-content2 h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 38px;
+    color: #1385F0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
 }
 
 .card-content3 {
@@ -273,96 +292,43 @@
     height: 100%;
     width: auto;
     column-gap: 20px;
-}
-
-.card-content4 section {
-    padding: 50px 0px 0px 40px;
-}
-
-.card-content4 h1 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 40px;
-
-    color: #1385F0;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    background: url(/static/imagenes/wallCard.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .card-content4 p {
-    margin-top: 15px;
-    width: 280px;
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
-
-    color: #1385F0;
-
+    color: #fff;
 }
 
-.card-content4 h2 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 40px;
-
-    color: #0F5B9E;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-}
-
-.card-content4 span {
+.card-content4 h3 {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
     line-height: 38px;
-
-    color: #0F5B9E;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.card-content4 img {
-    border-radius: 10px;
-    width: 300px;
-    height: 300px;
-    margin-left: auto;
-}
-
-.card-content2 h3 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 38px;
-    color: #1385F0;
+    color: #fff;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 10px;
 }
 
-
+#plus-icon1 {
+    width: 40px;
+    height: 43.08px;
+    color: #fff;
+}
 
 .plus-icon {
     width: 40px;
     height: 43.08px;
-    color: #1385F0;
-}
-
-.card-content2 p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 18px;
     color: #1385F0;
 }
 
@@ -565,14 +531,14 @@
 }
 
 .grid-cards {
-    height: 60vh;
+    height: 70vh;
     align-items: center;
     display: flex;
     width: 80%;
     margin: auto;
-    row-gap: 20px;
-    column-gap: 26px;
     justify-content: space-around;
+    column-gap: 20px;
+    padding: 20px;
 }
 
 #patrocinadores-text {
@@ -602,8 +568,24 @@
     background: url(/static/imagenes/wallCard.png);
     border: 1px solid rgba(255, 255, 255, 0.941176);
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px;
+}
+
+.desc-use {
+    color: #fff;
+    font-weight: 800;
+    font-size: 28px;
+}
+
+.card-place p {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+    margin-top: 10px;
 }
 
 /* @media(max-width: 1075px) {
@@ -646,6 +628,7 @@
     .img-wave {
         width: 100%;
     }
+
     .articles-info {
         margin-top: 100px;
     }
