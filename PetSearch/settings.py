@@ -123,8 +123,8 @@ DATABASES = {
         'NAME': 'zonapetsbackup',
         'USER': 'devcristian',
         'PASSWORD': '0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d',
-        'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  # O la dirección del servidor donde está alojada tu base de datos
-        'PORT': '5432',       # El puerto predeterminado para PostgreSQL
+        'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  
+        'PORT': '5432',      
     }
 }
 
