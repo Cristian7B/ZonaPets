@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZonaPets</title>
-    <link rel="stylesheet" href="{% static 'css/zonapets.css' %}">
+    <link rel="stylesheet" href="{% static 'css/zonapetsl.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,18 +111,24 @@
                 minima </p>
         </article>
         <article class="card-content3">
+            <img src="{% static 'imagenes/mapa-mockup.png' %}" alt="">
             <section>
                 <h1>Encuentra <span>+500</span></h1>
                 <h2>lugares en el mapa</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio .</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio .Lorem ipsum, dolor.</p>
             </section>
-            <img src="{% static 'imagenes/mapa-mockup.png' %}" alt="">
         </article>
         <article class="card-contentl">
-            <ion-icon name="locate-outline" id="plus-icon2" class="plus-icon"></ion-icon>
-            <h3>Geolocalización</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibusdam deserunt
-                minima </p>
+            <ion-icon name="heart-half-outline" id="plus-icon1" class="plus-icon"></ion-icon>
+            <h3>Síguenos en redes</h3>
+            <div class="social-mediablur">
+                <a class="plus-icon2" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-instagram"></ion-icon></a>
+                <a class="plus-icon2" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-facebook"></ion-icon></a>
+                <a class="plus-icon2" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-tiktok"></ion-icon></a>
+            </div>
         </article>
         <!-- <article class="card-content6">
             <ion-icon class="logo-abs" id="logo-abs1" name="person-circle-outline"></ion-icon>
@@ -144,7 +150,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing eligendi ased asd</p>
         </section>
         <section class="card-place">
-            <h2 class="desc-use">¡Recomienda el lugar!</h2>
+            <h2 class="desc-use" id="desc-useW">¡Sugiere el lugar!</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing eligendi ased asd</p>
         </section>
     </div>
