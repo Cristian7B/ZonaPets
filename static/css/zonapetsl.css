@@ -222,7 +222,7 @@
     grid-column: 1/3;
     height: 100%;
     width: auto;
-    padding: 30px;
+    padding: 70px;
     background: url(/static/imagenes/wallcard2.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -258,11 +258,11 @@
     height: 100%;
     width: auto;
     column-gap: 20px;
-
+    align-items: center;
 }
 
 .card-content3 section {
-    padding: 50px 0px 0px 40px;
+    margin-left: 30px;
 }
 
 .card-content3 h1 {
@@ -278,7 +278,7 @@
 
 .card-content3 p {
     margin-top: 15px;
-    width: 280px;
+    width: 450px;
 
     font-family: 'Poppins';
     font-style: normal;
@@ -313,7 +313,6 @@
     border-radius: 10px;
     width: 300px;
     height: 300px;
-    margin-left: auto;
 }
 
 .card-content5 {
@@ -354,7 +353,7 @@
     column-gap: 20px;
     flex-direction: column;
     justify-content: center;
-    padding: 30px;
+    padding: 70px;
     background: url(/static/imagenes/wallcard1.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -387,21 +386,17 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     height: 100%;
-    width: auto;
+    width: 100%;
     column-gap: 20px;
     flex-direction: column;
     justify-content: center;
-    padding: 30px
+    padding: 30px;
+    align-items: center;
+    background: url(/static/imagenes/wallcard3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.card-contentl p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 18px;
-    color: #1385F0;
-}
 
 .card-contentl h3 {
     font-family: 'Poppins';
@@ -409,9 +404,35 @@
     font-weight: 700;
     font-size: 25px;
     line-height: 38px;
-    color: #1385f0;
+    color: #fff;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 10px;
+    text-align: center;
+}
+
+.social-mediablur {
+    background: rgba(255, 255, 255, 0.4588235294117647);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 80%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.plus-icon2 {
+    width: 25px;
+    height: 28.08px;
+    color: #00000070;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.plus-icon2:hover {
+    color: #1385f0a9;
 }
 
 #plus-icon1 {
@@ -621,7 +642,9 @@
 }
 
 .patrocinadores {
-    background-color: #1385F0;
+    background: url(/static/imagenes/wallcard4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 83px;
     width: 100%;
     display: flex;
@@ -679,6 +702,10 @@
     color: #fff;
     font-weight: 800;
     font-size: 28px;
+}
+
+#desc-useW {
+    width: 60%;
 }
 
 .card-place p {
@@ -749,6 +776,7 @@
         display: flex;
         flex-direction: column;
         width: 90%;
+        height: fit-content;
     }
 
     .card-content1 {
@@ -769,7 +797,8 @@
     }
 
     .card-content3 {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        width: 100%;
     }
 
     .card-content3 img {
@@ -798,14 +827,30 @@
     }
 
     .card-content3 section {
-        padding: 30px;
+        padding: 30px 15px;
+        width: 100%;
+    }
+
+    .card-content3 p {
+        width: 90%;
+    }
+
+    .card-content3 span {
+        color: #1385F0;
+        font-size: 26px;
     }
 
     .grid-cards {
-        display: none;
+        flex-direction: column;
+        border: none;
+        margin-top: 30px;
+        gap: 20px;
+        width: 100%;
     }
 
     .title-places {
-        display: none;
+        font-size: 40px;
+        margin-top: 40px;
+        line-height: normal;
     }
 }
