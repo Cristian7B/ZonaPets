@@ -816,6 +816,9 @@
         border-radius: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         flex-direction: column;
+        background: url(/static/imagenes/wallcard10.png);
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .articles-info {
@@ -850,7 +853,19 @@
 
     .title-places {
         font-size: 40px;
-        margin-top: 40px;
+        margin-top: 60px;
         line-height: normal;
+    }
+
+    .social-mediablur {
+        height: 40px;
+    }
+
+    .card-content4 {
+        padding: 35px;
+    }
+
+    .card-content2 {
+        padding: 35px;
     }
 }
