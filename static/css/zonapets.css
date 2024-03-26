@@ -209,6 +209,7 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     grid-column: 1/-1;
+
 }
 
 .card-content2 {
@@ -846,7 +847,7 @@
     .grid-cards {
         flex-direction: column;
         border: none;
-        margin-top: 30px;
+        margin-top: 15  px;
         gap: 20px;
         width: 100%;
     }
