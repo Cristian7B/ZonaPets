@@ -117,16 +117,16 @@ WSGI_APPLICATION = 'PetSearch.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'zonapetsbackup',
-#         'USER': 'devcristian',
-#         'PASSWORD': '0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d',
-#         'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  
-#         'PORT': '5432',      
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zonapetsbackup',
+        'USER': 'devcristian',
+        'PASSWORD': '0qRY0fO8Dld0ulU3yUQPYqWNDOrARu2d',
+        'HOST': 'dpg-cmps9ola73kc73bf1ef0-a.oregon-postgres.render.com',  
+        'PORT': '5432',      
+    }
+}
 
 
 # DATABASES = {
