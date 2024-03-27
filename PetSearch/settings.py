@@ -29,7 +29,7 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp", "svg"]
 SECRET_KEY = 'django-insecure-3s=e)p*@!v%#3d&6rpjh=5=xxxzu6)a*&7w(hr=iq$=jgim@&e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://zonapets.vercel.app/"]

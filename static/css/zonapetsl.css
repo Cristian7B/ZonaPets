@@ -716,6 +716,14 @@
     margin-top: 10px;
 }
 
+.docker-logo {
+    width: 80px;
+}
+
+.vercel-logo {
+    width: 180px;
+}
+
 /* @media(max-width: 1075px) {
     .container {
         position: relative;
@@ -847,7 +855,7 @@
     .grid-cards {
         flex-direction: column;
         border: none;
-        margin-top: 15  px;
+        margin-top: 15 px;
         gap: 20px;
         width: 100%;
     }
