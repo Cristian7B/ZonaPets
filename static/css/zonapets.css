@@ -654,10 +654,11 @@
 
 #patrocinadores-text {
     text-align: center;
-    color: #1385F0;
+    color: #94BFA1;
     margin-bottom: 20px;
     font-size: 40px;
     display: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title-places {
@@ -745,11 +746,20 @@
     }
 
     .container {
-        height: 70vh;
+        height: 90vh;
+        margin-bottom: 200px;
     }
 
     .img-wave {
         width: 100%;
+    }
+
+    .buttons {
+        width: 80%;
+    }
+
+    .button a {
+        width: 80%;
     }
 
     .articles-info {
@@ -805,6 +815,7 @@
 
     .card-content3 img {
         width: 100%;
+        height: auto;
     }
 
     .grid-cards {
