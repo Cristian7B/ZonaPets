@@ -69,12 +69,6 @@ def test_token(request):
 
 
 
-def inicio(request):
-    pagina = Pagina.objects.first()
-    template = loader.get_template("ZonaPets/index.html")
-    documento = template.render({'pagina': pagina})
-    return HttpResponse(documento)
-
 def acercade(request):
     return render(request, "ZonaPets/acercade.html")
 

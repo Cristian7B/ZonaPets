@@ -712,6 +712,133 @@
     width: 180px;
 }
 
+.zonapets-footer {
+    padding: 100px 100px 30px 100px;
+    background-color: #1385f0;
+}
+
+.top {
+    display: flex;
+}
+
+.logo-footer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img-divfooter {
+    display: flex;
+    align-items: center;
+}
+
+.img-divfooter1 {
+    display: none;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.img-footer {
+    width: 60px;
+}
+
+.logo-title {
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-left: 10px;
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 600;
+    line-height: 38px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+    margin-bottom: 10%;
+}
+
+.plus-icon3 {
+    width: 25px;
+    height: 28.08px;
+    color: #fff;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.description-footer {
+    display: flex;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.description-footer h1 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.footer-divs {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.width-url {
+    display: flex;
+    flex-direction: column;
+    margin-right: 70px;
+    width: 150px;
+}
+
+.url-footer {
+    padding: 0px 0px 20px 0px;
+    text-decoration: none;
+    color: #fff;
+    line-height: 30px;
+}
+
+.url-footer:hover {
+    text-decoration: underline;
+}
+
+hr {
+    color: #fff;
+    margin-top: 30px;
+}
+
+.bottom {
+    margin-top: 30px;
+}
+
+.copyrigth {
+    color: #fff;
+}
+
+.copyrigth2 {
+    margin-top: 10px;
+    color: #0F5B9E;
+    font-weight: 800;
+}
+
+.copyrigth2 a {
+    text-decoration: none;
+    cursor: text;
+    color: #fff;
+    font-weight: 800;
+}
+
+
+
 /* @media(max-width: 1075px) {
     .container {
         position: relative;
@@ -783,6 +910,7 @@
         flex-direction: column;
         width: 90%;
         height: fit-content;
+        margin-bottom: 100px;
     }
 
     .card-content1 {
@@ -890,5 +1018,51 @@
 
     .card-content3 h2 {
         font-size: 25px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .top {
+        flex-direction: column;
+    }
+
+    .logo-footer {
+        order: 3;
+        width: 100%;
+    }
+
+    .description-footer {
+        order: 2;
+    }
+
+    .footer-container {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .img-divfooter {
+        display: none;
+    }
+
+    .img-divfooter1 {
+        display: flex;
+    }
+
+    .zonapets-footer {
+        padding: 40px;
+    }
+
+    .footer-divs {
+        margin-right: auto;
+    }
+
+    .social-media {
+        padding-right: 0px;
+    }
+}
+
+@media(max-width:500px) {
+    .footer-divs {
+        width: 50%;
     }
 }
