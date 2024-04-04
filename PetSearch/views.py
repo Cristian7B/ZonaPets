@@ -129,6 +129,9 @@ def notifications(request):
 def splashscreen(request):
     return render(request, "ZonaPets/splashscreen.html")
 
+def landingemp(request):
+    return render(request, "ZonaPets/landingemp.html")
+
 def mapa_petfriendly(request):
     # Obtén todos los registros de la base de datos usando el modelo
     ubicaciones = registrofinal2.objects.all()
