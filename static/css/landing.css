@@ -23,8 +23,9 @@
     justify-content: flex-start;
     height: fit-content;
     align-items: center;
-    width: 100%;
-    top: 0px;
+    width: 90%;
+    top: 25px;
+    position: absolute;
 }
 
 .imgnavbar {
@@ -54,7 +55,6 @@
 .content {
     display: flex;
     align-items: center;
-    padding-left: 7%;
 }
 
 .imgmockup {
@@ -68,9 +68,10 @@
 
 
 .text-content {
-    margin-top: 70px;
     width: 40%;
     font-family: 'Onest';
+    position: relative;
+    left: 5%;
 }
 
 .login {
