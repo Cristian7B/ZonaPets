@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZonaPets</title>
-    <link rel="stylesheet" href="{% static 'css/landingemp.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,17 +29,20 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="move-content">
         <section class="barsection">
             <div class="navname" style="display: flex;">
                 <img src="{% static 'imagenes/logo12.jpeg' %}" alt="logozonapets" class="imgnavbar">
                 <a href="https://zonapets.vercel.app/mapa/" class="logo-nombre">ZonaPets</a>
+                <div id="icon-menu">
+                    <ion-icon class="icon-menu" name="menu-outline"></ion-icon>
+                </div>
             </div>
+
             <div class="links">
                 <a id="a1" class="nav-links" href="https://zonapets.vercel.app/acercade/" target="_blank">Acerca de</a>
                 <a id="a2" class="nav-links" href="https://zonapets.vercel.app/contacto/" target="_blank">Contacto</a>
-                <a id="a3" href="https://zonapets.vercel.app/registrarempresa/" target="_blank"><button class="button3">Ir al
-                        mapa</button></a>
+                <a id="a3" href="https://zonapets.vercel.app/mapa/" target="_blank"><button class="button3">Ir al mapa</button></a>
             </div>
         </section>
         <article class="contenido">
@@ -68,11 +71,12 @@
                 </div>
                 <div class="imgmockup">
                     <img class="mockup" src="{% static 'imagenes/imac3.png' %}" alt="">
-                    <img class="mockup2" src="{% static 'imagenes/imac2.png' %}" alt="">
+                    <img class="mockup2" src="{% static 'imagenes/imac4.png' %}" alt="">
                 </div>
             </div>
         </article>
     </div>
+    <script src="{% static 'javascript/responsivelanding.js' %}" defer></script>
 </body>
 
 </html>
