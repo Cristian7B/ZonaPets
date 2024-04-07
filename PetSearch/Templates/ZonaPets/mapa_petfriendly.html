@@ -14,7 +14,7 @@
 
     gtag('config', 'G-N6MHZ5KW4K');
     </script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapaa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mapaindex.css/' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iS6Zu6z3L5I+xXn2uZl+wnMKPIb70a72QIqg5ESB/JCk9oP5mmi56I5k0" crossorigin="anonymous">
@@ -55,7 +55,6 @@
                 <i class="fa fa-bars toggle-icon" aria-hidden="true"></i>
                 <span id = "toggleText">Lugares cerca de ti</span>
             </div>
-            <!-- Agrega este botón donde desees en tu HTML -->
             <div class="places-list" id="placesList"></div>
             <div id="map"></div>
             <div class="mobile-search-button">
@@ -317,54 +316,6 @@
                     data-nombre="{{ ubicacion.nombre_compañia }}">
                 </div>
             {% endfor %}  
-
-            <footer id="footer">
-        
-                <div class="container3">
-        
-                    <div class="footer-row">
-        
-                        <div class="footer-links">
-        
-                            <h4>ZonaPets</h4>
-                            <ul>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/equipo/">Nosotros</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/nuestros-servicios/">Nuestros servicios</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.comterminos-y-condiciones/">Política de privacidad</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/afiliate/">Afíliate</a></li>
-                            </ul>
-        
-                        </div>
-                        <div class="footer-links">
-        
-                            <h4>Ayuda</h4>
-                            <ul>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/preguntas-frecuentes/">Preguntas</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/asesores/">Asesores</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/convenios/">Convenios</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/pagos/">Pagos</a></li>
-                            </ul>
-        
-                        </div>
-                        <div class="footer-links">
-        
-                            <h4>Síguenos</h4>
-                            <div class="social-link">
-                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                                <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-                                <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                                <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
-                            </div>
-        
-                        </div>
-        
-                    </div>
-        
-                </div>
-        
-            </footer>
-        </div>
         <style>
             .search-button {
                 display: none;

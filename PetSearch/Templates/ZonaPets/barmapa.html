@@ -10,7 +10,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Lugares PetFriendly | ZonaPets</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="icon" type="image/png" href="{% static 'imagenes/iconfav.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mapaindex.css/' %}">
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
@@ -309,33 +309,33 @@
                 marker.addListener("click", () => {
                     infowindow.open(map, marker);
                 });
-                // autocomplete.addListener("place_changed", () => {
-                //     infowindow.close();
+                autocomplete.addListener("place_changed", () => {
+                    infowindow.close();
 
-                //     const place = autocomplete.getPlace();
+                    const place = autocomplete.getPlace();
 
-                //     if (!place.place_id) {
-                //         return;
-                //     }
+                    if (!place.place_id) {
+                        return;
+                    }
 
-                //     geocoder
-                //         .geocode({ placeId: place.place_id })
-                //         .then(({ results }) => {
-                //             map.setZoom(11);
-                //             map.setCenter(results[0].geometry.location);
-                //             marker.setPlace({
-                //                 placeId: place.place_id,
-                //                 location: results[0].geometry.location,
-                //             });
-                //             marker.setVisible(true);
-                //             infowindowContent.children["place-name"].textContent = place.name;
-                //             infowindowContent.children["place-id"].textContent = place.place_id;
-                //             infowindowContent.children["place-address"].textContent =
-                //                 results[0].formatted_address;
-                //             infowindow.open(map, marker);
-                //         })
-                //         .catch((e) => window.alert("Geocoder failed due to: " + e));
-                // });
+                    geocoder
+                        .geocode({ placeId: place.place_id })
+                        .then(({ results }) => {
+                            map.setZoom(11);
+                            map.setCenter(results[0].geometry.location);
+                            marker.setPlace({
+                                placeId: place.place_id,
+                                location: results[0].geometry.location,
+                            });
+                            marker.setVisible(true);
+                            infowindowContent.children["place-name"].textContent = place.name;
+                            infowindowContent.children["place-id"].textContent = place.place_id;
+                            infowindowContent.children["place-address"].textContent =
+                                results[0].formatted_address;
+                            infowindow.open(map, marker);
+                        })
+                        .catch((e) => window.alert("Geocoder failed due to: " + e));
+                });
             }
             window.initMap = initMap;
         </script>
