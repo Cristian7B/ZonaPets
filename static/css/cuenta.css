@@ -156,6 +156,7 @@ input:focus {
 .error-message {
     margin-bottom: 15px;
     font-size: 15px;
+    text-align: center;
     color: #d42929d8;
     font-family: 'Onest', sans-serif;
 }
@@ -330,7 +331,6 @@ button:hover {
 
     .loginbutton,
     .auth-button {
-        margin-right: 0px;
         width: 70%;
     }
 }

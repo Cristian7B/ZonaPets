@@ -132,6 +132,14 @@ def splashscreen(request):
 def landingemp(request):
     return render(request, "ZonaPets/landingemp.html")
 
+def mapapet(request):
+        # Obtén todos los registros de la base de datos usando el modelo
+    ubicaciones = registrofinal2.objects.all()
+
+    # Procesa los resultados según sea necesario y pásalos al template
+    ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 'telefono_usuario': ubicacion.telefono_usuario, 'latitud': ubicacion.latitud, 'longitud': ubicacion.longitud} for ubicacion in ubicaciones]
+    return render(request, "ZonaPets/mapa_petfriendly.html")
+
 def mapa_petfriendly(request):
     # Obtén todos los registros de la base de datos usando el modelo
     ubicaciones = registrofinal2.objects.all()
