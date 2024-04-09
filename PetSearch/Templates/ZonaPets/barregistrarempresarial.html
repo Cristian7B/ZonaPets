@@ -69,7 +69,7 @@
                     marker = new google.maps.Marker({
                         map: map,
                         position: geolocate,
-                        draggable: true, // Esto permite que el marcador sea arrastrable
+                        draggable: true, 
                         icon: {
                             url: "{% static 'imagenes/marker.png/' %}",
                             scaledSize: new google.maps.Size(40, 40),
@@ -100,12 +100,10 @@
 <div style="height: 100px;"></div>
 
 <style>
-    /* Estilos generales para el formulario */
 
     .mi-formulario input[type="text"]:focus,
     .mi-formulario input[type="number"]:focus {
         border: 2px solid #007bff;
-        /* Cambia el color a azul */
         outline: none;
         box-shadow: 0 0 10px #0056b3;
     }
@@ -126,6 +124,28 @@
         margin-top: 30px;
     }
 
+    #id_tipo_de_negocio {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: "Onest";
+        color: #00478dc0;
+    }
+
+    #id_tipo_de_negocio option {
+        font-family: "Poppins";
+        color: #00478dc0;
+    }
+
+    #id_tipo_de_negocio:focus {
+        border: 2px solid #007bff;
+        outline: none;
+        box-shadow: 0 0 10px #0056b3;
+        width: 100%;
+    }
 
     .google_canvas {
         width: 100%;
