@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         renderApp();
     }
 
-    // authentication.js
 
     function submitRegistration(e) {
         e.preventDefault();
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const errorMessage = document.getElementById('registration-error');
             errorMessage.textContent = `La contraseña debe tener al menos ${MIN_PASSWORD_LENGTH} caracteres.`;
             errorMessage.style.display = 'block';
-            return; // Detener la ejecución de la función si la contraseña es demasiado corta
+            return; 
         }
 
         const data = {
@@ -60,12 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(function (error) {
                 if (error.response && error.response.status === 500) {
-                    // El email ya está registrado
                     const errorMessage = document.getElementById('registration-error');
                     errorMessage.textContent = "Este correo electrónico ya está registrado.";
                     errorMessage.style.display = 'block';
                 } else {
-                    // Otro tipo de error
                     const errorMessage = document.getElementById('registration-error');
                     errorMessage.textContent = "Ha ocurrido un error durante el registro.";
                     errorMessage.style.display = 'block';
@@ -166,17 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
         app.innerHTML += formContent;
     }
 
-    // Inicialización
+
     checkUserStatus();
 
-    // Hacer funciones globales para acceso desde HTML
-    window.submitLogin = submitLogin;
     window.submitLogout = submitLogout;
     window.submitRegistration = submitRegistration;
     window.updateFormBtn = updateFormBtn;
 });
 
-// Configuración de Axios
+
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;

@@ -11,10 +11,15 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mapaindex.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexmapa.css/' %}">
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -34,7 +39,7 @@
         appId: "1:810651763558:web:914cca9d4c78b9833dfea7",
         measurementId: "G-5WPJXXGLH1"
     };
-    // Initialize Firebase
+
     firebase.initializeApp(firebaseConfig);
 
     const messaging = firebase.messaging();
@@ -154,7 +159,6 @@
                         disableAutoPan: true,
                     });
 
-                    // Añadir evento click para abrir el infowindow
                     marker.addListener('click', function () {
                         infowindow.open(map, marker);
                     });
@@ -163,7 +167,6 @@
                     // Encuentra el marcador correspondiente
                     const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
                     if (matchingMarker) {
-                        // Devuelve el contentString correspondiente al marcador
                         return `
                             <div class="info-window">
                                 <h1 class="info-window-content">${nombre}</h1>
@@ -171,7 +174,7 @@
                             </div>
                         `;
                     }
-                    return ''; // Si no se encuentra el marcador, devuelve una cadena vacía
+                    return ''; 
                 }
 
 
@@ -183,7 +186,6 @@
                     placeNames.push(nombre);
 
                     placeItem.addEventListener("click", function () {
-                        // Encuentra el marcador correspondiente
                         const matchingMarker = markers.find(marker => marker.getTitle() === nombre);
                         if (matchingMarker) {
                             map.panTo(matchingMarker.getPosition());
@@ -191,7 +193,7 @@
                             setTimeout(() => {
                                 matchingMarker.setAnimation(null);
                             }, 3500);
-                            infowindow.setContent(getContentStringForMarker(nombre)); // Utiliza una función para obtener el contenido
+                            infowindow.setContent(getContentStringForMarker(nombre));
                             infowindow.open(map, matchingMarker);
                         }
 
@@ -211,7 +213,6 @@
 
                 function filterPlacesByDistance(userLatLng) {
 
-                    // Limpiar la lista actual
                     placesList.innerHTML = '';
 
                     listTitle = document.createElement("h2");
@@ -229,7 +230,6 @@
                         const placeLatLng = new google.maps.LatLng(latitud, longitud);
                         const distance = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, placeLatLng);
 
-                        // Mostrar solo lugares dentro de 2 km
                         if (distance <= 2000) {
                             addPlaceToList(nombre);
 
@@ -237,7 +237,6 @@
                     }
                 }
 
-                // Agrega un lugar a la lista por cada ubicación
                 ubicaciones.forEach(function (ubicacion) {
                     const nombre = ubicacion.getAttribute('data-nombre');
                     addPlaceToList(nombre);
@@ -283,7 +282,6 @@
                     console.error("La geolocalización no es compatible en este navegador.");
                 }
                 const input = document.getElementById("pac-input");
-                // Specify just the place data fields that you need.
                 const autocomplete = new google.maps.places.Autocomplete(input, {
                     fields: ["place_id", "geometry", "name", "formatted_address"],
                 });
@@ -347,53 +345,6 @@
             data-nombre="{{ ubicacion.nombre_compañia }}">
         </div>
         {% endfor %}
-
-        <!-- <footer id="footer">
-        
-                <div class="container3">
-        
-                    <div class="footer-row">
-        
-                        <div class="footer-links">
-        
-                            <h4>ZonaPets</h4>
-                            <ul>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/equipo/">Nosotros</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/nuestros-servicios/">Nuestros servicios</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.comterminos-y-condiciones/">Política de privacidad</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/afiliate/">Afíliate</a></li>
-                            </ul>
-        
-                        </div>
-                        <div class="footer-links">
-        
-                            <h4>Ayuda</h4>
-                            <ul>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/preguntas-frecuentes/">Preguntas</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/asesores/">Asesores</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/convenios/">Convenios</a></li>
-                                <li class="footer-margin"><a href="http://zonapets.onrender.com/pagos/">Pagos</a></li>
-                            </ul>
-        
-                        </div>
-                        <div class="footer-links">
-        
-                            <h4>Síguenos</h4>
-                            <div class="social-link">
-                                <a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-                                <a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
-                                <a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
-                                <a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-                                <a href="https://co.linkedin.com/" class="fa fa-linkedin"></a></li>
-                            </div>
-        
-                        </div>
-        
-                    </div>
-        
-                </div>
-        
-            </footer> -->
     </div>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
@@ -402,7 +353,7 @@
             font-size: 17px;
             font-family: 'Onest', sans-serif;
             color: #1385F0;
-            font-weight: bold;
+            font-weight: 800;
             z-index: 100;
         }
 
@@ -553,6 +504,7 @@
 
             header .titulo {
                 margin-bottom: 0px;
+                margin-top: 50px;
             }
 
             .mobile-toggle i {
