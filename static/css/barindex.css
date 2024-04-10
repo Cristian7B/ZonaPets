@@ -159,7 +159,7 @@ section {
   display: flex;
   justify-content: center;
   background-color: #fff;
-  height: 40px;
+  height: 50px;
   align-items: center;
   margin-bottom: auto;
   width: 100%;
@@ -167,6 +167,7 @@ section {
   position: fixed;
   z-index: 71;
   font-family: "Onest", sans-serif;
+  padding: 10px;
 }
 
 .imgnavbar {
@@ -183,7 +184,7 @@ section {
   color: #1385F0;
   text-decoration: none;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin-left: 20px;
@@ -225,6 +226,7 @@ section {
 
 .navegacion ul li a {
   color: #1385F0;
+  font-size: 18px;
 }
 
 .navegacion ul li h1 {

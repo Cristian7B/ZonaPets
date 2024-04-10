@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+
 * {
   margin: 0%;
   padding: 0%;
@@ -22,10 +24,10 @@ body {
 header .titulo {
   margin-top: 40px;
   color: #1385F0;
-  font-size: 75px;
+  font-size: 77px;
   text-align: center;
+  font-weight: 600;
   margin-bottom: 20px;
-
 }
 
 .iconoresponsive {

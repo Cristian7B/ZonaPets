@@ -5,6 +5,11 @@
 <header>
     <h1 class="titulo">!Hora de registrar un Lugar!</h1>
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
 </header>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -151,7 +156,8 @@
         color: #007bff;
         font-size: 80px;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 40px;
+        font-weight: 600;
     }
 
     .registroempresa {
@@ -292,6 +298,9 @@
         .titulo {
             font-size: 50px;
         }
+        .mi-formulario {
+            max-width: 80%;
+        }
     }
 
     @media(max-width: 691px) {
@@ -309,7 +318,7 @@
     @media(max-width: 444px) {
         .titulo {
             font-size: 25px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .subtitulo {

@@ -6,6 +6,11 @@
 <header>
     <h1 class="titulo">!Hora de registrar tu negocio!</h1>
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
 </header>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -122,6 +127,7 @@
         font-size: 80px;
         text-align: center;
         margin-top: 30px;
+        font-weight: 600;
     }
 
     #id_tipo_de_negocio {
@@ -154,7 +160,7 @@
 
     .mi-formulario {
         max-width: 70%;
-        margin: 50px auto;
+        margin: 20px auto;
         padding: 20px;
         background-color: #f5f5f5;
         border: 1px solid #ddd;
@@ -307,6 +313,10 @@
         .titulo {
             font-size: 50px;
         }
+
+        .mi-formulario {
+            max-width: 80%;
+        }
     }
 
     @media(max-width: 691px) {
@@ -347,7 +357,7 @@
         }
     }
 
-    @media (max-width: 391px) {
+    @media (max-width: 416px) {
         .registroempresa {
             font-size: 12px;
         }
