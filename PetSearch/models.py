@@ -17,6 +17,12 @@ class Pagina(models.Model):
 class registroform(models.Model):
     nombre_compañia = models.CharField(max_length=75)
     telefono_usuario = models.CharField(max_length=12, blank=True, null=True,)
+    tipo_de_negocio = models.CharField(
+        null=True,
+        max_length=75,
+        choices = tipos_de_negocio, 
+        default="Hoteles"
+    )
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=75)
     

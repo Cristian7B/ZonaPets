@@ -1,0 +1,74 @@
+{% load static %}
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/newdesing.css/' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N6MHZ5KW4K');
+</script>
+
+<body>
+    <div class="container1">
+        <nav>
+            <ul>
+                <li>
+                    <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" class="imgnavbar">
+                    <hr class="start-hr">
+                    <div class="links-page">
+                        <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
+                        <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
+                        <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+                    </div>
+                    <div class="right">
+                        <div class="social-media">
+                                <a class="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                                target="_blank"><ion-icon name="logo-facebook" class="logo-red"></ion-icon></a>
+                                <a class="fa" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                                target="_blank"><ion-icon name="logo-instagram" class="logo-red"></ion-icon></a>
+                                <a class="fa" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                                target="_blank"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
+                        </div>
+                        <hr class="start-hr">
+                        <div class="premium-login">
+                            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">PREMIUM</button></a>
+                            <a class="user-login" href="https://zonapets.vercel.app/iniciarsesion/"
+                            target="_blank"><ion-icon name="person-circle-outline" class="logo-red"></ion-icon></a>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </nav>
+        <hr class="all">
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</body>
