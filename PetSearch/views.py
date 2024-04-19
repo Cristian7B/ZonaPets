@@ -132,6 +132,9 @@ def splashscreen(request):
 def landingemp(request):
     return render(request, "ZonaPets/landingemp.html")
 
+def newdesing(request):
+    return render(request, "ZonaPets/newdesing.html")
+
 def mapa_petfriendly(request):
     ubicaciones = registrofinal2.objects.all()
     ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 'telefono_usuario': ubicacion.telefono_usuario, 'latitud': ubicacion.latitud, 'longitud': ubicacion.longitud} for ubicacion in ubicaciones]
