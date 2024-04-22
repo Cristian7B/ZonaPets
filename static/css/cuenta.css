@@ -265,6 +265,7 @@ button {
     border: none;
     width: 100%;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 button:hover {
@@ -313,24 +314,16 @@ button:hover {
     /* Espacio entre el logo y el texto */
 }
 
-@media(max-width: 700px) {
-    section {
-        width: 100%;
-    }
-
-    .logout-button {
-        justify-content: center;
-    }
-
+@media(max-width: 920px) {
     .containerform {
         width: 90%;
     }
 }
 
-@media(max-width: 452px) {
-    /* .containerform h1 {
+/* @media(max-width: 452px) {
+    .containerform h1 {
         font-size: 20px;
-    } */
+    } 
 
     .form-group {
         padding: 0px 20px 0px 20px;
@@ -356,14 +349,14 @@ button:hover {
     .auth-button {
         width: 70%;
     }
-}
+} */
 
-@media(max-width: 440px) {
-    /* .containerform h1 {
+/* @media(max-width: 440px) { 
+    .containerform h1 {
         font-size: 20px;
-    } */
+    } 
 
-    .containerform h2 {
+    /* .containerform h2 {
         font-size: 30px;
     }
 
@@ -379,5 +372,36 @@ button:hover {
 @media(max-width: 392px) {
     .containerform h2 {
         font-size: 25px;
+    }
+} */
+
+@media(max-width: 683px) {
+    #titulo-register {
+        font-size: 40px;
+    }
+}
+
+
+
+@media(max-width: 549px) {
+    .containerform h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    #titulo-register {
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 442px) {
+
+    .containerform {
+        padding: 0px 40px 30px 40px;
+    }
+
+    .containerform h1 {
+        font-size: 40px;
+        text-align: center;
     }
 }

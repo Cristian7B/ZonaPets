@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!currentUser) {
             if (registrationToggle) {
                 formContent = `<div class="containerform" id="move-content" style="">
-                                    <h1>Crea una cuenta</h1>
+                                    <h1 id="titulo-register">Crea una cuenta</h1>
                                     <div id="registration-error" class="error-message" style="display: none;"></div>
                                     <div class="register">
                                         <div class="line-register"></div>
