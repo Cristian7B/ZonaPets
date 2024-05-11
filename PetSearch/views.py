@@ -121,7 +121,7 @@ def newdesing(request):
     return render(request, "ZonaPets/newdesing.html")
 
 def dialog(request):
-    return render(request, "ZonaPets/Secondary/dialog.html")
+    return render(request, "ZonaPets/Test/dialog.html")
 
 def mapa_petfriendly(request):
     ubicaciones = registrofinal2.objects.all()

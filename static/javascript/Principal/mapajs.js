@@ -60,7 +60,8 @@ async function initMap() {
     function getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefono) {
         return `
             <div class="info-window">
-                <dialog class="dialog">
+                <div id="dialog" class="dialog">
+                    <ion-icon id="hide" class="close-icon" name="close-outline"></ion-icon>
                     <div class="titledialog">${nombre}</div>
                     <div class="information">
                         <div class="info1">
@@ -75,15 +76,14 @@ async function initMap() {
                         <div class="info2">
                             <div class="g-maps">
                                 <ion-icon class="icon" name="flag-outline"></ion-icon>
-                                <p>Ver en <span>Google Maps</span></p>
+                                <p><a class="info-window-link" href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en <span>Google Maps</span></a></p>
                             </div>
                             <div class="plus">
                                 <ion-icon name="add-circle-outline"></ion-icon>
                             </div>
-                        </div>
-                        <p><a class="info-window-link" href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en Google Maps</a></p>   
+                        </div>    
                     </div>
-                </dialog>
+                </div>
                 <h1 class="info-window-content">${nombre}</h1>
                 <div class="tipo-negocio">
                     <ion-icon name="pricetag-outline"></ion-icon>
@@ -130,10 +130,12 @@ async function initMap() {
 
         listTitle = document.createElement("h2");
         listDescription = document.createElement("span")
+        listHr = document.createElement("hr")
         listDescription.textContent = ", 2km a la redonda."
         listTitle.textContent = "Lugares cerca de ti";
         listTitle.appendChild(listDescription);
         placesList.appendChild(listTitle);
+        placesList.appendChild(listHr);
         for (const ubicacion of ubicaciones) {
             const nombre = ubicacion.getAttribute('data-nombre');
             const latitud = parseFloat(ubicacion.getAttribute('data-latitud'));
@@ -294,3 +296,28 @@ async function initMap() {
     });
 }
 window.initMap = initMap;
+
+document.addEventListener("DOMContentLoaded", function() {
+    var showPlacesListButton = document.getElementById("showPlacesListButton")
+
+    showPlacesListButton.addEventListener('click', function() {
+        var placesList = document.querySelector('.places-list');
+        placesList.classList.toggle('show-places-list');
+        placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
+    });
+
+
+    function checkWindowSize() {
+        var width = window.innerWidth;
+        var showPlacesListButton = document.getElementById('showPlacesListButton');
+
+        if (width <= 1000) {
+            showPlacesListButton.style.display = 'flex';
+        } else {
+            showPlacesListButton.style.display = 'none';
+        }
+    }
+
+    checkWindowSize(); 
+    window.addEventListener('resize', checkWindowSize); 
+});

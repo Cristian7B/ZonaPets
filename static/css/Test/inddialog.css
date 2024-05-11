@@ -160,3 +160,12 @@
     padding: 10px;
     color: #fff;
 }
+
+.close-icon {
+    position: absolute;
+    font-size: 20px;
+    color: #7FBBFF;
+    left: 95%;
+    top: 15px;
+    cursor: pointer;
+}
