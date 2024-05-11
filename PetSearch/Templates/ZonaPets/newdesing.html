@@ -1,5 +1,4 @@
 {% load static %}
-{% load static %}
 <!doctype html>
 <html lang="es">
 
@@ -10,7 +9,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/newdesing.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/desing.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -62,11 +61,29 @@
                             target="_blank"><ion-icon name="person-circle-outline" class="logo-red"></ion-icon></a>
                         </div>
                     </div>
-
+                    <div class="menu-icon">
+                        <ion-icon name="menu-outline" class="menu"></ion-icon>
+                        <ion-icon name="close-outline" class="close"></ion-icon>
+                    </div>
                 </li>
             </ul>
         </nav>
         <hr class="all">
+        <div class="mobile-links-page">
+            <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
+            <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
+            <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">PREMIUM</button></a>
+            <div class="social-media">
+                <a class="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                target="_blank" id="icon1"><ion-icon name="logo-facebook" class="logo-red"></ion-icon></a>
+                <a class="fa" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                target="_blank"><ion-icon name="logo-instagram" class="logo-red"></ion-icon></a>
+                <a class="fa" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                target="_blank" id="icon2"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
+            </div>
+        </div>
+        <script src="{% static 'javascript/Principal/newdesing.js' %}" defer></script>
     </div>
     {% block content %}
 

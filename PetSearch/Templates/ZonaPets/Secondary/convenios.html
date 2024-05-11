@@ -1,0 +1,42 @@
+{% extends "ZonaPets/newdesing.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros convenios | ZonaPets</title>
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N6MHZ5KW4K');
+</script>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/Secondary/convenio.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
+<body>
+    <div class="containerconstruction">
+        <h1>
+            <span><ion-icon name="build-outline" class="build-logo"></ion-icon></span>
+            Sitio en construcción
+            <span><ion-icon name="build-outline" class="build-logo"></ion-icon></span>
+        </h1>
+        <img src="{% static 'imagenes/construction.png' %}" alt="sitio-en-construccion">
+        <h2>
+            ¡Pronto estará disponible este apartado!
+        </h2>
+    </div>
+</body>
+
+</html>
+{% endblock %}

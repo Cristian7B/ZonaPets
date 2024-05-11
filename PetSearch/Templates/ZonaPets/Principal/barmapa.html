@@ -1,0 +1,169 @@
+{% extends "ZonaPets/newdesing.html" %}
+{% load static %}
+{% block content %}
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Lugares PetFriendly | ZonaPets</title>
+    
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/mapasndex.css/' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+</head>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N6MHZ5KW4K');
+</script>
+
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
+        authDomain: "zonapets-407921.firebaseapp.com",
+        projectId: "zonapets-407921",
+        storageBucket: "zonapets-407921.appspot.com",
+        messagingSenderId: "810651763558",
+        appId: "1:810651763558:web:914cca9d4c78b9833dfea7",
+        measurementId: "G-5WPJXXGLH1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+
+    messaging.requestPermission()
+        .then(function () {
+            console.log("Notification permission granted.");
+            return messaging.getToken({ vapidKey: 'BJwHv8Qw9Bogo5rrQg_ooF8sVuEw3GoHI0Qu5grABtKEa2lJplQHBSuv4AV1uwbNmsxvThnZdvQ5ZKKdsoevvVo' });
+        })
+        .then(function (currentToken) {
+            if (currentToken) {
+                console.log(currentToken);
+            } else {
+                console.log('No registration token available. Request permission to generate one.');
+            }
+        })
+        .catch(function (err) {
+            console.log("Unable to get permission to notify.", err);
+        });
+
+    messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+    });
+</script>
+
+
+<body>
+    <div class="container-all" id="move-content">
+
+        <header>
+            <p class="iconoresponsive">Pulsa <span><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+                para ver lugares cerca de tí</p>
+        </header>
+
+        <div style="display: none">
+            <input id="pac-input" class="controls" type="text" placeholder="Consulta una ciudad" />
+        </div>
+
+        <div class="flex-desing">
+            <div id="placesList" class="places-list"></div>
+            <div id="map"></div>
+            <div class="right-map">
+
+                <div class="filter-div">
+                    <h2 class="title-filter">Filtra por tipo</h2>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="hotelFilter" value="Hoteles"> Hoteles
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="restaurantFilter" value="Restaurante"> Restaurantes
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="parkFilter" value="Parque Para Mascotas"> Parques Para Mascotas
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="mallFilter" value="Centro Comercial"> Centro Comercial
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="shopFilter" value="Tiendas de mascotas"> Tiendas De Mascotas
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="placeFilter" value="Sitios Turísticos"> Sitios Turísticos
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="serviceFilter" value="Servicios de paseo de perros"> Servicios De Paseo
+                    </label>
+                    <label>
+                        <input type="checkbox" class="tipo-checkbox" id="otherFilter" value="Otro"> Otros
+                    </label>
+                </div>           
+                <div class="info-place"></div>
+            </div>
+            <div id="infowindow-content">
+                <span id="place-name" class="title"></span><br />
+                <strong></strong><span id="place-id"></span><br />
+                <span id="place-address"></span>
+            </div>
+        </div>
+        <script async>
+            document.addEventListener("DOMContentLoaded", function() {
+                var dialog = document.getElementById("dialog");
+                var showButton = document.getElementById("show");
+                var hideButton = document.getElementById("hide");
+                function showModal() {
+                    dialog.showModal();
+                }
+                function hideModal() {
+                    dialog.close();
+                }
+                showButton.addEventListener("click", showModal);
+                hideButton.addEventListener("click", hideModal);
+            });
+        </script>
+
+        <div class="mobile-search-button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+
+        <script src="{% static 'javascript/Principal/indexmapajs.js' %}"></script>
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
+            defer>
+        </script>
+
+
+        {% for ubicacion in ubicaciones %}
+
+        <div class="ubicacion" data-latitud="{{ ubicacion.latitud }}" data-longitud="{{ ubicacion.longitud }}"
+            data-nombre="{{ ubicacion.nombre_compañia }}" data-tipo-negocio="{{ ubicacion.tipo_de_negocio }}" data-telefono = "{{ ubicacion.telefono_usuario }}">
+        </div>
+        
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+
+
+{% endblock %}

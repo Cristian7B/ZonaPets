@@ -1,0 +1,353 @@
+.mi-formulario input[type="text"]:focus,
+.mi-formulario input[type="number"]:focus {
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+p {
+    font-size: 13px;
+}
+
+::placeholder {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 38px;
+    text-transform: capitalize;
+    color: #808080;
+}
+
+section {
+    position: fixed;
+}
+
+.mapa_geolocation {
+    margin-bottom: 20px;
+}
+
+.mi-formulario {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    color: #007bff;
+    display: flex;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #80808052;
+    border-radius: 10px;
+}
+
+.icon-select {
+    transition: all 0.3s ;
+}
+
+.select-menu.active .options{
+    display: block;
+}
+
+.select-menu.active .icon-select{
+    transform: rotate(-180deg);
+}
+
+.select-menu {
+    width: 215px;
+}
+
+.select-menu .select-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 2px solid #7FBFFF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.text-select {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: rgba(19, 133, 240, 0.83);
+}
+
+.options {
+    position: relative;
+    padding: 10px;
+    list-style: none;
+    background-color: #7FBFFF;
+    border-radius: 10px;
+    top: 5px;
+    display: none;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.option a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.option a:hover {
+    color: rgba(19, 133, 240, 0.83);
+}
+
+#google_canvas {
+    width: 70%;
+    height: 100vh;
+    margin: auto;
+    z-index: 1;
+    border-radius: 10px;
+    border: 2px solid #80808052;
+}
+
+#option1 {
+    margin-bottom: 10px;
+}
+
+.text-in {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: rgba(19, 133, 240, 0.83);
+}
+
+.form-div {
+    width: 80%;
+}
+
+.form12 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.linkempresa a {
+    color: #007bff;
+}
+
+.titulo {
+    color: #007bff;
+    font-size: 80px;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+#id_tipo_de_negocio {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #80808052;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 38px;
+    text-transform: capitalize;
+    color: #bababa;
+}
+
+.mi-formulario input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #80808052;
+    border-radius: 10px;
+    font-family: "Poppins", "sans-serif";
+    margin-bottom: 10px;
+    color: #808080;
+}
+
+#id_tipo_de_negocio option {
+    font-family: "Poppins";
+    color: #00478dc0;
+}
+
+#id_latitud {
+    display: none;
+}
+
+#id_longitud {
+    display: none;
+}
+
+.registroempresa {
+    text-align: center;
+    font-size: 18px;
+    color: #0056b3;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.registroempresa a:hover {
+    color: #222327;
+}
+
+.registroempresa a {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.alert-success {
+    width: 80%;
+    padding: 12px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(82, 202, 34);
+    border-radius: 4px;
+    font-family: "Poppins", "sans-serif";
+    background-color: rgba(6, 158, 44, 0.39);
+    color: rgb(82, 202, 34);
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.alert-danger {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #D62828;
+    border-radius: 4px;
+    font-family: "Poppins", "sans-serif";
+    background-color: #ba130075;
+    color: #D62828;
+    font-weight: bold;
+}
+
+.mi-formulario h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 90px;
+    color: rgba(19, 133, 240, 0.83);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.mi-formulario input:focus {
+    border: none;
+}
+
+.mi-formulario .mapa {
+    margin-bottom: 20px;
+}
+
+.mi-formulario h2 {
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.mi-formulario label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 38px;
+    text-transform: capitalize;
+    display: block;
+    color: rgba(19, 133, 240, 0.83);
+
+
+}
+
+.btn-custom {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #7FBFFF;
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    border: none;
+    width: 80%;
+}
+
+.btn-custom:hover {
+    background-color: rgba(19, 133, 240, 0.83);
+}
+
+
+/* .mi-formulario input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Poppins", "sans-serif";
+} */
+
+.mi-formulario .alert {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media(max-width: 800px) {
+    #google_canvas {
+        margin: 0px;
+        margin-top: 20px;
+        width: 80%;
+        height: 50vh;
+    }
+
+    .mi-formulario {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 500px) {
+    #google_canvas {
+        margin: auto;
+        margin-top: 30px;
+        width: 90%;
+    }
+
+    .mi-formulario {
+        padding: 20px;
+    }
+
+    .form12 {
+        align-items: center;
+    }
+
+    .mi-formulario h1 {
+        text-align: center;
+    }
+}

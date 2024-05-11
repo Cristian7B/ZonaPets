@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 tipos_de_negocio = [
     ("Hoteles", "Hoteles"), 
@@ -7,7 +8,7 @@ tipos_de_negocio = [
     ("Parques para mascotas", "Parques para mascotas"),
     ("Servicios de paseo de perros", "Servicios de paseo de perros"),
     ("Destinos Turisticos", "Destinos Turisticos"),
-    ("Otros", "Otros")
+    ("Centros Comerciales", "Otros")
 ]
 
 class Pagina(models.Model):
@@ -25,6 +26,7 @@ class registroform(models.Model):
     )
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=75)
+    fecha_hora_registro = models.DateTimeField(null=True, auto_now_add = True)
     
 class registroformularioempresarial(models.Model):
     nombre_de_quien_registra = models.CharField(max_length=100, blank=True, null=True,)
@@ -39,6 +41,7 @@ class registroformularioempresarial(models.Model):
     nombre_compañia = models.CharField(max_length=75)
     latitud = models.CharField(max_length=100)
     longitud = models.CharField(max_length=100)
+    fecha_hora_registro = models.DateTimeField(null = True, auto_now_add = True)
 
 class registrofinal2(models.Model):
     nombre_compañia = models.CharField(max_length=150)

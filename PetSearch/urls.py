@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include, re_path
-from PetSearch.views import micuenta, newdesing,landingemp, informacion, zonapets, splashscreen, mapa_petfriendly, notifications,iniciar_sesion, prueba, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, pagos, nuestrosservicios, afiliate
+from PetSearch.views import micuenta, dialog, newdesing,landingemp, informacion, zonapets, mapa_petfriendly, notifications,iniciar_sesion, vista_bar, contacto, Formularioviewregistroform, Formularioviewregistroformempresarial, acercade, preguntasfrecuentes, equipo, terminosycondiciones, asesores, convenios, nuestrosservicios, afiliate
 from django.conf import settings
 from PetSearch.views import *
 from django.conf.urls.static import static
@@ -32,7 +32,7 @@ urlpatterns = [
     path("landingemp/", landingemp),
     path("acercade/", acercade),
     path("", zonapets),
-    path("splash/", splashscreen),
+    path("dialog/", dialog),
     path("firebase-messaging-sw.js", showFirebaseJS, name="show_firebase_js"),
     path("send/", send),
     path("terminos-y-condiciones/", terminosycondiciones),
@@ -42,14 +42,12 @@ urlpatterns = [
     path("equipo/", equipo),
     path("asesores/", asesores),
     path("convenios/", convenios),
-    path("pagos/", pagos),
     path("micuenta/", micuenta),
     path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
     path("mapa/", mapa_petfriendly),
     path("vistabar/", vista_bar),
-    path("prueba/", prueba),
     path("registrar/", Formularioviewregistroform.index, name = "registrarFormulario"),
     path("guardarform/", Formularioviewregistroform.procesar_formulario, name = "guardarform"),
     path("registrarempresa/", Formularioviewregistroformempresarial.index, name = "registrarFormularioEmpresa"),
