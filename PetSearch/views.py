@@ -82,10 +82,10 @@ def preguntasfrecuentes(request):
     return render(request, "ZonaPets/Secondary/preguntas-frecuentes.html")
 
 def equipo(request):
-    return render(request, "ZonaPets/Info-pages/equipo.html")
+    return render(request, "ZonaPets/Info-Pages/equipo.html")
 
 def zonapets(request):
-    return render(request, "ZonaPets/Info-pages/zonapetsl.html")
+    return render(request, "ZonaPets/Info-Pages/zonapetsl.html")
 
 def micuenta(request):
     return render(request, "ZonaPets/Account/micuenta.html")
@@ -115,7 +115,7 @@ def notifications(request):
     return render(request, "ZonaPets/Secondary/notifications.html")
 
 def landingemp(request):
-    return render(request, "ZonaPets/Info-pages/landingemp.html")
+    return render(request, "ZonaPets/Info-Pages/landingemp.html")
 
 def newdesing(request):
     return render(request, "ZonaPets/newdesing.html")
