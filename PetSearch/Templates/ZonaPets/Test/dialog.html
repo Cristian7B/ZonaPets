@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Test/inddialog.css/' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+</head>
+<body>
+    <div class="containerd">
+
+        <dialog class="dialog">
+            <ion-icon id="hide" class="close-icon" name="close-outline"></ion-icon>
+            <div class="titledialog">Centro comercial Nueva Roma</div>
+            <div class="information">
+                <div class="info1">
+                    <div class="tipo">
+                        <p>Parque para mascotas</p>
+                    </div>
+                    <div class="telefono">
+                            <ion-icon class="icon" name="call-outline"></ion-icon>
+                            <p>311 821 6756</p>
+                    </div>
+                </div>
+                <div class="info2">
+                    <div class="g-maps">
+                        <ion-icon class="icon" name="flag-outline"></ion-icon>
+                        <p>Ver en <span>Google Maps</span></p>
+                    </div>
+                    <div class="plus">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </div>
+</body>
+</html>

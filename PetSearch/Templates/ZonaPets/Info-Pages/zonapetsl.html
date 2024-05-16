@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaPets</title>
+    <link rel="stylesheet" href="{% static 'css/Info-Pages/zonapetsl.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-N6MHZ5KW4K');
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <section class="barsection">
+            <div id="icon-menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <a href="https://zonapets.vercel.app/mapa/" class="logo-nombre">ZonaPets</a>
+            <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" class="imgnavbar">
+        </section>
+        <header>
+            <section class="title">
+                <h1>Lugares Pet-Friendly para tu peludito</h1>
+                <div style="width: 70%;">
+                    <p id="texto-dinamico">Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad.
+                        Lorem ipsum, dolor sit
+                        amet consectetur
+                        adipisicing elit. Voluptas odio pariatur quibu</p>
+                </div>
+                <div class="buttons">
+                    <a href="https://zonapets.vercel.app/mapa/"><button class="mapa">Descubre el mapa</button></a>
+                    <a href="https://zonapets.vercel.app/registrar/"><button class="registrar">Registrar un
+                            lugar</button></a>
+                </div>
+                <img src="{% static 'imagenes/wavezp.svg' %}" alt="" class="img-wave">
+                <img class="mockup" src="{% static 'imagenes/mockupcel-lap.png' %}" alt=" zonapets-mockup">
+            </section>
+        </header>
+    </div>
+    <div class="articles-info">
+        <section class="information">
+            <article class="information1">
+                <ion-icon class="icon" name="earth-outline"></ion-icon>
+                <h3>Disfruta en tu ciudad</h3>
+                <p>En <span style="color: #1385f0; font-weight: 700;">ZonaPets</span> podrás encontrar los sitios que
+                    reciben a tu peludito y así ir a tu destino preferido.</p>
+            </article>
+            <article class="information1">
+                <ion-icon class="icon" name="search-circle-outline"></ion-icon>
+                <h3>Obtén el premium</h3>
+                <p> <span style="color: #1385f0; font-weight: 700;">Proximamente</span> en ZonaPets<br>
+                    estará disponible el plan premium para que encuentres los mejores sitios y promociones.</p>
+            </article>
+            <article class="information1">
+                <ion-icon class="icon" name="people-circle-outline"></ion-icon>
+                <h3>Crea tu cuenta</h3>
+                <p>Inicia sesion. Recibe promociones y <span
+                        style="color: #1385f0; font-weight: 700;">actualizaciones</span>,
+                    guarda sitios en lo que has estado y compartelos con tus amigos.</p>
+            </article>
+        </section>
+    </div>
+    <h1 id="patrocinadores-text">Nuestras Tecnologías</h1>
+    <div class="patrocinadores">
+        <img src="{% static 'imagenes/django.svg' %}" alt="">
+        <img src="{% static 'imagenes/logo-google.svg' %}" alt="">
+        <img class="docker-logo" src="{% static 'imagenes/docker-logo.png' %}" alt="">
+        <!-- <img src="{% static 'imagenes/paypal.svg' %}" alt=""> -->
+        <svg viewBox="0 0 256 250" width="60" height="60" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid">
+            <path
+                d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z" />
+        </svg>
+
+        <img class="vercel-logo" src="{% static 'imagenes/vercel.png' %}" alt="">
+    </div>
+    <div class="grid-container">
+        <article class="card-content1">
+            <img class="mockup1" src="{% static 'imagenes/mockup1.png' %}" alt="">
+            <section class="description">
+                <h2>Nuestra web</h2>
+                <p>ZonaPets te permite descubrir rápidamente lugares cercanos a ti, además, tienes la opción de
+                    agregar aquellos que aún no están en el mapa. Asimismo, puedes crear una experiencia Pet-Friendly
+                    para que tu peludito también disfrute al máximo. ¡Haz que tu mascota sea feliz con nosotros!
+                </p>
+            </section>
+        </article>
+        <article class="card-content2">
+            <ion-icon name="add-circle-outline" class="plus-icon"></ion-icon>
+            <h3>¡Registra!</h3>
+            <p>En ZonaPets puedes registrar los sitios a los que has ido con tus adorables peluditos. </p>
+        </article>
+        <article class="card-content4">
+            <ion-icon name="locate-outline" id="plus-icon1" class="plus-icon"></ion-icon>
+            <h3>Geolocalización</h3>
+            <p>Con nuestro sistema de Geolocalización puedes descubrir los mejores lugares en un radio de 2000 metros a
+                la redonda. </p>
+        </article>
+        <article class="card-content3">
+            <img src="{% static 'imagenes/mapa-mockup.png' %}" alt="">
+            <section>
+                <h1>Encuentra <span>+1000</span></h1>
+                <h2>lugares en el mapa.</h2>
+            </section>
+        </article>
+        <article class="card-contentl">
+            <ion-icon name="heart-half-outline" id="plus-icon1" class="plus-icon"></ion-icon>
+            <h3>Síguenos en redes</h3>
+            <div class="social-mediablur">
+                <a class="plus-icon2" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-instagram"></ion-icon></a>
+                <a class="plus-icon2" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-facebook"></ion-icon></a>
+                <a class="plus-icon2" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                    target="_blank"><ion-icon class="plus-icon2" name="logo-tiktok"></ion-icon></a>
+            </div>
+        </article>
+        <!-- <article class="card-content6">
+            <ion-icon class="logo-abs" id="logo-abs1" name="person-circle-outline"></ion-icon>
+            <ion-icon class="logo-abs" id="logo-abs3" name="people-circle-outline"></ion-icon>
+            <ion-icon class="logo-abs" id="logo-abs6" name="person-circle-outline"></ion-icon>
+            <ion-icon class="logo-abs" id="logo-abs7" name="people-circle-outline"></ion-icon>
+            <h2>Crea tu cuenta</h2>
+        </article> -->
+    </div>
+    <h1 class="title-places">¡Disfruta lugares de tu ciudad!</h1>
+    <div class="grid-cards">
+
+        <section class="card-place">
+            <h2 class="desc-use">Divierte a tu mascota</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing eligendi ased asd</p>
+        </section>
+        <section class="card-place">
+            <h2 class="desc-use">Guarda el lugar en tu cuenta</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing eligendi ased asd</p>
+        </section>
+        <section class="card-place">
+            <h2 class="desc-use" id="desc-useW">¡Sugiere el lugar!</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing eligendi ased asd</p>
+        </section>
+    </div>
+    <footer>
+        <div class="zonapets-footer">
+            <div class="top">
+                <div class="img-divfooter1">
+                    <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                    <h1 class="logo-title">ZonaPets</h1>
+                </div>
+                <div class="logo-footer">
+                    <div class="img-divfooter">
+                        <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                        <h1 class="logo-title">ZonaPets</h1>
+                    </div>
+                    <div class="social-media">
+                        <a class="plus-icon3" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-instagram"></ion-icon></a>
+                        <a class="plus-icon3" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-facebook"></ion-icon></a>
+                        <a class="plus-icon3" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-tiktok"></ion-icon></a>
+                        <a class="plus-icon3" href="mailto:zonapetscompany@gmail.com" target="_blank"><ion-icon
+                                class="plus-icon3" name="mail-open-outline"></ion-icon></a>
+                    </div>
+
+                </div>
+                <div class="description-footer">
+                    <div class="footer-container">
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Nosotros
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/acercade/" target="_blank">Sobre ZonaPets</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Servicio
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/preguntas-frecuentes/" target="_blank">Preguntas frecuentes</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Contacto</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/equipo/" target="_blank">Equipo</a>
+                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Comunidad
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app" target="_blank">Twitter</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app" target="_blank">Facebook</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Reportar un bug</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Pon tu lugar en ZonaPets</a>
+                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Links de interés
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/mapa/" target="_blank">Mapa de lugares</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Registrar un lugar</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/afiliate/" target="_blank">Trabaja con nosotros</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="bottom">
+                <p class="copyrigth">Copyright © 2023, ZonaPets.</p>
+                <p class="copyrigth2">Contactános <span><a
+                            href="mailto:zonapetscompany@gmail.com">zonapetscompany@gmail.com</a></span></p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.onload = function () {
+            var parrafo = document.getElementById("texto-dinamico");
+
+            function cambiarTexto() {
+                if (window.innerWidth <= 470) {
+                    parrafo.textContent = "Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad.";
+                } else {
+                    parrafo.textContent = "Registra, conoce y disfruta de los mejores lugares Pet-Friendly de tu ciudad. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas odio pariatur quibu";
+                }
+            }
+            cambiarTexto();
+            window.addEventListener("resize", cambiarTexto);
+        };
+    </script>
+</body>
+
+</html>

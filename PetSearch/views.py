@@ -70,82 +70,75 @@ def test_token(request):
 
 
 def acercade(request):
-    return render(request, "ZonaPets/acercade.html")
+    return render(request, "ZonaPets/Secondary/acercade.html")
 
 def contacto(request):
-    return render(request, "ZonaPets/contacto.html")
+    return render(request, "ZonaPets/Principal/contacto.html")
 
 def iniciar_sesion(request):
-    return render(request, "ZonaPets/iniciar-sesion.html")
+    return render(request, "ZonaPets/Account/iniciar-sesion.html")
 
 def preguntasfrecuentes(request):
-    return render(request, "ZonaPets/preguntas-frecuentes.html")
+    return render(request, "ZonaPets/Secondary/preguntas-frecuentes.html")
 
 def equipo(request):
-    return render(request, "ZonaPets/equipo.html")
+    return render(request, "ZonaPets/Info-Pages/equipo.html")
 
 def zonapets(request):
-    return render(request, "ZonaPets/zonapetsl.html")
-
-def prueba(request):
-    return render(request, "ZonaPets/pruebaicon.html")
+    return render(request, "ZonaPets/Info-Pages/zonapetsl.html")
 
 def micuenta(request):
-    return render(request, "ZonaPets/micuenta.html")
+    return render(request, "ZonaPets/Account/micuenta.html")
 
 def terminosycondiciones(request):
-    return render(request, "ZonaPets/tyc.html")
+    return render(request, "ZonaPets/Secondary/tyc.html")
 
 def informacion(request):
-    return render(request, "ZonaPets/informacion-personal.html")
+    return render(request, "ZonaPets/Account/informacion-personal.html")
 
 def asesores(request):
-    return render(request, "ZonaPets/asesores.html")
+    return render(request, "ZonaPets/Secondary/asesores.html")
 
 def convenios(request):
-    return render(request, "ZonaPets/convenios.html")
-
-def pagos(request):
-    return render(request, "ZonaPets/pagos.html")
+    return render(request, "ZonaPets/Secondary/convenios.html")
 
 def nuestrosservicios(request):
-    return render(request, "ZonaPets/nuestros-servicios.html")
+    return render(request, "ZonaPets/Secondary/nuestros-servicios.html")
 
 def afiliate(request):
-    return render(request, "ZonaPets/afiliate.html")
-
-def formulario(request):
-    return render(request, "ZonaPets/formulario.html")
+    return render(request, "ZonaPets/Secondary/afiliate.html")
 
 def vista_bar(request):
-    return render(request, "ZonaPets/barsiteapp.html")
-
-def vista_barregistrar(request):
-    return render(request, "ZonaPets/barregistrar.html")
+    return render(request, "ZonaPets/newdesing.html")
 
 def notifications(request):
-    return render(request, "ZonaPets/notifications.html")
-
-def splashscreen(request):
-    return render(request, "ZonaPets/splashscreen.html")
+    return render(request, "ZonaPets/Secondary/notifications.html")
 
 def landingemp(request):
-    return render(request, "ZonaPets/landingemp.html")
+    return render(request, "ZonaPets/Info-Pages/landingemp.html")
 
 def newdesing(request):
     return render(request, "ZonaPets/newdesing.html")
 
+def dialog(request):
+    return render(request, "ZonaPets/Test/dialog.html")
+
 def mapa_petfriendly(request):
     ubicaciones = registrofinal2.objects.all()
-    ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 'telefono_usuario': ubicacion.telefono_usuario, 'latitud': ubicacion.latitud, 'longitud': ubicacion.longitud} for ubicacion in ubicaciones]
+    ubicaciones_dict = [{'nombre_compañia': ubicacion.nombre_compañia, 
+                         'latitud': ubicacion.latitud, 
+                         'longitud': ubicacion.longitud,
+                         'tipo_de_negocio': ubicacion.tipo_de_negocio,
+                         'telefono_usuario': ubicacion.telefono_usuario} for ubicacion in ubicaciones]
 
-    return render(request, "ZonaPets/barmapa.html", {"ubicaciones": ubicaciones_dict})
+    return render(request, "ZonaPets/Principal/barmapa.html", {"ubicaciones": ubicaciones_dict})
+
 
 class Formularioviewregistroform(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroform()
-        return render(request, "ZonaPets/barregistrar.html", { "form":empresa})
+        return render(request, "ZonaPets/Principal/barregistrar.html", { "form":empresa})
     @csrf_protect
     def procesar_formulario(request):
         empresa = Formularioregistroform(request.POST)
@@ -153,17 +146,13 @@ class Formularioviewregistroform(HttpRequest):
             empresa.save()
             empresa = Formularioregistroform()
 
-        return render(request, "ZonaPets/barregistrar.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
-    
-    def mostrar_mapa(request):
-        ubicaciones = registroform.objects.all()
-        return render(request, "ZonaPets/mapa.html", {"ubicaciones": ubicaciones})
+        return render(request, "ZonaPets/Principal/barregistrar.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
 
 class Formularioviewregistroformempresarial(HttpRequest):
 
     def index(request):
         empresa = Formularioregistroformempresarial()
-        return render(request, "ZonaPets/barregistrarempresarial.html", { "form":empresa})
+        return render(request, "ZonaPets/Principal/barregistrarempresarial.html", { "form":empresa})
     
     def procesar_formulario(request):
         empresa = Formularioregistroformempresarial(request.POST)
@@ -171,7 +160,7 @@ class Formularioviewregistroformempresarial(HttpRequest):
             empresa.save()
             empresa = Formularioregistroformempresarial()
 
-        return render(request, "ZonaPets/barregistrarempresarial.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
+        return render(request, "ZonaPets/Principal/barregistrarempresarial.html", { "form":empresa, "mensaje":"¡La empresa ha sido registrada!"})
 
 
 

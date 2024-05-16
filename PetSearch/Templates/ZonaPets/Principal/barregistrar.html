@@ -1,0 +1,133 @@
+{% extends "ZonaPets/newdesing.html" %}titulo
+{% load static %}
+{% block content %}
+<head>
+    <title>Registrar | ZonaPets</title>
+    <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/registerg.css/' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <script src="{% static 'javascript/Principal/registrar.js' %}"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N6MHZ5KW4K');
+</script>
+<div class="div-link-empresarial">
+</div>
+
+{% if form.errors %}
+
+<div class="alert-danger" role="alert">
+    ¡Registro Fallido, Revisa los datos!
+</div>
+
+{% endif %}
+
+<form action="{% url 'guardarform' %}" method="POST" class="mi-formulario">
+
+    
+    
+    <div class="form12">
+        {% if mensaje %}
+    
+        <div class="alert-success" role="alert">
+            ¡Registro Exitoso!
+        </div>
+    
+        {% endif %}
+        <div class="select-menu">
+            <div class="select-btn">
+                <span class="text-select">Registrar: <span class="text-in">Propietario</span></span>
+                <ion-icon class="icon-select" name="chevron-down-outline"></ion-icon>
+            </div>
+
+            <ul class="options">
+                <li class="option">
+                    <a href="https://zonapets.vercel.app/registrar/" id="option1" ><span class="option-d">Propietario</a>
+                </li>
+                <li class="option">
+                    <a href="https://zonapets.vercel.app/registrarempresa/" ><span class="option-d">Usuario</span></a>
+                </li>
+            </ul>
+        </div>
+        <h1 class="title">¡Registrar un lugar!</h1>
+        <div class="form-div">
+            {{ form.as_p|safe }}
+            {% csrf_token %}
+        </div>
+        <button type="submit" class="btn btn-custom" id="boton-guardar">GUARDAR</button>
+    </div>
+    <div id="google_canvas"></div>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ"></script>
+
+    <script class="mapa_geolocation">
+        (function () {
+            if (navigator.geolocation) {
+                var map;
+                var marker; 
+
+                var mapOptions = {
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                map = new google.maps.Map(document.getElementById("google_canvas"), mapOptions);
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                    marker = new google.maps.Marker({
+                        map: map,
+                        position: geolocate,
+                        draggable: true, 
+                        icon: {
+                            url: "{% static 'imagenes/marker.png/' %}",
+                            scaledSize: new google.maps.Size(40, 40),
+                        }
+                    });
+
+                    document.getElementById("id_latitud").value = position.coords.latitude;
+                    document.getElementById("id_longitud").value = position.coords.longitude;
+
+                    map.setCenter(geolocate);
+
+                    google.maps.event.addListener(marker, 'dragend', function () {
+                        var newPosition = marker.getPosition();
+                        document.getElementById("id_latitud").value = newPosition.lat();
+                        document.getElementById("id_longitud").value = newPosition.lng();
+                    });
+                });
+            } else {
+                document.getElementById("google_canvas").innerHTML = "No se soporta geolocalización";
+            }
+        })();
+
+    </script>
+
+</form>
+<div style="height: 100px;"></div>
+
+{% endblock %}
