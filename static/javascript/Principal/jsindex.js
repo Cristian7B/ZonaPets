@@ -1,7 +1,3 @@
-
-
-
-
 async function initMap() {
     const [{ Map }, { AdvancedMarkerElement }, { geometry }] = await Promise.all([
         google.maps.importLibrary("marker"),
@@ -47,13 +43,11 @@ async function initMap() {
 
         const placesList = document.querySelector(".info-place");
 
-        markers.forEach(marker => {
-            marker.addListener('click', function () {
-                const nombre = marker.getTitle();
-                const tipoNegocio = marker.data.tipoNegocio;
-                const telefonoUsuario = marker.data.telefonoUsuario; 
-                placesList.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario); 
-            });
+        marker.addListener('click', function () {
+            const nombre = marker.getTitle();
+            const tipoNegocio = marker.data.tipoNegocio;
+            const telefonoUsuario = marker.data.telefonoUsuario; 
+            placesList.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario); 
         });
     });
 
@@ -94,7 +88,6 @@ async function initMap() {
         `;
     }
 
-
     const placesList1 = document.querySelector(".info-place");
     const placesList = document.getElementById("placesList");
 
@@ -109,8 +102,8 @@ async function initMap() {
             if (matchingMarker) {
                 const latitud = matchingMarker.data.latitud;
                 const longitud = matchingMarker.data.longitud;
-                const tipoNegocio= matchingMarker.data.tipoNegocio;
-                const telefonoUsuario= matchingMarker.data.telefonoUsuario;
+                const tipoNegocio = matchingMarker.data.tipoNegocio;
+                const telefonoUsuario = matchingMarker.data.telefonoUsuario;
 
                 map.panTo(matchingMarker.getPosition());
                 matchingMarker.setAnimation(google.maps.Animation.DROP);
@@ -125,17 +118,17 @@ async function initMap() {
     }
 
     function filterPlacesByDistance(userLatLng) {
-
         placesList.innerHTML = '';
 
-        listTitle = document.createElement("h2");
-        listDescription = document.createElement("span")
-        listHr = document.createElement("hr")
+        const listTitle = document.createElement("h2");
+        const listDescription = document.createElement("span")
+        const listHr = document.createElement("hr")
         listDescription.textContent = ", 2km a la redonda."
         listTitle.textContent = "Lugares cerca de ti";
         listTitle.appendChild(listDescription);
         placesList.appendChild(listTitle);
         placesList.appendChild(listHr);
+
         for (const ubicacion of ubicaciones) {
             const nombre = ubicacion.getAttribute('data-nombre');
             const latitud = parseFloat(ubicacion.getAttribute('data-latitud'));
@@ -146,14 +139,13 @@ async function initMap() {
 
             if (distance <= 2000) {
                 addPlaceToList(nombre);
-
             }
         }
     }
 
     const checkboxes = document.querySelectorAll('.tipo-checkbox');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
             filterPlacesByCheckbox();
         });
     });
@@ -162,40 +154,43 @@ async function initMap() {
         const selectedTypes = Array.from(checkboxes)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.value);
-        
+
+        placesList.innerHTML = '';
+
         const filter = "Lugares filtrados: "
         const selectedTypesDisplay = selectedTypes.join(', ');
         const titleElement = document.createElement("h2");
-        listDescription.textContent = selectedTypesDisplay
+        const listDescription = document.createElement("span");
+        listDescription.textContent = selectedTypesDisplay;
         titleElement.textContent = filter;
-        placesList.innerHTML = ''; 
-        
-        
-        if (selectedTypes.length === 0) { 
+        placesList.appendChild(titleElement);
+
+        if (selectedTypes.length === 0) {
             placesList.innerHTML = '';
 
-            listTitle = document.createElement("h2");
+            const listTitle = document.createElement("h2");
             listTitle.textContent = "Lugares cerca de ti";
             placesList.appendChild(listTitle);
 
-            ubicaciones.forEach(function(ubicacion) {
+            ubicaciones.forEach(function (ubicacion) {
                 const nombre = ubicacion.getAttribute('data-nombre');
                 addPlaceToList(nombre);
             });
-            return; 
+
+            markers.forEach(marker => marker.setVisible(true));
+            return;
         }
-        placesList.appendChild(titleElement);
-    
-    
-        for (const ubicacion of ubicaciones) {
-            const tipoNegocio = ubicacion.getAttribute('data-tipo-negocio');
-            if (selectedTypes.includes(tipoNegocio)) {
-                const nombre = ubicacion.getAttribute('data-nombre');
+
+        markers.forEach(marker => {
+            if (selectedTypes.includes(marker.data.tipoNegocio)) {
+                marker.setVisible(true);
+                const nombre = marker.getTitle();
                 addPlaceToList(nombre);
+            } else {
+                marker.setVisible(false);
             }
-        }
+        });
     }
-    
 
     ubicaciones.forEach(function (ubicacion) {
         const nombre = ubicacion.getAttribute('data-nombre');
@@ -241,6 +236,7 @@ async function initMap() {
     } else {
         console.error("La geolocalización no es compatible en este navegador.");
     }
+
     const input = document.getElementById("pac-input");
     const autocomplete = new google.maps.places.Autocomplete(input, {
         fields: ["place_id", "geometry", "name", "formatted_address"],
@@ -263,10 +259,10 @@ async function initMap() {
         }
     });
 
-
     marker.addListener("click", () => {
         infowindow.open(map, marker);
     });
+
     autocomplete.addListener("place_changed", () => {
         infowindow.close();
 
@@ -298,14 +294,13 @@ async function initMap() {
 window.initMap = initMap;
 
 document.addEventListener("DOMContentLoaded", function() {
-    var showPlacesListButton = document.getElementById("showPlacesListButton")
+    var showPlacesListButton = document.getElementById("showPlacesListButton");
 
     showPlacesListButton.addEventListener('click', function() {
         var placesList = document.querySelector('.places-list');
         placesList.classList.toggle('show-places-list');
         placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
     });
-
 
     function checkWindowSize() {
         var width = window.innerWidth;
