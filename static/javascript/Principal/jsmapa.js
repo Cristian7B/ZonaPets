@@ -293,8 +293,90 @@ async function initMap() {
 }
 window.initMap = initMap;
 
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     var showPlacesListButton = document.getElementById("showPlacesListButton");
+//     var filterButton = document.getElementById("filterButton");
+//     var filterContainer = document.getElementById("filterContainer");
+
+//     const filterContainer1 = document.getElementById("filterContainer");
+//     const pElement = document.createElement("p");
+//     const hrElement = document.createElement("hr");
+
+//     pElement.textContent = "Filtros";
+//     pElement.className = "filter-title"; 
+
+//     function addResponsiveElements() {
+//         if (window.innerWidth <= 1267) {
+//             if (!filterContainer1.contains(pElement)) {
+//                 filterContainer1.insertBefore(pElement, filterContainer1.firstChild);
+//                 filterContainer1.insertBefore(hrElement, pElement.nextSibling);
+//             }
+//         } else {
+//             if (filterContainer1.contains(pElement)) {
+//                 filterContainer1.removeChild(pElement);
+//                 filterContainer1.removeChild(hrElement);
+//             }
+//         }
+//     }
+//     addResponsiveElements();
+
+//     window.addEventListener("resize", addResponsiveElements);
+
+//     filterButton.addEventListener("click", function() {
+//         if (filterContainer.classList.contains("show-filter-container")) {
+//             filterContainer.classList.remove("show-filter-container");
+//         } else {
+//             filterContainer.classList.add("show-filter-container");
+//         }
+//     });
+
+//     showPlacesListButton.addEventListener('click', function() {
+//         var placesList = document.querySelector('.places-list');
+//         placesList.classList.toggle('show-places-list');
+//         placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
+//     });
+
+//     function checkWindowSize() {
+//         var width = window.innerWidth;
+//         var showPlacesListButton = document.getElementById('showPlacesListButton');
+
+//         if (width <= 1000) {
+//             showPlacesListButton.style.display = 'flex';
+//         } else {
+//             showPlacesListButton.style.display = 'none';
+//         }
+//     }
+
+//     checkWindowSize(); 
+//     window.addEventListener('resize', checkWindowSize); 
+// });
+
 document.addEventListener("DOMContentLoaded", function() {
     var showPlacesListButton = document.getElementById("showPlacesListButton");
+
+    const filterContainer = document.getElementById("filterContainer");
+    const filterButton = document.getElementById("filterButton");
+    const closeFilterButton = document.getElementById("closeFilter");
+    const pElement = document.createElement("p");
+    const hrElement = document.createElement("hr");
+
+    pElement.textContent = "Filtros";
+    pElement.className = "filter-title"; 
+
+    function addResponsiveElements() {
+        if (window.innerWidth <= 1267) {
+            if (!filterContainer.contains(pElement)) {
+                filterContainer.insertBefore(pElement, filterContainer.firstChild);
+                filterContainer.insertBefore(hrElement, pElement.nextSibling);
+            }
+        } else {
+            if (filterContainer.contains(pElement)) {
+                filterContainer.removeChild(pElement);
+                filterContainer.removeChild(hrElement);
+            }
+        }
+    }
 
     showPlacesListButton.addEventListener('click', function() {
         var placesList = document.querySelector('.places-list');
@@ -302,17 +384,15 @@ document.addEventListener("DOMContentLoaded", function() {
         placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
     });
 
-    function checkWindowSize() {
-        var width = window.innerWidth;
-        var showPlacesListButton = document.getElementById('showPlacesListButton');
 
-        if (width <= 1000) {
-            showPlacesListButton.style.display = 'flex';
-        } else {
-            showPlacesListButton.style.display = 'none';
-        }
-    }
+    addResponsiveElements();
+    window.addEventListener("resize", addResponsiveElements);
+  
+    filterButton.addEventListener("click", function() {
+        filterContainer.classList.add("show-filter-container");
+    });
 
-    checkWindowSize(); 
-    window.addEventListener('resize', checkWindowSize); 
+    closeFilterButton.addEventListener("click", function() {
+        filterContainer.classList.remove("show-filter-container");
+    });
 });

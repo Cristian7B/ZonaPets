@@ -12,7 +12,7 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/mapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/stmapa.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -85,36 +85,57 @@
             <div id="showPlacesListButton">
                 <ion-icon name="locate-outline"></ion-icon>
             </div>
+            <div class="up-map">
+                <div class="search-bar">
+                    <ion-icon id="icon-search" name="search-outline"></ion-icon>
+                    <div class="text">
+                        <h3>
+                            ¿A dónde deseas ir?
+                        </h3>
+                        <p>
+                            Centro Co... Cualquier... Rest...
+                        </p>
+                    </div>
+                </div>
+                <div class="filter-button" id="filterButton">
+                    <ion-icon name="construct-outline"></ion-icon>
+                </div>
+            </div>
             <div id="map"></div>
             <div class="right-map">
-
-                <div class="filter-div">
-                    <h2 class="title-filter">Filtra por tipo</h2>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="hotelFilter" value="Hoteles"> Hoteles
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="restaurantFilter" value="Restaurante"> Restaurantes
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="parkFilter" value="Parque Para Mascotas"> Parques Para Mascotas
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="mallFilter" value="Centro Comercial"> Centro Comercial
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="shopFilter" value="Tiendas de mascotas"> Tiendas De Mascotas
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="placeFilter" value="Sitios Turísticos"> Sitios Turísticos
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="serviceFilter" value="Servicios de paseo de perros"> Servicios De Paseo
-                    </label>
-                    <label>
-                        <input type="checkbox" class="tipo-checkbox" id="otherFilter" value="Otro"> Otros
-                    </label>
-                </div>           
+                
+                <div id="filterContainer" class="filter-container">
+                    <div id="closeFilter" class="close-filter">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </div>
+                    <div class="filter-div">
+                        <h2 class="title-filter">Filtra por tipo</h2>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="hotelFilter" value="Hoteles"> Hoteles
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="restaurantFilter" value="Restaurante"> Restaurantes
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="parkFilter" value="Parque Para Mascotas"> Parques Para Mascotas
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="mallFilter" value="Centro Comercial"> Centro Comercial
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="shopFilter" value="Tiendas de mascotas"> Tiendas De Mascotas
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="placeFilter" value="Sitios Turísticos"> Sitios Turísticos
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="serviceFilter" value="Servicios de paseo de perros"> Servicios De Paseo
+                        </label>
+                        <label>
+                            <input type="checkbox" class="tipo-checkbox" id="otherFilter" value="Otro"> Otros
+                        </label>
+                    </div>       
+                </div>    
                 <div class="info-place">
                 </div>
             </div>
@@ -127,7 +148,7 @@
                 
             </div>
         </div>
-        <script src="{% static 'javascript/Principal/jsindex.js' %}"></script>
+        <script src="{% static 'javascript/Principal/jsmapa.js' %}"></script>
 
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
