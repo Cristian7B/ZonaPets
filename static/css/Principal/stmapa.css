@@ -24,6 +24,13 @@ body {
   border-radius: 10px;
 }
 
+@media(max-width: 1260px) {
+  #map {
+    margin-top: -20px;
+    height: 80vh;
+  }
+}
+
 .tipo-negocio {
   font-family: 'Poppins';
   font-style: normal;
@@ -621,7 +628,6 @@ footer {
 
 .responsive-banner {
   display: block;
-  /* Inicialmente oculto */
   background-color: #3498db;
   color: #fff;
   text-align: center;
@@ -805,9 +811,9 @@ footer {
 #showPlacesListButton {
   display: none; 
   position: absolute;
-  top: 110px;
+  top: 180px;
   left: 40px;
-  z-index: 100;
+  z-index: 9;
   font-size: 30px;
   background-color: #7FBFFF;
   display: flex;
@@ -824,7 +830,7 @@ footer {
   right: 0;
   height: 30vh;
   border-top: 1px solid #808080;
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+  background-color: rgba(255, 255, 255); 
   z-index: 100;
   display: block;
   top: auto;
@@ -835,7 +841,7 @@ footer {
   color: #808080;
 }
 
-@media(max-width:1000px) {
+@media( max-width:1267px ) {
   .flex-desing {
     display: flex;
     flex-direction: column;
@@ -863,3 +869,127 @@ footer {
   }
 }
 
+.filter-button {
+  display: none;
+  top: 110px;
+  right: 40px;
+  z-index: 1;
+  font-size: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  border-radius: 50px;
+  color: rgba(19, 133, 240, 0.83);
+}
+
+.close-filter {
+  display: none;
+  position: absolute;
+  top: 3px;
+  left: 40px;
+  z-index: 100;
+  font-size: 30px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  color: rgba(19, 133, 240, 0.83);
+  z-index: 1000;
+}
+
+.filter-title {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  text-align: center;
+  color: rgba(19, 133, 240, 0.83);
+  margin-bottom: 10px;
+}
+
+.up-map {
+  display: none;
+  justify-content: flex-end;
+}
+
+.search-bar {
+  width: 80%;
+  border: 1px solid #808080;
+  border-radius: 10px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#icon-search {
+  font-size: 30px;
+  margin-left: 10px;
+  color: #808080;
+
+}
+
+.search-bar h3 {
+  font-size: 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  color: #7FBFFF;
+}
+
+.search-bar p {
+  font-size: 12px;
+  font-family: 'Poppins';
+  font-style: normal;
+  color: #7FBFFF;
+}
+
+@media (max-width: 1267px) {
+  .up-map {
+    display: flex;
+  }
+
+
+  .filter-button {
+      display: flex;
+  }
+
+  .filter-div {
+      display: none; 
+  }
+
+  .filter-container.show-filter-container .filter-div {
+      display: flex; 
+      border: none;
+      padding: 50px;
+      border-radius: 10px;
+  }
+
+  .filter-container.show-filter-container .close-filter {
+    display: flex;
+  }
+
+  .filter-container {
+    display: none; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 98vh;
+    background-color: #FFFFFF;
+    z-index: 150;
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+  }
+
+  .filter-div label {
+    font-size: 25px;
+  }
+}
+
+
+
+
+
+.filter-container.show-filter-container {
+  display: block;
+  transform: translateY(0);
+}
