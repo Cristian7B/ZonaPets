@@ -12,7 +12,7 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/stmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/mapa.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -46,13 +46,13 @@
         appId: "1:810651763558:web:914cca9d4c78b9833dfea7",
         measurementId: "G-5WPJXXGLH1"
     };
-
+    
     firebase.initializeApp(firebaseConfig);
-
+    
     const messaging = firebase.messaging();
 
     messaging.requestPermission()
-        .then(function () {
+    .then(function () {
             console.log("Notification permission granted.");
             return messaging.getToken({ vapidKey: 'BJwHv8Qw9Bogo5rrQg_ooF8sVuEw3GoHI0Qu5grABtKEa2lJplQHBSuv4AV1uwbNmsxvThnZdvQ5ZKKdsoevvVo' });
         })
@@ -72,121 +72,126 @@
     });
 </script>
 
-
 <body>
-    <div class="container-all" id="move-content">
-        <div style="display: none">
-            <input id="pac-input" class="controls" type="text" placeholder="Consulta una ciudad" />
-        </div>
-
-        <div class="flex-desing">
-            <div id="placesList" class="places-list">
-            </div>
-            <div id="showPlacesListButton">
-                <ion-icon name="locate-outline"></ion-icon>
-            </div>
-            <div class="up-map">
-                <div class="search-bar">
-                    <ion-icon id="icon-search" name="search-outline"></ion-icon>
-                    <div class="text">
-                        <h3>
-                            ¿A dónde deseas ir?
-                        </h3>
-                        <p>
-                            Centro Co... Cualquier... Rest...
-                        </p>
-                    </div>
-                </div>
-                <div class="filter-button" id="filterButton">
-                    <ion-icon name="construct-outline"></ion-icon>
-                </div>
-            </div>
-            <div id="map"></div>
-            <div class="right-map">
-                
-                <div id="filterContainer" class="filter-container">
-                    <div id="closeFilter" class="close-filter">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </div>
-                    <div class="filter-div">
-                        <h2 class="title-filter">Filtra por tipo</h2>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="hotelFilter" value="Hoteles"> Hoteles
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="restaurantFilter" value="Restaurante"> Restaurantes
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="parkFilter" value="Parque Para Mascotas"> Parques Para Mascotas
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="mallFilter" value="Centro Comercial"> Centro Comercial
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="shopFilter" value="Tiendas de mascotas"> Tiendas De Mascotas
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="placeFilter" value="Sitios Turísticos"> Sitios Turísticos
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="serviceFilter" value="Servicios de paseo de perros"> Servicios De Paseo
-                        </label>
-                        <label>
-                            <input type="checkbox" class="tipo-checkbox" id="otherFilter" value="Otro"> Otros
-                        </label>
-                    </div>       
-                </div>    
-                <div class="info-place">
-                </div>
-            </div>
-            <div id="infowindow-content">
-                
-
-            <span id="place-name" class="title"></span><br />
-            <strong></strong><span id="place-id"></span><br />
-            <span id="place-address"></span>
-                
-            </div>
-        </div>
-        <script src="{% static 'javascript/Principal/jsmapa.js' %}"></script>
-
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
-            defer>
-        </script>
-
-
-        {% for ubicacion in ubicaciones %}
-
-        <div class="ubicacion" data-latitud="{{ ubicacion.latitud }}" data-longitud="{{ ubicacion.longitud }}"
-            data-nombre="{{ ubicacion.nombre_compañia }}" data-tipo-negocio="{{ ubicacion.tipo_de_negocio }}" data-telefono = "{{ ubicacion.telefono_usuario }}">
-        </div>
-        
-        {% endfor %}
+    <div id="overlay">
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var container = document.querySelector('.container-all');
-
-            container.addEventListener('click', function(event) {
-                if (event.target && event.target.id === 'show') {
-                    var dialog = document.getElementById("dialog");
-                    dialog.style.display = "block";
+        <div class="container-all" id="move-content">
+            <div style="display: none">
+                <input id="pac-input" class="controls" type="text" placeholder="Consulta una ciudad" />
+            </div>
+    
+            <div class="flex-desing">
+                <div id="placesList" class="places-list">
+                </div>
+                <div id="showPlacesListButton">
+                    <ion-icon name="locate-outline"></ion-icon>
+                </div>
+                <div class="up-map">
+                    <div class="search-bar">
+                        <ion-icon id="icon-search" name="search-outline"></ion-icon>
+                        <div class="text">
+                            <h3>
+                                ¿A dónde deseas ir?
+                            </h3>
+                            <p>
+                                Centro Co... Cualquier... Rest...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="filter-button" id="filterButton">
+                        <ion-icon name="construct-outline"></ion-icon>
+                    </div>
+                </div>
+                <div id="map"></div>
+                <div class="right-map">
                     
-                }
-
-                if (event.target && event.target.id === 'hide') {
-                    var dialog = document.getElementById("dialog");
-                    dialog.style.display = "none";
+                    <div id="filterContainer" class="filter-container">
+                        <div id="closeFilter" class="close-filter">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </div>
+                        <div class="filter-div">
+                            <h2 class="title-filter">Filtra por tipo</h2>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="hotelFilter" value="Hoteles"> Hoteles
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="restaurantFilter" value="Restaurante"> Restaurantes
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="parkFilter" value="Parque Para Mascotas"> Parques Para Mascotas
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="mallFilter" value="Centro Comercial"> Centro Comercial
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="shopFilter" value="Tiendas de mascotas"> Tiendas De Mascotas
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="placeFilter" value="Sitios Turísticos"> Sitios Turísticos
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="serviceFilter" value="Servicios de paseo de perros"> Servicios De Paseo
+                            </label>
+                            <label>
+                                <input type="checkbox" class="tipo-checkbox" id="otherFilter" value="Otro"> Otros
+                            </label>
+                        </div>       
+                    </div>    
+                    <div class="info-place">
+                    </div>
+                </div>
+                <div id="infowindow-content">
                     
-                }
+    
+                <span id="place-name" class="title"></span><br />
+                <strong></strong><span id="place-id"></span><br />
+                <span id="place-address"></span>
+                    
+                </div>
+            </div>
+            <script src="{% static 'javascript/Principal/jsmapa.js' %}"></script>
+    
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
+                defer>
+            </script>
+    
+    
+            {% for ubicacion in ubicaciones %}
+    
+            <div class="ubicacion" data-latitud="{{ ubicacion.latitud }}" data-longitud="{{ ubicacion.longitud }}"
+                data-nombre="{{ ubicacion.nombre_compañia }}" data-tipo-negocio="{{ ubicacion.tipo_de_negocio }}" data-telefono = "{{ ubicacion.telefono_usuario }}">
+            </div>
+            
+            {% endfor %}
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var container = document.querySelector('.container-all');
+                var overlay = document.getElementById("overlay")
+    
+                container.addEventListener('click', function(event) {
+                    if (event.target && event.target.id === 'show') {
+                        var dialog = document.getElementById("dialog");
+                        dialog.style.display = "block";
+                        overlay.style.display = "block"
+                        
+                    }
+    
+                    if (event.target && event.target.id === 'hide') {
+                        var dialog = document.getElementById("dialog");
+                        dialog.style.display = "none";
+                        overlay.style.display = "none";
+                        
+                    }
+                });
             });
-        });
+    
+    
+    
+        </script>
+    </body>
 
-
-
-    </script>
-</body>
 
 </html>
 
