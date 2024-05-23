@@ -20,7 +20,7 @@ async function initMap() {
         const longitud = ubicacion.getAttribute("data-longitud");
         const nombre = ubicacion.getAttribute("data-nombre");
         const tipoNegocio = ubicacion.getAttribute("data-tipo-negocio");
-        const telefonoUsuario = ubicacion.getAttribute("data-telefono"); 
+        const telefonoUsuario = ubicacion.getAttribute("data-telefono");
 
         const markerLatLng = { lat: parseFloat(latitud), lng: parseFloat(longitud) };
         const marker = new google.maps.Marker({
@@ -35,24 +35,34 @@ async function initMap() {
                 latitud: parseFloat(latitud),
                 longitud: parseFloat(longitud),
                 tipoNegocio: tipoNegocio,
-                telefonoUsuario: telefonoUsuario 
+                telefonoUsuario: telefonoUsuario
             }
         });
 
         markers.push(marker);
 
-        const placesList = document.querySelector(".info-place");
-
-        marker.addListener('click', function () {
-            const nombre = marker.getTitle();
-            const tipoNegocio = marker.data.tipoNegocio;
-            const telefonoUsuario = marker.data.telefonoUsuario; 
-            placesList.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario); 
+        const infowindow = new google.maps.InfoWindow({
+            content: getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario)
         });
+    
+        marker.addListener('click', function () {
+            if (window.innerWidth < 1267) {
+                infowindow.setContent(getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario));
+                infowindow.open(map, marker);
+            } else {
+                const placesList = document.querySelector(".info-place");
+                const nombre = marker.getTitle();
+                const tipoNegocio = marker.data.tipoNegocio;
+                const telefonoUsuario = marker.data.telefonoUsuario; 
+                placesList.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario); 
+            }
+        });
+
+
     });
 
     function getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefono) {
-        return `
+        const largeScreenContent = `
             <div class="info-window">
                 <div id="dialog" class="dialog">
                     <ion-icon id="hide" class="close-icon" name="close-outline"></ion-icon>
@@ -63,8 +73,8 @@ async function initMap() {
                                 <p>${tipoNegocio}</p>
                             </div>
                             <div class="telefono">
-                                    <ion-icon class="icon" name="call-outline"></ion-icon>
-                                    <p>${telefono}</p>
+                                <ion-icon class="icon" name="call-outline"></ion-icon>
+                                <p>${telefono}</p>
                             </div>
                         </div>
                         <div class="info2">
@@ -86,6 +96,46 @@ async function initMap() {
                 <button class="show-button" id="show"><ion-icon class="show-icon" name="information-circle-outline"></ion-icon>Saber más</button>
             </div>
         `;
+    
+        const smallScreenContent = `
+            <div id="dialog" class="dialog">
+                <ion-icon id="hide" class="close-icon" name="close-outline"></ion-icon>
+                <div class="titledialog">${nombre}</div>
+                <div class="information">
+                    <div class="info1">
+                        <div class="tipo">
+                            <p>${tipoNegocio}</p>
+                        </div>
+                        <div class="telefono">
+                            <ion-icon class="icon" name="call-outline"></ion-icon>
+                            <p>${telefono}</p>
+                        </div>
+                    </div>
+                    <div class="info2">
+                        <div class="g-maps">
+                            <ion-icon class="icon" name="flag-outline"></ion-icon>
+                            <p><a class="info-window-link" href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en <span>Google Maps</span></a></p>
+                        </div>
+                        <div class="plus">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div class="info-window2">
+                <h1 class="info-window-content">${nombre}</h1>
+                <div class="tipo-negocio">
+                    <ion-icon name="pricetag-outline"></ion-icon>
+                    <p class="tipo-negocio-p">${tipoNegocio}</p>
+                </div>
+                <div class="g-maps">
+                    <ion-icon class="icon" name="flag-outline"></ion-icon>
+                    <p><a class="info-window-link" href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank">Ver en <span>Google Maps</span></a></p>
+                </div>
+            </div>
+        `;
+    
+        return window.innerWidth <= 1267 ? smallScreenContent : largeScreenContent;
     }
 
     const placesList1 = document.querySelector(".info-place");
@@ -110,7 +160,9 @@ async function initMap() {
                 setTimeout(() => {
                     matchingMarker.setAnimation(null);
                 }, 3500);
-                placesList1.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario);
+                if( window.innerWidth >=1267) {
+                    placesList1.innerHTML = getContentStringForMarker(nombre, latitud, longitud, tipoNegocio, telefonoUsuario);
+                }
             }
         });
 
@@ -121,9 +173,9 @@ async function initMap() {
         placesList.innerHTML = '';
 
         const listTitle = document.createElement("h2");
-        const listDescription = document.createElement("span")
-        const listHr = document.createElement("hr")
-        listDescription.textContent = ", 2km a la redonda."
+        const listDescription = document.createElement("span");
+        const listHr = document.createElement("hr");
+        listDescription.textContent = ", 2km a la redonda.";
         listTitle.textContent = "Lugares cerca de ti";
         listTitle.appendChild(listDescription);
         placesList.appendChild(listTitle);
@@ -157,7 +209,7 @@ async function initMap() {
 
         placesList.innerHTML = '';
 
-        const filter = "Lugares filtrados: "
+        const filter = "Lugares filtrados: ";
         const selectedTypesDisplay = selectedTypes.join(', ');
         const titleElement = document.createElement("h2");
         const listDescription = document.createElement("span");
@@ -219,18 +271,17 @@ async function initMap() {
                     const nombreUsuario = userMarker.getTitle();
                     const matchingPlaceItem = placesList.querySelector(`.place-item:contains('${nombreUsuario}')`);
                     if (matchingPlaceItem) {
-                        matchingPlaceItem.style.backgroundColor = "#f0f0f0";
-                        setTimeout(() => {
-                            matchingPlaceItem.style.backgroundColor = "";
-                        }, 1000);
+                        matchingPlaceItem.scrollIntoView({ behavior: "smooth" });
                     }
                 });
 
-                filterPlacesByDistance(userLatLng);
+                map.setCenter(userLatLng);
+                map.setZoom(14);
 
+                filterPlacesByDistance(new google.maps.LatLng(userLatLng));
             },
-            (error) => {
-                console.error("Error obteniendo la ubicación: ", error);
+            () => {
+                console.error("Geolocation failed.");
             }
         );
     } else {
@@ -292,65 +343,6 @@ async function initMap() {
     });
 }
 window.initMap = initMap;
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     var showPlacesListButton = document.getElementById("showPlacesListButton");
-//     var filterButton = document.getElementById("filterButton");
-//     var filterContainer = document.getElementById("filterContainer");
-
-//     const filterContainer1 = document.getElementById("filterContainer");
-//     const pElement = document.createElement("p");
-//     const hrElement = document.createElement("hr");
-
-//     pElement.textContent = "Filtros";
-//     pElement.className = "filter-title"; 
-
-//     function addResponsiveElements() {
-//         if (window.innerWidth <= 1267) {
-//             if (!filterContainer1.contains(pElement)) {
-//                 filterContainer1.insertBefore(pElement, filterContainer1.firstChild);
-//                 filterContainer1.insertBefore(hrElement, pElement.nextSibling);
-//             }
-//         } else {
-//             if (filterContainer1.contains(pElement)) {
-//                 filterContainer1.removeChild(pElement);
-//                 filterContainer1.removeChild(hrElement);
-//             }
-//         }
-//     }
-//     addResponsiveElements();
-
-//     window.addEventListener("resize", addResponsiveElements);
-
-//     filterButton.addEventListener("click", function() {
-//         if (filterContainer.classList.contains("show-filter-container")) {
-//             filterContainer.classList.remove("show-filter-container");
-//         } else {
-//             filterContainer.classList.add("show-filter-container");
-//         }
-//     });
-
-//     showPlacesListButton.addEventListener('click', function() {
-//         var placesList = document.querySelector('.places-list');
-//         placesList.classList.toggle('show-places-list');
-//         placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
-//     });
-
-//     function checkWindowSize() {
-//         var width = window.innerWidth;
-//         var showPlacesListButton = document.getElementById('showPlacesListButton');
-
-//         if (width <= 1000) {
-//             showPlacesListButton.style.display = 'flex';
-//         } else {
-//             showPlacesListButton.style.display = 'none';
-//         }
-//     }
-
-//     checkWindowSize(); 
-//     window.addEventListener('resize', checkWindowSize); 
-// });
 
 document.addEventListener("DOMContentLoaded", function() {
     var showPlacesListButton = document.getElementById("showPlacesListButton");
