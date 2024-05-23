@@ -465,14 +465,13 @@ header .titulo {
   font-size: 25px;
 }
 
-.info-window {
+.info-window, .info-window2{
   padding: 10px;
   border: 1px solid #808080;
   margin-top: 30px;
   max-width: 100%;
   box-sizing: border-box;
   background: #fff;
-  border: 1px solid #808080;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -948,7 +947,6 @@ footer {
     display: flex;
   }
 
-
   .filter-button {
       display: flex;
   }
@@ -983,6 +981,23 @@ footer {
 
   .filter-div label {
     font-size: 25px;
+  }
+
+  .info-place {
+    display: none;
+  }
+
+  .info-window, .info-window2{
+    margin-top: 0px;
+    border: none;
+  }
+
+  .info-window-link {
+    font-size: 15px;
+  }
+
+  .g-maps span {
+    font-size: 15px;
   }
 }
 
