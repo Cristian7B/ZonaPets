@@ -244,32 +244,11 @@ header .titulo {
         top: 125px;
     }
 
-    /* .places-list {
-        top: 130px;
-    } */
-
     .relocated {
         bottom: 40px;
     }
 }
 
-@media(max-width:1200px) {
-    .controls {
-        margin-left: 400px;
-    }
-}
-
-@media(max-width:1100px) {
-    .controls {
-        margin-left: 350px;
-    }
-}
-
-@media(max-width:980px) {
-    .controls {
-        margin-left: 270px;
-    }
-}
 
 @media(max-width: 845px) {
     .mobile-toggle {
@@ -291,11 +270,6 @@ header .titulo {
 
     .relocated {
         bottom: 15px;
-    }
-
-    .controls {
-        width: 250px;
-        margin-left: 280px
     }
 
     .logo-nombre {
@@ -333,9 +307,6 @@ header .titulo {
         left: 180px;
     }
 
-    .controls {
-        margin-left: 220px;
-    }
 }
 
 @media(max-width: 507px) {
@@ -355,15 +326,6 @@ header .titulo {
     .mobile-toggle i {
         font-size: 23px;
         font-weight: bold;
-    }
-
-    .controls {
-        display: none;
-        top: 15px;
-        width: 270px;
-        margin-left: 100px;
-        position: absolute;
-
     }
 
     .mobile-search-button {
@@ -417,20 +379,6 @@ header .titulo {
         top: 17px;
     }
 }
-
-@media(max-width: 479px) {
-    .controls {
-        margin-left: 70px;
-    }
-}
-
-@media(max-width: 427px) {
-    .controls {
-        margin-left: 70px;
-        width: 230px;
-    }
-}
-
 .relocated {
   position: absolute;
   left: 240px;
@@ -568,7 +516,6 @@ footer {
   background-color: #fff;
   border-radius: 10px;
   border: 1px #808080 solid;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   font-family: Roboto;
   font-size: 15px;
@@ -580,7 +527,8 @@ footer {
   text-overflow: ellipsis;
   width: 400px;
   margin-left: 160px;
-  color: #1385F0;
+  color: #7FBBFF;
+  display: none;
 }
 
 .controls:focus {
@@ -867,6 +815,30 @@ footer {
     color: rgba(19, 133, 240, 0.83);
     text-shadow: none;
   }
+
+  .controls {
+    font-family: "Poppins", "sans-serif";
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px #808080 solid;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    height: 29px;
+    margin-top: 10px;
+    outline: none;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 72%;
+    margin-left: 160px;
+    color: #7FBFFF;
+    height: 50px;
+    position:fixed !important;
+    top: 90px !important;
+    left: -130px !important;
+  }
 }
 
 .filter-button {
@@ -972,7 +944,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 98vh;
+    height: 92vh;
     background-color: #FFFFFF;
     z-index: 150;
     transition: transform 0.3s ease;
