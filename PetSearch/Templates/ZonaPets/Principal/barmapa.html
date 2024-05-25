@@ -12,7 +12,7 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/stylesmapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/mapa.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -77,7 +77,7 @@
     </div>
         <div class="container-all" id="move-content">
             <div style="display: none">
-                <input id="pac-input" class="controls" type="text" placeholder="Consulta una ciudad" />
+                <input id="pac-input" class="controls" type="text" placeholder="" />
             </div>
     
             <div class="flex-desing">
@@ -87,7 +87,7 @@
                     <ion-icon name="locate-outline"></ion-icon>
                 </div>
                 <div class="up-map">
-                    <div class="search-bar">
+                    <div id="searchBar" class="search-bar">
                         <ion-icon id="icon-search" name="search-outline"></ion-icon>
                         <div class="text">
                             <h3>
@@ -168,7 +168,14 @@
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var container = document.querySelector('.container-all');
-                var overlay = document.getElementById("overlay")
+                var overlay = document.getElementById("overlay");
+                var div = document.getElementById("searchBar");
+                var pacInput = document.getElementById("pac-input")
+
+                div.addEventListener("click", function() {
+                    pacInput.style.display = "flex";
+                    pacInput.focus();
+                });
     
                 container.addEventListener('click', function(event) {
                     if (event.target && event.target.id === 'show') {
