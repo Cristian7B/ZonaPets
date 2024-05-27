@@ -199,6 +199,9 @@ async function initMap() {
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             filterPlacesByCheckbox();
+            if (window.innerWidth < 1250) {
+                filterContainer.classList.remove("show-filter-container");
+            }
         });
     });
 
