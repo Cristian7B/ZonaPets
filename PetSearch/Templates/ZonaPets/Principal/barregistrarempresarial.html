@@ -43,18 +43,18 @@
 
 {% endif %}
 
-{% if mensaje %}
 
-<div class="alert-success" role="alert">
-    ¡Registro Exitoso!
-</div>
-
-{% endif %}
-
-
-<form action="{% url 'guardarform' %}" method="POST" class="mi-formulario">
-
+<form action="{% url 'guardarformEmpresa' %}" method="POST" class="mi-formulario">
+    
     <div class="form12">
+        
+        {% if mensaje %}
+        
+        <div class="alert-success" role="alert">
+            ¡Registro Exitoso!
+        </div>
+        
+        {% endif %}
         <div class="select-menu">
             <div class="select-btn">
                 <span class="text-select">Registrar: <span class="text-in">Propietario</span></span>

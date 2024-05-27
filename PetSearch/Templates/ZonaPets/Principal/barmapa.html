@@ -12,7 +12,7 @@
     <title>Lugares PetFriendly | ZonaPets</title>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/mapa.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Principal/indexmapa.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -37,8 +37,6 @@
 </script>
 
 <script>
-    import { inject } from '@vercel/analytics';
-    inject();
     var firebaseConfig = {
         apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
         authDomain: "zonapets-407921.firebaseapp.com",
@@ -101,7 +99,7 @@
                         </div>
                     </div>
                     <div class="filter-button" id="filterButton">
-                        <ion-icon name="construct-outline"></ion-icon>
+                        <img class="filter-logo" src="{% static 'imagenes/filterLogo.svg' %}" alt="">
                     </div>
                 </div>
                 <div id="map"></div>
