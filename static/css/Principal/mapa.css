@@ -758,7 +758,7 @@ footer {
 #showPlacesListButton {
   display: none; 
   position: absolute;
-  top: 180px;
+  top: 192px;
   left: 40px;
   z-index: 9;
   font-size: 30px;
@@ -816,7 +816,6 @@ footer {
   }
 
   .controls {
-    font-family: "Poppins", "sans-serif";
     background-color: #fff;
     border-radius: 10px;
     border: 1px #808080 solid;
@@ -825,19 +824,15 @@ footer {
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
-    height: 29px;
     margin-top: 10px;
     outline: none;
     padding: 0 11px 0 13px;
-    width: 72%;
+    width: 50%;
     margin-left: 160px;
     color: #7FBFFF;
     height: 50px;
-    position:fixed !important;
-    top: 90px !important;
-    left: -140px !important;
     display: none;
-    text-overflow: ellipsis;
+    left: -20% !important;
   }
 }
 
