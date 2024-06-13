@@ -159,7 +159,7 @@ nav ul li a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(255, 255, 255, 0.9); 
     flex-direction: column;
     align-items: center;
@@ -408,16 +408,50 @@ header img {
 }
 
 .img-grid {
-    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    width: 70%;
 }
 
-.container-img {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    border-radius: 20px;
 }
 
 .images-grid {
     width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    color: #61BEE1 !important;
+    margin-bottom: 10px;
+}
+
+:root {
+    --swiper-theme-color: #61BEE1 !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #61BEE1 !important;
 }
 
 .zonapets-footer {
@@ -711,7 +745,20 @@ hr {
     }
 
     .info2 {
-        display: none;
+        flex-direction: column;
+        border: 1px solid #A7A7A7;
+        border-radius: 20px;
+        padding: 30px;
+        width: 82%;
+    }
+
+    .info2 img {
+        width: 100%;
+        position: relative;
+    }
+
+    .img-grid {
+        width: 85%;
     }
 }
 
@@ -726,6 +773,23 @@ hr {
         display: flex;
         flex-direction: column;
         height: auto;
+    }
+
+    .container-mision {
+        flex-direction: column;
+    }
+
+    .container-objetivos {
+        margin-top: 20px;
+        flex-direction: column-reverse;
+    }
+
+    .img {
+        width: 100%;
+    }
+
+    .text-info h2 {
+        font-size: 8vw;
     }
 }
 
