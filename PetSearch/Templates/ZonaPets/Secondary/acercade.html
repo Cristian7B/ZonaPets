@@ -9,7 +9,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Secondary/aboutUs.css/' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Secondary/acercade.css/' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -22,6 +22,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 </head>
 
@@ -77,7 +78,7 @@
                 target="_blank" id="icon2"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
             </div>
         </div>
-        <script src="{% static 'javascript/Secondary/acerca.js' %}" defer></script>
+        <script src="{% static 'javascript/Secondary/acercade.js' %}" defer></script>
     </div>
     <header>
         <div class="text-wall">
@@ -163,14 +164,28 @@
             ¡Sé parte de una aventura más!
         </div>
         <div class="img-grid">
-            <div class="container-img">
-                <img class="images-grid" src="{% static 'imagenes/image 3.png' %}" alt="Objetivos de ZonaPets">
-                <img class="images-grid" src="{% static 'imagenes/image 4.png' %}" alt="Objetivos de ZonaPets">
-                <img class="images-grid" src="{% static 'imagenes/image 5.png' %}" alt="Objetivos de ZonaPets">
-                <img class="images-grid" src="{% static 'imagenes/image 6.png' %}" alt="Objetivos de ZonaPets">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="images-grid" src="{% static 'imagenes/image 3.png' %}" alt="Objetivos de ZonaPets">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="images-grid" src="{% static 'imagenes/image 4.png' %}" alt="Objetivos de ZonaPets">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="images-grid" src="{% static 'imagenes/image 5.png' %}" alt="Objetivos de ZonaPets">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="images-grid" src="{% static 'imagenes/image 6.png' %}" alt="Objetivos de ZonaPets">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <footer>
         <div class="zonapets-footer">

@@ -31,5 +31,35 @@ function cambiarTexto() {
     }    
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        centeredSlides: true,
+        
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        slidesPerView: 1,
+        spaceBetween: 0,
+
+        autoplay: {
+            delay: 3000, 
+            disableOnInteraction: false, 
+        },
+
+        speed: 600,
+    });
+
+});
+
 window.addEventListener("resize", cambiarTexto);
 cambiarTexto();
