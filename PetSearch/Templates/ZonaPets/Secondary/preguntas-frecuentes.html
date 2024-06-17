@@ -1,24 +1,327 @@
-{% extends "ZonaPets/newdesing.html" %}
-{% block content %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ea">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaQ - ZonaPets</title>
+
+    <title>FaQ | ZonaPets</title>
+
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/Secondary/faq.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-messaging.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/Secondary/preguntas-frecuentescss' %}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N6MHZ5KW4K');
+</script>
 
 <body>
+    <div class="container1">
+        <nav>
+            <ul>
+                <li>
+                    <div class="zonapets">
+                      <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" class="imgnavbar">
+                      <h2>ZonaPets</h2>
+                    </div>
+                    <div class="links-page">
+                        <a href="https://zonapets.vercel.app/mapa/">Ver Mapa</a>
+                        <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+                        <a href="https://zonapets.vercel.app/contacto/">Contacto</a>
+                    </div>
+                    <div class="right">
+                        <div class="premium-login">
+                            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">Premium</button></a>
+                        </div>
+                        <div class="premium-login">
+                          <a href="https://zonapets.vercel.app/iniciarsesion/"><button class="button-nav2">Inicia sesion</button></a>
+                      </div>
+                    </div>
+                    <div class="menu-icon">
+                        <ion-icon name="menu-outline" class="menu"></ion-icon>
+                        <ion-icon name="close-outline" class="close"></ion-icon>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="mobile-links-page">
+            <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
+            <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
+            <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">Premium</button></a>
+            <div class="social-media">
+                <a class="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                target="_blank" id="icon1"><ion-icon name="logo-facebook" class="logo-red"></ion-icon></a>
+                <a class="fa" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                target="_blank"><ion-icon name="logo-instagram" class="logo-red"></ion-icon></a>
+                <a class="fa" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                target="_blank" id="icon2"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-all">
+        <header>
+            <div class="title">
+                <h1>FaQ's</h1>
+                <p>Preguntas Frecuentes</p>
+            </div>
+            <img src="{% static 'imagenes/FaQ.png' %}" alt="">
+        </header>
+
+        <div class="preguntas" id="faq-content">
+            <div class="texto-ayuda">
+                <h1>¿Cómo podemos ayudarte?</h1>
+                <ion-icon id="icon-desplegable" name="caret-down-outline"></ion-icon>
+            </div>
+            <div class="faq-preguntas" id="faq-preguntas">
+                <div class="category">
+                    <ion-icon class="icon-category" name="flag-outline"></ion-icon>
+                    <p>Mapa</p>
+                </div>
+                <div class="preguntas-list">
+                    <ul>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Lorem ipsum dolor sit amet?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Consectetur adipiscing elit?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Quis nostrud exercitation ullamco laboris nisi?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Quis nostrud exercitation ullamco laboris nisi?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Ut enim ad minim veniam?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="category">
+                    <ion-icon class="icon-category" name="add-outline"></ion-icon>
+                    <p>Registro</p>
+                </div>
+                <div class="preguntas-list">
+                    <ul>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Duis aute irure dolor in reprehenderit?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿In voluptate velit esse cillum dolore?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Eu fugiat nulla pariatur?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Consectetur adipiscing elit?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="category">
+                    <ion-icon class="icon-category" name="lock-closed-outline"></ion-icon>
+                    <p>Privacidad</p>
+                </div>
+                <div class="preguntas-list">
+                    <ul>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Lorem ipsum dolor sit amet?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Excepteur sint occaecat cupidatat non proident?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Sunt in culpa qui officia deserunt?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Mollit anim id est laborum?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Quis nostrud exercitation ullamco laboris nisi ut?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="category">
+                    <ion-icon class="icon-category" name="card-outline"></ion-icon>
+                    <p>Premium</p>
+                </div>
+                <div class="preguntas-list">
+                    <ul>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Aliquip ex ea commodo consequat?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Duis aute irure dolor in reprehenderit?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="question">
+                                <a href="">¿Excepteur sint occaecat cupidatat non proident?</a>
+                                <ion-icon class="icon-link" name="link-outline"></ion-icon>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="call-preguntas">
+            <h1>¿Tienes otra pregunta?</h1>
+            <a href="https://zonapets.vercel.app/contacto/"><button class="contact">Contáctanos</button></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="zonapets-footer">
+            <div class="top">
+                <div class="img-divfooter1">
+                    <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                    <h1 class="logo-title">ZonaPets</h1>
+                </div>
+                <div class="logo-footer">
+                    <div class="img-divfooter">
+                        <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                        <h1 class="logo-title">ZonaPets</h1>
+                    </div>
+                    <div class="social-media">
+                        <a class="plus-icon3" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-instagram"></ion-icon></a>
+                        <a class="plus-icon3" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-facebook"></ion-icon></a>
+                        <a class="plus-icon3" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                            target="_blank"><ion-icon class="plus-icon3" name="logo-tiktok"></ion-icon></a>
+                        <a class="plus-icon3" href="mailto:zonapetscompany@gmail.com" target="_blank"><ion-icon
+                                class="plus-icon3" name="mail-open-outline"></ion-icon></a>
+                    </div>
+
+                </div>
+                <div class="description-footer">
+                    <div class="footer-container">
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Nosotros
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/acercade/" target="_blank">Sobre ZonaPets</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Servicio
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/preguntas-frecuentes/" target="_blank">Preguntas frecuentes</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Contacto</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/equipo/" target="_blank">Equipo</a>
+                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Comunidad
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app" target="_blank">Twitter</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app" target="_blank">Facebook</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Reportar un bug</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Pon tu lugar en ZonaPets</a>
+                            </div>
+                        </div>
+                        <div class="footer-divs">
+                            <h1 class="title-desc">
+                                Links de interés
+                            </h1>
+                            <div class="width-url">
+                                <a class="url-footer" href="https://zonapets.vercel.app/mapa/" target="_blank">Mapa de lugares</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Registrar un lugar</a>
+                                <a class="url-footer" href="https://zonapets.vercel.app/afiliate/" target="_blank">Trabaja con nosotros</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="bottom">
+                <p class="copyrigth">Copyright © 2023, ZonaPets.</p>
+                <p class="copyrigth2">Contactános <span><a
+                            href="mailto:zonapetscompany@gmail.com">zonapetscompany@gmail.com</a></span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'javascript/Secondary/faq.js' %}" defer></script>
 
 </body>
 
 </html>
-{% endblock %}
