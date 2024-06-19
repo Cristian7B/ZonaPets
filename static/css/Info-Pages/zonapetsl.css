@@ -711,7 +711,8 @@
 }
 
 .zonapets-footer {
-    padding: 100px 100px 30px 100px;
+    margin-top: 200px;
+    padding: 100px 10px 30px 100px;
     background-color: #1385f0;
 }
 
@@ -812,6 +813,7 @@
 hr {
     color: #fff;
     margin-top: 30px;
+    width: 90%;
 }
 
 .bottom {
