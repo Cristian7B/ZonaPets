@@ -38,13 +38,13 @@
 
 <script>
     var firebaseConfig = {
-        apiKey: "AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ",
-        authDomain: "zonapets-407921.firebaseapp.com",
-        projectId: "zonapets-407921",
-        storageBucket: "zonapets-407921.appspot.com",
-        messagingSenderId: "810651763558",
-        appId: "1:810651763558:web:914cca9d4c78b9833dfea7",
-        measurementId: "G-5WPJXXGLH1"
+        apiKey: "{{ firebase_config.apiKey }}",
+        authDomain: "{{ firebase_config.authDomain }}",
+        projectId: "{{ firebase_config.projectId }}",
+        storageBucket: "{{ firebase_config.storageBucket }}",
+        messagingSenderId: "{{ firebase_config.messagingSenderId }}",
+        appId: "{{ firebase_config.appId }}",
+        measurementId: "{{ firebase_config.measurementId }}"
     };
     
     firebase.initializeApp(firebaseConfig);
@@ -54,7 +54,7 @@
     messaging.requestPermission()
     .then(function () {
             console.log("Notification permission granted.");
-            return messaging.getToken({ vapidKey: 'BJwHv8Qw9Bogo5rrQg_ooF8sVuEw3GoHI0Qu5grABtKEa2lJplQHBSuv4AV1uwbNmsxvThnZdvQ5ZKKdsoevvVo' });
+            return messaging.getToken({ vapidKey: '{{ firebase_config.vapidKey }}' });
         })
         .then(function (currentToken) {
             if (currentToken) {
