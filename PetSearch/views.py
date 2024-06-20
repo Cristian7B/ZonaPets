@@ -11,6 +11,7 @@ from .models import registroform
 from django.db import connections
 from .models import registrofinal2
 from rest_framework import status
+from django.conf import settings
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
@@ -129,9 +130,15 @@ def mapa_petfriendly(request):
                          'latitud': ubicacion.latitud, 
                          'longitud': ubicacion.longitud,
                          'tipo_de_negocio': ubicacion.tipo_de_negocio,
-                         'telefono_usuario': ubicacion.telefono_usuario} for ubicacion in ubicaciones]
+                         'telefono_usuario': ubicacion.telefono_usuario} 
+                         for ubicacion in ubicaciones]
 
-    return render(request, "ZonaPets/Principal/barmapa.html", {"ubicaciones": ubicaciones_dict})
+    info = {
+        "ubicaciones": ubicaciones_dict,
+        "firebase_config": settings.FIREBASE_CONFIG
+    }
+
+    return render(request, "ZonaPets/Principal/barmapa.html", info)
 
 
 class Formularioviewregistroform(HttpRequest):
@@ -221,4 +228,3 @@ def showFirebaseJS(request):
          '});'
 
     return HttpResponse(data, content_type="text/javascript")
-
