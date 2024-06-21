@@ -117,7 +117,7 @@
         color: #1385F0;
     }
 
-    hr {
+    .hr-data {
         grid-column: 1/-1;
         color: #1385F0
     }
@@ -158,7 +158,7 @@
         cursor: pointer;
         color: #1385F0;
         transition: all 0.3s ease-in-out;
-        position: fixed;
+        position: relative;
         margin-left: 10px;
         font-size: 25px;
     }
@@ -280,7 +280,7 @@
             width: 80%;
         }
 
-        hr {
+        .hr-data {
             display: none;
         }
 
@@ -446,7 +446,7 @@
         color: #1385F0;
     }
 
-    hr {
+    .hr-data {
         grid-column: 1/-1;
         color: #1385F0
     }
@@ -608,7 +608,7 @@
             width: 80%;
         }
 
-        hr {
+        .hr-data {
             display: none;
         }
 
