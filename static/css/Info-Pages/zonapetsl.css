@@ -19,7 +19,7 @@
 }
 
 .img-wave {
-    width: 111.4%;
+    width: 100%;
 }
 
 .barsection {
@@ -482,7 +482,6 @@
     font-weight: 300;
     text-wrap: pretty;
     font-family: "Onest", sans-serif;
-    width: 600px
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
@@ -875,10 +874,6 @@ hr {
     .container {
         height: 90vh;
         margin-bottom: 200px;
-    }
-
-    .img-wave {
-        width: 100%;
     }
 
     .buttons {
