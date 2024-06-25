@@ -21,7 +21,7 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp", "svg"]
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
@@ -140,6 +140,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
