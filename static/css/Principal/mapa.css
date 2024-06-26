@@ -939,7 +939,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 92vh;
+    height: 100dvh;
     background-color: #FFFFFF;
     z-index: 150;
     transition: transform 0.3s ease;
