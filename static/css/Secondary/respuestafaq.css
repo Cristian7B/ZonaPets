@@ -441,3 +441,12 @@ hr {
         font-size: 20px;
     }
 }
+
+@media(width <= 700px) {
+    .container-respuesta {
+        width: 80%;
+    }
+    header h1 {
+        font-size: 35px;
+    }
+}
