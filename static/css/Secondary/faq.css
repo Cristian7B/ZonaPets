@@ -576,6 +576,12 @@ hr {
     }
 }
 
+@media(max-width:500px) {
+    .footer-divs {
+        width: 50%;
+    }
+}
+
 @media ( max-width: 1155px) {
     .call-preguntas h1 {
         font-size: 50px;
@@ -606,11 +612,6 @@ hr {
     }
 }
 
-@media(max-width:500px) {
-    .footer-divs {
-        width: 50%;
-    }
-}
 
 @media only screen and (max-width: 803px) {
     .links-page {
@@ -692,21 +693,3 @@ hr {
     }
 
 }
-
-@media( max-width: 750px) {
-    .dialog {
-      width: 95%;
-      right: 10px;
-    }
-  
-    .close-icon {
-      left: auto;
-      right: 15px;
-    }
-} 
-
-@media( max-width: 500px) {
-    .dialog h1{
-        font-size: 18px;
-    }
-} 
