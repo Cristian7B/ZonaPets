@@ -1,3 +1,9 @@
+document.querySelector('.menu-icon').addEventListener('click', () => {
+    document.querySelector('.mobile-links-page').classList.toggle('active');
+    document.querySelector('.menu-icon').classList.toggle('active');
+});
+
+
 document.getElementsByClassName("texto-ayuda")[0].addEventListener("click", function() {
 
     var desplegable = document.getElementById("faq-preguntas");
@@ -107,48 +113,24 @@ for(let categoria of Object.keys(objetoPreguntas)) {
         let li = document.createElement("li")
         let div = document.createElement("div")
         let divQuestion = document.createElement("div")
-        let anchord = document.createElement("p")
+        let anchord = document.createElement("a")
         let ionIcon = document.createElement("ion-icon");
-        let dialog = document.createElement("div")
-        let h1Dialog = document.createElement("h1")
-        let respuestaDialog = document.createElement("p")
-        let hideDialog = document.createElement("ion-icon")
 
 
-        hideDialog.setAttribute("class", "close-icon");
-        hideDialog.setAttribute("name", "close-outline");
-        hideDialog.setAttribute("id", "hide")
         ionIcon.setAttribute("class", "icon-link");
         ionIcon.setAttribute("name", "link-outline");
         anchord.setAttribute("class", "anchord-dialog");
-        dialog.setAttribute("class", "dialog")
+        anchord.setAttribute("href", `/preguntas-frecuentes/${categoria}/${encodeURIComponent(objetoConPregunta["titulo"])}/`);
         div.setAttribute("class", "container-pregunta")
         divQuestion.setAttribute("class", "question")
 
-        
-        h1Dialog.innerText = objetoConPregunta["titulo"]
-        respuestaDialog.innerText = objetoConPregunta["respuesta"]
         anchord.innerText = objetoConPregunta["titulo"]
 
         divQuestion.appendChild(anchord)
-        dialog.appendChild(hideDialog)
-        dialog.appendChild(h1Dialog)
-        dialog.appendChild(respuestaDialog)
         div.appendChild(divQuestion)
         div.appendChild(ionIcon)
-        div.appendChild(dialog)
         li.appendChild(div)
         categoriaTrabajar.appendChild(li)
-
-
-        anchord.addEventListener('click', () => {
-            dialog.style.display = "block";
-        });
-        
-        hideDialog.addEventListener("click", () => {
-            dialog.style.display = "none";
-        });
-        
         
     });
 }
