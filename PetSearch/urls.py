@@ -1,53 +1,26 @@
-"""
-URL configuration for PetSearch project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.views.generic import TemplateView
-from django.urls import path, include, re_path
+from django.urls import path, include
 from django.conf import settings
 from PetSearch.views import *
 from django.conf.urls.static import static
-from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('user_api.urls')),
     path("contacto/", contacto),
-    path("newdesing/", newdesing),
     path("landingemp/", landingemp),
     path("acercade/", acercade),
     path("", zonapets),
-    path("dialog/", dialog),
-    path("firebase-messaging-sw.js", showFirebaseJS, name="show_firebase_js"),
-    path("send/", send),
     path("terminos-y-condiciones/", terminosycondiciones),
     path("iniciarsesion/", iniciar_sesion),
     path("notifications/", notifications),
     path("informacion/", informacion),
-    path("equipo/", equipo),
-    path("asesores/", asesores),
-    path("convenios/", convenios),
     path("micuenta/", micuenta),
-    path("nuestros-servicios/", nuestrosservicios),
     path("afiliate/", afiliate),
     path("preguntas-frecuentes/", preguntasfrecuentes),
     path('preguntas-frecuentes/<str:categoria>/<str:pregunta>/', respuestapregunta, name='pregunta_detalle'),
     path("mapa/", mapa_petfriendly),
-    path("vistabar/", vista_bar),
     path("registrar/", Formularioviewregistroform.index, name = "registrarFormulario"),
     path("guardarform/", Formularioviewregistroform.procesar_formulario, name = "guardarform"),
     path("registrarempresa/", Formularioviewregistroformempresarial.index, name = "registrarFormularioEmpresa"),

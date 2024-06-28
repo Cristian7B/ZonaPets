@@ -137,9 +137,6 @@ header .titulo {
   display: block; 
 }
 
-
-
-
 @media (max-width: 1267px) {}
 
 .places-list h2 {
@@ -729,7 +726,6 @@ footer {
 
 .icon {
   color: #7FBBFF;
-  
 }
 
 .plus {

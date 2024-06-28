@@ -349,7 +349,7 @@ window.initMap = initMap;
 
 document.addEventListener("DOMContentLoaded", function() {
     var showPlacesListButton = document.getElementById("showPlacesListButton");
-
+    var iconName = document.getElementById("iconName")
     const filterContainer = document.getElementById("filterContainer");
     const filterButton = document.getElementById("filterButton");
     const closeFilterButton = document.getElementById("closeFilter");
@@ -376,7 +376,15 @@ document.addEventListener("DOMContentLoaded", function() {
     showPlacesListButton.addEventListener('click', function() {
         var placesList = document.querySelector('.places-list');
         placesList.classList.toggle('show-places-list');
-        placesList.style.display = placesList.style.display === 'block' ? 'none' : 'block';
+
+        if (placesList.style.display === 'block') {
+            placesList.style.display = 'none'
+            iconName.setAttribute("name", "locate-outline")
+        }
+        else {
+            placesList.style.display = 'block'
+            iconName.setAttribute("name", "close-outline")
+        }
     });
 
 
