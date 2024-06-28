@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         axios.get("https://zonapets.vercel.app/api/get_user_info/", { withCredentials: true })
             .then(function (response) {
                 currentUser = true;
-                renderApp(response.data);  // Pasar los datos del usuario a renderApp
+                renderApp(response.data); 
             })
             .catch(function (error) {
                 currentUser = false;
@@ -50,11 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(function (error) {
                 if (error.response && error.response.data && error.response.data.error_message) {
-                    // Manejar el mensaje de error específico
                     const errorMessage = error.response.data.error_message;
                     alert(errorMessage);
                 } else {
-                    // Handle other errors
                     console.error(error);
                 }
             });
@@ -85,8 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderApp(userData) {
-        // Renderizar el resto de la aplicación como lo haces actualmente
-        // Asegúrate de tener un contenedor en tu HTML para cada pieza de información del usuario
         const app = document.getElementById('app');
         app.innerHTML = '';
         let infocontent = '';
@@ -99,8 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>`
         }
         if (currentUser) {
-            // Renderizar la información del usuario
-            // Utiliza los datos del usuario recibidos del backend (userData)
             infocontent = `
             <div id="app">
             <div class="title-info">
@@ -119,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item">
                 <p><a href="">Editar</a></p>
             </div>
-            <hr>
+            <hr class="hr-user">
             <div class="item">
                 <h6><span><ion-icon class="icon" name="at-circle-outline"></ion-icon></span> Correo</h6>
                 <p>${userData.email}</p>
@@ -127,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item">
                 <p><a href="">Editar</a></p>
             </div>
-            <hr>
+            <hr class="hr-user">
             <div class="item">
                 <h6><span><ion-icon class="icon" name="person-outline"></ion-icon></span> Username</h6>
                 <p>${userData.username}</p>
@@ -135,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item">
                 <p><a href="">Editar</a></p>
             </div>
-            <hr>
+            <hr class="hr-user">
             <div class="item">
                 <h6><span><ion-icon class="icon" name="phone-portrait-outline"></ion-icon></span> Telefono</h6>
                 <p>${userData.telefono}</p>
@@ -143,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item">
                 <p><a href="">Editar</a></p>
             </div>
-            <hr>
+            <hr class="hr-user">
             <div class="item">
                 <h6><span><ion-icon class="icon" name="flag-outline"></ion-icon></span> Ciudad de residencia</h6>
                 <p>${userData.ciudad}
@@ -152,24 +146,21 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item">
                 <p><a href="">Editar</a></p>
             </div>
-            <hr>
+            <hr class="hr-user">
         </section>
         </div>`;
         }
         app.innerHTML += infocontent;
     }
 
-    // Inicialización
     checkUserStatus();
 
-    // Hacer funciones globales para acceso desde HTML
     window.submitLogin = submitLogin;
     window.submitLogout = submitLogout;
     window.submitRegistration = submitRegistration;
     window.updateFormBtn = updateFormBtn;
 });
 
-// Configuración de Axios
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 axios.defaults.withCredentials = true;

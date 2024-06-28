@@ -69,6 +69,10 @@ hr {
     color: #1385F0
 }
 
+.hr-user {
+    margin-top: 40px;
+}
+
 .personal-info {
     display: flex;
     align-items: center;
