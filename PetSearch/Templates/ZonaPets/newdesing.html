@@ -4,9 +4,6 @@
 
 <head>
     <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/desing.css/' %}">
@@ -88,4 +85,30 @@
     {% block content %}
 
     {% endblock %}
+    <div class="nav">
+        <ul class="nav-content">
+            <li class="nav-list">
+                <a id="mapaInd" href="http://127.0.0.1:8000/mapa/" class="link-item active">
+                    <ion-icon class="link-icon" name="map-outline"></ion-icon>
+                    <span class="link-text">Mapa</span>
+                </a>
+            </li>
+            <li class="nav-list">
+                <a id="registrarInd" href="http://127.0.0.1:8000/registrar/" class="link-item">
+                    <ion-icon class="link-icon" name="add-outline"></ion-icon>
+                    <span class="link-text">Registrar</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-list">
+                <a id="loginInd" href="http://127.0.0.1:8000/iniciarsesion/" class="link-item">
+                    <ion-icon class="link-icon" name="person-outline"></ion-icon>
+                    <span class="link-text">Mi Cuenta</span>
+                </a>
+            </li>
+
+            <span class="indicator"></span>
+        </ul>
+    </div>
+    
 </body>
