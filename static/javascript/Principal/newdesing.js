@@ -22,7 +22,7 @@ if (targetId) {
 document.querySelector(".active").classList.remove("active");
 document.getElementById(itemMod).classList.add("active");
 
-const indicator = document.querySelector(".indicator");
+const indicator = document.querySelector(".indicator");ñ
 
 indicator.style.left = `${indexElemento * 95 + 48}px`;
 
