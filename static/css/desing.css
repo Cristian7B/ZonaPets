@@ -154,6 +154,93 @@ nav ul li a {
     display: none;
 }
 
+.nav {
+    border-radius: 12px;
+    background: #7FBFFF;
+    padding: 0 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    top: 82dvh;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    display: none;
+    justify-content: center;
+}
+
+
+.nav-content{
+    display: flex;
+    height: 120px;
+    align-items: center;
+    list-style: none;
+    position: relative;
+}
+.link-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+    width: 95px;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active{
+    transform: translateY(-10px);
+}
+.link-icon{
+    font-size: 38px;
+    color: #fff;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active .link-icon{
+    color: #fff;
+}
+.link-text{
+    position: absolute;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active .link-text{
+    opacity: 1;
+}
+.indicator{
+    position: absolute;
+    top: -14px;
+    left: 48px;
+    height: 36px;
+    width: 36px;
+    background-color: #7FBFFF;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.indicator::before,
+.indicator::after{
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    height: 24px;
+    width: 19px;
+}
+.indicator::before{
+    left: -22px;
+    background-color: #7FBFFF;
+    border-top-right-radius: 25px;
+    box-shadow: 1px -13px #fff;
+}
+.indicator::after{
+    right: -22px;
+    background-color: #7FBFFF;
+    border-top-left-radius: 25px;
+    box-shadow: -1px -13px #fff;
+}
+
 @media only screen and (max-width: 803px) {
     .links-page {
         display: none; 
@@ -199,5 +286,25 @@ nav ul li a {
     .social-media a {
         margin-left: 0px;
         font-size: 20px;
+    }
+
+    .nav {
+        top: 87dvh;
+        display: flex;
+    }
+
+    .link-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 120px;
+        width: 96px;
+        text-decoration: none;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .link-icon {
+        font-size: 30px;
     }
 }

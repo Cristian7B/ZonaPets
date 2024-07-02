@@ -26,6 +26,9 @@ def test_token(request):
     return Response({})
 
 
+def newDesing(request):
+    return render(request, "ZonaPets/newdesing.html")
+
 def acercade(request):
     return render(request, "ZonaPets/Secondary/acercade.html")
 
@@ -130,6 +133,9 @@ def informacion(request):
 
 def afiliate(request):
     return render(request, "ZonaPets/Secondary/afiliate.html")
+
+def indicatorBar(request):
+    return render(request, "ZonaPets/Test/indicatorBar.html")
 
 def notifications(request):
     return render(request, "ZonaPets/Secondary/notifications.html")
