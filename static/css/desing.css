@@ -161,7 +161,7 @@ nav ul li a {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     top: 82dvh;
     position: fixed;
-    z-index: 10000;
+    z-index: 1;
     width: 100%;
     display: none;
     justify-content: center;

@@ -774,7 +774,7 @@ footer {
   height: 30vh;
   border-top: 1px solid #808080;
   background-color: rgba(255, 255, 255); 
-  z-index: 100;
+  z-index: 100000000;
   display: block;
   top: auto;
 }
