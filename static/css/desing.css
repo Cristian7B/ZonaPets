@@ -184,6 +184,7 @@ nav ul li a {
     width: 95px;
     text-decoration: none;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateY(-10px);
 }
 .link-item.active{
     transform: translateY(-10px);
@@ -306,5 +307,16 @@ nav ul li a {
 
     .link-icon {
         font-size: 30px;
+    }
+}
+
+@media (width <= 500px) {
+    .nav {
+        height:93px;
+        top: 90dvh;
+    }
+
+    .link-text {
+        display: none;
     }
 }
