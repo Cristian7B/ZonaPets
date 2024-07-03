@@ -531,8 +531,6 @@ footer {
   font-family: "Poppins", "sans-serif";
   font-weight: bold;
   font-size: 12px;
-  border-color: #4d90fe;
-  box-shadow: 0 2px 6px #1385F0;
 }
 
 #infowindow-content {
@@ -815,7 +813,6 @@ footer {
     background-color: #fff;
     border-radius: 10px;
     border: 1px #808080 solid;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
     font-family: Roboto;
     font-size: 15px;
