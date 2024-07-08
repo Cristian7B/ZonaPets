@@ -5,7 +5,8 @@ let itemMod;
 const urlUsuario = {
     mapa: ["mapaInd", 0],
     registrar: ["registrarInd", 1],
-    iniciarsesion:["loginInd", 2]
+    registrarempresa: ["registrarInd", 1],
+    iniciarsesion:["loginInd", 2],
 };
 
 const targetId = urlUsuario[linkSinDominio][0];

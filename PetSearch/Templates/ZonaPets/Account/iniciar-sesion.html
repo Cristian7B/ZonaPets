@@ -12,6 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="icon" type="image/png" href="{% static 'imagenes/landinglogo.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Account/login.css/' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6MHZ5KW4K"></script>
 <script>
@@ -24,8 +27,6 @@
 
 <body>
     <div id="app"></div>
-
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const app = document.getElementById('app');
@@ -108,11 +109,35 @@
                 app.innerHTML = '';
                 let infocontent = '';
                 if (!currentUser) {
-                    infocontent = `<div class="containerform" id="move-content" style="">
-                        <img src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" style="heigth:70px; width:70px; border-radius:50px" >
-                        <h1>¿Deseas iniciar sesión?</h1>
-                        <p>¿Aún no tienes una cuenta? </p>
-                        <button class="auth-button" onclick="window.location.href='https://zonapets.vercel.app/micuenta/'">Inicia Sesión</button>
+                    infocontent = `<div class="containerInicioRedirect">
+                        <img class="logoDiv" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                        <img class="templateImgMac" src="{% static 'imagenes/loginTemplateImg.png' %}" alt="">
+                        <div class="featuresZonaPets">
+                            <ion-icon class="iconLockFeature" name="lock-open-outline"></ion-icon>
+                            <h1>¡Desbloquea todas las características de <span>ZonaPets</span>!</h1>
+                            <div class="listItemsChars">
+                                <ul>
+                                    <li>
+                                        Lorem Ipsum
+                                    </li>
+                                    <li>
+                                        Doro simend
+                                    </li>
+                                    <li>
+                                        Kasi foro aeis
+                                    </li>
+                                    <li>
+                                        Dumait
+                                    </li>   
+                                </ul>
+                            </div>
+                                <a href="https://zonapets.vercel.app/micuenta/">
+                                    <button class="redirectButtonLogin">
+                                        Inicia sesión o Registrate
+                                    </button>
+                                </a>
+
+                        </div>
                     </div>`
                 }
                 if (currentUser) {

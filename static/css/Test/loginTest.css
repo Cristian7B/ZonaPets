@@ -1,0 +1,81 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#app {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.containerInicioRedirect {
+    width: 90%;
+    border-radius: 20px;
+    background-color: #7FBFFF;
+    padding: 20px 20px 20px 0px;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.iconLockFeature {
+    font-size: 60px;
+    color: #FFD564;
+}
+
+.logoDiv {
+    position: absolute;
+    width: 50px;
+    right: 80px;
+    top: 100px;
+}
+
+.templateImgMac {
+    height: 90%;
+}
+
+.featuresZonaPets {
+    padding-left: 60px;
+}
+
+.featuresZonaPets h1 {
+    font-family: "Outfit";
+    font-size: 40px;
+    color: #fff;
+}
+
+.featuresZonaPets h1 span{
+    color: #FFD564
+}
+
+.listItemsChars {
+    margin-left: 50px;
+    color: #fff;
+    font-size: 19px;
+}
+
+.redirectButtonLogin {
+    width: 100%;
+    margin-top: 20px;
+    background: #D5D6D8;
+    border-radius: 20px;
+    padding: 10px 50px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 60px;
+    border: 0;
+    width: 91%;
+}
+
+.redirectButtonLogin a {
+    text-decoration: none;
+    color: rgba(19, 133, 240, 0.85);
+}

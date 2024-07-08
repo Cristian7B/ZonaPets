@@ -11,6 +11,7 @@ urlpatterns = [
     path("contacto/", contacto),
     path("landingemp/", landingemp),
     path("new/", newDesing),
+    path("logintest/", loginTest),
     path("acercade/", acercade),
     path("", zonapets),
     path("terminos-y-condiciones/", terminosycondiciones),
