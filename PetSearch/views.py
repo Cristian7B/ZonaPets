@@ -29,6 +29,9 @@ def test_token(request):
 def newDesing(request):
     return render(request, "ZonaPets/newdesing.html")
 
+def loginTest(request):
+    return render(request, "ZonaPets/Test/login.html")
+
 def acercade(request):
     return render(request, "ZonaPets/Secondary/acercade.html")
 
