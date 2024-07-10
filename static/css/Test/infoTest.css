@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 * { margin: 0; padding: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 body { min-height: 100dvh; }
@@ -20,8 +19,193 @@ img, video, svg { height: auto; max-width: 100%; }
   }
 }
 
-#app {
+body {
+    font-family: "Poppins";
+}
+
+.container1 {
+    z-index: 11;
+    position: relative;
+    background: #fff;
+}
+
+nav {
+    list-style-type: none;
+    padding: 5px 30px;
+    z-index: 100;
+    position: relative;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.start-hr {
+    width: 50px;
+    color: #80808052;
+    rotate: 90deg;
+}
+
+.all {
+    color: #80808052;
+    position: relative;
+    z-index: 10;
+}
+
+.links-page {
+    display: flex;
+    gap: 40px;
+}
+
+.links-page a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 34px;
+    color: #61BEE1;
+}
+
+nav ul li a {
+    text-decoration: none;
+    list-style: none;
+}
+
+.imgnavbar {
+    width: 58px;
+    height: 58px;
+}
+
+.zonapets {
+    display: flex;
+    align-items: center;
+}
+
+.zonapets h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 50px;
+    color: #61BEE1;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-media {
+    display: flex;
+}
+
+.social-media a{
+    margin-left: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.premium-login {
+    align-items: center;
+    display: flex;
+}
+
+.user-login {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    font-size: 39px;
+    color: #FFD564;
+}
+
+.fa {
+    font-size: 23px;
+    color: rgba(19, 133, 240, 0.83);
+}
+
+.button-nav {
+    border: none;
+    padding: 11px 25px;
+    background: #FFD564;
+    border-radius: 8px;
+    font-family: "Poppins";
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.button-nav:hover {
+    transform: scale(1.05);
+}
+
+.button-nav2 {
+    border: 2px solid #FFD564;
+    padding: 9px 15px;
+    background: #fff;
+    border-radius: 8px;
+    font-family: "Poppins";
+    font-weight: 700;
+    color: #FFD564;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.button-nav2:hover {
+    transform: scale(1.05);
+}
+
+.menu-icon {
+    display: none; 
+    z-index: 10;
+}
+
+.mobile-links-page {
+    display: none; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9); 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1;
+    margin-top: 30px;
+}
+
+.mobile-links-page a {
+    color: #3b9af3;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 38px;
+    text-decoration: none;
+}
+
+#icon1 {
+    margin-right: 20px;
+}
+#icon2 {
+    margin-left: 20px;
+}
+
+.menu-icon .close {
+    display: none; 
+}
+
+.menu-icon.active .close {
+    display: inline-block;
+}
+
+.menu-icon.active .menu {
+    display: none;
 }
 
 .containerAll {
@@ -142,88 +326,6 @@ input {
     opacity: 0.8;
 }
 
-
-#app {
-margin-top: 20px;
-display: flex;
-justify-content: center;
-}
-
-.containerInicioRedirect {
-    width: 90%;
-    border-radius: 20px;
-    background-color: #7FBFFF;
-    padding: 20px 20px 20px 0px;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-}
-
-.iconLockFeature {
-    font-size: 60px;
-    color: #FFD564;
-}
-
-.logoDiv {
-    position: absolute;
-    width: 50px;
-    right: 80px;
-    top: 100px;
-}
-
-.templateImgMac {
-    height: 90%;
-}
-
-.featuresZonaPets {
-    padding-left: 60px;
-}
-
-.featuresZonaPets h1 {
-    font-family: "Outfit";
-    font-size: 40px;
-    color: #fff;
-}
-
-.featuresZonaPets h1 span{
-    color: #FFD564
-}
-
-.listItemsChars {
-    margin-left: 50px;
-    color: #fff;
-    font-size: 19px;
-}
-
-.redirectButtonLogin {
-    width: 100%;
-    margin-top: 20px;
-    background: #D5D6D8;
-    border-radius: 20px;
-    padding: 10px 50px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 60px;
-    border: 0;
-    width: 91%;
-    transition: all 0.3s ease;
-    color: #1385f0;
-    cursor: pointer;
-}
-
-.redirectButtonLogin a {
-    text-decoration: none;
-    color: rgba(19, 133, 240, 0.85);
-}
-.redirectButtonLogin:hover {
-    transform: scale(1.07);
-    -webkit-box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
-    -moz-box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
-    box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
-}
-
 .zonapets-footer {
     margin-top: 200px;
     padding: 100px 100px 30px 100px;
@@ -324,7 +426,7 @@ justify-content: center;
     text-decoration: underline;
 }
 
-.hr-footer {
+hr {
     color: #fff;
     margin-top: 30px;
 }
@@ -395,23 +497,51 @@ justify-content: center;
     }
 }
 
-@media(max-width:1030px) {
-    .templateImgMac {
-        display: none;
+@media only screen and (max-width: 803px) {
+    .links-page {
+        display: none; 
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .logoDiv {
-        right: 6%;
+    .mobile-links-page.active {
+        display: flex;
+        z-index: 11; 
     }
 
-    .redirectButtonLogin {
-        line-height: normal;
-
+    .menu-icon {
+        display: flex; 
+        cursor: pointer;
     }
 
-}
+    .menu {
+        font-size: 28px;
+        color: #3b9af3;
+    }
 
-@media (max-width: 803px) {
+    .close {
+        font-size: 28px;
+        color: #3b9af3;
+    }
+
+    .right {
+        display: none; 
+    }
+
+    .premium-login {
+        display: none; 
+    }
+
+    .imgnavbar {
+        margin-right: auto;
+        z-index: 10;
+    }
+
+    .social-media a {
+        margin-left: 0px;
+        font-size: 20px;
+    }
+
     .titleInformation {
         font-size: 7vw;
         color: #61BEE1;
@@ -441,86 +571,3 @@ justify-content: center;
         display: none;
     }
 }
-
-@media(max-width: 470px) {
-    .redirectButtonLogin {
-        font-size: 20px;
-    }
-
-}
-
-@media(max-width: 400px) {
-    .featuresZonaPets {
-        padding-left: 30px;
-    }
-}
-
-@media(max-width:1003px) {
-    .modal-content h2 {
-        font-size: 40px;
-    }
-}
-
-@media(max-width:622px) {
-    .personal-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .title {
-        font-size: 30px;
-    }
-
-    .button-logout {
-        margin-left: 0px;
-    }
-
-    .url-line {
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-
-    .user-info {
-        width: 80%;
-    }
-
-    .hr-data {
-        display: none;
-    }
-
-    .user-info {
-        row-gap: 40px;
-    }
-    .mostrar {
-        width: 100%;
-    }
-}
-
-@media(max-width:547px) {
-
-    .title {
-        font-size: 25px;
-        margin-bottom: 7px;
-    }
-
-}
-
-@media(max-width:442px) {
-    .user-info {
-        margin-left: 10px;
-    }
-}
-
-@media(max-width:454px) {
-    .modal-content h2{
-        font-size: 30px;
-    }
-    .containerform h1 {
-        font-size: 50px;
-    }
-}
-.additional-div {
-    height: 70px;
-}
-

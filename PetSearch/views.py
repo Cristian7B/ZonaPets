@@ -32,6 +32,9 @@ def newDesing(request):
 def loginTest(request):
     return render(request, "ZonaPets/Test/login.html")
 
+def informacionTest(request):
+    return render(request, "ZonaPets/Test/informacionUsuario.html")
+
 def acercade(request):
     return render(request, "ZonaPets/Secondary/acercade.html")
 

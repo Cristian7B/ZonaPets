@@ -144,138 +144,125 @@
                     infocontent = `
                     <style>
                         #app {
-                            display: block;
-                        }            
+                            display:block;
+                        }    
                     </style>
-                    <div id="app">
-                    <div class="title-info">
-                    <div class="url-line">
-                    <a href="https://zonapets.vercel.app/iniciarsesion/">Cuenta </a><span>> </span><a
-                        href="">Informacion personal</a></div>
-                    <div class="personal-info">
-                        <h1 class="title">Información personal</h1>
-                    <button class="button-logout" onclick="submitLogout(event)">Cerrar sesión</button></div>
+        <div class="containerAll">
+            <section class="infoDivUser">
+                <a href="https://zonapets.vercel.app/mapa/" class="goBackMap"><ion-icon name="chevron-back-outline"></ion-icon></a>
+                <div class="titleInformation">
+                    <h1>Editar perfil</h1>
                 </div>
-                <section class="user-info">
-                    <div class="item">
-                        <h6><span><ion-icon class="icon" name="happy-outline"></ion-icon> </span> Nombre</h6>
-                        <p>${userData.nombre}</p>
+                <form id="editForm">
+                    <div class="textInput1">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" value="${userData.nombre}" placeholder="${userData.nombre}" required>
                     </div>
-                    <div class="item">
-                        <a id="showModalBtn"> Editar</a>
+                    <div class="textInput2">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" value="${userData.email}" placeholder="${userData.email}" required>
                     </div>
-                    <hr class="hr-data">
-                    <div class="item">
-                        <h6><span><ion-icon class="icon" name="at-circle-outline"></ion-icon></span> Correo</h6>
-                        <p>${userData.email}</p>
-                    </div>
-                    <div class="item">
-                        <a id="showModalBtn1"> Editar</a>
-                    </div>
-                    <hr class="hr-data">
-                    <div class="item">
-                        <h6><span><ion-icon class="icon" name="person-outline"></ion-icon></span> Username</h6>
-                        <p>${userData.username}</p>
-                    </div>
-                    <div class="item">
-                        <a id="showModalBtn2"> Editar</a>
-                    </div>
-                    <hr class="hr-data">
-                    <div class="item">
-                        <h6><span><ion-icon class="icon" name="phone-portrait-outline"></ion-icon></span> Telefono</h6>
-                        <p>${userData.telefono}</p>
-                    </div>
-                    <div class="item">
-                        <a id="showModalBtn3"> Editar</a>
-                    </div>
-                    <hr class="hr-data">
-                    <div class="item">
-                        <h6><span><ion-icon class="icon" name="flag-outline"></ion-icon></span> Ciudad de residencia</h6>
-                        <p>${userData.ciudad}
-                        </p>
-                    </div>
-                    <div class="item">
-                        <a id="showModalBtn4"> Editar</a>
-                    </div>
-                </section>
-                <div class="additional-div"></div>
-                <dialog class="dialogstyle" id="editFormModal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Editar información</h2>
-                        <form id="editForm">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" value="${userData.nombre}" placeholder="${userData.nombre}"
-                                required>
-                            <label for="email">Correo:</label>
-                            <input type="email" id="email" name="email" value="${userData.email}" placeholder="${userData.email}"
-                                required>
-                            <label for="username">Username:</label>
+                    <div class="containerFlex">
+                        <div class="infoUsername">
+                            <label for="username">Username</label>
                             <input type="text" id="username" name="username" value="${userData.username}"
-                                placeholder="${userData.username}" required>
-                            <label for="telefono">Telefono:</label>
+                            placeholder="${userData.username}" required>
+                        </div>
+                        <div class="phoneUser">
+                            <label for="telefono">Teléfono</label>
                             <input type="text" id="telefono" name="telefono" value="${userData.telefono}"
                                 placeholder="${userData.telefono}">
-                            <label for="ciudad">Ciudad de residencia:</label>
-                            <input type="text" id="ciudad" name="ciudad" value="${userData.ciudad}"
-                                placeholder="${userData.ciudad}">
-                            <button class="submit-datos" type="submit">Guardar</button>
-                        </form>
+                        </div>
                     </div>
-                </dialog>
-                </div>`;
+                    <div class="textInput5">
+                        <label for="ciudad">Ciudad de residencia</label>
+                        <input type="" id="ciudad" name="ciudad" value="${userData.ciudad}"
+                        placeholder="${userData.ciudad}">
+                    </div>
+                    <div class="buttonsForm">
+                        <a class="cancelButton" href="https://zonapets.vercel.app/mapa/">Cancelar</a>
+                        <button class="submit-datos" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer>
+            <div class="zonapets-footer">
+                <div class="top">
+                    <div class="img-divfooter1">
+                        <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                        <h1 class="logo-title">ZonaPets</h1>
+                    </div>
+                    <div class="logo-footer">
+                        <div class="img-divfooter">
+                            <img class="img-footer" src="{% static 'imagenes/landinglogo.png' %}" alt="">
+                            <h1 class="logo-title">ZonaPets</h1>
+                        </div>
+                        <div class="socialMediaFooter">
+                            <a class="plus-icon3" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                                target="_blank"><ion-icon class="plus-icon3" name="logo-instagram"></ion-icon></a>
+                            <a class="plus-icon3" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                                target="_blank"><ion-icon class="plus-icon3" name="logo-facebook"></ion-icon></a>
+                            <a class="plus-icon3" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                                target="_blank"><ion-icon class="plus-icon3" name="logo-tiktok"></ion-icon></a>
+                            <a class="plus-icon3" href="mailto:zonapetscompany@gmail.com" target="_blank"><ion-icon
+                                    class="plus-icon3" name="mail-open-outline"></ion-icon></a>
+                        </div>
+    
+                    </div>
+                    <div class="description-footer">
+                        <div class="footer-container">
+                            <div class="footer-divs">
+                                <h1 class="title-desc">
+                                    Nosotros
+                                </h1>
+                                <div class="width-url">
+                                    <a class="url-footer" href="https://zonapets.vercel.app/acercade/" target="_blank">Sobre ZonaPets</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/terminos-y-condiciones/" target="_blank">Términos y condiciones</a>                            </div>
+                            </div>
+                            <div class="footer-divs">
+                                <h1 class="title-desc">
+                                    Servicio
+                                </h1>
+                                <div class="width-url">
+                                    <a class="url-footer" href="https://zonapets.vercel.app/preguntas-frecuentes/" target="_blank">Preguntas frecuentes</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Contacto</a>
+                                </div>
+                            </div>
+                            <div class="footer-divs">
+                                <h1 class="title-desc">
+                                    Comunidad
+                                </h1>
+                                <div class="width-url">
+                                    <a class="url-footer" href="https://www.instagram.com/zonapets0" target="_blank">Instagram</a>
+                                    <a class="url-footer" href="https://www.facebook.com/zonappets" target="_blank">Facebook</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/contacto/" target="_blank">Reportar un bug</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Pon tu lugar en ZonaPets</a>
+                                </div>
+                            </div>
+                            <div class="footer-divs">
+                                <h1 class="title-desc">
+                                    Links de interés
+                                </h1>
+                                <div class="width-url">
+                                    <a class="url-footer" href="https://zonapets.vercel.app/mapa/" target="_blank">Mapa de lugares</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/registrar/" target="_blank">Registrar un lugar</a>
+                                    <a class="url-footer" href="https://zonapets.vercel.app/afiliate/" target="_blank">Trabaja con nosotros</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class='hr-footer'>
+                <div class="bottom">
+                    <p class="copyrigth">Copyright © 2023, ZonaPets.</p>
+                    <p class="copyrigth2">Contactános <span><a
+                                href="mailto:zonapetscompany@gmail.com">zonapetscompany@gmail.com</a></span></p>
+                </div>
+            </div>
+        </footer>`;
                 }
                 app.innerHTML += infocontent;
-
-
-                document.getElementById('showModalBtn').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.classList.remove('dialogstyle'); 
-                    editFormModal.classList.add('mostrar');
-                    editFormModal.showModal();
-                });
-
-                document.getElementById('showModalBtn1').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.showModal();
-                });
-
-                document.getElementById('showModalBtn2').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.classList.remove('dialogstyle'); 
-                    editFormModal.classList.add('mostrar');
-                    editFormModal.showModal();
-                });
-
-                document.getElementById('showModalBtn3').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.classList.remove('dialogstyle'); 
-                    editFormModal.classList.add('mostrar');
-                    editFormModal.showModal();
-                });
-
-                document.getElementById('showModalBtn4').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.classList.remove('dialogstyle'); 
-                    editFormModal.classList.add('mostrar');
-                    editFormModal.showModal();
-                });
-
-                document.querySelector('.close').addEventListener('click', function () {
-                    const editFormModal = document.getElementById('editFormModal');
-                    editFormModal.classList.remove('mostrar'); 
-                    editFormModal.classList.add('dialogstyle'); 
-                    editFormModal.close();
-                });
-
-                window.onclick = function (event) {
-                    const editFormModal = document.getElementById('editFormModal');
-                    if (event.target == editFormModal) {
-                        editFormModal.classList.remove('mostrar'); 
-                        editFormModal.classList.add('dialogstyle'); 
-                        editFormModal.close();
-                    }
-                };
 
                 document.getElementById('editForm').addEventListener('submit', function (event) {
                     event.preventDefault();
