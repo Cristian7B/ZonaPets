@@ -37,7 +37,32 @@ img, video, svg { height: auto; max-width: 100%; }
 .titleInformation {
     color: #3b9af3;
     font-size: 3vw;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
+
+.logoutButtonUser {
+    background-color: #fff;
+    border-radius: 10000px;
+    border: 1px solid #61BEE1;
+    color: #61BEE1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    font-size: 15px;
+    padding: 5px 10px;
+    height: 20%;
+}
+
+.logoutButtonUser:hover {
+    transform: scale(1.03);
+}
+
+#logoutButtonResponsive {
+    display: none;
+}
+
 
 #editForm {
     display: flex;
@@ -438,6 +463,20 @@ justify-content: center;
     }
 
     .zonapets-footer {
+        display: none;
+    }
+
+    .containerBack {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #logoutButtonResponsive {
+        display: block;
+    }
+
+    #logoutButtonNormal {
         display: none;
     }
 }
