@@ -31,32 +31,28 @@
 </script>
 
 <body>
+ 
+    <script src="{% static 'javascript/Principal/newdesing.js' %}" defer></script>
     <div class="container1">
         <nav>
             <ul>
                 <li>
-                    <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" class="imgnavbar">
-                    <hr class="start-hr">
+                    <div class="zonapets">
+                      <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" class="imgnavbar">
+                      <h2>ZonaPets</h2>
+                    </div>
                     <div class="links-page">
-                        <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
-                        <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
+                        <a href="https://zonapets.vercel.app/mapa/">Ver Mapa</a>
                         <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+                        <a href="https://zonapets.vercel.app/contacto/">Contacto</a>
                     </div>
                     <div class="right">
-                        <div class="social-media">
-                                <a class="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
-                                target="_blank"><ion-icon name="logo-facebook" class="logo-red"></ion-icon></a>
-                                <a class="fa" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
-                                target="_blank"><ion-icon name="logo-instagram" class="logo-red"></ion-icon></a>
-                                <a class="fa" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
-                                target="_blank"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
-                        </div>
-                        <hr class="start-hr">
                         <div class="premium-login">
-                            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">PREMIUM</button></a>
-                            <a class="user-login" href="https://zonapets.vercel.app/iniciarsesion/"
-                            target="_blank"><ion-icon name="person-circle-outline" class="logo-red"></ion-icon></a>
+                            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">Premium</button></a>
                         </div>
+                        <div class="premium-login">
+                          <a href="https://zonapets.vercel.app/iniciarsesion/"><button class="button-nav2">Inicia sesion</button></a>
+                      </div>
                     </div>
                     <div class="menu-icon">
                         <ion-icon name="menu-outline" class="menu"></ion-icon>
@@ -65,12 +61,11 @@
                 </li>
             </ul>
         </nav>
-        <hr class="all">
         <div class="mobile-links-page">
             <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
             <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
             <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
-            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">PREMIUM</button></a>
+            <a href="https://zonapets.vercel.app/afiliate/"><button class="button-nav">Premium</button></a>
             <div class="social-media">
                 <a class="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
                 target="_blank" id="icon1"><ion-icon name="logo-facebook" class="logo-red"></ion-icon></a>
@@ -80,8 +75,9 @@
                 target="_blank" id="icon2"><ion-icon name="logo-tiktok" class="logo-red"></ion-icon></a>
             </div>
         </div>
-        <script src="{% static 'javascript/Principal/newdesing.js' %}" defer></script>
+        <hr class="all">
     </div>
+
     {% block content %}
 
     {% endblock %}
