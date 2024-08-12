@@ -1,5 +1,5 @@
-import infoDog1 from "./assets/info-dog.png"
-import infoDog2 from "./assets/info-dog2.png"
+import infoDog1 from "../static/assets/info-dog.png"
+import infoDog2 from "../static/assets/info-dog2.png"
 
 export function ItemMomento() {
     return (

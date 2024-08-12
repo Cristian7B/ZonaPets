@@ -1,3 +1,11 @@
+import { Link } from "react-router-dom"
+import iconZonaPets from "../assets/zonapetslogo.png"
+import menuIcon from "../assets/menu-outline.svg"
+import closeIcon from "../assets/close-outline.svg"
+import logoFacebook from "../assets/logo-facebook.svg"
+import logoInstragram from "../assets/logo-instagram.svg"
+import logoTiktok from "../assets/logo-tiktok.svg"
+
 export function PrincipalNav () {
     return (
         <div className="container1">
@@ -5,12 +13,12 @@ export function PrincipalNav () {
                 <ul>
                     <li>
                         <div className="zonapets">
-                        <img src="{% static 'imagenes/landinglogo.png' %}" alt="logozonapets" className="imgnavbar"/>
+                        <img src={iconZonaPets} alt="logozonapets" className="imgnavbar"/>
                         <h2>ZonaPets</h2>
                         </div>
                         <div className="links-page">
-                            <a href="https://zonapets.vercel.app/mapa/">Ver Mapa</a>
-                            <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
+                            <Link to="/mapa">Ver Mapa</Link>
+                            <Link to="/registrar">Registrar</Link>
                             <a href="https://zonapets.vercel.app/contacto/">Contacto</a>
                         </div>
                         <div className="right">
@@ -22,6 +30,8 @@ export function PrincipalNav () {
                         </div>
                         </div>
                         <div className="menu-icon">
+                            <img src={menuIcon} className="menu" alt="menu-outline" />
+                            <img src={closeIcon} className="close" alt="close-outline" />
                             <ion-icon name="menu-outline" className="menu"></ion-icon>
                             <ion-icon name="close-outline" className="close"></ion-icon>
                         </div>
@@ -34,14 +44,33 @@ export function PrincipalNav () {
                 <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
                 <a href="https://zonapets.vercel.app/afiliate/"><button className="button-nav">Premium</button></a>
                 <div className="social-media">
-                    <a className="fa" href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
-                    target="_blank" id="icon1"><ion-icon name="logo-facebook" className="logo-red"></ion-icon></a>
-                    <a className="fa" href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
-                    target="_blank"><ion-icon name="logo-instagram" className="logo-red"></ion-icon></a>
-                    <a className="fa" href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
-                    target="_blank" id="icon2"><ion-icon name="logo-tiktok" className="logo-red"></ion-icon></a>
+                    <a 
+                        className="fa" 
+                        href="https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+                        target="_blank" id="icon1"
+                    >
+                        <ion-icon name="logo-facebook" className="logo-red"></ion-icon>
+                        <img src={logoFacebook} alt="" />
+                    </a>
+                    <a 
+                        className="fa" 
+                        href="https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+                        target="_blank"
+                    >
+                        <ion-icon name="logo-instagram" className="logo-red"></ion-icon>
+                        <img src={logoInstragram} alt="logo-instagram" />
+                    </a>
+                    <a 
+                        className="fa" 
+                        href="https://www.tiktok.com/@zonapets0?_t=8kor95lpkeb&_r=1"
+                        target="_blank" id="icon2"
+                    >
+                        <ion-icon name="logo-tiktok" className="logo-red"></ion-icon>
+                        <img src={logoTiktok} alt="logo-tiktok" />
+                    </a>
                 </div>
             </div>
+            <hr/>
         </div>
     )
 }

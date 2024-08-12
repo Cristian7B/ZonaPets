@@ -1,4 +1,4 @@
-import imgMision from "./assets/imgMision.png"
+import imgMision from "../static/assets/imgMision.png"
 
 export function Mision() {
     return (

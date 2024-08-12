@@ -1,7 +1,12 @@
-import { Faq } from "./modules/info-pages/pages/faq/components/Faq";
+import { RouterInfoPages } from "./modules/info-pages/RouterInfoPages";
+import { Mapa } from "./modules/principal-pages/mapa/components/Mapa";
 
 function App() {
-  return <Faq/>
+  return (
+    <>
+      <RouterInfoPages/>
+    </>
+  )
 }
 
 export default App

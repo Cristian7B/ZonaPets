@@ -1,4 +1,4 @@
-import iPhones from "./assets/iPhones.png"
+import iPhones from "../static/assets/iPhones.png"
 export function QueOfrecemos() {
     return (
         <div className="info2">

@@ -151,7 +151,7 @@
             <script src="{% static 'javascript/Principal/jsmapa.js' %}"></script>
     
             <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FVbokQCOEdOPnu2ppecKcvFQD5Oj9uQ&libraries=places&callback=initMap"
+                src="https://maps.googleapis.com/maps/api/js?key={{ firebase_config.apiKey }}&libraries=places&callback=initMap"
                 defer>
             </script>
     

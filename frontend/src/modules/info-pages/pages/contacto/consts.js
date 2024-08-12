@@ -1,31 +1,28 @@
-import facebookIcon from "./assets/facebook.svg"
-import gmailIcon from "./assets/gmail.svg"
-import instagramIcon from "./assets/instagram.svg"
+import facebookIcon from "./static/assets/facebook.svg"
+import gmailIcon from "./static/assets/gmail.svg"
+import instagramIcon from "./static/assets/instagram.svg"
 
 export const infoCardContext = [
     {
         icon: gmailIcon,
+        index: 1,
         name: "Gmail",
-        styles: {
-            
-        },
-        url: "mailto:zonapetscompany@gmail.com"
+        url: "mailto:zonapetscompany@gmail.com",
+        id: "card1"
     },
     {
         icon: facebookIcon,
         name: "Facebook",
-        styles: {
-            
-        },
-        url: "https://www.facebook.com/zonappets?mibextid=ZbWKwL"
+        index: 2,
+        url: "https://www.facebook.com/zonappets?mibextid=ZbWKwL",
+        id: "card2"
     },
     {
-        icon: instagramIcon,
+        icon: instagramIcon,        
+        index: 3,
         name: "Instagram",
-        styles: {
-            
-        },
-        url: "https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ=="
+        url: "https://www.instagram.com/zonapets0?igsh=MTUzdHBwanJ2NGJwdQ==",
+        id: "card3"
     },
 
 ]

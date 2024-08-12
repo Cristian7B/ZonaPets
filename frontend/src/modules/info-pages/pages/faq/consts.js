@@ -1,5 +1,5 @@
-export const preguntasFaq= {
-    mapa: [
+export const preguntasFaq = {
+    mapa: [ 
         {
             titulo: "¿Qué es un sitio pet-friendly?",
             respuesta: "Un sitio pet-friendly es un lugar que permite la entrada y permanencia de mascotas, proporcionando un ambiente seguro y cómodo para ellas y sus dueños.",

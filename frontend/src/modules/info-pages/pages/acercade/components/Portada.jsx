@@ -1,9 +1,9 @@
-import acercaDeImg from "./assets/acercade.png"
+import acercaDeImg from "../static/assets/acercade.png"
 
 export function Portada() {
     return (
         <>
-            <header>
+            <header className="portadaAcercaDe">
                 <div className="text-wall">
                     <div className="txt1">
                         <h1 id="title1">Sobre</h1>

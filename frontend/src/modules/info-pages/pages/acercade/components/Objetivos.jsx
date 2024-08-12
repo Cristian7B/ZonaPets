@@ -1,4 +1,4 @@
-import imgObjetivos from "./assets/imgObjetivos.png"
+import imgObjetivos from "../static/assets/imgObjetivos.png"
 
 export function Objetivos() {
     return (
