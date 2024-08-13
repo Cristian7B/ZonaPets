@@ -52,8 +52,7 @@ export function CompRegister() {
             })
             .then(response => {
                 if (response.data.mensaje) {
-                    alert(response.data.mensaje);
-                    toast.success(`Haz registado la empresa ${formData.nombre_compañia}`, {
+                    toast.success(`Haz registrado "${formData.nombre_compañia}"`, {
                         className: "toastSuccesRender"
                     })
                     setFormData({
@@ -69,7 +68,9 @@ export function CompRegister() {
                 }
             })
             .catch(error => {
-                console.error("Error al enviar el formulario:", error);
+                toast.error(`No se ha podido registrar el lugar.`, {
+                    className: "toastErrorRender"
+                })
             });
         
     }

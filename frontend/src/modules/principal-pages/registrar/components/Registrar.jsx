@@ -7,7 +7,7 @@ import userMarkerIcon from "../../mapa/static/assets/markerUser.png"
 import "../Registrar.css"
 export function Registrar({children, onLocationChange}) {
     const mapRef = useRef(null)
-    const {userLocation, setUserLocation, objectLocation, setObjectLocation} = useGeolocation(mapRef)
+    const {userLocation, setUserLocation, setObjectLocation} = useGeolocation(mapRef)
     const [data, setData] = useState(false)
     const markerUserRef = useRef(null)
 

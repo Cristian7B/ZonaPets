@@ -99,7 +99,7 @@
     border: 1px solid #80808052;
 }
 
-.toastSuccesRender {
+.toastSuccesRender, .toastErrorRender {
     font-size: 15px;
     background-color: hsl(140, 86%, 33%) !important;
     color: #FFFFFF !important;
@@ -107,3 +107,24 @@
     border: 0;
 }
 
+.toastErrorRender {
+    
+    background-color: #f13232 !important;
+}
+
+@media(max-width: 1082px) {
+    .containerFormAll {
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+    }
+}
+
+@media(max-width: 470px) {
+    .containerFormAll {
+        padding: 20px;
+    }
+    .contentForm h1 {
+        font-size: 40px;
+        line-height: normal;
+    }
+}

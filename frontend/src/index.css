@@ -388,9 +388,9 @@ nav ul li a {
       cursor: pointer;
   }
 
-  .menu {
-      font-size: 28px;
+  .menu, .close {
       color: #3b9af3;
+      width: 28px;
   }
 
   .close {

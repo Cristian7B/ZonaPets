@@ -5,8 +5,21 @@ import closeIcon from "../assets/close-outline.svg"
 import logoFacebook from "../assets/logo-facebook.svg"
 import logoInstragram from "../assets/logo-instagram.svg"
 import logoTiktok from "../assets/logo-tiktok.svg"
+import { useEffect, useRef } from "react"
 
 export function PrincipalNav () {
+    const refIconNav = useRef(null)
+    const contentOfNav = useRef(null)
+
+    const handleClick = () => {
+        if (refIconNav.current) {
+            refIconNav.current.classList.toggle("active")
+        }
+        if (contentOfNav.current) {
+            contentOfNav.current.classList.toggle("active")
+        }
+    }
+
     return (
         <div className="container1">
             <nav>
@@ -29,7 +42,7 @@ export function PrincipalNav () {
                             <a href="https://zonapets.vercel.app/iniciarsesion/"><button className="button-nav2">Inicia sesion</button></a>
                         </div>
                         </div>
-                        <div className="menu-icon">
+                        <div ref={refIconNav} onClick={handleClick} className="menu-icon">
                             <img src={menuIcon} className="menu" alt="menu-outline" />
                             <img src={closeIcon} className="close" alt="close-outline" />
                             <ion-icon name="menu-outline" className="menu"></ion-icon>
@@ -38,7 +51,7 @@ export function PrincipalNav () {
                     </li>
                 </ul>
             </nav>
-            <div className="mobile-links-page">
+            <div ref={contentOfNav} className="mobile-links-page">
                 <a href="https://zonapets.vercel.app/mapa/">Inicio</a>
                 <a href="https://zonapets.vercel.app/acercade/">Acerca de ZonaPets</a>
                 <a href="https://zonapets.vercel.app/registrar/">Registrar</a>
