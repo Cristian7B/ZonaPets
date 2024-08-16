@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function submitRegistration(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         const email = document.getElementById('email').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;

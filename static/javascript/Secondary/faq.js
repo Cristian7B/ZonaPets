@@ -14,7 +14,7 @@ document.getElementsByClassName("texto-ayuda")[0].addEventListener("click", func
     }
     else {
         icono.style.transform = "rotate(180deg)"
-    }
+    }n
     desplegable.classList.toggle("mostrar");
 
     

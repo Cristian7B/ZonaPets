@@ -6,7 +6,7 @@ from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerial
 from rest_framework import permissions, status
 from .validations import custom_validation, validate_email, validate_password
 from django.core.exceptions import ValidationError
-
+from rest_framework_simplejwt.tokens import RefreshToken
 # views.py
 
 from rest_framework.decorators import api_view, permission_classes
@@ -63,8 +63,13 @@ class UserLogin(APIView):
 		serializer = UserLoginSerializer(data=data)
 		if serializer.is_valid(raise_exception=True):
 			user = serializer.check_user(data)
+			refresh = RefreshToken.for_user(user)
 			login(request, user)
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'user': UserSerializer(user).data,
+            }, status=status.HTTP_200_OK)
 
 
 class UserLogout(APIView):

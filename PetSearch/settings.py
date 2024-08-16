@@ -2,9 +2,7 @@ import os
 import environ
 from pathlib import Path
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
@@ -15,7 +13,7 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp", "svg"]
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
@@ -52,7 +50,12 @@ INSTALLED_APPS = [
     'user_api.apps.UserApiConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
+# settings.py
+from rest_framework_simplejwt.settings import api_settings
+
+api_settings.USER_ID_FIELD = 'user_id'
 
 X_FRAME_OPTIONS = 'DENY'
 
