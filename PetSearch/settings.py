@@ -37,6 +37,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173", 
 ]
 
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,10 +54,18 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
 ]
-# settings.py
 from rest_framework_simplejwt.settings import api_settings
 
 api_settings.USER_ID_FIELD = 'user_id'
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': "30d", 
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=45),  
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
 
 X_FRAME_OPTIONS = 'DENY'
 

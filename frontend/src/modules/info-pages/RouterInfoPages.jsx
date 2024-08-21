@@ -14,37 +14,39 @@ import { InicialLandingLogin } from "../principal-pages/loginUser/components/Ini
 import { AccountLogin } from "../principal-pages/loginUser/components/AccountLogin";
 import { NavForLogin } from "../principal-pages/loginUser/components/NavForLogin";
 import { AccountRegister } from "../principal-pages/loginUser/components/AccountRegister";
+import { DataUserProvider } from "../principal-pages/loginUser/context/DataUserContext";
 
 export function RouterInfoPages() {
-    // Determinar si la ruta actual es para el login o registro de cuenta
     const isLoginRoute = window.location.pathname.startsWith('/iniciarsesion/login') || window.location.pathname.startsWith('/iniciarsesion/registrar') ? true: false;
 
     return(
         <>
-        <Router>
-            {isLoginRoute ? <NavForLogin /> : <PrincipalNav />}
-            <Routes>
-                <Route path="/acercade" element={<AcercaDe/>}></Route>
-                <Route path="/contacto" element={<Contacto/>}></Route>
-                <Route path="/faq" element={<Faq/>}></Route>
-                <Route path="/iniciarsesion" element={<InicialLandingLogin/>}></Route>
-                <Route path="/registrar" element={<UserRegister/>}></Route>
-                <Route path="/registrar/empresa" element={<CompRegister/>}></Route>
-                <Route path="/faq/:category/:question" element={<Respuesta/>}></Route>
-                <Route path="/mapa" element={
-                    <FilterProvider>
-                        <GeolocationProvider>
-                            <InfoProvider>
-                                <Mapa/>
-                            </InfoProvider>
-                        </GeolocationProvider>
-                    </FilterProvider>
-                }></Route>
-                <Route path="/iniciarsesion/login" element={<AccountLogin/>}></Route>
-                <Route path="/iniciarsesion/registrar" element={<AccountRegister/>}></Route>
-            </Routes>
+        <DataUserProvider>
+            <Router>
+                {isLoginRoute ? <></> : <PrincipalNav />}
+                <Routes>
+                    <Route path="/acercade" element={<AcercaDe/>}></Route>
+                    <Route path="/contacto" element={<Contacto/>}></Route>
+                    <Route path="/faq" element={<Faq/>}></Route>
+                        <Route path="/iniciarsesion" element={<InicialLandingLogin/>}></Route>
+                        <Route path="/iniciarsesion/login" element={<AccountLogin/>}></Route>
+                        <Route path="/iniciarsesion/registrar" element={<AccountRegister/>}></Route>
+                    <Route path="/registrar" element={<UserRegister/>}></Route>
+                    <Route path="/registrar/empresa" element={<CompRegister/>}></Route>
+                    <Route path="/faq/:category/:question" element={<Respuesta/>}></Route>
+                    <Route path="/mapa" element={
+                        <FilterProvider>
+                            <GeolocationProvider>
+                                <InfoProvider>
+                                    <Mapa/>
+                                </InfoProvider>
+                            </GeolocationProvider>
+                        </FilterProvider>
+                    }></Route>
+                </Routes>
 
-        </Router>
+            </Router>
+        </DataUserProvider>
         </>
     )
 }

@@ -9,6 +9,7 @@
     align-items: center;
     margin: 0px;
     padding: 20px;
+    display: flex;
 }
 
 .containerform {
@@ -161,6 +162,7 @@
 
 
 
+
 .containerform button {
     padding: 12px 24px;
     background: #7FBFFF;
@@ -179,4 +181,210 @@
 
 .containerform button:hover {
     background-color: rgba(19, 133, 240, 0.83);
+}
+
+.containerAll {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoDivUser {
+    width: 55%;
+    padding: 20px;
+}
+
+.titleInformation {
+    color: #3b9af3;
+    font-size: 3vw;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logoutButtonUser {
+    background-color: #fff;
+    border-radius: 10000px;
+    border: 1px solid #61BEE1;
+    color: #61BEE1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    font-size: 15px;
+    padding: 5px 10px;
+    height: 20%;
+}
+
+.logoutButtonUser:hover {
+    transform: scale(1.03);
+}
+
+#logoutButtonResponsive {
+    display: none;
+}
+
+
+#editForm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+}
+
+label {
+    font-weight: 600;
+    font-family: "Outfit";
+    color: #3b9af3;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #80808052;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #808080;
+}
+
+.containerFlex {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.infoUsername, .phoneUser {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoUsername {
+    width: 60%;
+}
+
+.phoneUser {
+    width: 100%;
+}
+
+.buttonsForm {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    gap: 15px;
+}
+
+.submit-datos {
+    padding: 5px 20px;
+    background-color: #3b9af3;
+    border-radius: 10000px;
+    border: 0;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    width: 20%;
+    font-size: 1.5vw;
+    transition: all 0.1s ease-in;
+}
+
+.submit-datos:hover {
+    transform: scale(1.05);
+}
+
+.cancelButton {
+    font-size: 1.2vw;
+    font-weight: 600;
+    text-decoration: none;
+    color: #3b9af3;
+    opacity: 0.9;
+    transition: all 0.1s ease-in;
+}
+
+.cancelButton:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.goBackMap {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: opacity ease 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1000px;
+    background-color: #61BEE1;
+    width: fit-content;
+    padding: 10px;
+}
+
+.goBackMap img {
+    width: 30px;
+}
+
+.goBackMap:hover {
+    opacity: 0.8;
+}
+
+.showAlreadyLogin {
+    background-color: #1D2833;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F5E0B7;
+}
+
+.alertLogin {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 550px;
+}
+
+.alertLogin img {
+    width: 70px;
+}
+
+.textToShow {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.textToShow h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+}
+
+.textToShow h1 span {
+    color: #D6BA73;
+    font-weight: 700;
+
+}
+
+.redirectLinkData button{
+    outline: 0;
+    border: 0;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #F5E0B7;
+    background-color: #8BBF9F;
+    margin-top: 10px;
 }
