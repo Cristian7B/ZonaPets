@@ -10,3 +10,4 @@ urlpatterns = [
 	path("update_user_info/", views.update_user_info, name="update_user_info"),
 	path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+0

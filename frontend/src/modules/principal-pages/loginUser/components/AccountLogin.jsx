@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import iconCheck from "../static/assets/checkmark-circle-outline.svg"
 import "../Account.css"
 import { useAuth } from "../hooks/useAuth";
 import { toast, Toaster } from "sonner";
 import { NavForLogin } from "./NavForLogin";
+import { AlreadyLogged } from "./AlreadyLogged";
 export function AccountLogin() {
     const [dataLogin, setDataLogin] = useState({
         email: "",
@@ -35,10 +35,7 @@ export function AccountLogin() {
 
         toast.promise(loginUser(dataLogin), {
           loading: 'Iniciando sesión...',
-          success: (data) => {
-            return `${data.name} toast has been added`;
-          },
-          
+          success: 'Haz iniciado sesión.'
         });
     }
 
@@ -51,30 +48,7 @@ export function AccountLogin() {
         <NavForLogin/>
             {
                 dataUser ? (
-                    <div className="showAlreadyLogin">
-                        <div className="alertLogin">
-                            <img src={iconCheck} alt="" />
-                            <div className="textToShow">
-                                <div className="headerTextLogin">
-                                    <h1>
-                                        ¡Has iniciado 
-                                        sesion! 
-                                    </h1>
-                                    <h1>
-                                        <span> {dataUser.nombre}.</span>
-                                    </h1>
-                                </div>
-                                <p className="dataToRedirect">
-                                    Revisa tus datos y la información de tu cuenta.
-                                    Si necesitas realizar algún cambio o actualizar tu información, 
-                                    ahora es el momento perfecto para hacerlo.
-                                </p>
-                            </div>
-                            <Link className="redirectLinkData" to="/iniciarsesion">
-                                <button>Tus datos</button>
-                            </Link>
-                        </div>
-                    </div>
+                    <AlreadyLogged/>
                 ) : (
                     <div className="containerOfLogin">
                         <Toaster richColors/>

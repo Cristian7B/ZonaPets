@@ -5,7 +5,7 @@ import { DataUserContext } from "../context/DataUserContext";
 export const useAuth = () => {
     const [error, setError] = useState(null);
     const [errorRegister, setErrorRegister] = useState(null);
-
+    const [stateRegister, setStateRegister] = useState(false)
     const {dataUser, setDataUser, token, setToken} = useContext(DataUserContext)
 
     const fetchDataUser = () => {
@@ -50,6 +50,21 @@ export const useAuth = () => {
         fetchDataUser()
     }, [token])
 
+    const registerUser = async (dataToRegister) => {
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/api/register/", dataToRegister, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            setStateRegister(true)
+            console.log(response);
+        }
+        catch (errorRegister) {
+            setErrorRegister("Credenciales incorrectas. Por favor, intenta nuevamente.");
+        }
+    }
+
     const loginUser = async (dataLogin) => {
         try {
             const response = await axios.post("http://127.0.0.1:8000/api/login/", dataLogin, { withCredentials: true });
@@ -64,20 +79,6 @@ export const useAuth = () => {
         }
     };
 
-    const registerUser = async (dataToRegister) => {
-        try {
-            const response = await axios.post("http://127.0.0.1:8000/api/register/", dataToRegister, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            console.log(response);
-        }
-        catch (errorRegister) {
-            setErrorRegister("Credenciales incorrectas. Por favor, intenta nuevamente.");
-        }
-    }
-
     return {
         loginUser,
         error,
@@ -85,6 +86,7 @@ export const useAuth = () => {
         errorRegister,
         dataUser,
         setToken,
-        setDataUser
+        setDataUser,
+        stateRegister
     };
 };
