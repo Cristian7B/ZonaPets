@@ -5,8 +5,7 @@ import { DataUserContext } from "../context/DataUserContext";
 export const useAuth = () => {
     const [error, setError] = useState(null);
     const [errorRegister, setErrorRegister] = useState(null);
-    const [stateRegister, setStateRegister] = useState(false)
-    const {dataUser, setDataUser, token, setToken} = useContext(DataUserContext)
+    const {dataUser, setDataUser, token, setToken, stateRegister, setStateRegister} = useContext(DataUserContext)
 
     const fetchDataUser = () => {
         const token = localStorage.getItem('access_token');
@@ -58,6 +57,7 @@ export const useAuth = () => {
                 },
             });
             setStateRegister(true)
+            console.log(stateRegister)
             console.log(response);
         }
         catch (errorRegister) {

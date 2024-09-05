@@ -16,7 +16,11 @@
     height: 60px;
     align-items: center;
     width: 100%;
-    position: fixed;
+}
+
+.loading-toast {
+    background-color: #f0ad4e; /* Color de fondo para el estado de carga */
+    color: #fff; /* Color del texto */
 }
 
 .imgNavBar {
@@ -114,4 +118,38 @@
     -webkit-box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
     -moz-box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
     box-shadow: -9px 21px 59px 5px rgba(138,134,138,1);
+}
+
+@media (max-width: 1030px) {
+    .templateImgMac {
+        display: none;
+    }
+
+    .logoDiv {
+        right: 6%;
+    }
+
+    .redirectButtonLogin {
+        line-height: normal;
+    }
+}
+
+@media (max-width: 803px) {
+    .featuresZonaPets {
+        padding-left: 30px;
+    }
+
+    .redirectButtonLogin {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 622px) {
+    .featuresZonaPets {
+        padding-left: 30px;
+    }
+
+    .redirectButtonLogin {
+        font-size: 20px;
+    }
 }

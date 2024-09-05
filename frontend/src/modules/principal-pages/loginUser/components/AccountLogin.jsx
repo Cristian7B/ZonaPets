@@ -6,6 +6,11 @@ import { useAuth } from "../hooks/useAuth";
 import { toast, Toaster } from "sonner";
 import { NavForLogin } from "./NavForLogin";
 import { AlreadyLogged } from "./AlreadyLogged";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { LoginFromGoogle } from "./LoginFromGoogle";
+import { ButtonStyle } from "./ButtonStyle";
+import iconZonaPets from "../../../general/assets/zonapetslogo.png"
+import iconPerson from "../static/assets/person-add-outline.svg"
 export function AccountLogin() {
     const [dataLogin, setDataLogin] = useState({
         email: "",
@@ -28,7 +33,7 @@ export function AccountLogin() {
             ...dataLogin,
             [e.target.name]: e.target.value
         }));
-    };
+    }; 
 
     const handleLogin = e => {
         e.preventDefault()
@@ -42,44 +47,52 @@ export function AccountLogin() {
     useEffect(() => {
         console.log(dataUser)
     }, [dataUser])
-
     return (
         <>
-        <NavForLogin/>
-            {
-                dataUser ? (
-                    <AlreadyLogged/>
-                ) : (
-                    <div className="containerOfLogin">
-                        <Toaster richColors/>
-                        <div className="containerform" id="move-content">
-                            <h1>Inicia sesión</h1>
-                            {error && toast.error(`${error}`)}
-                            <div className="register">
-                                <div className="line-register"></div>
-                                <div className="label-register"><Link to="/iniciarsesion/registrar">O crea una cuenta</Link></div>
-                                <div className="line-register"></div>
+            <GoogleOAuthProvider clientId="662936439332-at27tnvnji933e25o8s4ioqm2o80fgbp.apps.googleusercontent.com">
+                {/* <NavForLogin/> */}
+                    {
+                        dataUser ? (
+                            <AlreadyLogged/>
+                        ) : (
+                            <div className="containerOfLogin">
+                                <Toaster richColors/>
+                                <div className="containerform" id="move-content">
+                                    <div className="containerLogoLogin">
+                                        <img className="zonapetsLogoLogin" src={iconZonaPets} alt="" /> 
+                                    </div>
+                                    <div className="firstContainer">
+                                        <h1>Inicia sesión</h1>
+                                        <div className="optionsButtons">
+                                            <LoginFromGoogle/>
+                                            <Link to="/iniciarsesion/registrar/">
+                                                <ButtonStyle
+                                                    text="Crear una cuenta nueva"
+                                                    srcImg={iconPerson}
+                                                />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <hr className="hrLogin"/>
+                                    {error && toast.error(`${error}`)}
+                                    <form onSubmit={handleLogin}>
+                                        <div className="form-group">
+                                            <label>Correo</label>
+                                            <input className="inputDataUser" onChange={handleDataOfLogin} type="email" id="email" name="email" placeholder="Ingresa tu email" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Contraseña</label>
+                                            <input className="inputDataUser" onChange={handleDataOfLogin} type="password" id="password" name="password" placeholder="Contraseña" />
+                                        </div>
+                                        <div className="buttonslogin">
+                                            <button className="loginbutton" type="submit">Iniciar sesión</button>
+                                        </div>                                   
+                                    </form>                         
+                                </div>
                             </div>
-                            <form onSubmit={handleLogin}>
-                                <div className="form-group">
-                                    <label>Correo</label>
-                                    <input onChange={handleDataOfLogin} type="email" id="email" name="email" placeholder="Ingresa tu email" />
-                                </div>
-                                <div className="form-group">
-                                    <label>Contraseña</label>
-                                    <input onChange={handleDataOfLogin} type="password" id="password" name="password" placeholder="Contraseña" />
-                                </div>
-                                <div className="buttonslogin">
-                                    <button className="loginbutton" type="submit">Iniciar sesión</button>
-                                </div>                                   
-                            </form>                         
-                        </div>
-                    </div>
-                )
-            
-        
-            }
-        
+                        )
+                    }        
+            </GoogleOAuthProvider>
         </>
     );
 }

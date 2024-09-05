@@ -8,6 +8,7 @@ urlpatterns = [
 	path('user/', views.UserView.as_view(), name='user'),
     path("get_user_info/", views.get_user_info, name="get_user_info"),
 	path("update_user_info/", views.update_user_info, name="update_user_info"),
+    path("google_token/", views.google_login_token, name="token_google"),
+    path("google_credential/", views.google_login_credential, name="credential_google"),
 	path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
-0

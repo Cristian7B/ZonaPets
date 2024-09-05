@@ -2,7 +2,6 @@
 
 .containerOfLogin {
     width: 100%;
-    height: 100vh;
     background-color: #1D2833;
     font-family: "Poppins", "sans-serif";
     justify-content: center;
@@ -14,11 +13,10 @@
 
 .containerform {
     width: 50%;
-    padding: 50px;
+    padding: 40px 70px;
     margin: 0px auto;
     box-sizing: border-box;
     background: #1C3146;
-    border: 1px solid #808080;
     border-radius: 10px;
 }
 
@@ -30,11 +28,7 @@
     font-size: 55px;
     line-height: 90px;
     height: 70px;
-
-    color: rgba(19, 133, 240, 0.83);
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
+    color: rgb(220 238 255 / 83%);    
 }
 
 .form-group {
@@ -153,7 +147,7 @@
     font-size: 18px;
     line-height: 38px;
     text-transform: capitalize;
-    color: rgba(19, 133, 240, 0.83);
+    color: rgb(220 238 255 / 83%);
 }
 
 .containerform form {
@@ -239,7 +233,7 @@ label {
     margin-bottom: 5px;
 }
 
-input {
+.inputDataUser {
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
@@ -387,4 +381,217 @@ input {
     color: #F5E0B7;
     background-color: #8BBF9F;
     margin-top: 10px;
+}
+
+@media(width <= 1300px) {
+    .infoDivUser {
+        width: 75%;
+    }
+}
+
+@media(width <= 950px) {
+    .containerform {
+        width: 75%;
+    }
+}
+
+@media(width <= 700px) {
+    .submit-datos {
+        width: auto;
+        font-size: 20px;
+    }
+
+    .cancelButton {
+        font-size: 15px;
+    }
+
+    .titleInformation {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0px;
+    }
+
+    .titleInformation h1 {
+        font-size: 45px;
+    }
+
+}
+
+
+@media(width <= 650px) {
+    .containerform {
+        width: 85%;
+    }
+}
+
+
+@media(width <= 576px) {
+    .label-register a {
+        line-height: normal;
+        font-size: 15px;
+    }
+
+    .containerform h1 {
+        font-size: 37px;
+    }
+}
+
+@media(width <= 500px) {
+    .infoDivUser {
+        width: 80%;
+    }
+
+    #editForm {
+        margin-top: 20px;
+    }
+
+    .containerFlex {
+        flex-direction: column;
+    }
+
+    .containerform {
+        padding: 30px;
+    }
+
+    .infoUsername {
+        width: 100%;
+    }
+
+    .label-register a {
+        font-size: 12px;
+    }
+}
+
+/* @media(width <= 440px) {
+    .containerform h1 {
+        font-size: 30px;
+    }
+} */
+
+.nsm7Bb-HzV7m-LgbsSe {
+    background-color: transparent !important;
+}
+
+.firstContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.optionsButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.optionsButtons a {
+    text-decoration: none;
+}
+
+.hrLogin {
+    margin: 32px 0px;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-image: initial;
+    border-top: 1px solid #808080;
+}
+
+.zonapetsLogoLogin {
+    width: 50px;
+}
+
+.containerLogoLogin {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputPassword {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    display: none;
+    left: 0px;
+    display: grid;
+    place-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.contentModalPassword {
+    padding: 20px;
+    color: rgb(220 238 255 / 83%);
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.2px);
+    -webkit-backdrop-filter: blur(3.2px);
+    border-radius: 10px;
+}
+
+.allContentModal{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.userPhoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.allContentModal h3 {
+    font-weight: 400;
+    font-size: 13px;
+    color: #b5b5b5;
+}
+
+.allContentModal input {
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    padding: 2px 10px;
+    color: #535353;
+    border-radius: 5px;
+    background: rgba(127, 191, 255, 0.43);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(127, 191, 255, 0.3);
+}
+
+.allContentModal h2 {
+    margin-bottom: 3px;
+}
+
+.checkIconModal {
+    width: 20px;
+    height: 20px;
+}
+
+.inputForModal {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.inputForModal article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    background-color: #2bad56;
+    border-radius: 5px;
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+.inputForModal article:hover {
+    opacity: 0.8;
 }

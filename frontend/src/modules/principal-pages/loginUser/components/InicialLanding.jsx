@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../hooks/useAuth"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { toast, Toaster } from "sonner"
 
 export function InicialLandingLogin() {
     const {dataUser, setToken, setDataUser} = useAuth()
@@ -54,12 +55,9 @@ export function InicialLandingLogin() {
         }));
     };
 
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const sendData = async () => {
         try {
             const token = window.localStorage.getItem("access_token");
-            console.log(token)
             await axios.post(
                 'http://127.0.0.1:8000/api/update_user_info/', 
                 formData,
@@ -70,14 +68,23 @@ export function InicialLandingLogin() {
                     }
                 }
             );
-            alert("Información actualizada con éxito");
         } catch (error) {
-            console.error("Error actualizando la información:", error);
-        }
+            console.log("Error actualizando la información:", error);
+        }    
+    }
+
+    const handleSubmit = async e => {
+        e.preventDefault()
+        toast.promise(sendData, {
+            loading: 'Cambiando la información...',
+            success: '¡Completado!',
+            className: "loading-toast"
+        });
     };
 
     return (
         <>
+            <Toaster richColors/>
             {
                 !dataUser ? (
                     <div className="containerAllLogin">
@@ -126,27 +133,27 @@ export function InicialLandingLogin() {
                             <form onSubmit={handleSubmit} id="editForm">
                                 <div className="textInput1">
                                     <label htmlFor="nombre">Nombre</label>
-                                    <input onChange={handleInputChange} type="text" id="nombre" name="nombre" defaultValue={dataUser.nombre} placeholder={dataUser.nombre} required/>
+                                    <input className="inputDataUser" onChange={handleInputChange} type="text" id="nombre" name="nombre" defaultValue={dataUser.nombre} placeholder={dataUser.nombre} required/>
                                 </div>
                                 <div className="textInput2">
                                     <label htmlFor="email">Correo Electrónico</label>
-                                    <input onChange={handleInputChange} type="email" id="email" name="email" defaultValue={dataUser.email} placeholder={dataUser.email} required/>
+                                    <input className="inputDataUser" onChange={handleInputChange} type="email" id="email" name="email" defaultValue={dataUser.email} placeholder={dataUser.email} required/>
                                 </div>
                                 <div className="containerFlex">
                                     <div className="infoUsername">
                                         <label htmlFor="username">Username</label>
-                                        <input onChange={handleInputChange} type="text" id="username" name="username" defaultValue={dataUser.username}
+                                        <input className="inputDataUser" onChange={handleInputChange} type="text" id="username" name="username" defaultValue={dataUser.username}
                                         placeholder={dataUser.username} required/>
                                     </div>
                                     <div className="phoneUser">
                                         <label htmlFor="telefono">Teléfono</label>
-                                        <input onChange={handleInputChange} type="text" id="telefono" name="telefono" defaultValue={dataUser.telefono}
+                                        <input className="inputDataUser" onChange={handleInputChange} type="text" id="telefono" name="telefono" defaultValue={dataUser.telefono}
                                             placeholder={dataUser.telefono}/>
                                     </div>
                                 </div>
                                 <div className="textInput5">
                                     <label htmlFor="ciudad">Ciudad de residencia</label>
-                                    <input onChange={handleInputChange} type="" id="ciudad" name="ciudad" defaultValue={dataUser.ciudad}
+                                    <input className="inputDataUser" onChange={handleInputChange} type="" id="ciudad" name="ciudad" defaultValue={dataUser.ciudad}
                                     placeholder={dataUser.ciudad}/>
                                 </div>
                                 <div className="buttonsForm">
