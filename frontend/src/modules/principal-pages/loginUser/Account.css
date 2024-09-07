@@ -595,3 +595,7 @@ label {
 .inputForModal article:hover {
     opacity: 0.8;
 }
+
+.imgProfileFoto img  {
+    width: 50px;
+}

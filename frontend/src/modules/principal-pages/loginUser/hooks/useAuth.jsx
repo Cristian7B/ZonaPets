@@ -17,6 +17,8 @@ export const useAuth = () => {
         })
         .then(response => {
             setDataUser(response.data.user);
+            console.log(response.data.user)
+            console.log(dataUser)
         })
         .catch(async (error) => {
             if (error.response && error.response.status === 401) {
@@ -34,6 +36,9 @@ export const useAuth = () => {
                             Authorization: `Bearer ${refreshResponse.data.access}`,
                         },
                     });
+
+
+                    console.log(retryResponse)
                     
                     setDataUser(retryResponse.data.user);
                 } catch (refreshError) {

@@ -8,7 +8,8 @@ export const useRegister = () => {
         username: "",
         nombre: "",
         telefono: "",
-        password: ""
+        password: "",
+        foto: ""
     });
     const [dataLogin, setDataLogin] = useState()
     console.log(dataRegister)

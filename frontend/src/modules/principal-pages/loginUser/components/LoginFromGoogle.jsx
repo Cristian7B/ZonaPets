@@ -42,19 +42,16 @@ export function LoginFromGoogle() {
             catch (errorRegister) {
                 console.log(errorRegister);
             }
-            try {
-                const response = await fetch(payload.picture);
-                const imageBlob = await response.blob();
-                const imageURL = URL.createObjectURL(imageBlob);
-    
+            try {    
                 setDataRegister(prevState => ({
                     ...prevState,
                     nombre: payload.name,
                     email: payload.email,
-                    username: payload.name
+                    username: payload.name,
+                    foto: payload.picture
                 }));
                 setDisplay("grid");
-                setImgSrc(imageURL); 
+                setImgSrc(payload.picture); 
                 setName(payload.name);
             } catch (error) {
                 console.error('Error fetching image:', error);
@@ -109,19 +106,15 @@ export function LoginFromGoogle() {
     
             const userInfo = await response.json();
 
-            const imageResponse = await fetch(userInfo.picture);
-
-            const imageBlob = await imageResponse.blob();
-            const imageURL = URL.createObjectURL(imageBlob);
-
             setDataRegister(prevState => ({
                 ...prevState,
                 nombre: userInfo.name,
                 email: userInfo.email,
-                username: userInfo.name
+                username: userInfo.name,
+                foto: userInfo.picture
             }))
             setDisplay("grid")
-            setImgSrc(imageURL)
+            setImgSrc(userInfo.picture)
             setName(userInfo.name)
             return userInfo;
         } catch (error) {

@@ -8,15 +8,18 @@ import { useAuth } from "../hooks/useAuth"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast, Toaster } from "sonner"
+import { ProfilePhoto } from "./ProfilePhoto"
 
 export function InicialLandingLogin() {
     const {dataUser, setToken, setDataUser} = useAuth()
+
     const [formData, setFormData] = useState({
         nombre: dataUser?.nombre || "",
         email: dataUser?.email || "",
         username: dataUser?.username || "",
         telefono: dataUser?.telefono || "",
-        ciudad: dataUser?.ciudad || ""
+        ciudad: dataUser?.ciudad || "",
+        foto: dataUser?.foto || "",
     });
     console.log(formData)
     const navigate = useNavigate();
@@ -35,7 +38,8 @@ export function InicialLandingLogin() {
                 email: dataUser.email || "",
                 username: dataUser.username || "",
                 telefono: dataUser.telefono || "",
-                ciudad: dataUser.ciudad || ""
+                ciudad: dataUser.ciudad || "",
+                foto: dataUser.foto || ""
             });
         }
     }, [dataUser]);
@@ -123,6 +127,7 @@ export function InicialLandingLogin() {
                     <div className="containerAll">
                         <section className="infoDivUser">
                             <div className="containerBack">
+                                <ProfilePhoto srcImg={formData.foto}/>
                                 <a href="https://zonapets.vercel.app/mapa/" className="goBackMap"><img src={backIcon} alt="" /></a>
                                 <button id="logoutButtonResponsive" onClick={submitLogout} className="logoutButtonUser" >Cerrar sesión</button>
                             </div>
