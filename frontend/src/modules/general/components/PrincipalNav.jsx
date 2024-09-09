@@ -5,11 +5,15 @@ import closeIcon from "../assets/close-outline.svg"
 import logoFacebook from "../assets/logo-facebook.svg"
 import logoInstragram from "../assets/logo-instagram.svg"
 import logoTiktok from "../assets/logo-tiktok.svg"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import axios from "axios"
 
 export function PrincipalNav () {
     const refIconNav = useRef(null)
     const contentOfNav = useRef(null)
+    const [dataUser, setDataUser] = useState(null)
+    const [token, setToken] = useState()
+    const [profilePhoto, setProfilePhoto] = useState(null)
 
     const handleClick = () => {
         if (refIconNav.current) {
@@ -19,6 +23,59 @@ export function PrincipalNav () {
             contentOfNav.current.classList.toggle("active")
         }
     }
+
+    useEffect(() => {
+        fetchDataUser()
+    }, [])
+
+    useEffect(() => {
+        if(dataUser) {
+            setProfilePhoto(dataUser.foto)
+        }
+    }, [dataUser])
+
+    const fetchDataUser = () => {
+        setToken(localStorage.getItem('access_token'))
+
+        axios.get("http://127.0.0.1:8000/api/user/", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then(response => {
+            setDataUser(response.data.user);
+            console.log(response.data.user)
+            console.log(dataUser)
+        })
+        .catch(async (error) => {
+            if (error.response && error.response.status === 401) {
+                try {
+                    const refreshToken = localStorage.getItem('refresh_token');
+                    const refreshResponse = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
+                        refresh: refreshToken
+                    });
+                    
+                    localStorage.setItem('access_token', refreshResponse.data.access);
+                    setToken(refreshResponse.data.access);
+    
+                    const retryResponse = await axios.get("http://127.0.0.1:8000/api/user/", {
+                        headers: {
+                            Authorization: `Bearer ${refreshResponse.data.access}`,
+                        },
+                    });
+
+
+                    console.log("Response", retryResponse.data.user)
+                    
+                    setDataUser(retryResponse.data.user);
+                } catch (refreshError) {
+                    console.error('Error refreshing access token:', refreshError);
+                }
+            } else {
+                console.error('Error fetching user data:', error);
+            }
+        });
+    };
 
     return (
         <div className="container1">
@@ -41,14 +98,21 @@ export function PrincipalNav () {
                                 <a href="https://zonapets.vercel.app/afiliate/"><button className="button-nav">Premium</button></a>
                             </div>
                             <div className="premium-login">
-                            <a href="https://zonapets.vercel.app/iniciarsesion/"><button className="button-nav2">Inicia sesion</button></a>
-                        </div>
+                                {
+                                    profilePhoto ? (
+                                        <Link className="linkToData" to="/iniciarsesion">
+                                            <img className="profilePhotoNav" src={profilePhoto} alt="ImagenDePerfil" />
+                                            
+                                        </Link>
+                                    ) : (
+                                        <a href="https://zonapets.vercel.app/iniciarsesion/"><button className="button-nav2">Inicia sesion</button></a>
+                                    )
+                                }
+                            </div>
                         </div>
                         <div ref={refIconNav} onClick={handleClick} className="menu-icon">
                             <img src={menuIcon} className="menu" alt="menu-outline" />
                             <img src={closeIcon} className="close" alt="close-outline" />
-                            <ion-icon name="menu-outline" className="menu"></ion-icon>
-                            <ion-icon name="close-outline" className="close"></ion-icon>
                         </div>
                     </li>
                 </ul>

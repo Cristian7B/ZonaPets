@@ -460,6 +460,14 @@ label {
     .label-register a {
         font-size: 12px;
     }
+
+    .containerform {
+        width: 100%;
+    }
+
+    .containerform h1 {
+        font-size: 30px;
+    }
 }
 
 /* @media(width <= 440px) {

@@ -127,7 +127,6 @@ export function InicialLandingLogin() {
                     <div className="containerAll">
                         <section className="infoDivUser">
                             <div className="containerBack">
-                                <ProfilePhoto srcImg={formData.foto}/>
                                 <a href="https://zonapets.vercel.app/mapa/" className="goBackMap"><img src={backIcon} alt="" /></a>
                                 <button id="logoutButtonResponsive" onClick={submitLogout} className="logoutButtonUser" >Cerrar sesión</button>
                             </div>

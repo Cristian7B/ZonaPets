@@ -418,3 +418,19 @@ nav ul li a {
       font-size: 20px;
   }
 }
+
+.linkToData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.2s;
+}
+
+.linkToData:hover {
+  transform: scale(1.1);
+}
+
+.profilePhotoNav {
+  width: 30px;
+  border-radius: 50px;
+}

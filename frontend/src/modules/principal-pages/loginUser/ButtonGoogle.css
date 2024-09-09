@@ -28,3 +28,14 @@
     color: rgb(220 238 255 / 83%);
     font-weight: 600;
 }
+
+@media(width <= 460px) {
+    .googleButton {
+        width: 250px;
+    }
+
+    .layoutGoogle {
+        font-size: 12px;
+    }
+
+}
