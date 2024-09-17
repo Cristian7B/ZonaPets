@@ -88,8 +88,6 @@ export function PrincipalNav () {
                         </div>
                         <div className="links-page">
                             <Link to="/mapa">Ver Mapa</Link>
-                            
-                            <Link to="/iniciarsesion">Ver Mapa</Link>
                             <Link to="/registrar">Registrar</Link>
                             <a href="https://zonapets.vercel.app/contacto/">Contacto</a>
                         </div>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AcercaDe } from "./pages/acercade/components/AcercaDe";
 import { Contacto } from "./pages/contacto/components/Contacto";
 import { Faq } from "./pages/faq/components/Faq";
@@ -12,9 +12,11 @@ import { UserRegister } from "../principal-pages/registrar/components/UserRegist
 import { CompRegister } from "../principal-pages/registrar/components/CompRegister";
 import { InicialLandingLogin } from "../principal-pages/loginUser/components/InicialLanding";
 import { AccountLogin } from "../principal-pages/loginUser/components/AccountLogin";
-import { NavForLogin } from "../principal-pages/loginUser/components/NavForLogin";
 import { AccountRegister } from "../principal-pages/loginUser/components/AccountRegister";
 import { DataUserProvider } from "../principal-pages/loginUser/context/DataUserContext";
+import { Tyc } from "./pages/terminosycondiciones/Tyc";
+import { Afiliate } from "./pages/afiliate/components/Afiliate";
+import { PremiumLanding } from "./pages/premium/PremiumLanding";
 
 export function RouterInfoPages() {
     const isLoginRoute = window.location.pathname.startsWith('/iniciarsesion/login') || window.location.pathname.startsWith('/iniciarsesion/registrar') ? true: false;
@@ -26,6 +28,9 @@ export function RouterInfoPages() {
                 {isLoginRoute ? <></> : <PrincipalNav />}
                 <Routes>
                     <Route path="/acercade" element={<AcercaDe/>}></Route>
+                    <Route path="/terminosycondiciones" element={<Tyc/>}></Route>
+                    <Route path="/afiliate" element={<Afiliate/>}></Route>
+                    <Route path="/premium" element={<PremiumLanding/>}/>
                     <Route path="/contacto" element={<Contacto/>}></Route>
                     <Route path="/faq" element={<Faq/>}></Route>
                         <Route path="/iniciarsesion" element={<InicialLandingLogin/>}></Route>
