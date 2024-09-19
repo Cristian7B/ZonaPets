@@ -245,6 +245,13 @@ nav ul li a {
     color: #525252;
 }
 
+.itemTerm ol {
+    padding: 0px 30px;
+    font-weight: 300;
+    text-transform: capitalize;
+    color: #525252;
+}
+
 @media(width <= 1050px) {
     .containerTyc h1 {
         font-size: 70px;
