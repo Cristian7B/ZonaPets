@@ -16,6 +16,7 @@ urlpatterns = [
     path("acercade/", acercade),
     path("", zonapets),
     path("terminos-y-condiciones/", terminosycondiciones),
+    path("politicas-de-privacidad/", politicas),
     path("iniciarsesion/", iniciar_sesion),
     path("notifications/", notifications),
     path("informacion/", informacion),

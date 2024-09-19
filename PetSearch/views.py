@@ -134,6 +134,9 @@ def micuenta(request):
 def terminosycondiciones(request):
     return render(request, "ZonaPets/Secondary/tyc.html")
 
+def politicas(request):
+    return render(request, "ZonaPets/Secondary/politicasdeprivacidad.html")
+
 def informacion(request):
     return render(request, "ZonaPets/Account/informacion-personal.html")
 
