@@ -25,8 +25,10 @@ def login(request):
 def test_token(request):
     return Response({})
 
-# def react(request):
-#     return render(request, "index.html")
+from django.views.generic import TemplateView
+
+class HomePageView(TemplateView):
+    template_name = 'index.html' 
 
 def newDesing(request):
     return render(request, "ZonaPets/newdesing.html")
