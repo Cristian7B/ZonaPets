@@ -13,7 +13,7 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp", "svg"]
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", "https://zonapets.vercel.app/"]
+ALLOWED_HOSTS = ["127.0.0.1", "zonapets.vercel.app"]
 
 
 CORS_ALLOW_CREDENTIALS = True
