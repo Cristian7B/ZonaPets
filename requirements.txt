@@ -5,7 +5,6 @@ certifi==2023.11.17
 charset-normalizer==3.4.0
 deprecation==2.1.0
 dj-database-url==2.1.0
-Django==5.0.1
 django-cors-headers==4.3.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
