@@ -12,6 +12,7 @@ class Formularioregistroform(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'ZonaPets'})
     )
 
+
     class Meta:
         model = registroform
         labels = {

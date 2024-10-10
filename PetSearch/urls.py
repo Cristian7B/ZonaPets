@@ -7,9 +7,11 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^(?!static/|api/|apilocation/).*$', TemplateView.as_view(template_name='index.html')),
+    path('back/procesar/', procesar_formulario, name="procesar_formulario"),
+    path('back/procesar/empresa', procesar_formulario_empresa, name="procesar_formulario_empresa"),
     path('api/', include('user_api.urls')),
     path('apilocation/', include('apiLocation.urls')),
+    re_path(r'^(?!static/|api/|apilocation/|back/).*$', TemplateView.as_view(template_name='index.html')),
 ] 
 
 
