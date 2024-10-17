@@ -17,10 +17,18 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserModel
 		fields = '__all__'
-	def create(self, clean_data):
-		user_obj = UserModel.objects.create_user(email=clean_data['email'], password=clean_data['password'])
-		user_obj.username = clean_data['username']
-		user_obj.save()
+		extra_kwargs = {
+            'password': {'write_only': True},
+        }
+	def create(self, validated_data):
+		user_obj = UserModel.objects.create_user(
+            email=validated_data['email'], 
+            password=validated_data['password'],
+            username=validated_data['username'],
+            nombre=validated_data.get('nombre', ''),
+            telefono=validated_data.get('telefono', ''),
+			foto=validated_data.get('foto', '')  
+        )
 		return user_obj
 
 class UserLoginSerializer(serializers.Serializer):
@@ -36,7 +44,7 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserModel
-		fields = ("nombre",'email', 'username', "telefono", "ciudad")
+		fields = ("nombre",'email', 'username', "telefono", "ciudad", "foto")
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:

@@ -2,9 +2,7 @@ import os
 import environ
 from pathlib import Path
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
@@ -14,12 +12,34 @@ ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'avif', "jfif", "webp", "svg"]
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
-ALLOWED_HOSTS = ["*"]
+DEBUG = True
+ALLOWED_HOSTS = ["127.0.0.1", "zonapets.vercel.app"]
 
-CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:5173", 
+    "https://zonapets.vercel.app/"
+]
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,11 +49,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PetSearch',
+    'apiLocation',
     "corsheaders",
     'user_api.apps.UserApiConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
+from rest_framework_simplejwt.settings import api_settings
+
+api_settings.USER_ID_FIELD = 'user_id'
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': "30d", 
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=45),  
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
 
 X_FRAME_OPTIONS = 'DENY'
 
@@ -102,12 +136,13 @@ AUTH_USER_MODEL = "user_api.AppUser"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
