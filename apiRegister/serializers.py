@@ -1,16 +1,18 @@
 from rest_framework import serializers
-from PetSearch.models import registroform, registroformularioempresarial
+from PetSearch.models import RegistroForm, RegistroFormEmpresarial
 
 class RegistroFormSerializer(serializers.ModelSerializer):
     class Meta:
-        model = registroform
-        fields = ['nombre_compañia', 'telefono_usuario', 'tipo_de_negocio', 'latitud', 'longitud']
+        model = RegistroForm
+        fields = ['nombre_compania', 'telefono_usuario', 'tipo_de_negocio', 'latitud', 'longitud', 'fecha']
+        read_only_fields = ['fecha']  
 
 class RegistroFormularioEmpresarialSerializer(serializers.ModelSerializer):
     class Meta:
-        model = registroformularioempresarial
+        model = RegistroFormEmpresarial
         fields = [
             'nombre_de_quien_registra', 'telefono_usuario', 
             'correo_electronico', 'tipo_de_negocio', 
-            'nombre_compañia', 'latitud', 'longitud'
+            'nombre_compania', 'latitud', 'longitud', 'fecha'
         ]
+        read_only_fields = ['fecha']
